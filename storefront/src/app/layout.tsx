@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import ChatWidget from "../components/ChatWidget"
 import { CartProvider } from "../lib/cart-context"
 import { AuthProvider } from "../lib/auth-context"
 
@@ -24,6 +25,7 @@ export default function RootLayout({
             <Navbar />
             <main className="flex-grow">{children}</main>
             <Footer />
+            <ChatWidget />
           </CartProvider>
         </AuthProvider>
       </body>

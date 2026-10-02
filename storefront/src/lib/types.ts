@@ -60,3 +60,30 @@ export interface StoreSettings {
   supportEmail: string
   currency: string
 }
+
+export interface EmbeddedProduct {
+  magazineId: string
+  title: string
+  issueNumber?: string
+  coverImage: string
+  price: number
+}
+
+export interface ChatMessage {
+  id: string
+  sender: "customer" | "admin"
+  senderName: string
+  text: string
+  imageUrl?: string
+  productEmbed?: EmbeddedProduct
+  timestamp: string
+  read: boolean
+}
+
+export interface Conversation {
+  id: string
+  customerEmail: string
+  customerName: string
+  messages: ChatMessage[]
+  updatedAt: string
+}

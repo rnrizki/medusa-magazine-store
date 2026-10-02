@@ -18,4 +18,21 @@ module.exports = defineConfig({
     disable: process.env.DISABLE_MEDUSA_ADMIN === "true",
     path: "/app",
   },
+  modules: [
+    ...(process.env.S3_BUCKET && process.env.S3_ACCESS_KEY_ID
+      ? [
+          {
+            resolve: "@medusajs/medusa/file-s3",
+            options: {
+              bucket: process.env.S3_BUCKET,
+              region: process.env.S3_REGION || "us-east-1",
+              access_key_id: process.env.S3_ACCESS_KEY_ID,
+              secret_access_key: process.env.S3_SECRET_ACCESS_KEY,
+              endpoint: process.env.S3_ENDPOINT,
+              url: process.env.S3_PUBLIC_URL,
+            },
+          },
+        ]
+      : []),
+  ],
 })

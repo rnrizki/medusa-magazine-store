@@ -1,6 +1,14 @@
 import fs from "fs"
 import path from "path"
-import { Category, Magazine, Order, StoreSettings } from "./types"
+import {
+  Category,
+  Magazine,
+  Order,
+  StoreSettings,
+  Conversation,
+  ChatMessage,
+  EmbeddedProduct,
+} from "./types"
 
 const DATA_FILE = path.join(process.cwd(), "data", "store.json")
 
@@ -9,6 +17,7 @@ interface StoreData {
   magazines: Magazine[]
   orders: Order[]
   settings: StoreSettings
+  conversations?: Conversation[]
 }
 
 const DEFAULT_CATEGORIES: Category[] = [
@@ -164,13 +173,18 @@ function loadData(): StoreData {
         magazines: DEFAULT_MAGAZINES,
         orders: [],
         settings: DEFAULT_SETTINGS,
+        conversations: [],
       }
       fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true })
       fs.writeFileSync(DATA_FILE, JSON.stringify(initial, null, 2), "utf-8")
       return initial
     }
     const raw = fs.readFileSync(DATA_FILE, "utf-8")
-    return JSON.parse(raw)
+    const parsed = JSON.parse(raw)
+    if (!parsed.conversations) {
+      parsed.conversations = []
+    }
+    return parsed
   } catch (error) {
     console.error("Error reading store.json, returning fallback", error)
     return {
@@ -178,6 +192,7 @@ function loadData(): StoreData {
       magazines: DEFAULT_MAGAZINES,
       orders: [],
       settings: DEFAULT_SETTINGS,
+      conversations: [],
     }
   }
 }
@@ -387,3 +402,106 @@ export function formatRupiah(amount: number): string {
     maximumFractionDigits: 0,
   }).format(amount)
 }
+
+// ============================================================================
+// Live Customer Chat API
+// ============================================================================
+export function getConversations(): Conversation[] {
+  const data = loadData()
+  return (data.conversations || []).sort(
+    (a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime()
+  )
+}
+
+export function getConversationByEmail(email: string): Conversation | null {
+  const data = loadData()
+  const cleanEmail = email.trim().toLowerCase()
+  return (
+    (data.conversations || []).find(
+      (c) => c.customerEmail.toLowerCase() === cleanEmail
+    ) || null
+  )
+}
+
+export function sendChatMessage(params: {
+  customerEmail: string
+  customerName?: string
+  sender: "customer" | "admin"
+  senderName?: string
+  text?: string
+  imageUrl?: string
+  productEmbed?: EmbeddedProduct
+}): { conversation: Conversation; message: ChatMessage } {
+  const data = loadData()
+  if (!data.conversations) {
+    data.conversations = []
+  }
+
+  const cleanEmail = params.customerEmail.trim().toLowerCase()
+  let conv = data.conversations.find(
+    (c) => c.customerEmail.toLowerCase() === cleanEmail
+  )
+
+  const now = new Date().toISOString()
+
+  if (!conv) {
+    conv = {
+      id: `conv_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+      customerEmail: cleanEmail,
+      customerName: params.customerName || cleanEmail.split("@")[0],
+      messages: [],
+      updatedAt: now,
+    }
+    data.conversations.unshift(conv)
+  }
+
+  if (params.customerName && params.sender === "customer") {
+    conv.customerName = params.customerName
+  }
+
+  const newMessage: ChatMessage = {
+    id: `msg_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+    sender: params.sender,
+    senderName:
+      params.senderName ||
+      (params.sender === "admin" ? "Store Owner (DigitalPitstop)" : conv.customerName),
+    text: params.text || "",
+    imageUrl: params.imageUrl,
+    productEmbed: params.productEmbed,
+    timestamp: now,
+    read: false,
+  }
+
+  conv.messages.push(newMessage)
+  conv.updatedAt = now
+
+  saveData(data)
+  return { conversation: conv, message: newMessage }
+}
+
+export function markChatAsRead(customerEmail: string, reader: "customer" | "admin"): boolean {
+  const data = loadData()
+  const cleanEmail = customerEmail.trim().toLowerCase()
+  const conv = (data.conversations || []).find(
+    (c) => c.customerEmail.toLowerCase() === cleanEmail
+  )
+  if (!conv) return false
+
+  // If reader is customer, mark all admin messages as read
+  // If reader is admin, mark all customer messages as read
+  const targetSender = reader === "customer" ? "admin" : "customer"
+  let changed = false
+
+  for (const msg of conv.messages) {
+    if (msg.sender === targetSender && !msg.read) {
+      msg.read = true
+      changed = true
+    }
+  }
+
+  if (changed) {
+    saveData(data)
+  }
+  return true
+}
+

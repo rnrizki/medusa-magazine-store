@@ -22,10 +22,12 @@ import {
   RefreshCw,
   X,
   ExternalLink,
+  MessageSquare,
 } from "lucide-react"
+import AdminChatTab from "./AdminChatTab"
 
 export default function AdminStudioPage() {
-  const [activeTab, setActiveTab] = useState<"orders" | "upload" | "categories" | "qris">("orders")
+  const [activeTab, setActiveTab] = useState<"orders" | "upload" | "categories" | "qris" | "chat">("orders")
 
   // State
   const [orders, setOrders] = useState<Order[]>([])
@@ -337,6 +339,18 @@ export default function AdminStudioPage() {
             }`}
           >
             QRIS Barcode
+          </button>
+
+          <button
+            onClick={() => setActiveTab("chat")}
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 ${
+              activeTab === "chat"
+                ? "bg-white text-slate-900 shadow-sm"
+                : "text-slate-600 hover:text-slate-900"
+            }`}
+          >
+            <MessageSquare className="w-3.5 h-3.5 text-indigo-600" />
+            <span>Live Customer Chats</span>
           </button>
         </div>
       </div>
@@ -818,6 +832,13 @@ export default function AdminStudioPage() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* ===================================================================== */}
+      {/* TAB 5: Live Customer Chats with Picture Upload & Product CTA Embedding */}
+      {/* ===================================================================== */}
+      {activeTab === "chat" && (
+        <AdminChatTab magazines={magazines} />
       )}
 
       {/* ===================================================================== */}
