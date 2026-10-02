@@ -1,13 +1,13 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect } from "react"
-import { CartItem } from "./types"
+import { CartItem, Magazine } from "./types"
 
 interface CartContextType {
   items: CartItem[]
-  addItem: (item: Omit<CartItem, "id">) => void
-  removeItem: (id: string) => void
-  updateQuantity: (id: string, quantity: number) => void
+  addItem: (magazine: Magazine) => boolean // returns true if added, false if already exists
+  removeItem: (magazineId: string) => void
+  isInCart: (magazineId: string) => boolean
   clearCart: () => void
   totalCount: number
   subtotal: number
@@ -19,73 +19,64 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
   const [isHydrated, setIsHydrated] = useState(false)
 
-  // Load from localStorage on client mount
+  // Load cart from localStorage
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("medusa_cart")
+      const saved = localStorage.getItem("magazine_cart")
       if (saved) {
         setItems(JSON.parse(saved))
       }
     } catch (e) {
-      console.error("Failed to load cart from localStorage", e)
+      console.error("Failed to load cart", e)
     }
     setIsHydrated(true)
   }, [])
 
-  // Save to localStorage whenever items change
+  // Persist cart
   useEffect(() => {
     if (isHydrated) {
       try {
-        localStorage.setItem("medusa_cart", JSON.stringify(items))
+        localStorage.setItem("magazine_cart", JSON.stringify(items))
       } catch (e) {
-        console.error("Failed to save cart to localStorage", e)
+        console.error("Failed to save cart", e)
       }
     }
   }, [items, isHydrated])
 
-  const addItem = (newItem: Omit<CartItem, "id">) => {
-    setItems((prev) => {
-      const existing = prev.find((item) => item.variantId === newItem.variantId)
-      if (existing) {
-        return prev.map((item) =>
-          item.variantId === newItem.variantId
-            ? { ...item, quantity: item.quantity + newItem.quantity }
-            : item
-        )
-      }
-      return [
-        ...prev,
-        {
-          ...newItem,
-          id: `item_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
-        },
-      ]
-    })
+  const isInCart = (magazineId: string) => {
+    return items.some((item) => item.magazineId === magazineId)
   }
 
-  const removeItem = (id: string) => {
-    setItems((prev) => prev.filter((item) => item.id !== id))
-  }
-
-  const updateQuantity = (id: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeItem(id)
-      return
+  const addItem = (magazine: Magazine): boolean => {
+    if (isInCart(magazine.id)) {
+      return false
     }
-    setItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, quantity } : item))
-    )
+
+    const newItem: CartItem = {
+      id: `cart_${magazine.id}`,
+      magazineId: magazine.id,
+      title: magazine.title,
+      issueNumber: magazine.issueNumber,
+      coverImage: magazine.coverImage,
+      categoryName: magazine.categoryName,
+      price: magazine.price,
+      quantity: 1, // Digital license is strictly 1
+    }
+
+    setItems((prev) => [...prev, newItem])
+    return true
+  }
+
+  const removeItem = (magazineId: string) => {
+    setItems((prev) => prev.filter((item) => item.magazineId !== magazineId))
   }
 
   const clearCart = () => {
     setItems([])
   }
 
-  const totalCount = items.reduce((acc, item) => acc + item.quantity, 0)
-  const subtotal = items.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  )
+  const totalCount = items.length
+  const subtotal = items.reduce((sum, item) => sum + item.price, 0)
 
   return (
     <CartContext.Provider
@@ -93,7 +84,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         items,
         addItem,
         removeItem,
-        updateQuantity,
+        isInCart,
         clearCart,
         totalCount,
         subtotal,

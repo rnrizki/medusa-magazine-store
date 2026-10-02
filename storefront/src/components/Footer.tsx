@@ -1,52 +1,64 @@
 import React from "react"
 import Link from "next/link"
+import { QrCode, Mail, Zap, ShieldCheck } from "lucide-react"
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <div className="flex items-center space-x-2 text-white font-bold text-lg mb-3">
+          {/* Brand */}
+          <div className="space-y-3">
+            <div className="flex items-center space-x-2 text-white font-bold text-lg">
               <span className="w-7 h-7 rounded bg-indigo-600 flex items-center justify-center text-xs">
-                M2
+                M
               </span>
-              <span>Medusa Store</span>
+              <span>DIGITALPITSTOP</span>
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed">
-              Full-featured headless ecommerce built with Medusa v2, Next.js 14,
-              PostgreSQL, and Redis running in Docker containers.
+            <p className="text-xs text-slate-400 leading-relaxed font-light">
+              High-resolution digital magazine marketplace. Powered by Next.js & Medusa, deployed via Docker on Dokploy VPS.
             </p>
+            <div className="flex items-center space-x-1.5 text-xs text-emerald-400">
+              <QrCode className="w-3.5 h-3.5" />
+              <span>NMID: ID1026568992402</span>
+            </div>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h4 className="text-white text-sm font-semibold mb-3 tracking-wider uppercase">
-              Storefront
+            <h4 className="text-white text-xs font-bold mb-3 tracking-wider uppercase">
+              Publications
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/" className="hover:text-white transition">
-                  Home
+                  All Magazine Issues
                 </Link>
               </li>
               <li>
-                <Link href="/products" className="hover:text-white transition">
-                  Catalog
+                <Link href="/library" className="hover:text-white transition">
+                  My Digital Library
                 </Link>
               </li>
               <li>
                 <Link href="/cart" className="hover:text-white transition">
-                  Shopping Cart
+                  Shopping Bag & Checkout
                 </Link>
               </li>
             </ul>
           </div>
 
+          {/* Store Owner Hub */}
           <div>
-            <h4 className="text-white text-sm font-semibold mb-3 tracking-wider uppercase">
+            <h4 className="text-white text-xs font-bold mb-3 tracking-wider uppercase">
               Management
             </h4>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs">
+              <li>
+                <Link href="/admin" className="hover:text-white transition text-indigo-400 font-semibold">
+                  Admin Studio (Bulk Add & QRIS)
+                </Link>
+              </li>
               <li>
                 <a
                   href="http://localhost:9000/app"
@@ -54,48 +66,37 @@ export default function Footer() {
                   rel="noreferrer"
                   className="hover:text-white transition"
                 >
-                  Medusa Admin Dashboard
-                </a>
-              </li>
-              <li>
-                <a
-                  href="http://localhost:9000/health"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-white transition"
-                >
-                  Backend Health Endpoint
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://docs.medusajs.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:text-white transition"
-                >
-                  Medusa v2 Documentation
+                  Medusa Core Engine
                 </a>
               </li>
             </ul>
           </div>
 
+          {/* Checkout Guarantee */}
           <div>
-            <h4 className="text-white text-sm font-semibold mb-3 tracking-wider uppercase">
-              Architecture
+            <h4 className="text-white text-xs font-bold mb-3 tracking-wider uppercase">
+              Delivery & Payment
             </h4>
-            <div className="text-xs space-y-1.5 text-slate-400">
-              <p>• Backend: Medusa v2 (Port 9000)</p>
-              <p>• Storefront: Next.js 14 (Port 8000)</p>
-              <p>• Database: PostgreSQL 16 (Port 5432)</p>
-              <p>• Cache: Redis 7 (Port 6379)</p>
+            <div className="text-xs space-y-2 text-slate-400">
+              <p className="flex items-center space-x-1.5">
+                <Zap className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                <span>Instant Free Delivery to Gmail</span>
+              </p>
+              <p className="flex items-center space-x-1.5">
+                <QrCode className="w-3.5 h-3.5 text-rose-400 flex-shrink-0" />
+                <span>Standard QRIS (All Indonesian E-Wallets)</span>
+              </p>
+              <p className="flex items-center space-x-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-sky-400 flex-shrink-0" />
+                <span>Zero Address Required</span>
+              </p>
             </div>
           </div>
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Medusa Ecommerce Store. Containerized with Docker.</p>
-          <p className="mt-4 sm:mt-0">Built for scale, agility, and performance.</p>
+          <p>© {new Date().getFullYear()} DIGITALPITSTOP - SOFTWARE. All rights reserved.</p>
+          <p className="mt-2 sm:mt-0 font-light">Built for Dokploy VPS Cloud Hosting.</p>
         </div>
       </div>
     </footer>

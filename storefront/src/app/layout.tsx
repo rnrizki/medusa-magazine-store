@@ -3,11 +3,12 @@ import "./globals.css"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import { CartProvider } from "../lib/cart-context"
+import { AuthProvider } from "../lib/auth-context"
 
 export const metadata: Metadata = {
-  title: "Medusa Store | Modern Ecommerce Stack",
+  title: "DIGITALPITSTOP Magazines | Premium Digital Editions",
   description:
-    "Next.js Storefront powered by Medusa v2 Headless Commerce in Docker",
+    "Explore high-resolution digital magazines with instant delivery to your Gmail and seamless QRIS payment.",
 }
 
 export default function RootLayout({
@@ -17,12 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased flex flex-col min-h-screen">
-        <CartProvider>
-          <Navbar />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-        </CartProvider>
+      <body className="antialiased flex flex-col min-h-screen bg-slate-50 text-slate-900">
+        <AuthProvider>
+          <CartProvider>
+            <Navbar />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </CartProvider>
+        </AuthProvider>
       </body>
     </html>
   )
