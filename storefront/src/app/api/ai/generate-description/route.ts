@@ -35,29 +35,41 @@ Respond ONLY with a valid JSON object matching this exact format:
   ]
 }`
 
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
-              generationConfig: {
-                responseMimeType: "application/json",
-                temperature: 0.7,
-              },
-            }),
-          }
-        )
+        const candidateModels = ["gemini-flash-latest", "gemini-3.5-flash", "gemini-3.1-flash-lite"]
+        let parsedResult: any = null
 
-        if (res.ok) {
-          const geminiData = await res.json()
-          const text =
-            geminiData?.candidates?.[0]?.content?.parts?.[0]?.text
-          if (text) {
-            const parsed = JSON.parse(text)
-            return NextResponse.json(parsed)
+        for (const model of candidateModels) {
+          try {
+            const res = await fetch(
+              `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  contents: [{ parts: [{ text: prompt }] }],
+                  generationConfig: {
+                    responseMimeType: "application/json",
+                    temperature: 0.7,
+                  },
+                }),
+              }
+            )
+
+            if (res.ok) {
+              const geminiData = await res.json()
+              const text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text
+              if (text) {
+                parsedResult = JSON.parse(text)
+                break
+              }
+            }
+          } catch (modelErr) {
+            console.warn(`Gemini model ${model} failed, trying next candidate:`, modelErr)
           }
+        }
+
+        if (parsedResult) {
+          return NextResponse.json(parsedResult)
         }
       } catch (geminiErr) {
         console.warn("Gemini API call failed, using intelligent editorial generator", geminiErr)
