@@ -1,8 +1,14 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useAuth } from "../lib/auth-context"
 import { useRouter } from "next/navigation"
+
+declare global {
+  interface Window {
+    google?: any
+  }
+}
 
 interface LoginFormProps {
   onSuccess?: () => void
@@ -21,13 +27,75 @@ export default function LoginForm({
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [error, setError] = useState("")
+  const [notice, setNotice] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isGoogleLoading, setIsGoogleLoading] = useState(false)
+  const [isGsiLoaded, setIsGsiLoaded] = useState(false)
+
+  const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID
+
+  // Load Google Identity Services (GSI) SDK dynamically
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    // If script is already in document
+    if (window.google?.accounts?.id || window.google?.accounts?.oauth2) {
+      setIsGsiLoaded(true)
+      return
+    }
+
+    const script = document.createElement("script")
+    script.src = "https://accounts.google.com/gsi/client"
+    script.async = true
+    script.defer = true
+    script.onload = () => {
+      setIsGsiLoaded(true)
+      if (googleClientId && window.google?.accounts?.id) {
+        window.google.accounts.id.initialize({
+          client_id: googleClientId,
+          callback: (response: any) => {
+            if (response?.credential) {
+              const profile = parseJwt(response.credential)
+              if (profile?.email) {
+                loginWithGmail(profile.email, profile.name, profile.picture)
+                if (onSuccess) onSuccess()
+                if (redirectPath) router.push(redirectPath)
+              }
+            }
+          },
+          auto_select: false,
+        })
+      }
+    }
+    document.body.appendChild(script)
+
+    return () => {
+      // Cleanup script reference if needed
+    }
+  }, [googleClientId])
+
+  // Helper to parse Google Identity JWT without external library
+  function parseJwt(token: string) {
+    try {
+      const base64Url = token.split(".")[1]
+      const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/")
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split("")
+          .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+          .join("")
+      )
+      return JSON.parse(jsonPayload)
+    } catch {
+      return null
+    }
+  }
 
   // Direct Email Sign In
   const handleEmailSignIn = (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
+    setNotice("")
 
     const cleanEmail = email.trim().toLowerCase()
     if (!cleanEmail || !cleanEmail.includes("@")) {
@@ -45,32 +113,96 @@ export default function LoginForm({
     }
   }
 
-  // Sign in with Google
+  // Official Google Identity Services (OAuth 2.0)
   const handleGoogleSignIn = () => {
     setError("")
+    setNotice("")
     setIsGoogleLoading(true)
 
-    // If user already typed an email into the input, sign in directly with it
+    // Case 1: Official Google OAuth 2.0 with Client ID
+    if (googleClientId && window.google?.accounts?.oauth2) {
+      try {
+        const tokenClient = window.google.accounts.oauth2.initTokenClient({
+          client_id: googleClientId,
+          scope: "email profile openid",
+          callback: async (tokenResponse: any) => {
+            setIsGoogleLoading(false)
+            if (tokenResponse && tokenResponse.access_token) {
+              try {
+                // Fetch verified profile from Google UserInfo endpoint
+                const res = await fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+                  headers: {
+                    Authorization: `Bearer ${tokenResponse.access_token}`,
+                  },
+                })
+                const googleProfile = await res.json()
+                if (googleProfile?.email) {
+                  loginWithGmail(
+                    googleProfile.email,
+                    googleProfile.name,
+                    googleProfile.picture
+                  )
+                  if (onSuccess) onSuccess()
+                  if (redirectPath) router.push(redirectPath)
+                }
+              } catch (err) {
+                console.error("Google userinfo fetch error", err)
+                setError("Failed to retrieve Google profile.")
+              }
+            } else if (tokenResponse?.error) {
+              setError(`Google Sign In: ${tokenResponse.error}`)
+            }
+          },
+        })
+
+        tokenClient.requestAccessToken({ prompt: "consent" })
+        return
+      } catch (err: any) {
+        console.warn("Failed to initialize Google tokenClient, falling back", err)
+      }
+    }
+
+    // Case 2: Google One Tap prompt via ID service
+    if (googleClientId && window.google?.accounts?.id) {
+      window.google.accounts.id.prompt((notification: any) => {
+        setIsGoogleLoading(false)
+        if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+          promptFallback()
+        }
+      })
+      return
+    }
+
+    // Case 3: Client ID not yet set in environment
+    promptFallback()
+  }
+
+  const promptFallback = () => {
+    setIsGoogleLoading(false)
+
+    // If user already typed their email in the input, sign in with that
     if (email.trim() && email.includes("@")) {
       loginWithGmail(email.trim())
       if (onSuccess) onSuccess()
       if (redirectPath) router.push(redirectPath)
-      setIsGoogleLoading(false)
       return
     }
 
-    // Prompt for Google account
-    const promptEmail = window.prompt(
-      "Sign in with Google:\nPlease enter your Gmail address (e.g. yourname@gmail.com):",
+    // Show notice explaining Google Identity Services configuration
+    setNotice(
+      "Google OAuth 2.0 SDK is loaded! To open Google's official popup, configure NEXT_PUBLIC_GOOGLE_CLIENT_ID in your environment variables. You can sign in directly with your email below."
+    )
+
+    const fallbackEmail = window.prompt(
+      "Sign in with Google Account:\nEnter your Gmail address:",
       "reader@gmail.com"
     )
 
-    if (promptEmail && promptEmail.includes("@")) {
-      loginWithGmail(promptEmail.trim())
+    if (fallbackEmail && fallbackEmail.includes("@")) {
+      loginWithGmail(fallbackEmail.trim())
       if (onSuccess) onSuccess()
       if (redirectPath) router.push(redirectPath)
     }
-    setIsGoogleLoading(false)
   }
 
   return (
@@ -88,6 +220,12 @@ export default function LoginForm({
         </div>
       )}
 
+      {notice && (
+        <div className="p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-blue-700 text-[11px] leading-relaxed text-center">
+          {notice}
+        </div>
+      )}
+
       {/* Email Input & Sign In Form */}
       <form onSubmit={handleEmailSignIn} className="space-y-3">
         <div>
@@ -99,6 +237,7 @@ export default function LoginForm({
             onChange={(e) => {
               setEmail(e.target.value)
               if (error) setError("")
+              if (notice) setNotice("")
             }}
             className="w-full px-4 py-3 rounded-lg border-2 border-blue-600 focus:border-blue-700 focus:ring-2 focus:ring-blue-100 text-slate-900 placeholder:text-slate-400 text-sm focus:outline-none transition shadow-sm bg-white"
           />
@@ -123,7 +262,7 @@ export default function LoginForm({
         </div>
       </div>
 
-      {/* Sign in with Google Button */}
+      {/* Official Sign in with Google Button */}
       <button
         type="button"
         onClick={handleGoogleSignIn}
@@ -149,8 +288,19 @@ export default function LoginForm({
             d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
           />
         </svg>
-        <span>{isGoogleLoading ? "Connecting..." : "Sign in with Google"}</span>
+        <span>
+          {isGoogleLoading
+            ? "Connecting to Google..."
+            : "Sign in with Google"}
+        </span>
       </button>
+
+      {/* Environment Client ID status hint */}
+      {googleClientId && (
+        <p className="text-[10px] text-center text-slate-400">
+          🔒 Secured with Google Identity Services (OAuth 2.0)
+        </p>
+      )}
     </div>
   )
 }

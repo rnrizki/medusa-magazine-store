@@ -10,7 +10,7 @@ export interface User {
 
 interface AuthContextType {
   user: User | null
-  loginWithGmail: (email: string, name?: string) => void
+  loginWithGmail: (email: string, name?: string, avatar?: string) => void
   logout: () => void
   isLoggedIn: boolean
 }
@@ -31,13 +31,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  const loginWithGmail = (email: string, name?: string) => {
+  const loginWithGmail = (email: string, name?: string, avatar?: string) => {
     const cleanEmail = email.trim().toLowerCase()
     const displayName = name || cleanEmail.split("@")[0].replace(/[._]/g, " ")
     const newUser: User = {
       email: cleanEmail,
       name: displayName.charAt(0).toUpperCase() + displayName.slice(1),
-      avatar: `https://api.dicebear.com/7.x/initials/svg?seed=${cleanEmail}`,
+      avatar: avatar || `https://api.dicebear.com/7.x/initials/svg?seed=${cleanEmail}`,
     }
     setUser(newUser)
     localStorage.setItem("magazine_user", JSON.stringify(newUser))
