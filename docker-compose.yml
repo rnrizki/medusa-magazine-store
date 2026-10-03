@@ -4,14 +4,11 @@ services:
   # =========================================================================
   postgres:
     image: postgres:16-alpine
-    container_name: medusa_postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-medusa_db}
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -27,10 +24,7 @@ services:
   # =========================================================================
   redis:
     image: redis:7-alpine
-    container_name: medusa_redis
     restart: unless-stopped
-    ports:
-      - "6379:6379"
     volumes:
       - redis_data:/data
     healthcheck:
@@ -48,30 +42,35 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: medusa_backend
     restart: unless-stopped
     ports:
       - "9000:9000"
     environment:
-      NODE_ENV: development
+      NODE_ENV: production
       DATABASE_URL: ${DATABASE_URL:-postgres://postgres:postgres@postgres:5432/medusa_db}
       REDIS_URL: ${REDIS_URL:-redis://redis:6379}
       JWT_SECRET: ${JWT_SECRET:-supersecret_jwt_key_medusa_ecommerce_2026}
       COOKIE_SECRET: ${COOKIE_SECRET:-supersecret_cookie_key_medusa_ecommerce_2026}
-      STORE_CORS: ${STORE_CORS:-http://localhost:8000,http://localhost:3000}
-      ADMIN_CORS: ${ADMIN_CORS:-http://localhost:7000,http://localhost:7001,http://localhost:9000}
-      AUTH_CORS: ${AUTH_CORS:-http://localhost:7000,http://localhost:7001,http://localhost:8000,http://localhost:3000,http://localhost:9000}
-      MEDUSA_ADMIN_EMAIL: ${MEDUSA_ADMIN_EMAIL:-admin@medusa-store.com}
-      MEDUSA_ADMIN_PASSWORD: ${MEDUSA_ADMIN_PASSWORD:-supersecret}
+      STORE_CORS: ${STORE_CORS:-https://majalahpdf.my.id,https://www.majalahpdf.my.id,http://localhost:8000,http://localhost:3000}
+      ADMIN_CORS: ${ADMIN_CORS:-https://api.majalahpdf.my.id,http://localhost:7000,http://localhost:7001,http://localhost:9000}
+      AUTH_CORS: ${AUTH_CORS:-https://majalahpdf.my.id,https://www.majalahpdf.my.id,https://api.majalahpdf.my.id,http://localhost:7000,http://localhost:8000,http://localhost:9000}
+      MEDUSA_ADMIN_EMAIL: ${MEDUSA_ADMIN_EMAIL:-admin@majalahpdf.my.id}
+      MEDUSA_ADMIN_PASSWORD: ${MEDUSA_ADMIN_PASSWORD:-MajalahPdfAdmin2026!}
       SEED_DB: ${SEED_DB:-true}
+      DISABLE_MEDUSA_ADMIN: "true"
+      MEDUSA_TELEMETRY_DISABLED: "1"
+      S3_BUCKET: ${S3_BUCKET:-medusa}
+      S3_REGION: ${S3_REGION:-us-east-1}
+      S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
+      S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
+      S3_ENDPOINT: ${S3_ENDPOINT:-}
+      S3_PUBLIC_URL: ${S3_PUBLIC_URL:-}
+      S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-true}
     depends_on:
       postgres:
         condition: service_healthy
       redis:
         condition: service_healthy
-    volumes:
-      - ./backend/src:/app/src
-      - ./backend/medusa-config.ts:/app/medusa-config.ts
     healthcheck:
       test: ["CMD-SHELL", "wget -q --spider http://127.0.0.1:9000/health || exit 1"]
       interval: 10s
@@ -80,6 +79,13 @@ services:
       start_period: 40s
     networks:
       - medusa-network
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      - "traefik.http.routers.backend.rule=Host(`api.majalahpdf.my.id`)"
+      - "traefik.http.routers.backend.entrypoints=web,websecure"
+      - "traefik.http.services.backend.loadbalancer.server.port=9000"
 
   # =========================================================================
   # Customer-Facing Next.js Storefront
@@ -88,20 +94,24 @@ services:
     build:
       context: ./storefront
       dockerfile: Dockerfile
-    container_name: medusa_storefront
+      args:
+        NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${NEXT_PUBLIC_MEDUSA_BACKEND_URL:-https://api.majalahpdf.my.id}
+        NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL:-https://majalahpdf.my.id}
+        NEXT_PUBLIC_DEFAULT_REGION: ${NEXT_PUBLIC_DEFAULT_REGION:-id}
+        NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: ${NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY:-pk_medusa_default_key}
     restart: unless-stopped
     ports:
       - "8000:8000"
     environment:
-      NODE_ENV: development
+      NODE_ENV: production
       PORT: 8000
-      NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${NEXT_PUBLIC_MEDUSA_BACKEND_URL:-http://localhost:9000}
-      MEDUSA_BACKEND_URL: ${MEDUSA_BACKEND_URL:-http://backend:9000}
-      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL:-http://localhost:8000}
-      NEXT_PUBLIC_DEFAULT_REGION: ${NEXT_PUBLIC_DEFAULT_REGION:-us}
+      NEXT_PUBLIC_MEDUSA_BACKEND_URL: ${NEXT_PUBLIC_MEDUSA_BACKEND_URL:-https://api.majalahpdf.my.id}
+      MEDUSA_BACKEND_URL: http://backend:9000
+      NEXT_PUBLIC_BASE_URL: ${NEXT_PUBLIC_BASE_URL:-https://majalahpdf.my.id}
+      NEXT_PUBLIC_DEFAULT_REGION: ${NEXT_PUBLIC_DEFAULT_REGION:-id}
       NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY: ${NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY:-pk_medusa_default_key}
       GEMINI_API_KEY: ${GEMINI_API_KEY:-}
-      S3_BUCKET: ${S3_BUCKET:-}
+      S3_BUCKET: ${S3_BUCKET:-medusa}
       S3_REGION: ${S3_REGION:-us-east-1}
       S3_ACCESS_KEY_ID: ${S3_ACCESS_KEY_ID:-}
       S3_SECRET_ACCESS_KEY: ${S3_SECRET_ACCESS_KEY:-}
@@ -111,21 +121,30 @@ services:
     depends_on:
       - backend
     volumes:
-      - ./storefront/src:/app/src
-      - ./storefront/public:/app/public
-      - ./storefront/data:/app/data
+      - storefront_data:/app/data
+      - storefront_uploads:/app/public/uploads
     networks:
       - medusa-network
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      - "traefik.http.routers.storefront.rule=Host(`majalahpdf.my.id`) || Host(`www.majalahpdf.my.id`)"
+      - "traefik.http.routers.storefront.entrypoints=web,websecure"
+      - "traefik.http.services.storefront.loadbalancer.server.port=8000"
 
-# ===========================================================================
-# Volumes & Networks
-# ===========================================================================
 volumes:
   postgres_data:
     driver: local
   redis_data:
     driver: local
+  storefront_data:
+    driver: local
+  storefront_uploads:
+    driver: local
 
 networks:
   medusa-network:
     driver: bridge
+  dokploy-network:
+    external: true
