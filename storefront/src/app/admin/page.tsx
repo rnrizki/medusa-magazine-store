@@ -72,6 +72,26 @@ export default function AdminStudioPage() {
 
   const [uploadSuccess, setUploadSuccess] = useState(false)
   const [isSubmittingMagazines, setIsSubmittingMagazines] = useState(false)
+  const [uploadingField, setUploadingField] = useState<{ id: string; field: string } | null>(null)
+
+  const handleFileUpload = async (rowId: string, field: "coverImage" | "pdfUrl", file: File) => {
+    setUploadingField({ id: rowId, field })
+    try {
+      const formData = new FormData()
+      formData.append("file", file)
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      })
+      if (!res.ok) throw new Error("Upload failed")
+      const data = await res.json()
+      updateBulkField(rowId, field, data.url)
+    } catch (e: any) {
+      alert("Failed to upload file to storage: " + e.message)
+    } finally {
+      setUploadingField(null)
+    }
+  }
 
   // Load initial data
   const fetchData = async () => {
@@ -601,12 +621,32 @@ export default function AdminStudioPage() {
                   </div>
 
                   <div className="md:col-span-6 space-y-1">
-                    <label className="block text-xs font-bold text-slate-700">
-                      Cover Image URL (3:4 Portrait Ratio)
-                    </label>
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-bold text-slate-700">
+                        Cover Image (3:4 Portrait Ratio)
+                      </label>
+                      <label className="cursor-pointer text-[11px] font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1">
+                        <UploadCloud className="w-3.5 h-3.5" />
+                        <span>
+                          {uploadingField?.id === item.id && uploadingField?.field === "coverImage"
+                            ? "Uploading to S3..."
+                            : "Upload Cover to S3"}
+                        </span>
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          disabled={Boolean(uploadingField)}
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) handleFileUpload(item.id, "coverImage", file)
+                          }}
+                        />
+                      </label>
+                    </div>
                     <input
                       type="text"
-                      placeholder="https://images.unsplash.com/..."
+                      placeholder="https://images.unsplash.com/... or uploaded S3 URL"
                       value={item.coverImage}
                       onChange={(e) => updateBulkField(item.id, "coverImage", e.target.value)}
                       className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none font-mono text-[11px]"
@@ -614,12 +654,32 @@ export default function AdminStudioPage() {
                   </div>
 
                   <div className="md:col-span-3 space-y-1">
-                    <label className="block text-xs font-bold text-slate-700">
-                      Digital PDF Download Link
-                    </label>
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-bold text-slate-700">
+                        Digital PDF File
+                      </label>
+                      <label className="cursor-pointer text-[11px] font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1">
+                        <UploadCloud className="w-3.5 h-3.5" />
+                        <span>
+                          {uploadingField?.id === item.id && uploadingField?.field === "pdfUrl"
+                            ? "Uploading to S3..."
+                            : "Upload PDF to S3"}
+                        </span>
+                        <input
+                          type="file"
+                          accept=".pdf,application/pdf"
+                          className="hidden"
+                          disabled={Boolean(uploadingField)}
+                          onChange={(e) => {
+                            const file = e.target.files?.[0]
+                            if (file) handleFileUpload(item.id, "pdfUrl", file)
+                          }}
+                        />
+                      </label>
+                    </div>
                     <input
                       type="text"
-                      placeholder="https://yourstorage.com/issue.pdf"
+                      placeholder="https://yourstorage.com/issue.pdf or uploaded S3 link"
                       value={item.pdfUrl}
                       onChange={(e) => updateBulkField(item.id, "pdfUrl", e.target.value)}
                       className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none font-mono text-[11px]"

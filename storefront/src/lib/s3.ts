@@ -13,22 +13,28 @@ export interface S3Config {
 }
 
 export function getS3Config(): S3Config | null {
-  const bucket = process.env.S3_BUCKET
-  const accessKeyId = process.env.S3_ACCESS_KEY_ID
-  const secretAccessKey = process.env.S3_SECRET_ACCESS_KEY
+  const bucket = process.env.S3_BUCKET?.trim().toLowerCase()
+  const accessKeyId = process.env.S3_ACCESS_KEY_ID?.trim()
+  const secretAccessKey = process.env.S3_SECRET_ACCESS_KEY?.trim()
+  const endpoint = process.env.S3_ENDPOINT?.trim().replace(/\/+$/, "")
 
   if (!bucket || !accessKeyId || !secretAccessKey) {
     return null
   }
 
+  const isCustomEndpoint = Boolean(endpoint && !endpoint.includes("amazonaws.com"))
+  const forcePathStyle = process.env.S3_FORCE_PATH_STYLE 
+    ? process.env.S3_FORCE_PATH_STYLE === "true" 
+    : isCustomEndpoint
+
   return {
     bucket,
-    region: process.env.S3_REGION || "us-east-1",
+    region: process.env.S3_REGION?.trim() || "us-east-1",
     accessKeyId,
     secretAccessKey,
-    endpoint: process.env.S3_ENDPOINT,
-    publicUrl: process.env.S3_PUBLIC_URL,
-    forcePathStyle: process.env.S3_FORCE_PATH_STYLE === "true",
+    endpoint,
+    publicUrl: process.env.S3_PUBLIC_URL?.trim().replace(/\/+$/, ""),
+    forcePathStyle,
   }
 }
 
