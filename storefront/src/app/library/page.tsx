@@ -5,6 +5,7 @@ import { useAuth } from "../../lib/auth-context"
 import { Order } from "../../lib/types"
 import { formatRupiah } from "../../lib/format"
 import Link from "next/link"
+import LoginForm from "../../components/LoginForm"
 import {
   BookOpen,
   Download,
@@ -47,24 +48,30 @@ export default function CustomerLibraryPage() {
 
   if (!isLoggedIn || !user) {
     return (
-      <div className="max-w-md mx-auto px-4 py-24 text-center space-y-4">
-        <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto">
-          <Mail className="w-8 h-8" />
-        </div>
-        <h2 className="text-xl font-bold text-slate-900">
-          Sign In to Access Your Library
-        </h2>
-        <p className="text-xs text-slate-500">
-          Enter your Gmail address in the navigation bar to see your digital
-          magazine purchases and download links.
-        </p>
-        <div className="pt-2">
-          <Link
-            href="/"
-            className="inline-flex items-center px-4 py-2 rounded-xl bg-slate-900 text-white text-xs font-semibold hover:bg-indigo-600 transition"
-          >
-            Return to Storefront
-          </Link>
+      <div className="max-w-md mx-auto px-4 py-20">
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xl space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mx-auto text-indigo-600">
+              <BookOpen className="w-6 h-6" />
+            </div>
+            <h2 className="text-2xl font-black text-slate-900">
+              Sign In to Your Library
+            </h2>
+            <p className="text-xs text-slate-500">
+              Enter your email or sign in with Google to view and download your digital publications.
+            </p>
+          </div>
+
+          <LoginForm redirectPath="/library" />
+
+          <div className="text-center pt-2 border-t border-slate-100">
+            <Link
+              href="/"
+              className="text-xs text-slate-500 hover:text-indigo-600 transition font-medium"
+            >
+              ← Back to Storefront
+            </Link>
+          </div>
         </div>
       </div>
     )
