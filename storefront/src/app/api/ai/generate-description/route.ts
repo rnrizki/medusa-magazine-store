@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { ALLOWED_CATEGORIES, normalizeToAllowedCategory } from "../../../../lib/categories"
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,18 +20,31 @@ export async function POST(req: NextRequest) {
     // If Gemini API key is provided, query Gemini API
     if (apiKey) {
       try {
-        const prompt = `You are a world-class magazine editor-in-chief, cultural journalist, and copywriter with access to global publication archives and web intelligence.
+        const prompt = `You are a world-class magazine editor-in-chief, cultural journalist, and copywriter with real-time web browsing capability.
 
 Task:
 Perform web-grounded research on the magazine title:
 "${title}"
-Category: "${category || "General / Lifestyle"}"
 
-Search for relevant cultural trends, publication archives, cover stories, interview topics, and historical/modern context related to this title.
-Then write a compelling, high-end editorial description (2 paragraphs) and 3 inside-the-issue article headlines for this digital magazine issue.
+CRITICAL RULE 1 - STRICT CATEGORIZATION:
+You MUST classify this magazine into EXACTLY ONE of the following 10 categories (and NOTHING ELSE):
+- Business
+- Lifestyle
+- Design
+- Fashion
+- Defense
+- Travel
+- Science
+- Automotive
+- For Men
+- Sports
+
+CRITICAL RULE 2 - EDITORIAL OVERVIEW:
+Based on your web research, write a sophisticated, authentic 2-paragraph editorial overview and 3 inside-the-issue article headlines for this digital magazine issue.
 
 Respond ONLY with a valid JSON object in this exact schema (no markdown, no backticks):
 {
+  "category": "Exact category name from the 10 allowed categories above",
   "description": "A stylish, engaging 2-paragraph editorial overview capturing the depth, theme, and real-world significance of this issue.",
   "highlights": [
     "Feature Article 1: Captivating headline with short hook",
@@ -51,7 +65,6 @@ Respond ONLY with a valid JSON object in this exact schema (no markdown, no back
         // Try candidate models
         for (const model of candidateModels) {
           try {
-            // First attempt with Google Search grounding tool if webSearch requested
             let requestBody: any = {
               contents: [{ parts: [{ text: prompt }] }],
               generationConfig: {
@@ -59,7 +72,7 @@ Respond ONLY with a valid JSON object in this exact schema (no markdown, no back
               },
             }
 
-            // Attempt with googleSearch tool
+            // Attempt with googleSearch tool if webSearch requested
             if (webSearch) {
               requestBody.tools = [{ googleSearch: {} }]
             }
@@ -90,7 +103,6 @@ Respond ONLY with a valid JSON object in this exact schema (no markdown, no back
               const geminiData = await res.json()
               const text = geminiData?.candidates?.[0]?.content?.parts?.[0]?.text
               if (text) {
-                // Clean potential markdown blocks ```json ... ```
                 const cleanJson = text
                   .replace(/```json/gi, "")
                   .replace(/```/g, "")
@@ -107,6 +119,8 @@ Respond ONLY with a valid JSON object in this exact schema (no markdown, no back
         }
 
         if (parsedResult && parsedResult.description) {
+          // Guarantee that the category is strictly one of the 10 allowed categories
+          parsedResult.category = normalizeToAllowedCategory(parsedResult.category || category, title)
           return NextResponse.json(parsedResult)
         }
       } catch (geminiErr) {
@@ -127,7 +141,8 @@ Respond ONLY with a valid JSON object in this exact schema (no markdown, no back
 }
 
 function generateEditorialFallback(title: string, category?: string) {
-  const cleanCategory = category || "Culture & Ideas"
+  // Enforce strictly one of the 10 allowed categories
+  const strictlyAllowedCategory = normalizeToAllowedCategory(category, title)
 
   // Extract keywords from title for deep customization
   const titleWords = title
@@ -138,8 +153,8 @@ function generateEditorialFallback(title: string, category?: string) {
   const subject = titleWords.slice(0, 3).join(" ") || title
 
   const openers = [
-    `Welcome to the latest digital edition of ${title}. In this landmark release, our editorial team brings you exclusive reporting, breathtaking high-resolution visual curation, and in-depth investigative profiles shaping the frontier of ${cleanCategory.toLowerCase()}.`,
-    `Curated for discerning readers worldwide, ${title} explores the pivotal movements and cultural shifts transforming ${cleanCategory.toLowerCase()}. Every page is crafted with meticulous typography, immersive editorial essays, and unfiltered conversations with leading pioneers.`,
+    `Welcome to the latest digital edition of ${title}. In this landmark release, our editorial team brings you exclusive reporting, breathtaking high-resolution visual curation, and in-depth investigative profiles shaping the frontier of ${strictlyAllowedCategory.toLowerCase()}.`,
+    `Curated for discerning readers worldwide, ${title} explores the pivotal movements and cultural shifts transforming ${strictlyAllowedCategory.toLowerCase()}. Every page is crafted with meticulous typography, immersive editorial essays, and unfiltered conversations with leading pioneers.`,
     `Spanning visionary perspectives and groundbreaking features, ${title} sets a new standard for modern digital journalism. Designed specifically for high-definition mobile and tablet reading.`,
   ]
 
@@ -155,10 +170,11 @@ function generateEditorialFallback(title: string, category?: string) {
   const highlights = [
     `Cover Story: The Definitive Breakdown of ${subject}`,
     `Global Perspective: 30 Pages of Exclusive Studio & Field Photography`,
-    `Critical Dialogue: Thought Leaders on the Future of ${cleanCategory}`,
+    `Critical Dialogue: Thought Leaders on the Future of ${strictlyAllowedCategory}`,
   ]
 
   return {
+    category: strictlyAllowedCategory,
     description: fullDescription,
     highlights,
   }

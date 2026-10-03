@@ -38,6 +38,7 @@ import {
 } from "lucide-react"
 import AdminChatTab from "./AdminChatTab"
 import ManageMagazinesTab from "./ManageMagazinesTab"
+import { ALLOWED_CATEGORIES, normalizeToAllowedCategory } from "../../lib/categories"
 
 function parseCSV(text: string): Record<string, string>[] {
   const lines: string[] = []
@@ -170,6 +171,7 @@ export default function AdminStudioPage() {
     current: number
     total: number
     currentTitle: string
+    category?: string
   } | null>(null)
   const [csvImportMessage, setCsvImportMessage] = useState<string | null>(null)
 
@@ -392,11 +394,12 @@ export default function AdminStudioPage() {
   const downloadCsvTemplate = () => {
     const headers = "title,issueNumber,category,price,coverImage,pdfUrl,description,highlights"
     const sampleRows = [
-      `"VOGUE NOIR - Tokyo Streetwear Revolution","Issue #14 • Street Culture","Fashion & Style",45000,"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85","https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf","","The Monochrome Aesthetic; Tokyo Underground Atelier; Streetwear High Fashion"`,
-      `"QUANTUM FRONTIERS - Autonomous Neural Agents","Vol. 12 • 2026","Technology & AI",49000,"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85","","","Agentic Coding Systems; Neural Memory; Ethical AI Guardrails"`,
-      `"APEX TRACKDAY - Porsche 911 GT3 RS Special","Motorsport Vol. 19","Automotive & Supercars",55000,"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85","","","Spa-Francorchamps Telemetry; High-G Suspension; Carbon Ceramic Brakes"`,
-      `"BRUTALIST SPACES - Concrete Architecture","Monograph No. 12","Architecture & Design",50000,"https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&h=800&q=85","","","Belgrade & Tbilisi Modernism; 50 Concrete Façades; Endangered Icons"`,
-      `"PIXEL ODYSSEY - Cyberpunk RPG Worldbuilding","Game Arts Issue #21","Gaming & Esports",42000,"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&h=800&q=85","","","Neo-Kyoto Concept Art; Branching Dialogue Design; Cybernetic UI"`,
+      `"VOGUE NOIR - Tokyo Streetwear Revolution","Issue #14 • Street Culture","Fashion",45000,"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85","https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf","","The Monochrome Aesthetic; Tokyo Underground Atelier; Streetwear High Fashion"`,
+      `"QUANTUM FRONTIERS - Autonomous Neural Agents","Vol. 12 • 2026","Science",49000,"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85","","","Agentic Coding Systems; Neural Memory; Ethical AI Guardrails"`,
+      `"GLOBAL DEFENSE REVIEW - 6th Gen Stealth Dynamics","Briefing 2026","Defense",52000,"https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&h=800&q=85","","","Stealth Airframes; Hypersonic Interceptors; Naval Drone Fleets"`,
+      `"APEX TRACKDAY - Porsche 911 GT3 RS Special","Motorsport Vol. 19","Automotive",55000,"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85","","","Spa-Francorchamps Telemetry; High-G Suspension; Carbon Ceramic Brakes"`,
+      `"FORBES VENTURE - The Billion Dollar Seed Stage","Q4 2026 Edition","Business",48000,"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=800&q=85","","","Seed Stage Valuations; AI Startup Scaling; Founder Perspectives"`,
+      `"WANDERLUST BALI - Secret Island Sanctuaries","Travel Issue #08","Travel",45000,"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&h=800&q=85","","","Uluwatu Cliffside Eco-Villas; Rainforest Retreats; Coastal Expeditions"`,
     ]
     const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent([headers, ...sampleRows].join("\n"))
     const downloadAnchor = document.createElement("a")
@@ -407,7 +410,7 @@ export default function AdminStudioPage() {
     downloadAnchor.remove()
   }
 
-  // Handle CSV Upload and Automatic AI Web Research Description Generation
+  // Handle CSV Upload and Automatic AI Web Research Description & Strict Categorization
   const handleCsvUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
@@ -428,57 +431,61 @@ export default function AdminStudioPage() {
         const rawTitle = rec.title || rec["magazinetitle"] || ""
         if (!rawTitle.trim()) continue
 
-        // Match category from categories list or fallback
-        const rawCat = (rec.category || rec["categoryname"] || "").trim().toLowerCase()
-        const matchedCat = categories.find(
-          (c) =>
-            c.name.toLowerCase() === rawCat ||
-            c.slug.toLowerCase() === rawCat ||
-            c.id.toLowerCase() === rawCat ||
-            c.name.toLowerCase().includes(rawCat)
-        )
-        const categoryId = matchedCat ? matchedCat.id : (categories[0]?.id || "cat_tech")
-        const categoryName = matchedCat ? matchedCat.name : "General / Lifestyle"
-
         let description = rec.description || ""
         let highlights: string[] = []
         if (rec.highlights) {
           highlights = rec.highlights.split(/[;,|]/).map((h) => h.trim()).filter(Boolean)
         }
+        let aiCategory: string | undefined = undefined
 
-        // Automatic AI Web Research & Description Generation if description is empty
-        if (!description.trim()) {
-          setCsvProgress({
-            current: i + 1,
-            total: records.length,
-            currentTitle: rawTitle,
+        setCsvProgress({
+          current: i + 1,
+          total: records.length,
+          currentTitle: rawTitle,
+        })
+
+        // Call AI to browse web, research title, generate description AND automatically categorize into 10 allowed categories
+        try {
+          const aiRes = await fetch("/api/ai/generate-description", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              title: rawTitle,
+              category: rec.category || undefined,
+              webSearch: true,
+            }),
           })
-
-          try {
-            const aiRes = await fetch("/api/ai/generate-description", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                title: rawTitle,
-                category: categoryName,
-                webSearch: true,
-              }),
-            })
-            if (aiRes.ok) {
-              const aiData = await aiRes.json()
+          if (aiRes.ok) {
+            const aiData = await aiRes.json()
+            if (!description.trim()) {
               description = aiData.description || ""
-              if (highlights.length === 0 && aiData.highlights) {
-                highlights = aiData.highlights
-              }
             }
-          } catch (aiErr) {
-            console.warn("AI web generation error for row:", rawTitle, aiErr)
+            if (highlights.length === 0 && aiData.highlights) {
+              highlights = aiData.highlights
+            }
+            if (aiData.category) {
+              aiCategory = aiData.category
+            }
           }
+        } catch (aiErr) {
+          console.warn("AI web generation error for row:", rawTitle, aiErr)
         }
 
-        const priceNum = parseInt(rec.price?.replace(/[^0-9]/g, "") || "45000", 10) || 45000
+        // Strictly enforce categorization into ONLY the 10 allowed categories:
+        // Business, Lifestyle, Design, Fashion, Defense, Travel, Science, Automotive, For Men, Sports
+        const finalCategory = normalizeToAllowedCategory(aiCategory || rec.category || rec["categoryname"], rawTitle)
 
-        // Default cover image if empty based on category or default portrait
+        setCsvProgress((prev) => (prev ? { ...prev, category: finalCategory } : null))
+
+        // Match categoryId from available store categories
+        const matchedCat = categories.find(
+          (c) =>
+            c.name.toLowerCase() === finalCategory.toLowerCase() ||
+            c.slug.toLowerCase() === finalCategory.toLowerCase().replace(/[^a-z0-9]+/g, "-")
+        )
+        const categoryId = matchedCat ? matchedCat.id : `cat_${finalCategory.toLowerCase().replace(/[^a-z0-9]+/g, "")}`
+
+        const priceNum = parseInt(rec.price?.replace(/[^0-9]/g, "") || "45000", 10) || 45000
         const defaultCover = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&h=800&q=85"
 
         newItems.push({
@@ -496,7 +503,7 @@ export default function AdminStudioPage() {
 
       if (newItems.length > 0) {
         setBulkItems(newItems)
-        setCsvImportMessage(`Successfully imported ${newItems.length} magazine(s) with AI web-researched descriptions! Review below before publishing.`)
+        setCsvImportMessage(`Successfully imported ${newItems.length} magazine(s)! AI researched the web and categorized them into the 10 authorized categories.`)
         setTimeout(() => setCsvImportMessage(null), 6000)
       }
     } catch (err: any) {
@@ -1034,7 +1041,25 @@ export default function AdminStudioPage() {
                 Download the pre-formatted CSV template, fill in your magazine titles, and upload. AI will automatically browse the web, research each magazine title, and generate authentic editorial descriptions & article highlights!
               </p>
             </div>
-            <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+
+            {/* 10 Strictly Allowed Categories Display */}
+            <div className="pt-1">
+              <p className="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+                ✨ AI Auto-Categorized Strictly Into These 10 Categories Only:
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-1.5 max-w-2xl mx-auto">
+                {ALLOWED_CATEGORIES.map((cat) => (
+                  <span
+                    key={cat}
+                    className="px-2.5 py-1 rounded-lg bg-white border border-indigo-100 text-indigo-950 text-[11px] font-semibold shadow-xs"
+                  >
+                    {cat}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <button
                 type="button"
                 onClick={downloadCsvTemplate}
@@ -1084,7 +1109,7 @@ export default function AdminStudioPage() {
                     <span>AI Web Researching</span>
                   </span>
                   <h3 className="text-lg font-black text-slate-900">
-                    Browsing Web for Titles...
+                    Browsing Web & Categorizing...
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
                     Processing magazine {csvProgress.current} of {csvProgress.total}
@@ -1103,9 +1128,15 @@ export default function AdminStudioPage() {
                   <p className="text-xs font-semibold text-indigo-600 truncate px-2">
                     &ldquo;{csvProgress.currentTitle}&rdquo;
                   </p>
+                  {csvProgress.category && (
+                    <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-bold">
+                      <span>🏷️ Category:</span>
+                      <span className="font-extrabold">{csvProgress.category}</span>
+                    </div>
+                  )}
                 </div>
                 <p className="text-[11px] text-slate-400">
-                  AI is searching public archives & publication themes to write editorial copy and article highlights.
+                  AI is searching publication archives to synthesize editorial copy and strictly assign one of the 10 authorized categories.
                 </p>
               </div>
             </div>
