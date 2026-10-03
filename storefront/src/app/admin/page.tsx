@@ -33,9 +33,68 @@ import {
   Mail,
   Download,
   Package,
+  FileSpreadsheet,
+  Globe,
 } from "lucide-react"
 import AdminChatTab from "./AdminChatTab"
 import ManageMagazinesTab from "./ManageMagazinesTab"
+
+function parseCSV(text: string): Record<string, string>[] {
+  const lines: string[] = []
+  let currentLine = ""
+  let insideQuotes = false
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i]
+    if (char === '"') {
+      insideQuotes = !insideQuotes
+      currentLine += char
+    } else if ((char === "\n" || char === "\r") && !insideQuotes) {
+      if (currentLine.trim()) lines.push(currentLine.trim())
+      currentLine = ""
+      if (char === "\r" && text[i + 1] === "\n") i++
+    } else {
+      currentLine += char
+    }
+  }
+  if (currentLine.trim()) lines.push(currentLine.trim())
+  if (lines.length < 2) return []
+
+  const parseRow = (line: string): string[] => {
+    const values: string[] = []
+    let val = ""
+    let inQuote = false
+    for (let i = 0; i < line.length; i++) {
+      const c = line[i]
+      if (c === '"') {
+        if (inQuote && line[i + 1] === '"') {
+          val += '"'
+          i++
+        } else {
+          inQuote = !inQuote
+        }
+      } else if (c === "," && !inQuote) {
+        values.push(val.trim())
+        val = ""
+      } else {
+        val += c
+      }
+    }
+    values.push(val.trim())
+    return values
+  }
+
+  const headers = parseRow(lines[0]).map((h) => h.toLowerCase().replace(/[^a-z0-9]/g, ""))
+  const records: Record<string, string>[] = []
+  for (let i = 1; i < lines.length; i++) {
+    const values = parseRow(lines[i])
+    const record: Record<string, string> = {}
+    headers.forEach((h, idx) => {
+      record[h] = values[idx] || ""
+    })
+    records.push(record)
+  }
+  return records
+}
 
 export default function AdminStudioPage() {
   const [activeTab, setActiveTab] = useState<"orders" | "magazines" | "upload" | "categories" | "qris" | "chat">("orders")
@@ -106,6 +165,13 @@ export default function AdminStudioPage() {
   const [uploadSuccess, setUploadSuccess] = useState(false)
   const [isSubmittingMagazines, setIsSubmittingMagazines] = useState(false)
   const [uploadingField, setUploadingField] = useState<{ id: string; field: string } | null>(null)
+  const [csvProcessing, setCsvProcessing] = useState(false)
+  const [csvProgress, setCsvProgress] = useState<{
+    current: number
+    total: number
+    currentTitle: string
+  } | null>(null)
+  const [csvImportMessage, setCsvImportMessage] = useState<string | null>(null)
 
   const handleFileUpload = async (rowId: string, field: "coverImage" | "pdfUrl", file: File) => {
     setUploadingField({ id: rowId, field })
@@ -319,6 +385,126 @@ export default function AdminStudioPage() {
       console.error(e)
     } finally {
       updateBulkField(rowId, "isAiLoading", false)
+    }
+  }
+
+  // CSV Template Downloader
+  const downloadCsvTemplate = () => {
+    const headers = "title,issueNumber,category,price,coverImage,pdfUrl,description,highlights"
+    const sampleRows = [
+      `"VOGUE NOIR - Tokyo Streetwear Revolution","Issue #14 • Street Culture","Fashion & Style",45000,"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85","https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf","","The Monochrome Aesthetic; Tokyo Underground Atelier; Streetwear High Fashion"`,
+      `"QUANTUM FRONTIERS - Autonomous Neural Agents","Vol. 12 • 2026","Technology & AI",49000,"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85","","","Agentic Coding Systems; Neural Memory; Ethical AI Guardrails"`,
+      `"APEX TRACKDAY - Porsche 911 GT3 RS Special","Motorsport Vol. 19","Automotive & Supercars",55000,"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85","","","Spa-Francorchamps Telemetry; High-G Suspension; Carbon Ceramic Brakes"`,
+      `"BRUTALIST SPACES - Concrete Architecture","Monograph No. 12","Architecture & Design",50000,"https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&h=800&q=85","","","Belgrade & Tbilisi Modernism; 50 Concrete Façades; Endangered Icons"`,
+      `"PIXEL ODYSSEY - Cyberpunk RPG Worldbuilding","Game Arts Issue #21","Gaming & Esports",42000,"https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&h=800&q=85","","","Neo-Kyoto Concept Art; Branching Dialogue Design; Cybernetic UI"`,
+    ]
+    const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent([headers, ...sampleRows].join("\n"))
+    const downloadAnchor = document.createElement("a")
+    downloadAnchor.setAttribute("href", csvContent)
+    downloadAnchor.setAttribute("download", "magazine_upload_template.csv")
+    document.body.appendChild(downloadAnchor)
+    downloadAnchor.click()
+    downloadAnchor.remove()
+  }
+
+  // Handle CSV Upload and Automatic AI Web Research Description Generation
+  const handleCsvUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+
+    try {
+      const text = await file.text()
+      const records = parseCSV(text)
+      if (records.length === 0) {
+        alert("No valid magazine records found in this CSV. Please check that your file includes headers: title,issueNumber,category,price,coverImage,pdfUrl,description,highlights")
+        return
+      }
+
+      setCsvProcessing(true)
+      const newItems: BulkItem[] = []
+
+      for (let i = 0; i < records.length; i++) {
+        const rec = records[i]
+        const rawTitle = rec.title || rec["magazinetitle"] || ""
+        if (!rawTitle.trim()) continue
+
+        // Match category from categories list or fallback
+        const rawCat = (rec.category || rec["categoryname"] || "").trim().toLowerCase()
+        const matchedCat = categories.find(
+          (c) =>
+            c.name.toLowerCase() === rawCat ||
+            c.slug.toLowerCase() === rawCat ||
+            c.id.toLowerCase() === rawCat ||
+            c.name.toLowerCase().includes(rawCat)
+        )
+        const categoryId = matchedCat ? matchedCat.id : (categories[0]?.id || "cat_tech")
+        const categoryName = matchedCat ? matchedCat.name : "General / Lifestyle"
+
+        let description = rec.description || ""
+        let highlights: string[] = []
+        if (rec.highlights) {
+          highlights = rec.highlights.split(/[;,|]/).map((h) => h.trim()).filter(Boolean)
+        }
+
+        // Automatic AI Web Research & Description Generation if description is empty
+        if (!description.trim()) {
+          setCsvProgress({
+            current: i + 1,
+            total: records.length,
+            currentTitle: rawTitle,
+          })
+
+          try {
+            const aiRes = await fetch("/api/ai/generate-description", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                title: rawTitle,
+                category: categoryName,
+                webSearch: true,
+              }),
+            })
+            if (aiRes.ok) {
+              const aiData = await aiRes.json()
+              description = aiData.description || ""
+              if (highlights.length === 0 && aiData.highlights) {
+                highlights = aiData.highlights
+              }
+            }
+          } catch (aiErr) {
+            console.warn("AI web generation error for row:", rawTitle, aiErr)
+          }
+        }
+
+        const priceNum = parseInt(rec.price?.replace(/[^0-9]/g, "") || "45000", 10) || 45000
+
+        // Default cover image if empty based on category or default portrait
+        const defaultCover = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&h=800&q=85"
+
+        newItems.push({
+          id: `csv_${Date.now()}_${i}`,
+          title: rawTitle,
+          issueNumber: rec.issuenumber || rec["issue"] || "Vol. 1 • 2026",
+          categoryId,
+          price: priceNum,
+          coverImage: rec.coverimage || rec["cover"] || defaultCover,
+          description,
+          highlights,
+          pdfUrl: rec.pdfurl || rec["pdf"] || "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+        })
+      }
+
+      if (newItems.length > 0) {
+        setBulkItems(newItems)
+        setCsvImportMessage(`Successfully imported ${newItems.length} magazine(s) with AI web-researched descriptions! Review below before publishing.`)
+        setTimeout(() => setCsvImportMessage(null), 6000)
+      }
+    } catch (err: any) {
+      alert("Error reading CSV file: " + err.message)
+    } finally {
+      setCsvProcessing(false)
+      setCsvProgress(null)
+      e.target.value = ""
     }
   }
 
@@ -797,24 +983,131 @@ export default function AdminStudioPage() {
                 Multi-Add / Bulk Upload Magazines
               </h2>
               <p className="text-xs text-slate-500 mt-0.5">
-                Add multiple digital magazine issues at once. Enter the title and click{" "}
-                <span className="text-indigo-600 font-semibold">✨ AI Fill Description</span> to auto-generate editorial copy!
+                Add multiple digital issues at once. Import via CSV with automatic AI web research, or add rows manually!
               </p>
             </div>
 
-            <button
-              onClick={addRow}
-              className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition shadow"
-            >
-              <Plus className="w-4 h-4" />
-              <span>Add Another Magazine Row</span>
-            </button>
+            <div className="flex items-center flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={downloadCsvTemplate}
+                className="inline-flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition border border-slate-300 shadow-sm"
+                title="Download formatted CSV spreadsheet template"
+              >
+                <Download className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Download CSV Template</span>
+              </button>
+
+              <label className="cursor-pointer inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold transition shadow-sm">
+                <FileSpreadsheet className="w-3.5 h-3.5" />
+                <span>Upload CSV File</span>
+                <input
+                  type="file"
+                  accept=".csv,text/csv"
+                  className="hidden"
+                  onChange={handleCsvUpload}
+                />
+              </label>
+
+              <button
+                type="button"
+                onClick={addRow}
+                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition shadow-sm"
+              >
+                <Plus className="w-3.5 h-3.5" />
+                <span>Add Row</span>
+              </button>
+            </div>
           </div>
+
+          {/* CSV Import Banner & Drag-Drop Card */}
+          <div className="bg-gradient-to-r from-indigo-50/80 via-white to-sky-50/80 border-2 border-dashed border-indigo-200 rounded-2xl p-6 text-center space-y-3 relative hover:border-indigo-400 transition">
+            <div className="w-12 h-12 mx-auto rounded-2xl bg-indigo-100 text-indigo-600 flex items-center justify-center shadow-sm">
+              <FileSpreadsheet className="w-6 h-6" />
+            </div>
+            <div>
+              <h3 className="text-sm font-bold text-slate-900 flex items-center justify-center space-x-1.5">
+                <span>Bulk Import via CSV with AI Web Research</span>
+                <span className="px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-extrabold uppercase">AI Browsing</span>
+              </h3>
+              <p className="text-xs text-slate-600 max-w-xl mx-auto mt-1 leading-relaxed">
+                Download the pre-formatted CSV template, fill in your magazine titles, and upload. AI will automatically browse the web, research each magazine title, and generate authentic editorial descriptions & article highlights!
+              </p>
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
+              <button
+                type="button"
+                onClick={downloadCsvTemplate}
+                className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-white border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-bold transition shadow-sm"
+              >
+                <Download className="w-3.5 h-3.5 text-indigo-600" />
+                <span>1. Download Template (.csv)</span>
+              </button>
+              <label className="cursor-pointer inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white text-xs font-bold transition shadow-md shadow-indigo-600/20">
+                <FileSpreadsheet className="w-3.5 h-3.5" />
+                <span>2. Upload CSV & AI Auto-Fill</span>
+                <input
+                  type="file"
+                  accept=".csv,text/csv"
+                  className="hidden"
+                  onChange={handleCsvUpload}
+                />
+              </label>
+            </div>
+          </div>
+
+          {/* Feedback Toasts */}
+          {csvImportMessage && (
+            <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-xs font-bold flex items-center space-x-2">
+              <Sparkles className="w-4 h-4 text-indigo-600 flex-shrink-0" />
+              <span>{csvImportMessage}</span>
+            </div>
+          )}
 
           {uploadSuccess && (
             <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center space-x-2">
-              <Check className="w-4 h-4" />
+              <Check className="w-4 h-4 flex-shrink-0" />
               <span>Magazines successfully published to your storefront catalog!</span>
+            </div>
+          )}
+
+          {/* AI Web Research Progress Modal */}
+          {csvProcessing && csvProgress && (
+            <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl border border-indigo-100 text-center space-y-5 animate-in fade-in zoom-in-95">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 text-white flex items-center justify-center mx-auto shadow-lg shadow-indigo-500/30">
+                  <Sparkles className="w-8 h-8 animate-spin" />
+                </div>
+                <div>
+                  <span className="inline-flex items-center space-x-1 px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold uppercase tracking-wider mb-2">
+                    <Globe className="w-3.5 h-3.5" />
+                    <span>AI Web Researching</span>
+                  </span>
+                  <h3 className="text-lg font-black text-slate-900">
+                    Browsing Web for Titles...
+                  </h3>
+                  <p className="text-xs text-slate-500 mt-1">
+                    Processing magazine {csvProgress.current} of {csvProgress.total}
+                  </p>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
+                    <div
+                      className="bg-indigo-600 h-full transition-all duration-300 rounded-full"
+                      style={{
+                        width: `${Math.round((csvProgress.current / csvProgress.total) * 100)}%`,
+                      }}
+                    />
+                  </div>
+                  <p className="text-xs font-semibold text-indigo-600 truncate px-2">
+                    &ldquo;{csvProgress.currentTitle}&rdquo;
+                  </p>
+                </div>
+                <p className="text-[11px] text-slate-400">
+                  AI is searching public archives & publication themes to write editorial copy and article highlights.
+                </p>
+              </div>
             </div>
           )}
 
