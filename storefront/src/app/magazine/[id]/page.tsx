@@ -1,8 +1,10 @@
 import React from "react"
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getMagazineById } from "../../../lib/db"
+import { getMagazineById, getMagazines } from "../../../lib/db"
+import { getRelatedMagazines } from "../../../lib/recommendations"
 import MagazineDetailClient from "./MagazineDetailClient"
+import RelatedMagazinesCarousel from "../../../components/RelatedMagazinesCarousel"
 import { ArrowLeft } from "lucide-react"
 
 export const dynamic = "force-dynamic"
@@ -20,6 +22,9 @@ export default function MagazineDetailPage({ params }: Props) {
     notFound()
   }
 
+  const allMagazines = getMagazines()
+  const relatedItems = getRelatedMagazines(magazine, allMagazines)
+
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <Link
@@ -30,6 +35,11 @@ export default function MagazineDetailPage({ params }: Props) {
       </Link>
 
       <MagazineDetailClient magazine={magazine} />
+
+      <RelatedMagazinesCarousel
+        relatedItems={relatedItems}
+        categoryName={magazine.categoryName}
+      />
     </div>
   )
 }

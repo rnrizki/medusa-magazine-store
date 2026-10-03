@@ -38,6 +38,91 @@
   ],
   "magazines": [
     {
+      "id": "mag_fashion_1",
+      "title": "NEO-VOGUE - Minimalism in Tokyo & Paris",
+      "issueNumber": "Fall/Winter Edition",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion & Style",
+      "price": 45000,
+      "coverImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Exploring architectural silhouettes, bespoke Japanese denim tailoring, and the renaissance of organic textiles. Curated by top Parisian art directors with studio lookbooks.",
+      "highlights": [
+        "Tokyo Streetwear Meets French Haute Couture",
+        "Sustainable Cashmere & Smart Fabric Innovations",
+        "Photographic Gallery: 40 Pages of Midnight Paris"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_fashion_2",
+      "title": "VOGUE NOIR - Tokyo Streetwear Revolution",
+      "issueNumber": "Issue #14 • Street Culture",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion & Style",
+      "price": 45000,
+      "coverImage": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Harajuku subcultures reimagined through luxury monochrome lenses. An intimate look at underground Tokyo runway collectives and raw urban tailoring.",
+      "highlights": [
+        "The Monochrome Aesthetic: Black on Black Styling",
+        "Tokyo Underground Atelier Interviews",
+        "Streetwear As Modern High Fashion"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_fashion_3",
+      "title": "PARIS COUTURE - The Haute Minimalist Era",
+      "issueNumber": "Collection No. 8",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion & Style",
+      "price": 48000,
+      "coverImage": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Inside the historic Parisian ateliers adopting zero-waste draping and ultra-clean silhouettes. An ode to timeless craftsmanship and post-modern elegance.",
+      "highlights": [
+        "Exclusive Backstage Access at Paris Fashion Week",
+        "The Architecture of Hand-Sewn Garments",
+        "Color Palettes of Autumn 2026"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_fashion_4",
+      "title": "ATELIER SILHOUETTE - Sustainable Italian Denim",
+      "issueNumber": "Summer Capsule",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion & Style",
+      "price": 42000,
+      "coverImage": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Crafted in Milan and Tuscany. A masterclass in vintage shuttle loom selvedge denim and sustainable circular fashion systems.",
+      "highlights": [
+        "Artisan Loom Weaving in Northern Italy",
+        "Zero-Water Indigo Dye Techniques",
+        "Denim Jacket Pattern Drafting Guide"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_fashion_5",
+      "title": "MODA AVANT-GARDE - Seoul Runway & Cyber Textiles",
+      "issueNumber": "Vol. 22 • Next Trend",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion & Style",
+      "price": 46000,
+      "coverImage": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "South Korea's fashion scene blends digital tech with bold experimental silhouettes, conductive fabrics, and neon-infused luxury.",
+      "highlights": [
+        "Smart Interactive Fabrics on Seoul Runways",
+        "K-Fashion Designer Collective Spotlight",
+        "The Convergence of Gaming Skins and Real-World Apparel"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
       "id": "mag_tech_1",
       "title": "QUANTUM AI - Issue #42: The Synthetic Mind",
       "issueNumber": "Vol. 42 • Oct 2026",
@@ -52,7 +137,75 @@
         "The Blueprint for Autonomous Robotics Operating Systems"
       ],
       "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-02T17:00:00.000Z"
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_tech_2",
+      "title": "SYNTHETIC MIND - Autonomous AI & Neural Agents",
+      "issueNumber": "Vol. 12 • Frontier Labs",
+      "categoryId": "cat_tech",
+      "categoryName": "Technology & AI",
+      "price": 49000,
+      "coverImage": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Examining the rapid rise of multi-agent cognitive frameworks, self-healing codebases, and synthetic intelligence that reasons autonomously.",
+      "highlights": [
+        "Agentic Coding Systems and Developer Productivity",
+        "Neural Memory Architecture Breakdown",
+        "Ethical Guardrails for Autonomous Decision Systems"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_tech_3",
+      "title": "QUANTUM LOGIC - Supercomputing & Silicon Frontiers",
+      "issueNumber": "Special Issue #09",
+      "categoryId": "cat_tech",
+      "categoryName": "Technology & AI",
+      "price": 52000,
+      "coverImage": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "A comprehensive review of 100,000-qubit topological quantum processors and room-temperature superconductors transforming data centers.",
+      "highlights": [
+        "Superconducting Qubits vs Neutral Atoms",
+        "Breaking Encryption: The Post-Quantum Cryptography Era",
+        "Cooling the Cloud: Cryogenic Infrastructure"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_tech_4",
+      "title": "NEURAL CHRONICLES - Generative Robotics in 2027",
+      "issueNumber": "Tech Annual 2026",
+      "categoryId": "cat_tech",
+      "categoryName": "Technology & AI",
+      "price": 48000,
+      "coverImage": "https://images.unsplash.com/photo-1617791160505-6f00b656715b?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "From factory automation to humanoid companions: how visual-language-action models empower machines to perceive and touch the physical world.",
+      "highlights": [
+        "Humanoid Bipedal Locomotion Telemetry",
+        "End-to-End Reinforcement Learning from Real-World Video",
+        "Factory Floor Deployments in Tokyo and Munich"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_tech_5",
+      "title": "CYBERPUNK CODE - Open Source Intelligence & Security",
+      "issueNumber": "Cyber Security Vol. 5",
+      "categoryId": "cat_tech",
+      "categoryName": "Technology & AI",
+      "price": 45000,
+      "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Investigating cryptographic vulnerabilities, decentralized autonomous organizations, and the defenders guarding critical digital infrastructure.",
+      "highlights": [
+        "Zero-Day Exploits Unveiled by Red Teams",
+        "Hardware Enclaves and Secure Enclave Bypasses",
+        "The Linux Kernel Security Evolution"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
     },
     {
       "id": "mag_auto_1",
@@ -69,24 +222,75 @@
         "The Final V12 Symphony: Pure Combustion Collectibles"
       ],
       "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-02T17:00:00.000Z"
+      "created_at": "2026-10-03T21:41:48.341Z"
     },
     {
-      "id": "mag_fashion_1",
-      "title": "NEO-VOGUE - Minimalism in Tokyo & Paris",
-      "issueNumber": "Fall/Winter Edition",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion & Style",
-      "price": 45000,
-      "coverImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Exploring architectural silhouettes, bespoke Japanese denim tailoring, and the renaissance of organic textiles. Curated by top Parisian art directors with studio lookbooks.",
+      "id": "mag_auto_2",
+      "title": "HORSEPOWER UNLEASHED - Nürburgring Lap Record Titans",
+      "issueNumber": "Track Edition #34",
+      "categoryId": "cat_auto",
+      "categoryName": "Automotive & Supercars",
+      "price": 55000,
+      "coverImage": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Pushing the limits of traction in the Green Hell. Telemetry comparisons, tire degradation metrics, and driver cockpit telemetry.",
       "highlights": [
-        "Tokyo Streetwear Meets French Haute Couture",
-        "Sustainable Cashmere & Smart Fabric Innovations",
-        "Photographic Gallery: 40 Pages of Midnight Paris"
+        "Breaking the 6-Minute Barrier at Nordschleife",
+        "Downforce Science: Venturi Tunnels Explained",
+        "Driver Interview: Setting the Ultimate Production Lap"
       ],
       "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-02T17:00:00.000Z"
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_auto_3",
+      "title": "APEX TRACKDAY - Porsche 911 GT3 RS Telemetry Special",
+      "issueNumber": "Motorsport Vol. 19",
+      "categoryId": "cat_auto",
+      "categoryName": "Automotive & Supercars",
+      "price": 58000,
+      "coverImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Dissecting the aero package, active DRS, and double-wishbone front axle of the most track-focused 911 ever created.",
+      "highlights": [
+        "Telemetry Analysis at Spa-Francorchamps",
+        "Suspension Tuning for High-G Cornering",
+        "Carbon Ceramic Braking Performance Under Heat Soak"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_auto_4",
+      "title": "VELOCE ITALIA - Ferrari & Lamborghini V12 Legacy",
+      "issueNumber": "Heritage Series #04",
+      "categoryId": "cat_auto",
+      "categoryName": "Automotive & Supercars",
+      "price": 54000,
+      "coverImage": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "A tribute to naturally aspirated Italian craftsmanship from Maranello and Sant'Agata Bolognese, chronicling sixty years of sonic euphoria.",
+      "highlights": [
+        "The Evolution of the V12 from Miura to Revuelto",
+        "Ferrari Daytona SP3 Driving Impression",
+        "Restoring Classic Italian Grand Tourers"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_auto_5",
+      "title": "TURBO CHARGE - The Future of Electric GT Racing",
+      "issueNumber": "EV Racing Vol. 7",
+      "categoryId": "cat_auto",
+      "categoryName": "Automotive & Supercars",
+      "price": 50000,
+      "coverImage": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "High-voltage silicon carbide inverters, torque vectoring across four independent motors, and the thrill of lightning-fast acceleration.",
+      "highlights": [
+        "900V Battery Chemistries for Extreme Discharge",
+        "Torque Vectoring Algorithms Explained",
+        "The New Formula E Championship Contenders"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
     },
     {
       "id": "mag_design_1",
@@ -103,7 +307,75 @@
         "Material Study: Board-Marked Concrete & Reclaimed Teak"
       ],
       "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-02T17:00:00.000Z"
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_design_2",
+      "title": "BRUTALIST SPACES - Concrete Architecture of Eastern Europe",
+      "issueNumber": "Monograph No. 12",
+      "categoryId": "cat_design",
+      "categoryName": "Architecture & Design",
+      "price": 52000,
+      "coverImage": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Monumental geometric concrete forms, spomeniks, and modernist public structures captured during sunrise and dusk across Belgrade and Tbilisi.",
+      "highlights": [
+        "Photo Retrospective: 50 Monumental Concrete Façades",
+        "The Politics and Geometry of Post-War Modernism",
+        "Preserving Endangered Architectural Icons"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_design_3",
+      "title": "TROPICAL MODERNISM - Bali & Singapore Eco-Villas",
+      "issueNumber": "Architectural Digest #45",
+      "categoryId": "cat_design",
+      "categoryName": "Architecture & Design",
+      "price": 49000,
+      "coverImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Blurring indoor and outdoor living with open-plan layouts, natural bamboo cantilever roofs, and rainwater harvesting pools.",
+      "highlights": [
+        "Passive Solar Shading in Tropical Climates",
+        "Bamboo Joinery: Engineering Sustainable Megastructures",
+        "Infinity Pools Integrated into Jungle Topography"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_design_4",
+      "title": "MONOLITH DESIGN - Sustainable Prefab Masterpieces",
+      "issueNumber": "Modern Living Vol. 28",
+      "categoryId": "cat_design",
+      "categoryName": "Architecture & Design",
+      "price": 48000,
+      "coverImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "High-precision modular architecture constructed offsite with cross-laminated timber, reducing carbon footprints without sacrificing luxury.",
+      "highlights": [
+        "Cross-Laminated Timber vs Steel Framed Skyscrapers",
+        "Rapid Onsite Assembly in Alpine Terrains",
+        "Minimalist Interiors and Hidden Storage Architecture"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_design_5",
+      "title": "SCANDI MINIMAL - Nordic Interior & Spatial Harmony",
+      "issueNumber": "Nordic Series #08",
+      "categoryId": "cat_design",
+      "categoryName": "Architecture & Design",
+      "price": 45000,
+      "coverImage": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Light oak woods, soft muted palettes, and functional minimalism that creates cozy, serene living spaces in Copenhagen and Stockholm.",
+      "highlights": [
+        "Mastering Hygge: Lighting Design for Winter Nights",
+        "Iconic Mid-Century Scandinavian Furniture",
+        "The Minimalist Wardrobe and Space Planning"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
     },
     {
       "id": "mag_gaming_1",
@@ -120,7 +392,160 @@
         "Retro Spotlight: The 30-Year Legacy of Doom & Quake"
       ],
       "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-02T17:00:00.000Z"
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_gaming_2",
+      "title": "PIXEL ODYSSEY - Cyberpunk RPG Worldbuilding",
+      "issueNumber": "Game Arts Issue #21",
+      "categoryId": "cat_gaming",
+      "categoryName": "Gaming & Esports",
+      "price": 42000,
+      "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Creating atmospheric megacities in dystopian role-playing games: concept art breakdown, environmental storytelling, and synthwave sound design.",
+      "highlights": [
+        "Concept Art Showcase: Neon Alleys of Neo-Kyoto",
+        "Writing Branching Dialogues for Open-Ended RPGs",
+        "Designing Cybernetic Enhancements and UI Elements"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_gaming_3",
+      "title": "UNREAL ARCHIVES - 30 Years of 3D Graphics Innovation",
+      "issueNumber": "Developer Special #03",
+      "categoryId": "cat_gaming",
+      "categoryName": "Gaming & Esports",
+      "price": 45000,
+      "coverImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "From software rasterizers and Voodoo 3dfx cards to hardware ray tracing and path-traced cinematic simulations.",
+      "highlights": [
+        "The Evolution of 3D Acceleration: 1996 to 2026",
+        "Shader Mathematics: Writing Custom Post-Processing Filters",
+        "Interviews with Graphics Pioneers and Engine Architects"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_gaming_4",
+      "title": "ESPORTS ARENA - Global Counter-Strike Major Finals",
+      "issueNumber": "Tournament Review #11",
+      "categoryId": "cat_gaming",
+      "categoryName": "Gaming & Esports",
+      "price": 39000,
+      "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Analyzing clutch plays, tactical map rotations, economy management, and the high-stakes psychology of sold-out stadium finals.",
+      "highlights": [
+        "Tactical Breakdown: Winning Round 30 at Major Grand Finals",
+        "Player Profile: The 19-Year-Old Prodigy Sniper",
+        "The Esports Production Engine Behind Live Stage Broadcasts"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_gaming_5",
+      "title": "INDIE CRAFT - The Golden Age of Solo Game Creators",
+      "issueNumber": "Indie Spotlight #17",
+      "categoryId": "cat_gaming",
+      "categoryName": "Gaming & Esports",
+      "price": 40000,
+      "coverImage": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Inspiring stories of single developers creating multi-million copy masterpieces using Godot, Blender, and handcrafted pixel art.",
+      "highlights": [
+        "Post-Mortem: From Solo Hobby Project to Steam Top Seller",
+        "Pixel Art Animation: Mastering Sub-Pixel Motion",
+        "Marketing Your Indie Game with Zero Budget"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:41:48.341Z"
+    },
+    {
+      "id": "mag_fashion_6",
+      "title": "RUNWAY ESSENTIALS - Autumn/Winter Milan Review",
+      "issueNumber": "Milan FW 2026",
+      "categoryId": "cat_fashion",
+      "categoryName": "Fashion & Style",
+      "price": 44000,
+      "coverImage": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Backstage insights from Milan fashion week: textile craftsmanship, model styling portfolios, and trends defining the season.",
+      "highlights": [
+        "Front Row Runway Analysis: Milan 2026",
+        "Sustainable Fabric Weaving Showcases",
+        "Designer Q&A: The Future of Ready-to-Wear"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:43:10.398Z"
+    },
+    {
+      "id": "mag_tech_6",
+      "title": "SILICON HORIZON - Post-Moore Microarchitecture",
+      "issueNumber": "Computing Vol. 16",
+      "categoryId": "cat_tech",
+      "categoryName": "Technology & AI",
+      "price": 47000,
+      "coverImage": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Next-gen wafer scale engines, optical interconnects, and 3D stacked semiconductor packaging pushing compute past silicon limits.",
+      "highlights": [
+        "Wafer-Scale Engines vs Distributed GPU Clusters",
+        "Optical Interconnects for Terabit Bandwidth",
+        "Thermal Dissipation via Microchannel Liquid Cooling"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:43:10.399Z"
+    },
+    {
+      "id": "mag_auto_6",
+      "title": "CIRCUIT MASTERS - Le Mans 24h Prototype Dynamics",
+      "issueNumber": "Endurance #06",
+      "categoryId": "cat_auto",
+      "categoryName": "Automotive & Supercars",
+      "price": 52000,
+      "coverImage": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Hypercar class prototypes battling through night rain at Circuit de la Sarthe. Complete chassis setups, hybrid boost strategies, and telemetry logs.",
+      "highlights": [
+        "LMDh Hybrid Powertrain Energy Regeneration",
+        "Night Rain Strategy & Tire Compounds",
+        "Brembo Carbon Matrix Brake Thermal Profiles"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:43:10.399Z"
+    },
+    {
+      "id": "mag_design_6",
+      "title": "KINETIC SPACES - Interactive Urban Pavilions",
+      "issueNumber": "Spatial #10",
+      "categoryId": "cat_design",
+      "categoryName": "Architecture & Design",
+      "price": 46000,
+      "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "Dynamic kinetic façades responding to natural sunlight, wind flows, and public foot traffic in metropolitan plazas.",
+      "highlights": [
+        "Biomimetic Responsive Building Skins",
+        "Parametric Pavilion Geometry Modeling",
+        "Smart Glazing and Passive Climate Control"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:43:10.399Z"
+    },
+    {
+      "id": "mag_gaming_6",
+      "title": "VIRTUAL REALITY - Spatial Computing & Next-Gen Engines",
+      "issueNumber": "VR Trends #05",
+      "categoryId": "cat_gaming",
+      "categoryName": "Gaming & Esports",
+      "price": 43000,
+      "coverImage": "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=600&h=800&q=85",
+      "description": "High-density micro-OLED displays, foveated eye-tracking rendering, and neural haptic feedback transforming immersive gaming worlds.",
+      "highlights": [
+        "Foveated Rendering with Dynamic Eye-Tracking",
+        "Neural Haptic Glove Feedback Systems",
+        "Developing VR Titles with OpenXR and Vulkan"
+      ],
+      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+      "created_at": "2026-10-03T21:43:10.399Z"
     }
   ],
   "orders": [],

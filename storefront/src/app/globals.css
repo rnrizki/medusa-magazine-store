@@ -19,3 +19,13 @@ body {
   min-height: 100vh;
   font-feature-settings: "rlig" 1, "calt" 1;
 }
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
