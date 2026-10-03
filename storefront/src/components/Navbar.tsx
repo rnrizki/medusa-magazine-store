@@ -10,7 +10,6 @@ import {
   BookOpen,
   User as UserIcon,
   LogOut,
-  Sliders,
   X,
   Mail,
   ArrowRight,
@@ -65,13 +64,6 @@ export default function Navbar() {
                   <span>My Library</span>
                 </Link>
               )}
-              <Link
-                href="/admin"
-                className="flex items-center space-x-1 text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 hover:bg-slate-200 transition"
-              >
-                <Sliders className="w-3.5 h-3.5" />
-                <span>Admin Studio</span>
-              </Link>
             </nav>
 
             {/* Right Action Items */}
