@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import Link from "next/link"
 import { useCart } from "../../lib/cart-context"
 import { useAuth } from "../../lib/auth-context"
-import { formatRupiah } from "../../lib/db"
+import { formatRupiah } from "../../lib/format"
 import {
   ShoppingBag,
   Trash2,

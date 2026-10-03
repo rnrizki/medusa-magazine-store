@@ -28,14 +28,13 @@ export default function ProductCard({ product }: ProductCardProps) {
     if (!defaultVariant) return
 
     addItem({
-      productId: product.id,
-      variantId: defaultVariant.id,
+      id: product.id,
       title: product.title,
-      variantTitle: defaultVariant.title,
-      thumbnail: product.thumbnail,
-      price: priceAmount,
-      currencyCode: currencyCode,
-      quantity: 1,
+      categoryId: "general",
+      price: priceAmount || 45000,
+      coverImage: product.thumbnail || "",
+      description: product.description || "",
+      created_at: new Date().toISOString(),
     })
 
     setAdded(true)

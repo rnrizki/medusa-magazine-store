@@ -142,7 +142,7 @@ async function uploadToS3(
       "x-amz-content-sha256": payloadHash,
       Authorization: authorizationHeader,
     },
-    body: buffer,
+    body: new Uint8Array(buffer),
   })
 
   if (!response.ok) {

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { useAuth } from "../../lib/auth-context"
 import { Order } from "../../lib/types"
-import { formatRupiah } from "../../lib/db"
+import { formatRupiah } from "../../lib/format"
 import Link from "next/link"
 import {
   BookOpen,

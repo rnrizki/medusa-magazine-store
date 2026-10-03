@@ -2,9 +2,9 @@
 
 import React, { useState } from "react"
 import Link from "next/link"
-import { Product, ProductVariant } from "../../lib/types"
-import { formatPrice } from "../../lib/medusa"
-import { useCart } from "../../lib/cart-context"
+import { Product, ProductVariant } from "../../../lib/types"
+import { formatPrice } from "../../../lib/medusa"
+import { useCart } from "../../../lib/cart-context"
 import { ArrowLeft, ShoppingBag, Check, ShieldCheck, Truck, RotateCcw } from "lucide-react"
 
 export default function ProductDetailView({ product }: { product: Product }) {
@@ -24,14 +24,13 @@ export default function ProductDetailView({ product }: { product: Product }) {
     if (!selectedVariant) return
 
     addItem({
-      productId: product.id,
-      variantId: selectedVariant.id,
+      id: product.id,
       title: product.title,
-      variantTitle: selectedVariant.title,
-      thumbnail: product.thumbnail,
-      price: priceAmount,
-      currencyCode: currencyCode,
-      quantity,
+      categoryId: "general",
+      price: priceAmount || 45000,
+      coverImage: product.thumbnail || "",
+      description: product.description || "",
+      created_at: new Date().toISOString(),
     })
 
     setAdded(true)

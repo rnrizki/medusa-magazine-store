@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react"
 import { Conversation, ChatMessage, Magazine, EmbeddedProduct } from "../../lib/types"
-import { formatRupiah } from "../../lib/db"
+import { formatRupiah } from "../../lib/format"
 import {
   MessageSquare,
   Send,

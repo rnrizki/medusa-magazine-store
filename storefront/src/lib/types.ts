@@ -87,3 +87,33 @@ export interface Conversation {
   messages: ChatMessage[]
   updatedAt: string
 }
+
+export interface ProductPrice {
+  currency_code: string
+  amount: number
+}
+
+export interface ProductVariant {
+  id: string
+  title: string
+  sku?: string
+  prices?: ProductPrice[]
+  options?: Record<string, string>
+}
+
+export interface ProductOption {
+  title: string
+  values: string[]
+}
+
+export interface Product {
+  id: string
+  title: string
+  subtitle?: string
+  description?: string
+  handle: string
+  thumbnail?: string
+  options?: ProductOption[]
+  variants?: ProductVariant[]
+}
+

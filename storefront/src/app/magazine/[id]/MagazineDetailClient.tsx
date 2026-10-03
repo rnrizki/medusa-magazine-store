@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Magazine } from "../../../lib/types"
-import { formatRupiah } from "../../../lib/db"
+import { formatRupiah } from "../../../lib/format"
 import { useCart } from "../../../lib/cart-context"
 import {
   ShoppingBag,

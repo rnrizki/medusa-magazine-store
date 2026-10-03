@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { useAuth } from "../lib/auth-context"
 import { useCart } from "../lib/cart-context"
 import { ChatMessage, EmbeddedProduct } from "../lib/types"
-import { formatRupiah } from "../lib/db"
+import { formatRupiah } from "../lib/format"
 import { useRouter } from "next/navigation"
 import {
   MessageSquare,

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react"
 import { Category, Magazine, Order } from "../../lib/types"
-import { formatRupiah } from "../../lib/db"
+import { formatRupiah } from "../../lib/format"
 import {
   Layers,
   Plus,

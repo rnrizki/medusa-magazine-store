@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import Link from "next/link"
 import { Magazine } from "../lib/types"
-import { formatRupiah } from "../lib/db"
+import { formatRupiah } from "../lib/format"
 import { useCart } from "../lib/cart-context"
 import { ShoppingBag, Check, BookOpen, Sparkles } from "lucide-react"
 
