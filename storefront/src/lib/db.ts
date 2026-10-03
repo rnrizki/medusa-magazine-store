@@ -317,22 +317,65 @@ export function deleteMagazine(id: string): boolean {
 // ============================================================================
 export function getOrders(): Order[] {
   const data = loadData()
-  return (data.orders || []).sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  )
+  return (data.orders || [])
+    .map((order) => ({
+      ...order,
+      items: (order.items || []).map((item) => {
+        if (!item.pdfUrl) {
+          const mag = data.magazines.find(
+            (m) => m.id === item.magazineId || m.title.trim().toLowerCase() === item.title.trim().toLowerCase()
+          )
+          if (mag?.pdfUrl) {
+            return { ...item, pdfUrl: mag.pdfUrl }
+          }
+        }
+        return item
+      }),
+    }))
+    .sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    )
 }
 
 export function getOrderById(id: string): Order | null {
   const data = loadData()
-  return data.orders.find((o) => o.id === id || o.orderCode === id) || null
+  const order = data.orders.find((o) => o.id === id || o.orderCode === id) || null
+  if (!order) return null
+  return {
+    ...order,
+    items: (order.items || []).map((item) => {
+      if (!item.pdfUrl) {
+        const mag = data.magazines.find(
+          (m) => m.id === item.magazineId || m.title.trim().toLowerCase() === item.title.trim().toLowerCase()
+        )
+        if (mag?.pdfUrl) {
+          return { ...item, pdfUrl: mag.pdfUrl }
+        }
+      }
+      return item
+    }),
+  }
 }
 
 export function getOrdersByCustomerEmail(email: string): Order[] {
   const data = loadData()
   const cleanEmail = email.trim().toLowerCase()
-  return data.orders.filter(
-    (o) => o.customerEmail.trim().toLowerCase() === cleanEmail
-  )
+  return (data.orders || [])
+    .filter((o) => o.customerEmail.trim().toLowerCase() === cleanEmail)
+    .map((order) => ({
+      ...order,
+      items: (order.items || []).map((item) => {
+        if (!item.pdfUrl) {
+          const mag = data.magazines.find(
+            (m) => m.id === item.magazineId || m.title.trim().toLowerCase() === item.title.trim().toLowerCase()
+          )
+          if (mag?.pdfUrl) {
+            return { ...item, pdfUrl: mag.pdfUrl }
+          }
+        }
+        return item
+      }),
+    }))
 }
 
 export function createOrder(
@@ -352,14 +395,19 @@ export function createOrder(
     orderCode,
     customerName,
     customerEmail: customerEmail.trim().toLowerCase(),
-    items: items.map((m) => ({
-      magazineId: m.id,
-      title: m.title,
-      issueNumber: m.issueNumber,
-      coverImage: m.coverImage,
-      price: m.price,
-      pdfUrl: m.pdfUrl,
-    })),
+    items: items.map((m) => {
+      const magFromDb = data.magazines.find(
+        (x) => x.id === (m as any).magazineId || x.id === m.id || x.title.trim().toLowerCase() === m.title.trim().toLowerCase()
+      )
+      return {
+        magazineId: m.id || (m as any).magazineId,
+        title: m.title,
+        issueNumber: m.issueNumber || magFromDb?.issueNumber,
+        coverImage: m.coverImage || magFromDb?.coverImage || "",
+        price: m.price || magFromDb?.price || 0,
+        pdfUrl: (m as any).pdfUrl || magFromDb?.pdfUrl || "",
+      }
+    }),
     totalAmount,
     status: paymentProofUrl ? "pending_verification" : "pending_verification",
     paymentProofUrl,

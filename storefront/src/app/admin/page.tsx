@@ -26,6 +26,13 @@ import {
   Lock,
   LogOut,
   ShieldCheck,
+  ChevronDown,
+  ChevronUp,
+  Copy,
+  CheckCheck,
+  Mail,
+  Download,
+  Package,
 } from "lucide-react"
 import AdminChatTab from "./AdminChatTab"
 import ManageMagazinesTab from "./ManageMagazinesTab"
@@ -47,8 +54,22 @@ export default function AdminStudioPage() {
   const [magazines, setMagazines] = useState<Magazine[]>([])
   const [loading, setLoading] = useState(true)
 
-  // Inspection Modal for Screenshot Proof
+  // Inspection Modal for Screenshot Proof & Order Items
   const [selectedProofOrder, setSelectedProofOrder] = useState<Order | null>(null)
+  const [expandedOrderIds, setExpandedOrderIds] = useState<string[]>([])
+  const [copiedUrl, setCopiedUrl] = useState<string | null>(null)
+
+  const toggleExpandOrder = (id: string) => {
+    setExpandedOrderIds((prev) =>
+      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id]
+    )
+  }
+
+  const copyToClipboard = (url: string) => {
+    navigator.clipboard.writeText(url)
+    setCopiedUrl(url)
+    setTimeout(() => setCopiedUrl(null), 2500)
+  }
 
   // Category Form State
   const [newCatName, setNewCatName] = useState("")
@@ -546,7 +567,7 @@ export default function AdminStudioPage() {
                       <th className="py-3.5 px-4">Order Code</th>
                       <th className="py-3.5 px-4">Customer</th>
                       <th className="py-3.5 px-4">Gmail Account</th>
-                      <th className="py-3.5 px-4">Issues</th>
+                      <th className="py-3.5 px-4">Ordered Issues</th>
                       <th className="py-3.5 px-4">Total</th>
                       <th className="py-3.5 px-4">Payment Proof</th>
                       <th className="py-3.5 px-4">Status</th>
@@ -554,86 +575,197 @@ export default function AdminStudioPage() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-100">
-                    {orders.map((order) => (
-                      <tr key={order.id} className="hover:bg-slate-50/50">
-                        <td className="py-3.5 px-4 font-mono font-bold text-slate-900">
-                          {order.orderCode}
-                        </td>
-                        <td className="py-3.5 px-4 font-medium text-slate-800">
-                          {order.customerName}
-                        </td>
-                        <td className="py-3.5 px-4 font-mono text-slate-600">
-                          {order.customerEmail}
-                        </td>
-                        <td className="py-3.5 px-4 text-slate-600">
-                          {order.items.length} issue(s)
-                        </td>
-                        <td className="py-3.5 px-4 font-bold text-slate-900">
-                          {formatRupiah(order.totalAmount)}
-                        </td>
+                    {orders.map((order) => {
+                      const isExpanded = expandedOrderIds.includes(order.id)
+                      return (
+                        <React.Fragment key={order.id}>
+                          <tr className="hover:bg-slate-50/50">
+                            {/* Order Code */}
+                            <td className="py-3.5 px-4 font-mono font-bold text-slate-900">
+                              <button
+                                onClick={() => setSelectedProofOrder(order)}
+                                className="hover:text-indigo-600 transition underline flex items-center space-x-1"
+                                title="Click to view full order & fulfillment details"
+                              >
+                                <span>{order.orderCode}</span>
+                              </button>
+                            </td>
 
-                        {/* Screenshot thumbnail / Preview button */}
-                        <td className="py-3.5 px-4">
-                          {order.paymentProofUrl ? (
-                            <button
-                              onClick={() => setSelectedProofOrder(order)}
-                              className="flex items-center space-x-1.5 p-1 rounded-lg border border-slate-200 hover:border-indigo-500 bg-slate-50 transition"
-                            >
-                              <img
-                                src={order.paymentProofUrl}
-                                alt="Proof"
-                                className="w-8 h-8 object-cover rounded"
-                              />
-                              <span className="text-[11px] font-semibold text-indigo-600 flex items-center">
-                                <Eye className="w-3 h-3 mr-0.5" /> View Proof
-                              </span>
-                            </button>
-                          ) : (
-                            <span className="text-slate-400 italic text-[11px]">
-                              No screenshot attached
-                            </span>
+                            {/* Customer Name */}
+                            <td className="py-3.5 px-4 font-medium text-slate-800">
+                              {order.customerName}
+                            </td>
+
+                            {/* Customer Gmail */}
+                            <td className="py-3.5 px-4 font-mono text-slate-600">
+                              {order.customerEmail}
+                            </td>
+
+                            {/* Ordered Issues List + Expand Button */}
+                            <td className="py-3.5 px-4">
+                              <div className="flex items-center space-x-2">
+                                <button
+                                  onClick={() => setSelectedProofOrder(order)}
+                                  className="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-xs transition border border-indigo-200"
+                                  title="Open Full Magazine List Modal"
+                                >
+                                  <BookOpen className="w-3.5 h-3.5" />
+                                  <span>{order.items.length} issue(s) • View List</span>
+                                </button>
+                                <button
+                                  onClick={() => toggleExpandOrder(order.id)}
+                                  className="p-1 rounded text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition"
+                                  title={isExpanded ? "Collapse inline preview" : "Expand inline preview"}
+                                >
+                                  {isExpanded ? (
+                                    <ChevronUp className="w-4 h-4 text-indigo-600" />
+                                  ) : (
+                                    <ChevronDown className="w-4 h-4" />
+                                  )}
+                                </button>
+                              </div>
+                              <div
+                                className="text-[11px] text-slate-500 mt-1 max-w-[210px] truncate"
+                                title={order.items.map((i) => i.title).join(", ")}
+                              >
+                                {order.items.map((i) => i.title).join(", ")}
+                              </div>
+                            </td>
+
+                            {/* Total Amount */}
+                            <td className="py-3.5 px-4 font-bold text-slate-900">
+                              {formatRupiah(order.totalAmount)}
+                            </td>
+
+                            {/* Screenshot thumbnail / Preview button */}
+                            <td className="py-3.5 px-4">
+                              {order.paymentProofUrl ? (
+                                <button
+                                  onClick={() => setSelectedProofOrder(order)}
+                                  className="flex items-center space-x-1.5 p-1 rounded-lg border border-slate-200 hover:border-indigo-500 bg-slate-50 transition"
+                                >
+                                  <img
+                                    src={order.paymentProofUrl}
+                                    alt="Proof"
+                                    className="w-8 h-8 object-cover rounded"
+                                  />
+                                  <span className="text-[11px] font-semibold text-indigo-600 flex items-center">
+                                    <Eye className="w-3 h-3 mr-0.5" /> View Proof
+                                  </span>
+                                </button>
+                              ) : (
+                                <span className="text-slate-400 italic text-[11px]">
+                                  No screenshot attached
+                                </span>
+                              )}
+                            </td>
+
+                            {/* Status Badge */}
+                            <td className="py-3.5 px-4">
+                              {order.status === "verified" ? (
+                                <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
+                                  <CheckCircle className="w-3 h-3" />
+                                  <span>Verified</span>
+                                </span>
+                              ) : order.status === "rejected" ? (
+                                <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">
+                                  <XCircle className="w-3 h-3" />
+                                  <span>Rejected</span>
+                                </span>
+                              ) : (
+                                <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
+                                  <Clock className="w-3 h-3" />
+                                  <span>Pending Verification</span>
+                                </span>
+                              )}
+                            </td>
+
+                            {/* Approve / Reject Actions */}
+                            <td className="py-3.5 px-4 text-right space-x-1.5">
+                              <button
+                                onClick={() => handleUpdateOrderStatus(order.id, "verified")}
+                                className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-[11px] transition shadow-sm"
+                                title="Approve QRIS & Unlock Digital PDF"
+                              >
+                                Approve
+                              </button>
+                              <button
+                                onClick={() => handleUpdateOrderStatus(order.id, "rejected")}
+                                className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 font-semibold text-[11px] transition"
+                                title="Reject Payment Proof"
+                              >
+                                Reject
+                              </button>
+                            </td>
+                          </tr>
+
+                          {/* Expandable sub-row with ordered magazines for fulfillment */}
+                          {isExpanded && (
+                            <tr className="bg-indigo-50/40 border-b border-indigo-100">
+                              <td colSpan={8} className="p-4 pl-8">
+                                <div className="space-y-3">
+                                  <div className="flex items-center justify-between">
+                                    <div className="text-xs font-bold text-indigo-900 flex items-center space-x-1.5">
+                                      <Package className="w-4 h-4 text-indigo-600" />
+                                      <span>Publications Ordered by {order.customerName} ({order.items.length} items):</span>
+                                    </div>
+                                    <button
+                                      onClick={() => setSelectedProofOrder(order)}
+                                      className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center space-x-1"
+                                    >
+                                      <span>Open Full Fulfillment Modal</span>
+                                      <ExternalLink className="w-3.5 h-3.5" />
+                                    </button>
+                                  </div>
+
+                                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                                    {order.items.map((item, idx) => (
+                                      <div
+                                        key={idx}
+                                        className="flex items-center space-x-3 p-3 rounded-xl bg-white border border-indigo-100 shadow-sm"
+                                      >
+                                        <div className="w-12 h-16 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0 border border-slate-200">
+                                          <img
+                                            src={item.coverImage}
+                                            alt={item.title}
+                                            className="w-full h-full object-cover"
+                                          />
+                                        </div>
+                                        <div className="flex-1 min-w-0">
+                                          <div className="font-bold text-slate-900 text-xs truncate" title={item.title}>
+                                            {item.title}
+                                          </div>
+                                          <div className="text-[10px] text-slate-500">
+                                            {item.issueNumber || "Standard Edition"}
+                                          </div>
+                                          <div className="text-[11px] font-bold text-indigo-700 mt-0.5">
+                                            {formatRupiah(item.price)}
+                                          </div>
+                                        </div>
+                                        {item.pdfUrl ? (
+                                          <a
+                                            href={item.pdfUrl}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="px-2.5 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-emerald-700 text-[11px] font-bold flex items-center space-x-1 transition flex-shrink-0"
+                                            title="Download PDF"
+                                          >
+                                            <Download className="w-3.5 h-3.5" />
+                                            <span>PDF</span>
+                                          </a>
+                                        ) : (
+                                          <span className="text-[10px] text-slate-400 italic flex-shrink-0">No PDF</span>
+                                        )}
+                                      </div>
+                                    ))}
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
                           )}
-                        </td>
-
-                        {/* Status Badge */}
-                        <td className="py-3.5 px-4">
-                          {order.status === "verified" ? (
-                            <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                              <CheckCircle className="w-3 h-3" />
-                              <span>Verified</span>
-                            </span>
-                          ) : order.status === "rejected" ? (
-                            <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-rose-100 text-rose-800">
-                              <XCircle className="w-3 h-3" />
-                              <span>Rejected</span>
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
-                              <Clock className="w-3 h-3" />
-                              <span>Pending Verification</span>
-                            </span>
-                          )}
-                        </td>
-
-                        {/* Approve / Reject Actions */}
-                        <td className="py-3.5 px-4 text-right space-x-1.5">
-                          <button
-                            onClick={() => handleUpdateOrderStatus(order.id, "verified")}
-                            className="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-[11px] transition shadow-sm"
-                            title="Approve QRIS & Unlock Digital PDF"
-                          >
-                            Approve
-                          </button>
-                          <button
-                            onClick={() => handleUpdateOrderStatus(order.id, "rejected")}
-                            className="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 font-semibold text-[11px] transition"
-                            title="Reject Payment Proof"
-                          >
-                            Reject
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
+                        </React.Fragment>
+                      )
+                    })}
                   </tbody>
                 </table>
               </div>
@@ -1054,51 +1186,212 @@ export default function AdminStudioPage() {
       )}
 
       {/* ===================================================================== */}
-      {/* Lightbox Modal: Inspect Customer Uploaded Payment Proof */}
+      {/* Complete Order Details & Fulfillment Modal */}
       {/* ===================================================================== */}
       {selectedProofOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-2xl relative space-y-5">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="bg-white rounded-3xl max-w-4xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 my-8 max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setSelectedProofOrder(null)}
-              className="absolute top-4 right-4 text-slate-400 hover:text-slate-700"
+              className="absolute top-5 right-5 text-slate-400 hover:text-slate-700 p-1"
             >
               <X className="w-6 h-6" />
             </button>
 
-            <div>
-              <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider">
-                QRIS Verification
-              </span>
-              <h3 className="text-lg font-bold text-slate-900">
-                Payment Proof for {selectedProofOrder.orderCode}
-              </h3>
-              <p className="text-xs text-slate-500">
-                Customer: <strong>{selectedProofOrder.customerName}</strong> ({selectedProofOrder.customerEmail})
-              </p>
-            </div>
+            {/* Modal Header */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+              <div>
+                <div className="flex items-center space-x-2">
+                  <span className="text-xs font-bold text-indigo-600 uppercase tracking-wider">
+                    Order Details & Fulfillment Hub
+                  </span>
+                  <span
+                    className={`inline-flex items-center space-x-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                      selectedProofOrder.status === "verified"
+                        ? "bg-emerald-100 text-emerald-800"
+                        : selectedProofOrder.status === "rejected"
+                        ? "bg-rose-100 text-rose-800"
+                        : "bg-amber-100 text-amber-800"
+                    }`}
+                  >
+                    {selectedProofOrder.status === "verified"
+                      ? "Verified"
+                      : selectedProofOrder.status === "rejected"
+                      ? "Rejected"
+                      : "Pending Verification"}
+                  </span>
+                </div>
+                <h3 className="text-2xl font-black text-slate-900 mt-1">
+                  {selectedProofOrder.orderCode}
+                </h3>
+                <p className="text-xs text-slate-500 mt-0.5">
+                  Client: <strong className="text-slate-900 font-semibold">{selectedProofOrder.customerName}</strong> • Gmail:{" "}
+                  <a
+                    href={`mailto:${selectedProofOrder.customerEmail}`}
+                    className="text-indigo-600 font-mono hover:underline"
+                  >
+                    {selectedProofOrder.customerEmail}
+                  </a>
+                </p>
+              </div>
 
-            {/* High-Res Screenshot Preview */}
-            <div className="max-h-[450px] overflow-auto rounded-xl border border-slate-200 bg-slate-900 p-2 text-center">
-              {selectedProofOrder.paymentProofUrl ? (
-                <img
-                  src={selectedProofOrder.paymentProofUrl}
-                  alt="Customer Screenshot Receipt"
-                  className="mx-auto max-h-[420px] object-contain rounded"
-                />
-              ) : (
-                <div className="py-12 text-slate-400 text-xs">No image provided</div>
-              )}
-            </div>
-
-            {/* Approve / Reject Actions */}
-            <div className="flex items-center justify-between pt-2 border-t border-slate-100">
-              <div className="text-xs">
-                <span className="text-slate-500">Order Amount: </span>
-                <span className="font-bold text-slate-900 text-sm">
+              <div className="text-left sm:text-right">
+                <span className="text-[11px] text-slate-400 block font-medium">Total Order Value</span>
+                <span className="text-2xl font-black text-slate-900">
                   {formatRupiah(selectedProofOrder.totalAmount)}
                 </span>
               </div>
+            </div>
+
+            {/* Main Content Grid: Left (Magazines List to Deliver), Right (Payment Proof Receipt) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+              {/* Left Column: Ordered Magazines */}
+              <div className="lg:col-span-7 space-y-4">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-slate-900 flex items-center space-x-1.5">
+                    <Package className="w-4 h-4 text-indigo-600" />
+                    <span>Client's Purchased Magazines ({selectedProofOrder.items.length})</span>
+                  </h4>
+                  <span className="text-[11px] text-slate-500">
+                    Deliver these issues to client
+                  </span>
+                </div>
+
+                <div className="space-y-3">
+                  {selectedProofOrder.items.map((item, idx) => (
+                    <div
+                      key={idx}
+                      className="flex items-start space-x-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm"
+                    >
+                      <div className="w-14 h-20 rounded-xl overflow-hidden bg-slate-200 flex-shrink-0 border border-slate-300">
+                        <img
+                          src={item.coverImage}
+                          alt={item.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+
+                      <div className="flex-1 min-w-0 space-y-1">
+                        <div className="font-bold text-slate-900 text-xs leading-snug">
+                          {item.title}
+                        </div>
+                        <div className="text-[11px] text-slate-500">
+                          {item.issueNumber || "Standard Edition"}
+                        </div>
+                        <div className="text-xs font-bold text-indigo-700">
+                          {formatRupiah(item.price)}
+                        </div>
+
+                        {/* PDF Download & Link Copy */}
+                        <div className="pt-1.5 flex flex-wrap items-center gap-2">
+                          {item.pdfUrl ? (
+                            <>
+                              <a
+                                href={item.pdfUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="inline-flex items-center space-x-1 px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] shadow-sm transition"
+                              >
+                                <Download className="w-3.5 h-3.5" />
+                                <span>Download PDF</span>
+                              </a>
+                              <button
+                                onClick={() => copyToClipboard(item.pdfUrl!)}
+                                className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-[11px] transition"
+                              >
+                                {copiedUrl === item.pdfUrl ? (
+                                  <>
+                                    <CheckCheck className="w-3.5 h-3.5 text-emerald-600" />
+                                    <span className="text-emerald-600">Copied!</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Copy className="w-3.5 h-3.5 text-slate-500" />
+                                    <span>Copy Link</span>
+                                  </>
+                                )}
+                              </button>
+                            </>
+                          ) : (
+                            <span className="text-[11px] text-rose-500 font-medium">
+                              PDF link not configured
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Email Client Direct Action */}
+                <div className="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 space-y-2">
+                  <div className="text-xs font-bold text-indigo-900 flex items-center space-x-1.5">
+                    <Mail className="w-4 h-4 text-indigo-600" />
+                    <span>Quick Client Fulfillment</span>
+                  </div>
+                  <p className="text-[11px] text-indigo-800">
+                    Send the digital download links directly to <strong>{selectedProofOrder.customerEmail}</strong>:
+                  </p>
+                  <a
+                    href={`mailto:${selectedProofOrder.customerEmail}?subject=Your Magazine Order ${selectedProofOrder.orderCode} - Majalah PDF&body=Hello ${encodeURIComponent(
+                      selectedProofOrder.customerName
+                    )},%0D%0A%0D%0AThank you for your order (${selectedProofOrder.orderCode})!%0D%0A%0D%0AHere are your digital magazine downloads:%0D%0A${encodeURIComponent(
+                      selectedProofOrder.items
+                        .map((i, idx) => `${idx + 1}. ${i.title}\nDownload: ${i.pdfUrl || "(Contact support)"}`)
+                        .join("\n\n")
+                    )}%0D%0A%0D%0AEnjoy reading!%0D%0AMajalah PDF Team`}
+                    className="inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition shadow-sm"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    <span>Email All {selectedProofOrder.items.length} PDF Links to Client</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Right Column: Payment Proof Screenshot */}
+              <div className="lg:col-span-5 space-y-3">
+                <div className="flex items-center justify-between">
+                  <h4 className="text-sm font-bold text-slate-900 flex items-center space-x-1.5">
+                    <QrCode className="w-4 h-4 text-indigo-600" />
+                    <span>QRIS Payment Proof</span>
+                  </h4>
+                  {selectedProofOrder.paymentProofUrl && (
+                    <a
+                      href={selectedProofOrder.paymentProofUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-[11px] font-bold text-indigo-600 hover:underline flex items-center space-x-0.5"
+                    >
+                      <span>Full Size</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </a>
+                  )}
+                </div>
+
+                <div className="max-h-[380px] overflow-auto rounded-2xl border border-slate-200 bg-slate-950 p-2 text-center">
+                  {selectedProofOrder.paymentProofUrl ? (
+                    <img
+                      src={selectedProofOrder.paymentProofUrl}
+                      alt="Customer Screenshot Receipt"
+                      className="mx-auto max-h-[350px] object-contain rounded-xl"
+                    />
+                  ) : (
+                    <div className="py-16 text-slate-400 text-xs">
+                      No screenshot receipt attached
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Modal Bottom Actions */}
+            <div className="flex items-center justify-between pt-4 border-t border-slate-100">
+              <button
+                onClick={() => setSelectedProofOrder(null)}
+                className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition"
+              >
+                Close Window
+              </button>
 
               <div className="flex items-center space-x-2">
                 <button
@@ -1106,7 +1399,7 @@ export default function AdminStudioPage() {
                     handleUpdateOrderStatus(selectedProofOrder.id, "rejected")
                     setSelectedProofOrder(null)
                   }}
-                  className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-600 text-xs font-bold transition"
+                  className="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-600 text-xs font-bold transition"
                 >
                   Reject Proof
                 </button>
@@ -1115,7 +1408,7 @@ export default function AdminStudioPage() {
                     handleUpdateOrderStatus(selectedProofOrder.id, "verified")
                     setSelectedProofOrder(null)
                   }}
-                  className="px-6 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow flex items-center space-x-1.5"
+                  className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow flex items-center space-x-1.5"
                 >
                   <Check className="w-4 h-4" />
                   <span>Approve & Release Download</span>
