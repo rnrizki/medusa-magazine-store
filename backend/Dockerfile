@@ -15,6 +15,7 @@ RUN npm install
 COPY . .
 
 # Build application
+ENV MEDUSA_TELEMETRY_DISABLED=1
 RUN npm run build
 
 # Make entrypoint script executable

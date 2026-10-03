@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "@medusajs/framework": "^2.5.0",
-    "@medusajs/medusa": "^2.5.0"
+    "@medusajs/medusa": "^2.5.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20.14.0",
