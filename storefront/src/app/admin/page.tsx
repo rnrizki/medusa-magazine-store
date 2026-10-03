@@ -23,11 +23,23 @@ import {
   X,
   ExternalLink,
   MessageSquare,
+  Lock,
+  LogOut,
+  ShieldCheck,
 } from "lucide-react"
 import AdminChatTab from "./AdminChatTab"
+import ManageMagazinesTab from "./ManageMagazinesTab"
 
 export default function AdminStudioPage() {
-  const [activeTab, setActiveTab] = useState<"orders" | "upload" | "categories" | "qris" | "chat">("orders")
+  const [activeTab, setActiveTab] = useState<"orders" | "magazines" | "upload" | "categories" | "qris" | "chat">("orders")
+
+  // Auth State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const [authChecking, setAuthChecking] = useState<boolean>(true)
+  const [adminEmail, setAdminEmail] = useState("")
+  const [adminPassword, setAdminPassword] = useState("")
+  const [authError, setAuthError] = useState("")
+  const [isLoggingIn, setIsLoggingIn] = useState(false)
 
   // State
   const [orders, setOrders] = useState<Order[]>([])
@@ -121,8 +133,42 @@ export default function AdminStudioPage() {
   }
 
   useEffect(() => {
+    const saved = localStorage.getItem("medusa_admin_session")
+    if (saved === "true") {
+      setIsAuthenticated(true)
+    }
+    setAuthChecking(false)
     fetchData()
   }, [])
+
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setAuthError("")
+    setIsLoggingIn(true)
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: adminEmail, password: adminPassword }),
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setIsAuthenticated(true)
+        localStorage.setItem("medusa_admin_session", "true")
+      } else {
+        setAuthError(data.error || "Invalid admin credentials. Please check your password.")
+      }
+    } catch (err: any) {
+      setAuthError("Sign in failed: " + err.message)
+    } finally {
+      setIsLoggingIn(false)
+    }
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    localStorage.removeItem("medusa_admin_session")
+  }
 
   // Order Actions (Verify / Reject)
   const handleUpdateOrderStatus = async (orderId: string, status: "verified" | "rejected") => {
@@ -298,6 +344,73 @@ export default function AdminStudioPage() {
     }
   }
 
+  if (authChecking) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    )
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <div className="max-w-md mx-auto px-4 py-20">
+        <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xl space-y-6">
+          <div className="text-center space-y-2">
+            <div className="w-12 h-12 rounded-2xl bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center mx-auto">
+              <Lock className="w-6 h-6" />
+            </div>
+            <h1 className="text-2xl font-black text-slate-900">Admin Studio Sign In</h1>
+            <p className="text-xs text-slate-500">
+              Enter your store administrator credentials to access the magazine control panel.
+            </p>
+          </div>
+
+          {authError && (
+            <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-medium flex items-center space-x-2">
+              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              <span>{authError}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleLogin} className="space-y-4 text-xs">
+            <div className="space-y-1">
+              <label className="block font-bold text-slate-700">Administrator Email</label>
+              <input
+                type="email"
+                required
+                placeholder="admin@majalahpdf.my.id"
+                value={adminEmail}
+                onChange={(e) => setAdminEmail(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="block font-bold text-slate-700">Password</label>
+              <input
+                type="password"
+                required
+                placeholder="••••••••••••"
+                value={adminPassword}
+                onChange={(e) => setAdminPassword(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={isLoggingIn}
+              className="w-full py-3 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white font-bold text-xs transition shadow-lg flex items-center justify-center space-x-2 disabled:bg-slate-400"
+            >
+              <span>{isLoggingIn ? "Authenticating..." : "Sign In to Admin Studio"}</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* Title & Navigation Tabs */}
@@ -311,33 +424,61 @@ export default function AdminStudioPage() {
             Digital Magazine Admin Studio
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            Manage multi-upload products with AI descriptions, verify QRIS payment proofs, and organize categories.
+            Manage & edit existing publications, bulk upload issues with AI, verify QRIS payment proofs, and chat with customers.
           </p>
         </div>
 
-        {/* Tab Buttons */}
-        <div className="flex items-center space-x-2 bg-slate-100 p-1.5 rounded-2xl">
+        <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 text-xs font-semibold">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>admin@majalahpdf.my.id</span>
+          </div>
           <button
-            onClick={() => setActiveTab("orders")}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
-              activeTab === "orders"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-600 hover:text-slate-900"
-            }`}
+            onClick={handleLogout}
+            className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-600 hover:text-rose-600 text-xs font-bold transition"
+            title="Sign Out"
           >
-            Orders & QRIS Proofs ({orders.length})
+            <LogOut className="w-3.5 h-3.5" />
+            <span>Sign Out</span>
           </button>
+        </div>
+      </div>
 
-          <button
-            onClick={() => setActiveTab("upload")}
-            className={`px-4 py-2 rounded-xl text-xs font-bold transition ${
-              activeTab === "upload"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-600 hover:text-slate-900"
-            }`}
-          >
-            Multi-Add Upload (AI)
-          </button>
+      {/* Tab Buttons */}
+      <div className="flex items-center space-x-2 bg-slate-100 p-1.5 rounded-2xl overflow-x-auto">
+        <button
+          onClick={() => setActiveTab("orders")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap ${
+            activeTab === "orders"
+              ? "bg-white text-slate-900 shadow-sm"
+              : "text-slate-600 hover:text-slate-900"
+          }`}
+        >
+          Orders & Proofs ({orders.length})
+        </button>
+
+        <button
+          onClick={() => setActiveTab("magazines")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition flex items-center space-x-1.5 whitespace-nowrap ${
+            activeTab === "magazines"
+              ? "bg-white text-slate-900 shadow-sm"
+              : "text-slate-600 hover:text-slate-900"
+          }`}
+        >
+          <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
+          <span>Manage & Edit Magazines ({magazines.length})</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab("upload")}
+          className={`px-4 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap ${
+            activeTab === "upload"
+              ? "bg-white text-slate-900 shadow-sm"
+              : "text-slate-600 hover:text-slate-900"
+          }`}
+        >
+          Multi-Add Upload (AI)
+        </button>
 
           <button
             onClick={() => setActiveTab("categories")}
@@ -373,7 +514,6 @@ export default function AdminStudioPage() {
             <span>Live Customer Chats</span>
           </button>
         </div>
-      </div>
 
       {/* ===================================================================== */}
       {/* TAB 1: Orders & QRIS Payment Proof Verification */}
@@ -503,7 +643,19 @@ export default function AdminStudioPage() {
       )}
 
       {/* ===================================================================== */}
-      {/* TAB 2: Multi-Add / Bulk Upload with AI Description Generator */}
+      {/* TAB 2: Manage & Edit Magazines */}
+      {/* ===================================================================== */}
+      {activeTab === "magazines" && (
+        <ManageMagazinesTab
+          magazines={magazines}
+          categories={categories}
+          onRefresh={fetchData}
+          onSwitchToUpload={() => setActiveTab("upload")}
+        />
+      )}
+
+      {/* ===================================================================== */}
+      {/* TAB 3: Multi-Add / Bulk Upload with AI Description Generator */}
       {/* ===================================================================== */}
       {activeTab === "upload" && (
         <div className="space-y-6">

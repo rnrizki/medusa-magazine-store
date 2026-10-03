@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getMagazines, addMagazines, deleteMagazine } from "../../../lib/db"
+import { getMagazines, addMagazines, updateMagazine, deleteMagazine } from "../../../lib/db"
 
 export const dynamic = "force-dynamic"
 
@@ -47,6 +47,23 @@ export async function POST(req: NextRequest) {
       count: created.length,
       magazines: created,
     })
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 })
+  }
+}
+
+export async function PUT(req: NextRequest) {
+  try {
+    const body = await req.json()
+    const { id, ...updates } = body
+    if (!id) {
+      return NextResponse.json({ error: "Magazine ID is required" }, { status: 400 })
+    }
+    const updated = updateMagazine(id, updates)
+    if (!updated) {
+      return NextResponse.json({ error: "Magazine not found" }, { status: 404 })
+    }
+    return NextResponse.json({ success: true, magazine: updated })
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }

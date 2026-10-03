@@ -279,6 +279,28 @@ export function addMagazines(magazinesList: Omit<Magazine, "id" | "created_at">[
   return created
 }
 
+export function updateMagazine(id: string, updates: Partial<Magazine>): Magazine | null {
+  const data = loadData()
+  const index = data.magazines.findIndex((m) => m.id === id)
+  if (index === -1) return null
+
+  let categoryName = data.magazines[index].categoryName
+  if (updates.categoryId && updates.categoryId !== data.magazines[index].categoryId) {
+    const cat = data.categories.find((c) => c.id === updates.categoryId)
+    if (cat) categoryName = cat.name
+  }
+
+  const updated: Magazine = {
+    ...data.magazines[index],
+    ...updates,
+    categoryName: updates.categoryName || categoryName,
+  }
+
+  data.magazines[index] = updated
+  saveData(data)
+  return updated
+}
+
 export function deleteMagazine(id: string): boolean {
   const data = loadData()
   const beforeCount = data.magazines.length
