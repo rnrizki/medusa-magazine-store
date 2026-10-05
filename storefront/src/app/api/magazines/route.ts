@@ -7,7 +7,11 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const category = searchParams.get("category") || undefined
   const magazines = getMagazines(category)
-  return NextResponse.json(magazines)
+  return NextResponse.json(magazines, {
+    headers: {
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+    },
+  })
 }
 
 export async function POST(req: NextRequest) {
@@ -42,11 +46,16 @@ export async function POST(req: NextRequest) {
     }
 
     const created = addMagazines(items)
-    return NextResponse.json({
-      success: true,
-      count: created.length,
-      magazines: created,
-    })
+    return NextResponse.json(
+      {
+        success: true,
+        count: created.length,
+        magazines: created,
+      },
+      {
+        headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
+      }
+    )
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
@@ -63,7 +72,12 @@ export async function PUT(req: NextRequest) {
     if (!updated) {
       return NextResponse.json({ error: "Magazine not found" }, { status: 404 })
     }
-    return NextResponse.json({ success: true, magazine: updated })
+    return NextResponse.json(
+      { success: true, magazine: updated },
+      {
+        headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
+      }
+    )
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }
@@ -79,7 +93,12 @@ export async function DELETE(req: NextRequest) {
     if (!success) {
       return NextResponse.json({ error: "Magazine not found" }, { status: 404 })
     }
-    return NextResponse.json({ success: true, message: "Magazine deleted" })
+    return NextResponse.json(
+      { success: true, message: "Magazine deleted" },
+      {
+        headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
+      }
+    )
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 })
   }

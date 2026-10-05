@@ -198,10 +198,11 @@ export default function AdminStudioPage() {
   const fetchData = async () => {
     setLoading(true)
     try {
+      const timestamp = Date.now()
       const [ordRes, catRes, magRes] = await Promise.all([
-        fetch("/api/orders"),
-        fetch("/api/categories"),
-        fetch("/api/magazines"),
+        fetch(`/api/orders?t=${timestamp}`, { cache: "no-store" }),
+        fetch(`/api/categories?t=${timestamp}`, { cache: "no-store" }),
+        fetch(`/api/magazines?t=${timestamp}`, { cache: "no-store" }),
       ])
       if (ordRes.ok) setOrders(await ordRes.json())
       if (catRes.ok) {

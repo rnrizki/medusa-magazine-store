@@ -37,6 +37,7 @@ export default function ManageMagazinesTab({
   // Edit Modal State
   const [editingMag, setEditingMag] = useState<Magazine | null>(null)
   const [isSaving, setIsSaving] = useState(false)
+  const [saveSuccessMessage, setSaveSuccessMessage] = useState<string | null>(null)
   const [isAiLoading, setIsAiLoading] = useState(false)
   const [uploadingField, setUploadingField] = useState<"coverImage" | "pdfUrl" | null>(null)
 
@@ -51,7 +52,18 @@ export default function ManageMagazinesTab({
 
   // Open Edit Modal
   const handleOpenEdit = (mag: Magazine) => {
-    setEditingMag({ ...mag, highlights: mag.highlights ? [...mag.highlights] : [] })
+    const matched = categories.find(
+      (c) =>
+        c.id === mag.categoryId ||
+        c.name.toLowerCase() === (mag.categoryName || "").toLowerCase() ||
+        c.slug.toLowerCase() === (mag.categoryId || "").toLowerCase()
+    )
+    setEditingMag({
+      ...mag,
+      categoryId: matched ? matched.id : mag.categoryId,
+      categoryName: matched ? matched.name : (mag.categoryName || "General"),
+      highlights: mag.highlights ? [...mag.highlights] : [],
+    })
   }
 
   // Handle Edit Field Change
@@ -131,14 +143,28 @@ export default function ManageMagazinesTab({
 
     setIsSaving(true)
     try {
+      // Find matching category to guarantee categoryName is strictly in sync with categoryId
+      const targetCat = categories.find(
+        (c) =>
+          c.id === editingMag.categoryId ||
+          c.name.toLowerCase() === (editingMag.categoryName || "").toLowerCase()
+      )
+      const payload: Magazine = {
+        ...editingMag,
+        categoryId: targetCat ? targetCat.id : editingMag.categoryId,
+        categoryName: targetCat ? targetCat.name : editingMag.categoryName,
+      }
+
       const res = await fetch("/api/magazines", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(editingMag),
+        body: JSON.stringify(payload),
       })
 
       if (res.ok) {
         setEditingMag(null)
+        setSaveSuccessMessage(`Changes successfully saved for "${payload.title}"!`)
+        setTimeout(() => setSaveSuccessMessage(null), 4000)
         onRefresh()
       } else {
         const data = await res.json()
@@ -174,6 +200,14 @@ export default function ManageMagazinesTab({
 
   return (
     <div className="space-y-6">
+      {/* Save Success Alert */}
+      {saveSuccessMessage && (
+        <div className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold flex items-center space-x-2 animate-in fade-in">
+          <Check className="w-4 h-4 flex-shrink-0" />
+          <span>{saveSuccessMessage}</span>
+        </div>
+      )}
+
       {/* Top Filter & Action Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -264,9 +298,20 @@ export default function ManageMagazinesTab({
 
                     {/* Category */}
                     <td className="py-3 px-4">
-                      <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
-                        {mag.categoryName || "General"}
-                      </span>
+                      {(() => {
+                        const matched = categories.find(
+                          (c) =>
+                            c.id === mag.categoryId ||
+                            c.name.toLowerCase() === (mag.categoryName || "").toLowerCase() ||
+                            c.slug.toLowerCase() === (mag.categoryId || "").toLowerCase()
+                        )
+                        const catLabel = matched?.name || mag.categoryName || "General"
+                        return (
+                          <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
+                            {catLabel}
+                          </span>
+                        )
+                      })()}
                     </td>
 
                     {/* Price */}
@@ -377,8 +422,20 @@ export default function ManageMagazinesTab({
                   <label className="block font-bold text-slate-700">Category *</label>
                   <select
                     value={editingMag.categoryId}
-                    onChange={(e) => updateEditField("categoryId", e.target.value)}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white"
+                    onChange={(e) => {
+                      const selectedId = e.target.value
+                      const matched = categories.find((c) => c.id === selectedId)
+                      setEditingMag((prev) =>
+                        prev
+                          ? {
+                              ...prev,
+                              categoryId: selectedId,
+                              categoryName: matched ? matched.name : prev.categoryName,
+                            }
+                          : null
+                      )
+                    }}
+                    className="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none bg-white font-medium"
                   >
                     {categories.map((c) => (
                       <option key={c.id} value={c.id}>
