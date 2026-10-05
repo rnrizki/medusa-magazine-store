@@ -1,12 +1,12 @@
 import React from "react"
 import Link from "next/link"
-import { QrCode, Zap, ShieldCheck } from "lucide-react"
+import { QrCode, Zap, ShieldCheck, Mail } from "lucide-react"
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-white font-bold text-lg">
@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Quick Links / Publications */}
           <div>
             <h4 className="text-white text-xs font-bold mb-3 tracking-wider uppercase">
               Publications
@@ -46,6 +46,27 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
+          </div>
+
+          {/* Contact (Next to Publications) */}
+          <div>
+            <h4 className="text-white text-xs font-bold mb-3 tracking-wider uppercase">
+              Contact & Support
+            </h4>
+            <div className="space-y-2.5 text-xs">
+              <p className="text-slate-400 text-[11px] leading-relaxed">
+                Have questions or need assistance with your digital magazine purchase?
+              </p>
+              <a
+                href="mailto:notreseller.magazine@gmail.com"
+                className="inline-flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition group font-medium"
+              >
+                <Mail className="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition flex-shrink-0" />
+                <span className="break-all underline underline-offset-4 decoration-indigo-500/50">
+                  notreseller.magazine@gmail.com
+                </span>
+              </a>
+            </div>
           </div>
 
           {/* Checkout Guarantee */}
@@ -70,8 +91,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+        <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3">
           <p>© {new Date().getFullYear()} DIGITALPITSTOP - SOFTWARE. All rights reserved.</p>
+          <a
+            href="mailto:notreseller.magazine@gmail.com"
+            className="text-slate-400 hover:text-white transition flex items-center space-x-1.5"
+          >
+            <Mail className="w-3.5 h-3.5 text-indigo-400" />
+            <span>notreseller.magazine@gmail.com</span>
+          </a>
         </div>
       </div>
     </footer>

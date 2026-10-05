@@ -2,7 +2,7 @@ import React from "react"
 import Link from "next/link"
 import { getCategories, getMagazines } from "../lib/db"
 import MagazineCatalog from "../components/MagazineCatalog"
-import { QrCode, Mail, Zap, BookOpen, ShieldCheck, Sparkles, ArrowRight } from "lucide-react"
+import { QrCode, Mail, Zap, BookOpen, ShieldCheck, Sparkles } from "lucide-react"
 
 export const dynamic = "force-dynamic"
 
@@ -54,24 +54,14 @@ export default function HomePage() {
       </section>
 
       {/* Main Magazine Catalog with Category Management */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <h2 className="text-2xl font-black text-slate-900 tracking-tight">
-              Featured Issues & Publications
-            </h2>
-            <p className="text-xs text-slate-500 mt-1">
-              Select a category below to filter our high-resolution digital releases.
-            </p>
-          </div>
-
-          <Link
-            href="/admin"
-            className="inline-flex items-center space-x-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-lg border border-indigo-100"
-          >
-            <span>Organize Categories & Upload</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+      <section id="magazine-catalog-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-6">
+          <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+            Featured Issues & Publications
+          </h2>
+          <p className="text-xs text-slate-500 mt-1">
+            Select a category below to filter our high-resolution digital releases.
+          </p>
         </div>
 
         <MagazineCatalog
