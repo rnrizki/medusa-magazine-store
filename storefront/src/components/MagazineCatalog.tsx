@@ -4,7 +4,16 @@ import React, { useState, useEffect, useRef, useMemo } from "react"
 import Link from "next/link"
 import { Category, Magazine } from "../lib/types"
 import MagazineCard from "./MagazineCard"
-import { BookOpen, Search, ChevronLeft, ChevronRight, Sparkles, Loader2, ArrowRight } from "lucide-react"
+import {
+  BookOpen,
+  Search,
+  ChevronLeft,
+  ChevronRight,
+  Zap,
+  Loader2,
+  ArrowRight,
+  X,
+} from "lucide-react"
 
 interface MagazineCatalogProps {
   initialCategories: Category[]
@@ -20,12 +29,18 @@ export default function MagazineCatalog({
   const [categories] = useState<Category[]>(initialCategories)
   const [magazines] = useState<Magazine[]>(initialMagazines)
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
+  
+  // searchQuery: input text & floating suggestion popover (does NOT touch main grid)
   const [searchQuery, setSearchQuery] = useState("")
+  // appliedQuery: search filter applied to the main catalog grid (only updates on submit / Enter / select)
+  const [appliedQuery, setAppliedQuery] = useState("")
+  
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [paradeResults, setParadeResults] = useState<Magazine[] | null>(null)
+  const [searchResults, setSearchResults] = useState<Magazine[] | null>(null)
   const [isSearching, setIsSearching] = useState(false)
   const [searchSource, setSearchSource] = useState<string | null>(null)
   const [showSuggestions, setShowSuggestions] = useState(false)
+  const [suggestionHits, setSuggestionHits] = useState<Magazine[]>([])
   const searchContainerRef = useRef<HTMLDivElement>(null)
 
   // Close suggestions when clicking outside
@@ -42,14 +57,18 @@ export default function MagazineCatalog({
     return () => document.removeEventListener("mousedown", handleClickOutside)
   }, [])
 
-  // Instant top 5 suggestions (matches immediately while typing)
-  const suggestions = useMemo(() => {
-    if (!searchQuery.trim()) return []
-    if (paradeResults !== null && paradeResults.length > 0) {
-      return paradeResults.slice(0, 5)
+  // Fast live suggestions for autocomplete popover (debounced to Meilisearch)
+  useEffect(() => {
+    const q = searchQuery.trim()
+    if (!q) {
+      setShowSuggestions(false)
+      setSuggestionHits([])
+      setIsSearching(false)
+      return
     }
-    const q = searchQuery.toLowerCase().trim()
-    return magazines
+
+    // Instant local top 5 while waiting for network response
+    const localTop5 = magazines
       .filter((m) => {
         const matchCat =
           selectedCategory === "all" ||
@@ -57,23 +76,15 @@ export default function MagazineCatalog({
           (m.categoryName &&
             m.categoryName.toLowerCase() === selectedCategory.toLowerCase())
         const matchText =
-          m.title.toLowerCase().includes(q) ||
-          (m.description && m.description.toLowerCase().includes(q))
+          m.title.toLowerCase().includes(q.toLowerCase()) ||
+          (m.description && m.description.toLowerCase().includes(q.toLowerCase()))
         return matchCat && matchText
       })
       .slice(0, 5)
-  }, [searchQuery, paradeResults, magazines, selectedCategory])
 
-  // Debounced search to ParadeDB BM25 API
-  useEffect(() => {
-    if (!searchQuery.trim()) {
-      setParadeResults(null)
-      setSearchSource(null)
-      setIsSearching(false)
-      return
-    }
-
+    setSuggestionHits(localTop5)
     setIsSearching(true)
+
     const timer = setTimeout(async () => {
       try {
         const catParam =
@@ -81,24 +92,59 @@ export default function MagazineCatalog({
             ? `&category=${encodeURIComponent(selectedCategory)}`
             : ""
         const res = await fetch(
-          `/api/magazines?search=${encodeURIComponent(searchQuery)}${catParam}`
+          `/api/magazines?search=${encodeURIComponent(q)}${catParam}`
         )
         if (res.ok) {
           const data = await res.json()
           if (data && Array.isArray(data.magazines)) {
-            setParadeResults(data.magazines)
-            setSearchSource(data.source || "paradedb-bm25")
+            setSuggestionHits(data.magazines.slice(0, 5))
+            setSearchSource(data.source || "meilisearch")
           }
         }
       } catch (e) {
-        console.warn("Search fetch error, staying on local fallback:", e)
+        console.warn("Suggestion fetch error:", e)
       } finally {
         setIsSearching(false)
       }
-    }, 250)
+    }, 200)
 
     return () => clearTimeout(timer)
-  }, [searchQuery, selectedCategory])
+  }, [searchQuery, selectedCategory, magazines])
+
+  // Fetch full search results whenever appliedQuery or category changes
+  useEffect(() => {
+    if (!appliedQuery.trim()) {
+      setSearchResults(null)
+      return
+    }
+
+    let isMounted = true
+    const fetchApplied = async () => {
+      try {
+        const catParam =
+          selectedCategory !== "all"
+            ? `&category=${encodeURIComponent(selectedCategory)}`
+            : ""
+        const res = await fetch(
+          `/api/magazines?search=${encodeURIComponent(appliedQuery)}${catParam}`
+        )
+        if (res.ok && isMounted) {
+          const data = await res.json()
+          if (data && Array.isArray(data.magazines)) {
+            setSearchResults(data.magazines)
+            setSearchSource(data.source || "meilisearch")
+          }
+        }
+      } catch (e) {
+        console.warn("Applied search fetch error:", e)
+      }
+    }
+
+    fetchApplied()
+    return () => {
+      isMounted = false
+    }
+  }, [appliedQuery, selectedCategory])
 
   // Listen for reset events (e.g. clicking logo or home link while already on home)
   useEffect(() => {
@@ -113,6 +159,9 @@ export default function MagazineCatalog({
     const handleResetHome = () => {
       setSelectedCategory("all")
       setSearchQuery("")
+      setAppliedQuery("")
+      setSearchResults(null)
+      setShowSuggestions(false)
       setCurrentPage(1)
       if (typeof window !== "undefined") {
         window.history.pushState(null, "", "/")
@@ -151,42 +200,81 @@ export default function MagazineCatalog({
     }
   }
 
-  // Handle search query change (resets pagination to page 1)
-  const handleSearchChange = (query: string) => {
-    setSearchQuery(query)
-    setShowSuggestions(query.trim().length > 0)
+  // Handle typing in search input (only opens suggestions popover, keeps grid below still)
+  const handleSearchInputChange = (text: string) => {
+    setSearchQuery(text)
+    if (text.trim().length > 0) {
+      setShowSuggestions(true)
+    } else {
+      // Clearing input clears applied filter on the grid as well
+      setShowSuggestions(false)
+      setAppliedQuery("")
+      setSearchResults(null)
+      setCurrentPage(1)
+    }
+  }
+
+  // Explicitly apply search to the main catalog grid
+  const applySearch = (targetQuery?: string) => {
+    const q = (typeof targetQuery === "string" ? targetQuery : searchQuery).trim()
+    setAppliedQuery(q)
+    setShowSuggestions(false)
     setCurrentPage(1)
     if (typeof window !== "undefined") {
       window.history.pushState(null, "", "/")
     }
   }
 
-  // Filter magazines by category and search keywords (using ParadeDB BM25 when available with local fallback)
-  const filteredMagazines =
-    paradeResults !== null && paradeResults.length > 0
-      ? paradeResults
-      : magazines.filter((mag) => {
-          const matchesCategory =
-            selectedCategory === "all" ||
-            mag.categoryId === selectedCategory ||
-            (mag.categoryName &&
-              mag.categoryName.toLowerCase() === selectedCategory.toLowerCase())
+  // Clear search filter
+  const clearSearch = () => {
+    setSearchQuery("")
+    setAppliedQuery("")
+    setSearchResults(null)
+    setShowSuggestions(false)
+    setCurrentPage(1)
+  }
 
-          const matchesSearch =
-            searchQuery.trim() === "" ||
-            mag.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            (mag.description &&
-              mag.description.toLowerCase().includes(searchQuery.toLowerCase()))
+  // Filter magazines for the main grid based on appliedQuery + selectedCategory
+  const filteredMagazines = useMemo(() => {
+    if (appliedQuery.trim() !== "") {
+      if (searchResults !== null) {
+        return searchResults
+      }
+      const q = appliedQuery.toLowerCase()
+      return magazines.filter((mag) => {
+        const matchesCategory =
+          selectedCategory === "all" ||
+          mag.categoryId === selectedCategory ||
+          (mag.categoryName &&
+            mag.categoryName.toLowerCase() === selectedCategory.toLowerCase())
+        const matchesText =
+          mag.title.toLowerCase().includes(q) ||
+          (mag.description && mag.description.toLowerCase().includes(q))
+        return matchesCategory && matchesText
+      })
+    }
 
-          return matchesCategory && matchesSearch
-        })
+    if (selectedCategory === "all") {
+      return magazines
+    }
+
+    return magazines.filter(
+      (m) =>
+        m.categoryId === selectedCategory ||
+        (m.categoryName &&
+          m.categoryName.toLowerCase() === selectedCategory.toLowerCase())
+    )
+  }, [appliedQuery, searchResults, magazines, selectedCategory])
 
   // Pagination calculation (strictly 20 magazines per page)
   const totalItems = filteredMagazines.length
   const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE))
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalItems)
-  const paginatedMagazines = filteredMagazines.slice(startIndex, startIndex + ITEMS_PER_PAGE)
+  const paginatedMagazines = filteredMagazines.slice(
+    startIndex,
+    startIndex + ITEMS_PER_PAGE
+  )
 
   // Navigate between pages with smooth scroll up to catalog
   const goToPage = (pageNumber: number) => {
@@ -204,7 +292,7 @@ export default function MagazineCatalog({
 
   return (
     <div className="space-y-8">
-      {/* Category Pills (Two-Row Wrap View, No Slider) & Search Bar */}
+      {/* Category Pills & Search Bar */}
       <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         {/* Search Input Bar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
@@ -217,58 +305,85 @@ export default function MagazineCatalog({
             </span>
           </div>
 
-          <div ref={searchContainerRef} className="relative w-full sm:w-80 flex flex-col items-end">
-            <div className="relative w-full">
-              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+          <div
+            ref={searchContainerRef}
+            className="relative w-full sm:w-88 flex flex-col items-end"
+          >
+            {/* Search Input Form */}
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                applySearch()
+              }}
+              className="relative w-full flex items-center"
+            >
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
-                placeholder="Search magazines (ParadeDB BM25)..."
+                placeholder="Search magazines (Meilisearch)..."
                 value={searchQuery}
-                onFocus={() => searchQuery.trim().length > 0 && setShowSuggestions(true)}
+                onFocus={() =>
+                  searchQuery.trim().length > 0 && setShowSuggestions(true)
+                }
                 onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === "Escape") {
+                  if (e.key === "Enter") {
+                    e.preventDefault()
+                    applySearch()
+                  } else if (e.key === "Escape") {
                     setShowSuggestions(false)
                   }
                 }}
-                onChange={(e) => handleSearchChange(e.target.value)}
-                className="w-full pl-9 pr-9 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 hover:bg-white transition"
+                onChange={(e) => handleSearchInputChange(e.target.value)}
+                className="w-full pl-9 pr-20 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 hover:bg-white transition"
               />
-              {isSearching ? (
-                <Loader2 className="w-3.5 h-3.5 text-indigo-500 animate-spin absolute right-3.5 top-1/2 -translate-y-1/2" />
-              ) : searchQuery && searchSource === "paradedb-bm25" ? (
-                <Sparkles className="w-3.5 h-3.5 text-indigo-600 absolute right-3.5 top-1/2 -translate-y-1/2" />
-              ) : null}
-            </div>
 
-            {searchQuery && searchSource === "paradedb-bm25" && (
-              <span className="text-[10px] text-indigo-600 font-semibold tracking-wider flex items-center gap-1 mt-1">
-                <Sparkles className="w-2.5 h-2.5" />
-                ParadeDB BM25 Ranked
-              </span>
-            )}
+              {/* Action Buttons inside Input */}
+              <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center space-x-1">
+                {isSearching && (
+                  <Loader2 className="w-3.5 h-3.5 text-indigo-500 animate-spin mr-1" />
+                )}
 
-            {/* Instant Floating Suggestions Popover */}
+                {searchQuery.trim().length > 0 && (
+                  <button
+                    type="button"
+                    onClick={clearSearch}
+                    aria-label="Clear search"
+                    className="p-1 rounded-md text-slate-400 hover:text-slate-600 hover:bg-slate-200/60 transition"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+
+                <button
+                  type="submit"
+                  aria-label="Submit search"
+                  className="px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-[11px] font-bold shadow-xs transition"
+                >
+                  Cari
+                </button>
+              </div>
+            </form>
+
+            {/* Instant Floating Suggestions Popover (Autoclose on click) */}
             {showSuggestions && searchQuery.trim().length > 0 && (
               <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-2xl border border-slate-200/90 z-50 overflow-hidden divide-y divide-slate-100 animate-in fade-in slide-in-from-top-2 duration-150">
                 <div className="px-3.5 py-2 bg-slate-50 flex items-center justify-between text-[11px] font-semibold text-slate-500">
                   <span className="flex items-center gap-1.5">
-                    <Sparkles className="w-3 h-3 text-indigo-500" />
+                    <Zap className="w-3 h-3 text-indigo-500" />
                     Suggestions for &ldquo;{searchQuery}&rdquo;
                   </span>
-                  {searchSource === "paradedb-bm25" && (
-                    <span className="text-[10px] text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded font-mono font-bold">
-                      BM25
-                    </span>
-                  )}
+                  <span className="text-[10px] text-indigo-600 bg-indigo-50 px-1.5 py-0.5 rounded font-mono font-bold">
+                    Meilisearch
+                  </span>
                 </div>
 
-                {suggestions.length === 0 ? (
+                {suggestionHits.length === 0 ? (
                   <div className="p-4 text-center text-xs text-slate-500">
-                    No matching magazines found for &ldquo;{searchQuery}&rdquo;
+                    No magazines found matching &ldquo;{searchQuery}&rdquo;
                   </div>
                 ) : (
                   <div className="py-1 max-h-80 overflow-y-auto">
-                    {suggestions.map((item) => (
+                    {suggestionHits.map((item) => (
                       <Link
                         key={item.id}
                         href={`/magazine/${item.id}`}
@@ -313,10 +428,10 @@ export default function MagazineCatalog({
                 <div className="p-2 bg-slate-50/80 text-center border-t border-slate-100">
                   <button
                     type="button"
-                    onClick={() => setShowSuggestions(false)}
+                    onClick={() => applySearch(searchQuery)}
                     className="text-[11px] font-bold text-indigo-600 hover:text-indigo-700 transition flex items-center justify-center space-x-1 mx-auto"
                   >
-                    <span>View all {filteredMagazines.length} issues in grid below</span>
+                    <span>Tampilkan semua hasil di grid bawah</span>
                     <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
@@ -324,6 +439,27 @@ export default function MagazineCatalog({
             )}
           </div>
         </div>
+
+        {/* Active Applied Search Filter Pill */}
+        {appliedQuery && (
+          <div className="flex items-center justify-between bg-indigo-50/70 border border-indigo-100 px-3.5 py-2 rounded-xl text-xs text-indigo-950">
+            <div className="flex items-center space-x-2">
+              <span className="font-semibold text-indigo-700">Filter Aktif:</span>
+              <span className="font-bold">&ldquo;{appliedQuery}&rdquo;</span>
+              <span className="text-indigo-500">
+                ({filteredMagazines.length} majalah ditemukan)
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={clearSearch}
+              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-white border border-indigo-200 text-indigo-700 hover:bg-indigo-100/60 font-semibold text-[11px] transition shadow-2xs"
+            >
+              <X className="w-3 h-3" />
+              Reset Pencarian
+            </button>
+          </div>
+        )}
 
         {/* 2-Row Visible Category Badges (No Slider / No Horizontal Scrollbar) */}
         <div className="flex flex-wrap items-center gap-2">
@@ -375,8 +511,8 @@ export default function MagazineCatalog({
             No magazines found
           </h3>
           <p className="text-xs text-slate-500 max-w-sm mx-auto">
-            {searchQuery
-              ? `No magazines match "${searchQuery}". Try a different keyword.`
+            {appliedQuery
+              ? `No magazines match "${appliedQuery}". Try a different keyword.`
               : "No issues available in this category yet."}
           </p>
         </div>

@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getMagazines, addMagazines, updateMagazine, deleteMagazine } from "@/lib/db"
-import { searchMagazinesParadeDb, syncMagazinesToParadeDb } from "@/lib/paradedb"
+import { searchMagazinesMeili, syncMagazinesToMeili, getMeiliClient, INDEX_NAME } from "@/lib/meilisearch"
 
 export const dynamic = "force-dynamic"
 
@@ -10,15 +10,15 @@ export async function GET(req: NextRequest) {
   const search = searchParams.get("search") || undefined
 
   if (search && search.trim() !== "") {
-    // 1. Attempt ParadeDB BM25 full-text search
+    // 1. Attempt Meilisearch full-text typo-tolerant search
     try {
-      const paradeResult = await searchMagazinesParadeDb(search, category)
-      if (paradeResult && paradeResult.magazines.length > 0) {
+      const meiliResult = await searchMagazinesMeili(search, category)
+      if (meiliResult && meiliResult.magazines.length > 0) {
         return NextResponse.json(
           {
-            magazines: paradeResult.magazines,
-            source: "paradedb-bm25",
-            bm25Scores: paradeResult.bm25Scores,
+            magazines: meiliResult.magazines,
+            source: "meilisearch",
+            totalHits: meiliResult.totalHits,
           },
           {
             headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
@@ -26,7 +26,7 @@ export async function GET(req: NextRequest) {
         )
       }
     } catch (e: any) {
-      console.warn("[API] ParadeDB search exception, using fallback:", e.message)
+      console.warn("[API] Meilisearch exception, using fallback:", e.message)
     }
 
     // 2. Safe local store.json fallback
@@ -88,6 +88,12 @@ export async function POST(req: NextRequest) {
     }
 
     const created = addMagazines(items)
+
+    // Asynchronously sync to Meilisearch
+    syncMagazinesToMeili(created).catch((e) =>
+      console.warn("[API] Background Meilisearch sync warning:", e.message)
+    )
+
     return NextResponse.json(
       {
         success: true,
@@ -114,6 +120,12 @@ export async function PUT(req: NextRequest) {
     if (!updated) {
       return NextResponse.json({ error: "Magazine not found" }, { status: 404 })
     }
+
+    // Asynchronously update in Meilisearch
+    syncMagazinesToMeili([updated]).catch((e) =>
+      console.warn("[API] Background Meilisearch update warning:", e.message)
+    )
+
     return NextResponse.json(
       { success: true, magazine: updated },
       {
@@ -135,6 +147,12 @@ export async function DELETE(req: NextRequest) {
     if (!success) {
       return NextResponse.json({ error: "Magazine not found" }, { status: 404 })
     }
+
+    // Asynchronously delete document in Meilisearch
+    try {
+      getMeiliClient().index(INDEX_NAME).deleteDocument(id).catch(() => {})
+    } catch {}
+
     return NextResponse.json(
       { success: true, message: "Magazine deleted" },
       {

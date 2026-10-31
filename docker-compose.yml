@@ -37,19 +37,19 @@ services:
       - medusa-network
 
   # =========================================================================
-  # ParadeDB Search Engine (PostgreSQL 16 + pg_search & BM25 Tantivy Engine)
+  # Meilisearch Engine (Rust-based Ultra-fast Typo-tolerant Search Engine)
   # =========================================================================
-  paradedb:
-    image: paradedb/paradedb:latest-pg16
+  meilisearch:
+    image: getmeili/meilisearch:v1.12
     restart: unless-stopped
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: search_db
+      - MEILI_MASTER_KEY=majalahpdf_meilisearch_master_key_2026_ultra_secure
+      - MEILI_ENV=production
+      - MEILI_NO_ANALYTICS=true
     volumes:
-      - paradedb_data:/var/lib/postgresql/data
+      - meilisearch_data:/meili_data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d search_db"]
+      test: ["CMD-SHELL", "curl -fsS http://localhost:7700/health || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 10
@@ -144,10 +144,11 @@ services:
       S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-true}
       MEDUSA_ADMIN_EMAIL: ${MEDUSA_ADMIN_EMAIL:-admin@majalahpdf.my.id}
       MEDUSA_ADMIN_PASSWORD: ${MEDUSA_ADMIN_PASSWORD:-MajalahPdfAdmin2026!}
-      PARADEDB_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@paradedb:5432/search_db
+      MEILISEARCH_HOST: http://meilisearch:7700
+      MEILISEARCH_API_KEY: majalahpdf_meilisearch_master_key_2026_ultra_secure
     depends_on:
       - backend
-      - paradedb
+      - meilisearch
     volumes:
       - storefront_data:/app/data
       - storefront_uploads:/app/public/uploads
@@ -172,7 +173,7 @@ volumes:
     driver: local
   storefront_uploads:
     driver: local
-  paradedb_data:
+  meilisearch_data:
     driver: local
 
 networks:
