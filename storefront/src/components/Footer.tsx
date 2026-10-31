@@ -10,10 +10,12 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-3">
             <div className="flex items-center space-x-2 text-white font-bold text-lg">
-              <span className="w-7 h-7 rounded bg-indigo-600 flex items-center justify-center text-xs">
-                M
-              </span>
-              <span>DIGITALPITSTOP</span>
+              <img
+                src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg"
+                alt="Digital PitStop Logo"
+                className="h-8 w-auto object-contain rounded"
+              />
+              <span>Digital PitStop</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
               High-resolution digital magazine marketplace. Download and read PDF issues instantly across all devices.
@@ -106,7 +108,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3">
-          <p>© {new Date().getFullYear()} DIGITALPITSTOP - SOFTWARE. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Digital PitStop. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-3">
             <a
               href="https://wa.me/6282240404612"

@@ -50,11 +50,13 @@ export default function Navbar() {
             {/* Logo */}
             <div className="flex items-center space-x-3">
               <Link href="/" onClick={handleHomeClick} className="flex items-center space-x-2.5">
-                <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-black text-sm shadow">
-                  M
-                </span>
+                <img
+                  src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg"
+                  alt="Digital PitStop Logo"
+                  className="h-9 w-auto object-contain rounded-lg shadow-xs"
+                />
                 <span className="font-extrabold text-lg tracking-tight text-slate-900">
-                  DIGITALPITSTOP <span className="text-indigo-600 font-light text-sm">MAGAZINES</span>
+                  Digital PitStop
                 </span>
               </Link>
             </div>

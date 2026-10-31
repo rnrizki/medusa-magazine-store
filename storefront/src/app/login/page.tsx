@@ -10,12 +10,14 @@ export default function LoginPage() {
     <div className="min-h-[75vh] flex items-center justify-center px-4 py-16">
       <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-10 shadow-xl max-w-md w-full space-y-6">
         <div className="text-center space-y-2">
-          <Link href="/" className="inline-flex items-center space-x-2 text-indigo-600 mb-2">
-            <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-black text-sm shadow">
-              M
-            </span>
+          <Link href="/" className="inline-flex items-center space-x-2.5 text-indigo-600 mb-2">
+            <img
+              src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg"
+              alt="Digital PitStop Logo"
+              className="h-8 w-auto object-contain rounded-md"
+            />
             <span className="font-extrabold text-base tracking-tight text-slate-900">
-              DIGITALPITSTOP <span className="text-indigo-600 font-light text-xs">MAGAZINES</span>
+              Digital PitStop
             </span>
           </Link>
           <h1 className="text-2xl font-black text-slate-900">Welcome Back</h1>

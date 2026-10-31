@@ -7,7 +7,7 @@ import { CartProvider } from "../lib/cart-context"
 import { AuthProvider } from "../lib/auth-context"
 
 export const metadata: Metadata = {
-  title: "DIGITALPITSTOP Magazines | Premium Digital Editions",
+  title: "Digital PitStop | Premium Digital Editions",
   description:
     "Explore high-resolution digital magazines with instant delivery to your Gmail and seamless QRIS payment.",
 }

@@ -39,7 +39,7 @@ export async function sendOrderConfirmationEmail(
   const transporter = getTransporter()
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://majalahpdf.my.id"
-  const fromAddress = `DIGITALPITSTOP Magazines <${process.env.SMTP_USER || "notreseller.magazine@gmail.com"}>`
+  const fromAddress = `Digital PitStop <${process.env.SMTP_USER || "notreseller.magazine@gmail.com"}>`
 
   // Generate HTML for each purchased magazine item
   const itemsHtml = order.items
@@ -86,10 +86,10 @@ export async function sendOrderConfirmationEmail(
         <!-- Header with Picture Logo -->
         <div style="background-color: #0f172a; padding: 28px 24px; text-align: center;">
           <a href="${siteUrl}" target="_blank" style="text-decoration: none; display: inline-block;">
-            <img src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg" alt="DIGITALPITSTOP Logo" style="height: 56px; max-width: 220px; object-fit: contain; border-radius: 8px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;" />
+            <img src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg" alt="Digital PitStop Logo" style="height: 60px; max-width: 220px; object-fit: contain; border-radius: 8px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;" />
           </a>
-          <h1 style="color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">
-            DIGITALPITSTOP <span style="color: #818cf8; font-weight: 400;">MAGAZINES</span>
+          <h1 style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;">
+            Digital PitStop
           </h1>
           <p style="color: #94a3b8; font-size: 12px; margin: 6px 0 0 0;">
             Akses Digital PDF & Struk Pembelian
@@ -165,10 +165,9 @@ export async function sendOrderConfirmationEmail(
             ✉️ Email: <a href="mailto:notreseller.magazine@gmail.com" style="color: #6366f1; text-decoration: none;">notreseller.magazine@gmail.com</a>
           </p>
           <p style="margin: 0; font-size: 11px; color: #94a3b8;">
-            © ${new Date().getFullYear()} DIGITALPITSTOP MAGAZINES. All rights reserved.<br>
+            © ${new Date().getFullYear()} Digital PitStop. All rights reserved.<br>
             <a href="${siteUrl}" target="_blank" style="color: #94a3b8; text-decoration: underline;">majalahpdf.my.id</a>
           </p>
-        </div>
         </div>
 
       </div>
@@ -188,7 +187,7 @@ export async function sendOrderConfirmationEmail(
     const info = await transporter.sendMail({
       from: fromAddress,
       to: order.customerEmail,
-      subject: `[DIGITALPITSTOP] Akses Majalah Digital Anda (Order #${order.orderCode})`,
+      subject: `[Digital PitStop] Akses Majalah Digital Anda (Order #${order.orderCode})`,
       html: emailHtml,
     })
 
