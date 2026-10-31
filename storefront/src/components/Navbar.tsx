@@ -33,6 +33,15 @@ export default function Navbar() {
     setNameInput("")
   }
 
+  const handleHomeClick = () => {
+    if (typeof window !== "undefined") {
+      if (window.location.pathname === "/") {
+        window.dispatchEvent(new CustomEvent("reset-catalog-home"))
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      }
+    }
+  }
+
   return (
     <>
       <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-200">
@@ -40,7 +49,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <Link href="/" className="flex items-center space-x-2.5">
+              <Link href="/" onClick={handleHomeClick} className="flex items-center space-x-2.5">
                 <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center font-black text-sm shadow">
                   M
                 </span>
@@ -52,7 +61,7 @@ export default function Navbar() {
 
             {/* Middle Nav */}
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium text-slate-600">
-              <Link href="/" className="hover:text-slate-900 transition-colors">
+              <Link href="/" onClick={handleHomeClick} className="hover:text-slate-900 transition-colors">
                 All Issues
               </Link>
               {isLoggedIn && (

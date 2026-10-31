@@ -31,7 +31,16 @@ export default function Footer() {
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <Link href="/" className="hover:text-white transition">
+                <Link
+                  href="/"
+                  onClick={() => {
+                    if (typeof window !== "undefined" && window.location.pathname === "/") {
+                      window.dispatchEvent(new CustomEvent("reset-catalog-home"))
+                      window.scrollTo({ top: 0, behavior: "smooth" })
+                    }
+                  }}
+                  className="hover:text-white transition"
+                >
                   All Magazine Issues
                 </Link>
               </li>

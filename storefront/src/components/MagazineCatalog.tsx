@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Category, Magazine } from "../lib/types"
 import MagazineCard from "./MagazineCard"
 import { BookOpen, Search, ChevronLeft, ChevronRight } from "lucide-react"
@@ -22,16 +22,64 @@ export default function MagazineCatalog({
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState<number>(1)
 
+  // Listen for reset events (e.g. clicking logo or home link while already on home)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search)
+      const p = parseInt(params.get("page") || "1", 10)
+      if (p > 1) {
+        setCurrentPage(p)
+      }
+    }
+
+    const handleResetHome = () => {
+      setSelectedCategory("all")
+      setSearchQuery("")
+      setCurrentPage(1)
+      if (typeof window !== "undefined") {
+        window.history.pushState(null, "", "/")
+      }
+      const element = document.getElementById("magazine-catalog-section")
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth", block: "start" })
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      }
+    }
+
+    const handlePopState = () => {
+      if (typeof window !== "undefined") {
+        const params = new URLSearchParams(window.location.search)
+        const p = parseInt(params.get("page") || "1", 10)
+        setCurrentPage(p >= 1 ? p : 1)
+      }
+    }
+
+    window.addEventListener("reset-catalog-home", handleResetHome)
+    window.addEventListener("popstate", handlePopState)
+
+    return () => {
+      window.removeEventListener("reset-catalog-home", handleResetHome)
+      window.removeEventListener("popstate", handlePopState)
+    }
+  }, [])
+
   // Handle category change (resets pagination to page 1)
   const handleCategorySelect = (categoryId: string) => {
     setSelectedCategory(categoryId)
     setCurrentPage(1)
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", "/")
+    }
   }
 
   // Handle search query change (resets pagination to page 1)
   const handleSearchChange = (query: string) => {
     setSearchQuery(query)
     setCurrentPage(1)
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", "/")
+    }
   }
 
   // Filter magazines by category and search keywords
@@ -62,6 +110,10 @@ export default function MagazineCatalog({
   const goToPage = (pageNumber: number) => {
     if (pageNumber < 1 || pageNumber > totalPages) return
     setCurrentPage(pageNumber)
+    if (typeof window !== "undefined") {
+      const url = pageNumber === 1 ? "/" : `/?page=${pageNumber}`
+      window.history.pushState(null, "", url)
+    }
     const element = document.getElementById("magazine-catalog-section")
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" })
