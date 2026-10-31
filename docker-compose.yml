@@ -58,6 +58,35 @@ services:
       - medusa-network
 
   # =========================================================================
+  # Rust Dynamic Image Resizer & Optimizer API (Axum + SIMD WebP Engine)
+  # =========================================================================
+  image-optimizer:
+    build:
+      context: ./image-optimizer
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      PORT: 3001
+      RUST_LOG: info
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3001/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 15s
+    networks:
+      - medusa-network
+      - dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=dokploy-network"
+      - "traefik.http.routers.image-optimizer.rule=Host(`majalahpdf.my.id`) && PathPrefix(`/fit`)"
+      - "traefik.http.routers.image-optimizer.entrypoints=web,websecure"
+      - "traefik.http.services.image-optimizer.loadbalancer.server.port=3001"
+
+  # =========================================================================
   # Medusa v2 Backend & Admin Dashboard
   # =========================================================================
   backend:
@@ -146,9 +175,11 @@ services:
       MEDUSA_ADMIN_PASSWORD: ${MEDUSA_ADMIN_PASSWORD:-MajalahPdfAdmin2026!}
       MEILISEARCH_HOST: http://meilisearch:7700
       MEILISEARCH_API_KEY: majalahpdf_meilisearch_master_key_2026_ultra_secure
+      IMAGE_OPTIMIZER_URL: http://image-optimizer:3001
     depends_on:
       - backend
       - meilisearch
+      - image-optimizer
     volumes:
       - storefront_data:/app/data
       - storefront_uploads:/app/public/uploads

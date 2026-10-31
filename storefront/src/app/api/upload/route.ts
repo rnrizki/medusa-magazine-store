@@ -18,8 +18,14 @@ export async function POST(req: NextRequest) {
 
     const result = await uploadToStorage(buffer, safeName, contentType)
 
+    const isImage = contentType.startsWith("image/")
+    const thumbnailUrl = isImage && result.url
+      ? `/fit?url=${encodeURIComponent(result.url)}&w=300&h=400&format=webp`
+      : undefined
+
     return NextResponse.json({
       url: result.url,
+      thumbnailUrl,
       storageType: result.storageType,
       name: file.name,
       size: file.size,

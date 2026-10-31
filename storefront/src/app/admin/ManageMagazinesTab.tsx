@@ -110,6 +110,9 @@ export default function ManageMagazinesTab({
       if (!res.ok) throw new Error("Upload failed")
       const data = await res.json()
       updateEditField(field, data.url)
+      if (field === "coverImage" && data.thumbnailUrl) {
+        updateEditField("thumbnailUrl", data.thumbnailUrl)
+      }
     } catch (e: any) {
       alert("Failed to upload file to storage: " + e.message)
     } finally {
