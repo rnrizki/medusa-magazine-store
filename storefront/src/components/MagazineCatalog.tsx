@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react"
 import { Category, Magazine } from "../lib/types"
 import MagazineCard from "./MagazineCard"
-import { BookOpen, Search, ChevronLeft, ChevronRight } from "lucide-react"
+import { BookOpen, Search, ChevronLeft, ChevronRight, Sparkles, Loader2 } from "lucide-react"
 
 interface MagazineCatalogProps {
   initialCategories: Category[]
@@ -21,6 +21,45 @@ export default function MagazineCatalog({
   const [selectedCategory, setSelectedCategory] = useState<string>("all")
   const [searchQuery, setSearchQuery] = useState("")
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [paradeResults, setParadeResults] = useState<Magazine[] | null>(null)
+  const [isSearching, setIsSearching] = useState(false)
+  const [searchSource, setSearchSource] = useState<string | null>(null)
+
+  // Debounced search to ParadeDB BM25 API
+  useEffect(() => {
+    if (!searchQuery.trim()) {
+      setParadeResults(null)
+      setSearchSource(null)
+      setIsSearching(false)
+      return
+    }
+
+    setIsSearching(true)
+    const timer = setTimeout(async () => {
+      try {
+        const catParam =
+          selectedCategory !== "all"
+            ? `&category=${encodeURIComponent(selectedCategory)}`
+            : ""
+        const res = await fetch(
+          `/api/magazines?search=${encodeURIComponent(searchQuery)}${catParam}`
+        )
+        if (res.ok) {
+          const data = await res.json()
+          if (data && Array.isArray(data.magazines)) {
+            setParadeResults(data.magazines)
+            setSearchSource(data.source || "paradedb-bm25")
+          }
+        }
+      } catch (e) {
+        console.warn("Search fetch error, staying on local fallback:", e)
+      } finally {
+        setIsSearching(false)
+      }
+    }, 250)
+
+    return () => clearTimeout(timer)
+  }, [searchQuery, selectedCategory])
 
   // Listen for reset events (e.g. clicking logo or home link while already on home)
   useEffect(() => {
@@ -82,22 +121,25 @@ export default function MagazineCatalog({
     }
   }
 
-  // Filter magazines by category and search keywords
-  const filteredMagazines = magazines.filter((mag) => {
-    const matchesCategory =
-      selectedCategory === "all" ||
-      mag.categoryId === selectedCategory ||
-      (mag.categoryName &&
-        mag.categoryName.toLowerCase() === selectedCategory.toLowerCase())
+  // Filter magazines by category and search keywords (using ParadeDB BM25 when available)
+  const filteredMagazines =
+    paradeResults !== null
+      ? paradeResults
+      : magazines.filter((mag) => {
+          const matchesCategory =
+            selectedCategory === "all" ||
+            mag.categoryId === selectedCategory ||
+            (mag.categoryName &&
+              mag.categoryName.toLowerCase() === selectedCategory.toLowerCase())
 
-    const matchesSearch =
-      searchQuery.trim() === "" ||
-      mag.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (mag.description &&
-        mag.description.toLowerCase().includes(searchQuery.toLowerCase()))
+          const matchesSearch =
+            searchQuery.trim() === "" ||
+            mag.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            (mag.description &&
+              mag.description.toLowerCase().includes(searchQuery.toLowerCase()))
 
-    return matchesCategory && matchesSearch
-  })
+          return matchesCategory && matchesSearch
+        })
 
   // Pagination calculation (strictly 20 magazines per page)
   const totalItems = filteredMagazines.length
@@ -135,15 +177,28 @@ export default function MagazineCatalog({
             </span>
           </div>
 
-          <div className="relative w-full sm:w-72">
-            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-            <input
-              type="text"
-              placeholder="Search magazine titles..."
-              value={searchQuery}
-              onChange={(e) => handleSearchChange(e.target.value)}
-              className="w-full pl-9 pr-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 hover:bg-white transition"
-            />
+          <div className="relative w-full sm:w-80 flex flex-col items-end">
+            <div className="relative w-full">
+              <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                placeholder="Search magazines (ParadeDB BM25)..."
+                value={searchQuery}
+                onChange={(e) => handleSearchChange(e.target.value)}
+                className="w-full pl-9 pr-9 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 hover:bg-white transition"
+              />
+              {isSearching ? (
+                <Loader2 className="w-3.5 h-3.5 text-indigo-500 animate-spin absolute right-3.5 top-1/2 -translate-y-1/2" />
+              ) : searchQuery && searchSource === "paradedb-bm25" ? (
+                <Sparkles className="w-3.5 h-3.5 text-indigo-600 absolute right-3.5 top-1/2 -translate-y-1/2" />
+              ) : null}
+            </div>
+            {searchQuery && searchSource === "paradedb-bm25" && (
+              <span className="text-[10px] text-indigo-600 font-semibold tracking-wider flex items-center gap-1 mt-1">
+                <Sparkles className="w-2.5 h-2.5" />
+                ParadeDB BM25 Ranked
+              </span>
+            )}
           </div>
         </div>
 

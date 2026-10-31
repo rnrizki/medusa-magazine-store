@@ -1,11 +1,53 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getMagazines, addMagazines, updateMagazine, deleteMagazine } from "../../../lib/db"
+import { getMagazines, addMagazines, updateMagazine, deleteMagazine } from "@/lib/db"
+import { searchMagazinesParadeDb, syncMagazinesToParadeDb } from "@/lib/paradedb"
 
 export const dynamic = "force-dynamic"
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const category = searchParams.get("category") || undefined
+  const search = searchParams.get("search") || undefined
+
+  if (search && search.trim() !== "") {
+    // 1. Attempt ParadeDB BM25 full-text search
+    try {
+      const paradeResult = await searchMagazinesParadeDb(search, category)
+      if (paradeResult && paradeResult.magazines.length > 0) {
+        return NextResponse.json(
+          {
+            magazines: paradeResult.magazines,
+            source: "paradedb-bm25",
+            bm25Scores: paradeResult.bm25Scores,
+          },
+          {
+            headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
+          }
+        )
+      }
+    } catch (e: any) {
+      console.warn("[API] ParadeDB search exception, using fallback:", e.message)
+    }
+
+    // 2. Safe local store.json fallback
+    const all = getMagazines(category)
+    const q = search.toLowerCase()
+    const filtered = all.filter(
+      (m) =>
+        m.title.toLowerCase().includes(q) ||
+        (m.description && m.description.toLowerCase().includes(q))
+    )
+    return NextResponse.json(
+      {
+        magazines: filtered,
+        source: "fallback",
+      },
+      {
+        headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
+      }
+    )
+  }
+
   const magazines = getMagazines(category)
   return NextResponse.json(magazines, {
     headers: {

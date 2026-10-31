@@ -20,18 +20,38 @@ services:
       - medusa-network
 
   # =========================================================================
-  # Redis Cache & Event Bus Service
+  # Redis / Valkey Cache & Event Bus Service
   # =========================================================================
   redis:
-    image: redis:7-alpine
+    image: valkey/valkey:8-alpine
     restart: unless-stopped
     volumes:
       - redis_data:/data
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ["CMD-SHELL", "valkey-cli ping || redis-cli ping"]
       interval: 5s
       timeout: 3s
       retries: 5
+    networks:
+      - medusa-network
+
+  # =========================================================================
+  # ParadeDB Search Engine (PostgreSQL 16 + pg_search & BM25 Tantivy Engine)
+  # =========================================================================
+  paradedb:
+    image: paradedb/paradedb:latest-pg16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: search_db
+    volumes:
+      - paradedb_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d search_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     networks:
       - medusa-network
 
@@ -122,8 +142,10 @@ services:
       S3_FORCE_PATH_STYLE: ${S3_FORCE_PATH_STYLE:-true}
       MEDUSA_ADMIN_EMAIL: ${MEDUSA_ADMIN_EMAIL:-admin@majalahpdf.my.id}
       MEDUSA_ADMIN_PASSWORD: ${MEDUSA_ADMIN_PASSWORD:-MajalahPdfAdmin2026!}
+      PARADEDB_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@paradedb:5432/search_db
     depends_on:
       - backend
+      - paradedb
     volumes:
       - storefront_data:/app/data
       - storefront_uploads:/app/public/uploads
@@ -145,6 +167,8 @@ volumes:
   storefront_data:
     driver: local
   storefront_uploads:
+    driver: local
+  paradedb_data:
     driver: local
 
 networks:
