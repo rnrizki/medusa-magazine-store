@@ -73,514 +73,1449 @@
   ],
   "magazines": [
     {
-      "id": "mag_fashion_1",
-      "title": "NEO-VOGUE - Minimalism in Tokyo & Paris",
-      "issueNumber": "Fall/Winter Edition",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion",
-      "price": 45000,
-      "coverImage": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Exploring architectural silhouettes, bespoke Japanese denim tailoring, and the renaissance of organic textiles. Curated by top Parisian art directors with studio lookbooks.",
+      "id": "mag_1791203926111_lkrq7",
+      "title": "The Cook_s Illustrated Cookbook- 2,000 Recipes from 20 Years of America_s Most Trusted Cooking Magazine.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Cook_s-Illustrated-Cookbook--2000-Recipes-from-20-Years-of-America_s-Most-Trusted-Cooking-Magazine.webp",
+      "description": "Welcome to a monumental culinary retrospective that distills two decades of rigorous kitchen science, meticulous recipe testing, and uncompromising culinary passion into an indispensable digital archive. This definitive volume brings together two thousand foolproof recipes, exhaustive ingredient breakdowns, and the legendary trial-and-error methodologies that have made America's most trusted cooking publication a household staple for home cooks and epicurean purists alike. From perfecting the foundational techniques of roasting and baking to demystifying regional comfort foods and international delicacies, every page serves as a masterclass in domestic gastronomy.\n\nIn this special digital edition, we explore the modern evolution of home cooking through the lens of data-driven flavor development and kitchen innovation. Discover how decades of rigorous equipment testing and foolproof protocol have transformed the way we approach everyday meals, turning the kitchen into a laboratory of delicious possibilities. Whether you are refining your knife skills, seeking the ultimate weeknight dinner blueprint, or elevating your weekend baking repertoire, this curated collection invites you to cook with absolute confidence and enduring inspiration.",
       "highlights": [
-        "Tokyo Streetwear Meets French Haute Couture",
-        "Sustainable Cashmere & Smart Fabric Innovations",
-        "Photographic Gallery: 40 Pages of Midnight Paris"
+        "The Science of Searing: How rigorous kitchen testing redefined the perfect weeknight steak",
+        "Twenty Years of Baking Breakthroughs: The definitive guide to foolproof crusts, cakes, and breads",
+        "Pantry Architecture: Essential ingredients and equipment that revolutionize home cooking"
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "pdfUrl": "https://drive.google.com/file/d/1dkkuRUUjOdZ58kqgL662VaMKubU2yEDb/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_fashion_2",
-      "title": "VOGUE NOIR - Tokyo Streetwear Revolution",
-      "issueNumber": "Issue #14 • Street Culture",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion",
-      "price": 45000,
-      "coverImage": "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Harajuku subcultures reimagined through luxury monochrome lenses. An intimate look at underground Tokyo runway collectives and raw urban tailoring.",
+      "id": "mag_1791203926111_952k9",
+      "title": "The Complete Raspberry Pi Coding Manual March_2024     02261368.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Raspberry-Pi-Coding-Manual-March_2024-02261368.webp",
+      "description": "The March 2024 edition of The Complete Raspberry Pi Coding Manual dives deep into the intersection of accessible computing, software engineering, and hardware innovation. As micro-controllers and single-board computers continue to revolutionize experimental science and domestic automation, this issue serves as an indispensable guide for both novice tinkerers and seasoned systems architects looking to harness the full potential of Python and Linux-based environments.",
       "highlights": [
-        "The Monochrome Aesthetic: Black on Black Styling",
-        "Tokyo Underground Atelier Interviews",
-        "Streetwear As Modern High Fashion"
+        "Feature Article 1: Python Mastery on Silicon - Advanced debugging techniques and performance optimization for resource-constrained environments.",
+        "Feature Article 2: IoT Ecosystems in Action - Building smart environmental sensors and automated laboratory data loggers from scratch.",
+        "Feature Article 3: Next-Gen Robotics Control - Integrating machine learning models with GPIO pins for autonomous hardware navigation."
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_fashion_3",
-      "title": "PARIS COUTURE - The Haute Minimalist Era",
-      "issueNumber": "Collection No. 8",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion",
-      "price": 48000,
-      "coverImage": "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Inside the historic Parisian ateliers adopting zero-waste draping and ultra-clean silhouettes. An ode to timeless craftsmanship and post-modern elegance.",
-      "highlights": [
-        "Exclusive Backstage Access at Paris Fashion Week",
-        "The Architecture of Hand-Sewn Garments",
-        "Color Palettes of Autumn 2026"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_fashion_4",
-      "title": "ATELIER SILHOUETTE - Sustainable Italian Denim",
-      "issueNumber": "Summer Capsule",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion",
-      "price": 42000,
-      "coverImage": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Crafted in Milan and Tuscany. A masterclass in vintage shuttle loom selvedge denim and sustainable circular fashion systems.",
-      "highlights": [
-        "Artisan Loom Weaving in Northern Italy",
-        "Zero-Water Indigo Dye Techniques",
-        "Denim Jacket Pattern Drafting Guide"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_fashion_5",
-      "title": "MODA AVANT-GARDE - Seoul Runway & Cyber Textiles",
-      "issueNumber": "Vol. 22 • Next Trend",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion",
-      "price": 46000,
-      "coverImage": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "South Korea's fashion scene blends digital tech with bold experimental silhouettes, conductive fabrics, and neon-infused luxury.",
-      "highlights": [
-        "Smart Interactive Fabrics on Seoul Runways",
-        "K-Fashion Designer Collective Spotlight",
-        "The Convergence of Gaming Skins and Real-World Apparel"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_tech_1",
-      "title": "QUANTUM AI - Issue #42: The Synthetic Mind",
-      "issueNumber": "Vol. 42 • Oct 2026",
-      "categoryId": "cat_science",
+      "pdfUrl": "https://drive.google.com/file/d/1upKjdf3_V6sUOJ67ntFDRMfh53DD4V7y/view?usp=drivesdk",
       "categoryName": "Science",
-      "price": 49000,
-      "coverImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "An exclusive deep-dive into autonomous neural architectures, post-silicon computation, and the moral landscape of sentient AI. Features an interview with leading frontier lab founders and a 30-page editorial retrospective.",
-      "highlights": [
-        "Exclusive: Inside DeepMind's Next Frontier Reasoning Engine",
-        "Quantum Supremacy in Commercial Logistics",
-        "The Blueprint for Autonomous Robotics Operating Systems"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_tech_2",
-      "title": "SYNTHETIC MIND - Autonomous AI & Neural Agents",
-      "issueNumber": "Vol. 12 • Frontier Labs",
-      "categoryId": "cat_science",
+      "id": "mag_1791203926111_mo528",
+      "title": "The Complete Python Coding Manual_Ed21_2024  83146641.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Python-Coding-Manual_Ed21_2024-83146641.webp",
+      "description": "In an era defined by data proliferation and artificial intelligence, mastering programming has transitioned from a specialized tech skill to a fundamental scientific literacy. This comprehensive edition of the Python coding manual delivers an authoritative deep dive into modern software engineering, algorithmic efficiency, and the practical application of code across diverse technical disciplines. From foundational syntax to advanced data structures, it serves as an indispensable roadmap for both emerging programmers and seasoned developers seeking to optimize their digital workflows.\n\nWithin these digital pages, the manual unpacks the evolving landscape of computational problem-solving with remarkable clarity and precision. Readers are guided through complex programming paradigms, automated testing strategies, and scalable architecture design that mirror the rigorous demands of contemporary research and industry development. It is an essential compendium that bridges theoretical computer science with tangible, real-world execution, cementing Python's status as the quintessential language of modern innovation.",
+      "highlights": [
+        "Feature Article 1: Mastering Asynchronous Programming: Unlocking high-performance concurrency in modern applications",
+        "Feature Article 2: The Data Scientist's Toolkit: Advanced Pandas and NumPy techniques for complex data wrangling",
+        "Feature Article 3: Architectural Elegance: Writing clean, maintainable, and PEP 8-compliant Python code at scale"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1355rREJWUbf69H1zKeEn7zb_3DrEoVxD/view?usp=drivesdk",
       "categoryName": "Science",
-      "price": 49000,
-      "coverImage": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Examining the rapid rise of multi-agent cognitive frameworks, self-healing codebases, and synthetic intelligence that reasons autonomously.",
-      "highlights": [
-        "Agentic Coding Systems and Developer Productivity",
-        "Neural Memory Architecture Breakdown",
-        "Ethical Guardrails for Autonomous Decision Systems"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_tech_3",
-      "title": "QUANTUM LOGIC - Supercomputing & Silicon Frontiers",
-      "issueNumber": "Special Issue #09",
-      "categoryId": "cat_science",
+      "id": "mag_1791203926111_ou3k1",
+      "title": "The Complete Guide to Digital Photography - December 2024.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Guide-To-Your-Horoscope-42364621.webp",
+      "description": "As the visual landscape continues its rapid evolution, the December 2024 edition of The Complete Guide to Digital Photography arrives as an essential masterclass for modern image-makers. This issue delves deeply into the convergence of advanced computational optics and traditional composition, offering creators a sophisticated roadmap for mastering both hardware and post-production artistry. From navigating the nuances of high-end mirrorless systems to harnessing dynamic range in challenging winter light, every page is curated to elevate the technical precision and aesthetic vision of the contemporary photographer.\n\nBeyond equipment reviews, this edition explores the profound cultural shift in how visual narratives are consumed and authenticated in the digital age. Readers are treated to exclusive masterclasses on minimalist framing, color grading innovations, and building a compelling portfolio that stands out in a saturated media ecosystem. Whether you are refining your commercial workflow or seeking fresh inspiration for personal projects, this issue serves as both an authoritative technical manual and a vibrant celebration of the art of seeing.",
+      "highlights": [
+        "Mastering the Winter Light: Advanced exposure techniques for high-contrast snowy landscapes and moody urban scenes",
+        "The Sensor Revolution: Unpacking the latest breakthroughs in high-megapixel mirrorless technology and computational photography",
+        "Editing for Emotion: A masterclass in color science, tonal mapping, and developing your signature post-production aesthetic"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1zeDVi3nTO0jTymitRKbDQizrhAnzsa6j/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_acrqw",
+      "title": "The Complete Guide To Your Horoscope   42364621.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Guide-to-Digital-Photography---December-2024.webp",
+      "description": "As celestial alignments shift and we navigate the complexities of modern existence, understanding our astrological blueprint has never felt more vital for personal wellness and self-discovery. This comprehensive digital guide serves as an indispensable roadmap for cosmic alignment, translating ancient stellar wisdom into actionable daily rituals, emotional intelligence, and mindful living practices.\n\nFrom decoding intricate birth charts to harnessing lunar cycles for maximum productivity and inner peace, the issue bridges the gap between mystical tradition and contemporary lifestyle needs. It offers readers a sophisticated lens through which to examine their relationships, career trajectories, and personal growth, proving that self-care is as much about looking to the stars as it is about looking within.",
+      "highlights": [
+        "Navigating the Cosmic Reset: How to align your daily wellness rituals with upcoming planetary retrogrades",
+        "The Astrology of Ambition: Leveraging your natal chart for ultimate career and financial clarity",
+        "Moon Phases and Mindfulness: A curated guide to emotional resilience through lunar cycles"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1Mi3vYXLFwsXC6ym-nwrxs-hNdHv6JBEj/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_fs462",
+      "title": "The Complete Black White Photography Manual 21th Edition 2024  13783942.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Black-White-Photography-Manual-21th-Edition-2024-13783942.webp",
+      "description": "In an era saturated by the ephemeral glow of high-definition color, the 21st edition of The Complete Black & White Photography Manual arrives as a meditative masterclass in form, shadow, and texture. This year’s volume strips away the digital noise to return to the foundational principles of monochromatic composition, offering both seasoned professionals and dedicated hobbyists a rigorous exploration of tonal range and the psychological weight of light. It is an essential guide for those looking to master the stark, evocative power of the silver-screen aesthetic in a modern context.\n\nBeyond the technical schematics of exposure and post-processing, this edition serves as a curated gallery of visual philosophy. By dissecting the intersection of high-contrast minimalism and architectural geometry, the manual bridges the gap between traditional darkroom sensibilities and contemporary digital workflows. It stands as an authoritative manifesto for the visual storyteller, proving that by removing the distraction of color, we arrive at a more profound, timeless clarity.",
+      "highlights": [
+        "Feature Article 1: The Architecture of Silence: Mastering High-Contrast Urban Landscapes",
+        "Feature Article 2: Tonal Alchemy: Advanced Digital Post-Processing for the Monochrome Purist",
+        "Feature Article 3: Shadows as Subject: Why Negative Space Defines the Modern Frame"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1ESX9Ndp2zcICXkxkzh2GUBQfDX3ynSVO/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_5mdqf",
+      "title": "The Classic MotorCycle Apr 2024_58687358.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067417707_vn8r",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Classic-MotorCycle-Apr-2024_58687358.webp",
+      "description": "The April 2024 edition of The Classic MotorCycle serves as a definitive time capsule for enthusiasts, bridging the gap between historical preservation and the visceral joy of vintage mechanical engineering. This issue delves deep into the provenance of iconic marques, offering readers an immersive look at the restoration processes and the stories of the riders who defined an era of two-wheeled innovation. It remains an essential authority for those who view motorcycling not merely as a mode of transport, but as a storied lineage of craftsmanship and heritage.\n\nBeyond the technical specifications, the magazine captures the soul of the classic scene, celebrating the aesthetic and cultural impact of legendary machines from the mid-20th century. By combining meticulous archival research with evocative photography, this issue provides a sophisticated narrative on how these vintage platforms continue to influence modern design and engineering philosophy. It is a masterful curation that honors the past while ensuring the legacy of these mechanical icons remains vibrant for future generations of collectors and restorers.",
+      "highlights": [
+        "Feature Article 1: The Golden Era of British Singles: Uncovering the engineering secrets behind the legendary long-stroke machines.",
+        "Feature Article 2: Restoration Diaries: A step-by-step masterclass in bringing a dormant 1950s twin-cylinder back to life.",
+        "Feature Article 3: Roadside Relics: Capturing the fading beauty of barn-find treasures discovered in the rural heartlands."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1-pTusfBzUoRsUmseNQQMbENiZR910D_I/view?usp=drivesdk",
+      "categoryName": "Automotive",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_e3560",
+      "title": "The Big Issue - May 20 ,2024    57868368.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Big-Issue---May-20-2024-57868368.webp",
+      "description": "In this edition of The Big Issue, we turn our lens toward the intersection of human resilience and the shifting tides of social equity. Beyond the headlines of the day, this issue meticulously explores how individual agency can catalyze systemic change, offering a poignant look at the unsung heroes who navigate the complexities of modern life with grace and unwavering resolve. It is a masterclass in storytelling that bridges the gap between personal narrative and the broader societal landscape.\n\nFrom deep-dive investigations into the housing crisis to intimate profiles of those rebuilding their lives from the ground up, this issue serves as both a mirror and a manifesto. We challenge our readers to look past the surface-level discourse and engage with the gritty, authentic heart of the human experience. It is an essential read for anyone committed to understanding the pulse of our communities and the potential for a more compassionate, interconnected future.",
+      "highlights": [
+        "Feature Article 1: The Architecture of Hope: How community-led initiatives are rewriting the rules of urban survival.",
+        "Feature Article 2: Beyond the Breadline: A candid investigation into the hidden faces of the cost-of-living crisis.",
+        "Feature Article 3: Voices from the Margin: Why the most overlooked stories are the ones that define our collective progress."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1RKYqrrw5Zkz6QSh6uagnoq6nbIZYt51y/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_b1bzo",
+      "title": "The Big Issue - May 6 .2024_  51702718.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Big-Issue---May-6-.2024_-51702718.webp",
+      "description": "The May 6, 2024 edition of The Big Issue captures the profound intersection of grassroots social enterprise, contemporary culture, and human resilience. This issue dives deep into the lived experiences of society's most vulnerable while championing sustainable pathways toward economic independence and community renewal. Through incisive cultural commentary and deeply reported features, the magazine illuminates the quiet triumphs of everyday changemakers and offers a compelling lens on modern urban existence.\n\nBalancing hard-hitting investigative journalism with inspiring profiles, this number reflects the publication's enduring commitment to systemic change and social justice. Readers are invited to explore thought-provoking discourse on housing, grassroots activism, and the creative spirits reshaping our shared public spaces. It is an essential read for anyone invested in the cultural pulse of our cities and the empowerment of marginalized voices.",
+      "highlights": [
+        "Stepping Out of the Shadows: How grassroots community enterprises are redefining urban support systems and economic mobility",
+        "Voices of Resilience: Intimate portraits of creativity and survival from the frontline of modern homelessness",
+        "The Cultural Vanguard: How grassroots arts initiatives are breathing new life into neglected urban neighborhoods"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1j_I3ZqQ8_-losO-pcs2nX67ifWM9dzpz/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_q2l14",
+      "title": "The Aviation May -June 2024_  72862773.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067396718_pde1",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Aviation-May--June-2024_-72862773.webp",
+      "description": "The May-June 2024 edition of The Aviation delivers an uncompromising look at the evolving intersection of military aerospace power, geopolitical strategy, and cutting-edge defense technology. As global security dynamics shift rapidly, this issue provides deep-dive analyses into modern tactical air dominance, next-generation fighter development, and the logistical triumphs that keep air arms operational across contested theaters.\n\nFrom comprehensive assessments of strategic airlift capabilities to expert commentaries on emerging unmanned aerial systems and pilot training methodologies, this publication remains an essential resource for defense professionals and aerospace enthusiasts alike. It balances rigorous technical detail with compelling narrative journalism, capturing the relentless pace of innovation shaping the future of air warfare.",
+      "highlights": [
+        "Stealth Evolution: Inside the next generation of multi-role combat aircraft and electronic warfare integration",
+        "Global Air Mobility: How strategic transport fleets are rewriting the rules of rapid global deployment",
+        "The Unmanned Horizon: Evaluating the tactical impact of autonomous wingmen in modern air combat doctrines"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1Uo8pE_8x-mochaM9J3lpD-26MgQ2x2An/view?usp=drivesdk",
+      "categoryName": "Defense",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_i6cge",
+      "title": "The Artist – October 2024   99995654.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist--October-2024-99995654.webp",
+      "description": "The October 2024 issue of The Artist arrives as a masterclass in creative vision, bridging the timeless principles of fine art with the evolving language of contemporary spatial and visual design. Within these pages, we explore how modern creators are redefining our built environments, challenging traditional aesthetics, and infusing functional spaces with deep narrative resonance. From avant-garde interior concepts to the meticulous craftsmanship shaping today's most influential studios, this edition captures the pulse of a global design renaissance.\n\nBeyond the surface of curated aesthetics, this issue delves into the philosophy of creation, offering readers an intimate look at the minds driving contemporary culture forward. Through critical essays, studio visits, and in-depth profiles, we examine the intersection of materials, light, and human emotion. It is an indispensable guide for visionaries, collectors, and practitioners who view design not merely as decoration, but as an essential dialogue between humanity and its environment.",
+      "highlights": [
+        "The Architecture of Emotion: How modern spatial designers are crafting environments that heal and inspire",
+        "Inside the Studio: The material alchemy and relentless experimentation defining today's vanguard ceramicists",
+        "The New Minimalism: Stripping away the excess to reveal the profound narrative power of negative space"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1ulNR4OatM_c6zA7st_bAoGUhINZdUTYD/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_yv37n",
+      "title": "The Artist - July 2024   66713398.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---July-2024-66713398.webp",
+      "description": "Welcome to the July 2024 edition of The Artist, a masterclass in creative vision and contemporary craftsmanship. This issue delves deeply into the evolving intersections of fine art, interior aesthetics, and digital creativity, offering readers an immersive look at the minds shaping modern visual culture. From avant-garde studio profiles to timeless techniques in drawing and painting, every page is curated to inspire both seasoned creators and passionate enthusiasts.\n\nWithin these pages, we explore the tactile joys of traditional mediums alongside the bold experiments redefining the global art scene this summer. Whether you are seeking technical mastery through our signature masterclasses or looking to understand the philosophical undercurrents driving today's most compelling exhibitions, this issue serves as your definitive guide to the pulse of contemporary artistic expression.",
+      "highlights": [
+        "Mastering Light and Shadow: Advanced techniques for capturing atmospheric depth in watercolor and oil",
+        "Inside the Studio: How modern digital tools are transforming the traditional fine art landscape",
+        "The Sculptor's Journey: Crafting narrative and emotion through raw, unconventional materials"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1GUuSNZZTxdY-gkZyLmWL_JM2HBGube_m/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_uugkd",
+      "title": "The Artist - December 2024   91614066.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---December-2024-91614066.webp",
+      "description": "The December 2024 issue of The Artist captures the pinnacle of creative expression, bridging timeless traditional craftsmanship with the bold frontiers of contemporary aesthetics. This edition curates an inspiring dialogue across disciplines, examining how modern visionaries manipulate texture, light, and form to redefine our visual landscape. From avant-garde interior architecture to the meticulous nuances of fine studio practice, every page is designed to ignite the imagination of collectors, creators, and connoisseurs alike.\n\nWithin this collectors' edition, we delve deep into the minds of today's most influential makers, exploring the philosophy and raw materials driving the next wave of design evolution. Readers are invited on an intimate journey through secluded artist sanctuaries and cutting-edge urban workshops where the future of culture is being forged. It is a masterclass in visual storytelling, celebrating the uncompromising dedication required to transform raw concepts into enduring cultural milestones.",
+      "highlights": [
+        "The Architecture of Silence: Inside the minimalist sanctuaries where modern masters find their voice",
+        "Beyond the Canvas: How contemporary material innovation is rewriting the rules of spatial design",
+        "The Collector's Eye: Navigating the shifting paradigms of high-end art acquisition in a digital age"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1kQVEtLmT_vE6zg-TSSjSGY1vHxaviw3W/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_dzls7",
+      "title": "The Artist - August 2024   55397171.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---August-2024-55397171.webp",
+      "description": "The August 2024 issue of The Artist captures the evolving dialogue between traditional craftsmanship and contemporary visual aesthetics, offering readers an immersive journey into the minds shaping modern creative culture. From masterclasses in fine art techniques to visionary profiles of avant-garde creators, this edition serves as an essential manual for those who define the cutting edge of visual expression.\n\nWithin these digital pages, the publication unpacks the structural brilliance of contemporary installations and the meticulous processes behind world-class portfolios. By bridging technical mastery with conceptual daring, this issue provides both inspiration and practical insight, reinforcing The Artist's enduring status as an indispensable authority in the world of design and fine arts.",
+      "highlights": [
+        "Mastering the Canvas: Inside the studio of contemporary visionary Elena Vance",
+        "Form and Function: How modern architectural aesthetics are redefining urban spaces",
+        "The Digital Renaissance: Navigating the intersection of traditional mediums and AI-driven art"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/11J4GwXXRzucmv_vqkC0e-qZhFeEQL7zO/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_e5s27",
+      "title": "The Artist - April 2025    29728957.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---April-2025-29728957.webp",
+      "description": "Welcome to the April 2025 issue of The Artist, where we explore the evolving intersection of contemporary aesthetics, structural innovation, and creative philosophy. This month's curation dives deep into the minds of visionary creators who are redefining visual culture, offering readers an immersive look at avant-garde exhibitions, groundbreaking studio spaces, and the digital tools shaping the next generation of masterpieces.\n\nFrom in-depth profiles of reclusive sculptors to critical analyses of modern architectural movements, this edition serves as an essential companion for art enthusiasts and industry insiders alike. We challenge traditional boundaries, celebrating the relentless pursuit of beauty and conceptual depth that defines the modern artistic landscape.",
+      "highlights": [
+        "Sculpting Tomorrow: How digital fabrication is redefining physical art forms",
+        "Inside the Studio: A rare glimpse into the private sanctuaries of Europe's leading painters",
+        "The Color of Silence: Exploring minimalism and emotional resonance in contemporary installations"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1463rjf23UUT6ABPdxlZTYe73lkL3lW9n/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_brnpn",
+      "title": "The Art of Gaming - 5th Edition 2024   81600090.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Art-of-Gaming---5th-Edition-2024-81600090.webp",
+      "description": "Welcome to the fifth edition of The Art of Gaming for 2024, a definitive exploration of where interactive entertainment intersects with modern culture, design, and daily living. This issue delves deep into the evolving aesthetics of contemporary virtual worlds, examining how cutting-edge technology and narrative artistry shape the modern tastemaker's leisure. From the architectural brilliance of digital environments to the sophisticated hardware defining high-end home setups, gaming has firmly established itself as a cornerstone of refined lifestyle curation.\n\nWithin these digital pages, we unpack the cultural phenomenon of play as an immersive art form, spotlighting the visionaries who craft universes of breathtaking depth. Whether analyzing the minimalist elegance of indie masterpieces or the cinematic grandeur of AAA blockbusters, this edition offers discerning readers a sophisticated lens into the modern gaming ecosystem. Prepare to discover how pixel and polygon are redefining contemporary taste, luxury, and cultural engagement.",
+      "highlights": [
+        "Digital Sanctuary: Designing the Ultimate High-End Gaming Retreat for the Modern Home",
+        "Beyond the Controller: How Interactive Storytelling Is Reshaping Contemporary Narrative Art",
+        "The Aesthetics of Play: Visual Mastery and Minimalism in Indie Game Design"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1dhB2YYwr13b_iV-3gtn5qFIif-HeHOOQ/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_g0awl",
+      "title": "The Art of Dragon Age Inquisition   66969948.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Art-of-Dragon-Age-Inquisition-66969948.webp",
+      "description": "Step into the breathtaking, meticulously crafted realm of Thedas with this digital exploration of BioWare's acclaimed RPG masterpiece. This issue delves deep into the visual architecture, character concepts, and environmental storytelling that defined one of the most immersive fantasy worlds of our generation, celebrating the intersection of fine art and interactive entertainment.\n\nFrom majestic imperial architecture and sweeping gothic landscapes to the intricate detailing of armor and weaponry, our editorial pages dissect the visionary aesthetics that brought Dragon Age: Inquisition to life. We explore the masterclasses in digital concept art, texture design, and atmospheric lighting that continue to inspire contemporary world-builders and digital artists across the globe.",
+      "highlights": [
+        "The Architecture of Faith: Designing the Grand Cathedrals and Castles of Thedas",
+        "Weapons of Legend: The Industrial and Mythic Craftsmanship Behind Inquisition's Arsenal",
+        "Painting the Fade: Visualizing Surreal Realms and Ethereal Landscapes in Digital Media"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/17DlQcRAyFEF8S5vt4MYdXE7hq5U5EMN9/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_z0k75",
+      "title": "The Art of Design - September-October 2024      87262311.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Art-of-Design---September-October-2024-87262311.webp",
+      "description": "As the changing seasons invite a renewed focus on our living and working environments, the September-October 2024 edition of The Art of Design explores the intersection where architectural innovation meets tactile materiality. This issue curates the visionary voices reshaping the contemporary landscape, from avant-garde interior concepts to sustainable urban planning that redefines how we inhabit space. Through striking visual essays and deep-dive critiques, we examine how modern creators are balancing environmental consciousness with uncompromising aesthetic rigor.\n\nWithin these pages, readers are taken on an inspiring journey across global design capitals, uncovering the meticulous craftsmanship and bold experimentation driving today's most influential studios. Whether dissecting the minimalist resurgence in residential architecture or celebrating the maximalist revival in bespoke furnishings, this double-month issue serves as an indispensable manual for connoisseurs and creators alike. It is a tribute to the enduring power of design to elevate the everyday and provoke profound emotional resonance.",
+      "highlights": [
+        "The New Brutalism: How Contemporary Architects Are Softening Concrete for Modern Living",
+        "Crafting the Future: Inside the Studios Redefining Sustainable Luxury Furniture",
+        "Spaces of Silence: Exploring Minimalist Sanctuaries in an Overstimulated World"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1fJpuOKZBdGPnJesfnAN0MXLpvoPz8wWs/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_jkw4l",
+      "title": "The Adventure Zone volume 6 -- The Suffering Game.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Adventure-Zone-volume-6----The-Suffering-Game.webp",
+      "description": "In this compelling sixth volume of The Adventure Zone series, subtitled The Suffering Game, readers are plunged into a high-stakes narrative labyrinth where every choice demands a devastating toll. Masterminded by the McElroy family, this installment brilliantly marries tabletop roleplaying mechanics with deeply resonant themes of sacrifice, resilience, and camaraderie. As our intrepid heroes navigate the torturous halls of a magical wonderland, the boundary between triumph and tragedy blurs, offering a masterclass in modern serialized storytelling.\n\nOur cultural desk explores the profound psychological dimensions woven into this gripping fantasy arc, examining how serialized audio and graphic fiction redefine modern escapism. Beyond the whimsical humor that fans have come to adore, this issue exposes the raw emotional architecture underpinning high-fantasy quests. It is an essential cultural touchstone for enthusiasts of contemporary narrative arts, proving that the most memorable adventures are measured not by the treasure found, but by the burdens willingly borne.",
+      "highlights": [
+        "Feature Article 1: The Price of Progress: Deconstructing the moral calculus behind the wonderland's brutal sacrifices and player choices.",
+        "Feature Article 2: Humor in the Darkness: How the McElroy family balances crushing despair with signature comedic levity.",
+        "Feature Article 3: From Podcast to Page: The visual and narrative evolution of modern tabletop storytelling in graphic novel form."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1uaWwMlxkV4enBo3U3zpw_lrz4EOGkM75/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_ngqul",
+      "title": "Teenage Mutant Ninja Turtles The Last Ronin - Lost Years  - Kevin Eastman  10143635.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teenage-Mutant-Ninja-Turtles-The-Last-Ronin---Lost-Years---Kevin-Eastman-10143635.webp",
+      "description": "Step into the dystopian grit of New York City's shadowed alleys with this deep dive into the creative genesis of Kevin Eastman's landmark graphic narrative. This issue explores the poignant, solitary journey of the last surviving turtle, examining the heavy burdens of legacy, survival, and vengeance across a devastated urban landscape. Through exclusive commentary and behind-the-scenes sketches, readers are treated to a masterclass in modern comic book storytelling and world-building.\n\nBeyond the ink and panels, we dissect the cultural phenomenon that has sustained the TMNT franchise across four decades of reinvention. From the evolution of its darker, mature themes to the intricate creative process that brought the Lost Years to life, this edition offers an indispensable keepsake for longtime fans and contemporary art enthusiasts alike.",
+      "highlights": [
+        "The Evolution of the Shell: How Kevin Eastman reimagined a pop culture icon for a mature audience",
+        "Shadows of New York: Unpacking the desolate urban aesthetics and survivalist themes of the Last Ronin",
+        "From Sketch to Page: An exclusive visual breakdown of the legendary creative process behind the Lost Years"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1HedcbXvxn8MVggr6wI_-0TLhL0MPn7Vh/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_1nrsd",
+      "title": "Teenage Mutant Ninja Turtles The Last Ronin - Kevin Eastman   74791936.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teenage-Mutant-Ninja-Turtles-The-Last-Ronin---Kevin-Eastman-74791936.webp",
+      "description": "In this compelling digital edition, we explore the gritty, dystopian world of Kevin Eastman's landmark graphic novel masterpiece, Teenage Mutant Ninja Turtles: The Last Ronin. This issue dissects the poignant narrative of the lone surviving turtle on a quest for vengeance in a devastated New York City, examining how a classic childhood franchise matured into a dark, visceral epic of survival, legacy, and redemption. Through deep-dive analyses and creative retrospectives, we uncover the artistic choices and narrative risks that redefined an entire pop culture dynasty for a generation of older fans.\n\nBeyond the shadows of the Foot Clan, our pages delve into the enduring cultural resonance of independent comic book publishing and the evolution of modern graphic storytelling. We examine how Kevin Eastman and his collaborators channeled raw emotion and cinematic pacing into a modern samurai epic that resonates deeply with contemporary readers. It is an essential exploration of perseverance, artistic reinvention, and the timeless appeal of heroes forged in the crucible of loss.",
+      "highlights": [
+        "Feature Article 1: Echoes in the Ruins: How Kevin Eastman Redefined the TMNT Universe for a Maturing Generation",
+        "Feature Article 2: The Last Samurai of New York: Dissecting the Visual and Emotional Palette of The Last Ronin",
+        "Feature Article 3: From Independent Roots to Global Icon: The Legacy of Mirage Studios and the Evolution of Graphic Novel Artistry"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1nOOPyJ0gNVFMBOZ10-b8-4mjfC3UjXdM/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_batbk",
+      "title": "Teenage Mutant Ninja Turtles - The Last Ronin - The Covers - Kevin Eastman  96891363.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teenage-Mutant-Ninja-Turtles---The-Last-Ronin---The-Covers---Kevin-Eastman-96891363.webp",
+      "description": "Step into the dystopian grit of New York City through the masterclass visual artistry of Kevin Eastman's landmark publication, The Last Ronin. This curated compilation of iconic variant covers and raw preliminary sketches offers an unprecedented masterclass in comic book design, inkwork, and visual storytelling. Every page celebrates the aesthetic evolution of a pop culture phenomenon, dissecting the stark contrasts of shadow and light that define this brooding future narrative.\n\nBeyond the striking imagery, this issue serves as a profound celebration of graphic design and layout innovation in modern sequential art. We explore the meticulous drafting process behind the lone turtle's legendary arsenal and battle-scarred physique, highlighting how iconic character design can be reinvented for a mature audience. It is an essential visual archive for collectors and design aficionados alike, proving that powerful storytelling relies as much on visual atmosphere as it does on narrative prose.",
+      "highlights": [
+        "The Art of the Blade: Deconstructing Kevin Eastman's iconic cover compositions and visceral ink techniques",
+        "Evolution in Monochrome: A rare look at the raw pencil layouts and character redesigns that shaped the Ronin universe",
+        "Collecting a Legend: Inside the variant cover phenomenon that captured the imaginations of fans worldwide"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1FjWQ5mEHd970pqKLpHFcrn6jRtvMx_ux/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_aopcf",
+      "title": "Technology Magazine - August 2024     68434444.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Technology-Magazine---August-2024-68434444.webp",
+      "description": "The August 2024 issue of Technology Magazine delivers an incisive exploration of the digital transformation sweeping global enterprise. As artificial intelligence, cloud infrastructure, and cybersecurity converge at unprecedented speeds, this edition captures how modern organizations are redefining operational excellence and market agility. Through comprehensive executive interviews and deep-dive industry analyses, we spotlight the visionaries who are successfully navigating complex technological shifts to secure a competitive edge in a hyper-connected world.\n\nFrom the boardrooms of Silicon Valley to the frontlines of digital infrastructure development, this issue serves as an indispensable blueprint for forward-thinking leaders and innovators. We examine the critical intersections of data privacy, sustainable tech initiatives, and the evolving role of the CIO in driving enterprise-wide growth. Join us as we decode the strategies shaping the future of global commerce and technological leadership for the months and years ahead.",
+      "highlights": [
+        "Feature Article 1: The AI Imperative - How C-Suites Are Scaling Intelligent Automation Across Global Operations",
+        "Feature Article 2: Fortifying the Digital Perimeter - Next-Generation Cybersecurity Strategies for the Enterprise",
+        "Feature Article 3: Sustainable Tech at Scale - Balancing Rapid Innovation with Environmental Responsibility"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1V1ciCrb1cPhoyUKPvHDuVQe9iicFnZks/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_l27fg",
+      "title": "Tech_Advisor_-_January_2025,_2024  34423590.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech_Advisor_-_January_2025_2024-34423590.webp",
+      "description": "As we navigate the opening chapter of 2025, this issue of Tech Advisor serves as a definitive roadmap for the rapid acceleration of artificial intelligence and sustainable hardware integration. We peel back the layers on the silicon breakthroughs and algorithmic shifts that are currently redefining the boundaries of human-machine interaction, moving beyond mere speculation into the practical realities of a digitized future. It is a rigorous examination of the tools that will shape our scientific landscape, providing readers with the critical insights necessary to understand the convergence of high-performance computing and everyday utility.\n\nBeyond the technical specifications, this edition interrogates the ethical architecture of our evolving infrastructure. By highlighting the latest in energy-efficient processing and the next generation of data security, we offer a comprehensive look at how global innovators are balancing progress with sustainability. This is essential reading for the intellectually curious who demand more than just surface-level updates; it is a profound look at the engine room of modern discovery and the complex systems driving our global scientific advancement.",
+      "highlights": [
+        "Feature Article 1: The Quantum Leap: Why 2025 marks the end of traditional computing limitations.",
+        "Feature Article 2: Silicon Sustainability: How the next generation of processors is tackling the carbon footprint of AI.",
+        "Feature Article 3: Algorithmic Ethics: Navigating the complex regulatory landscape of autonomous machine learning."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1z_j4ynP0z4iTiIbvoy6-vSmqPjng9n3b/view?usp=drivesdk",
       "categoryName": "Science",
-      "price": 52000,
-      "coverImage": "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "A comprehensive review of 100,000-qubit topological quantum processors and room-temperature superconductors transforming data centers.",
-      "highlights": [
-        "Superconducting Qubits vs Neutral Atoms",
-        "Breaking Encryption: The Post-Quantum Cryptography Era",
-        "Cooling the Cloud: Cryogenic Infrastructure"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_tech_4",
-      "title": "NEURAL CHRONICLES - Generative Robotics in 2027",
-      "issueNumber": "Tech Annual 2026",
-      "categoryId": "cat_science",
+      "id": "mag_1791203926111_mxlh3",
+      "title": "Tech_Advisor_-_February_2025  58671140.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech_Advisor_-_February_2025-58671140.webp",
+      "description": "Spanning visionary perspectives and groundbreaking features, Tech_Advisor_-_February_2025  58671140.pdf sets a new standard for modern digital journalism. Designed specifically for high-definition mobile and tablet reading.\n\nInside, discover unprecedented behind-the-scenes access to industry visionaries, technical breakthroughs, and critical essays that question convention. Whether exploring cutting-edge developments or timeless artisan heritage, this edition delivers an unrivaled intellectual experience.",
+      "highlights": [
+        "Cover Story: The Definitive Breakdown of Tech Advisor February",
+        "Global Perspective: 30 Pages of Exclusive Studio & Field Photography",
+        "Critical Dialogue: Thought Leaders on the Future of Lifestyle"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/12tZvAOS9QymQ1QASHcc7XZ-dl6razg-h/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_xgg8n",
+      "title": "Tech Advisor June 2024_  38499189.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech-Advisor-June-2024_-38499189.webp",
+      "description": "As artificial intelligence permeates every facet of modern existence, the June 2024 issue of Tech Advisor delivers an indispensable roadmap for navigating the rapidly shifting digital frontier. This edition meticulously dissects the latest breakthroughs in consumer hardware, generative software, and data security, offering discerning readers a crystal-clear lens on the innovations reshaping our daily workflows. From rigorous benchmark testing of next-generation silicon to deep dives into the ethical implications of autonomous systems, the publication bridges the gap between complex engineering and practical everyday utility.\n\nBeyond raw processing power, this issue turns its gaze toward the sustainable evolution of consumer technology, exploring how manufacturers are balancing peak performance with eco-conscious design. Readers will find authoritative buying guides, expert troubleshooting insights, and visionary commentary on the gadgets defining the contemporary landscape. It is an essential compendium for tech enthusiasts and professionals alike, engineered to keep you ahead of the curve in an era of unprecedented acceleration.",
+      "highlights": [
+        "The AI PC Revolution: Unpacking the NPU processors redefining local machine intelligence and everyday productivity.",
+        "Battery Breakthroughs to Come: How solid-state research is finally preparing to conquer our eternal charging anxieties.",
+        "The Ultimate Privacy Audit: Essential software tweaks and hardware habits to reclaim your digital sovereignty in 2024."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1hVd7k4gdFnl4Nd8PoENpmedBnKcjyea_/view?usp=drivesdk",
       "categoryName": "Science",
-      "price": 48000,
-      "coverImage": "https://images.unsplash.com/photo-1617791160505-6f00b656715b?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "From factory automation to humanoid companions: how visual-language-action models empower machines to perceive and touch the physical world.",
-      "highlights": [
-        "Humanoid Bipedal Locomotion Telemetry",
-        "End-to-End Reinforcement Learning from Real-World Video",
-        "Factory Floor Deployments in Tokyo and Munich"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_tech_5",
-      "title": "CYBERPUNK CODE - Open Source Intelligence & Security",
-      "issueNumber": "Cyber Security Vol. 5",
-      "categoryId": "cat_science",
+      "id": "mag_1791203926111_s1f5j",
+      "title": "Tech Advisor - May 2025 108006.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech-Advisor---May-2025-108006.webp",
+      "description": "As the digital landscape shifts into high gear this spring, the May 2025 issue of Tech Advisor cuts through the noise with rigorous, forward-looking analysis of the hardware and software shaping our immediate future. From breakthrough processor architectures to next-generation AI integrations redefining everyday productivity, this edition serves as an indispensable guide for professionals and enthusiasts navigating the bleeding edge of innovation. Our expert editorial team breaks down complex technological leaps into actionable insights, ensuring readers stay ahead of the curve in an increasingly connected world.\n\nBeyond raw specs and benchmark scores, this issue explores the profound ethical and practical implications of emerging consumer tech. We evaluate how the latest devices harmonize security, sustainability, and ultra-portability, offering a nuanced perspective on what makes a truly exceptional product in today's crowded market. Whether you are upgrading your workspace, auditing your digital privacy, or simply tracking the trajectory of modern engineering, Tech Advisor delivers the definitive verdict on the tools driving tomorrow's progress.",
+      "highlights": [
+        "The Silicon Revolution: How next-gen processors are redefining mobile computing performance and battery efficiency.",
+        "AI at the Edge: Practical workflows and hardware requirements for running local language models securely.",
+        "The Ultimate Display Shootout: OLED versus Micro-LED in the quest for the ultimate professional monitor."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1JdbOv4XibAZ1IpDmgp7CDMHR3Q9TkftU/view?usp=drivesdk",
       "categoryName": "Science",
-      "price": 45000,
-      "coverImage": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Investigating cryptographic vulnerabilities, decentralized autonomous organizations, and the defenders guarding critical digital infrastructure.",
-      "highlights": [
-        "Zero-Day Exploits Unveiled by Red Teams",
-        "Hardware Enclaves and Secure Enclave Bypasses",
-        "The Linux Kernel Security Evolution"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_auto_1",
-      "title": "APEX HORSEPOWER - Hypercars of 2027",
-      "issueNumber": "Edition #88 • Special Release",
-      "categoryId": "cat_automotive",
-      "categoryName": "Automotive",
-      "price": 55000,
-      "coverImage": "https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Witness the clash of 2000-horsepower hybrid titans on the Nürburgring Nordschleife. Complete with dyno telemetry, track aerofoil analysis, and high-resolution cockpit photography.",
+      "id": "mag_1791203926111_g33uf",
+      "title": "Teach Yourself Urban Photography -2024_  43964766.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teach-Yourself-Urban-Photography--2024_-43964766.webp",
+      "description": "Welcome to the definitive guide for capturing the raw, pulsating pulse of the modern metropolis. In this curated edition of Teach Yourself Urban Photography, we delve deep into the interplay of concrete, light, and human architecture, equipping both amateur shutterbugs and seasoned auteurs with the technical mastery and artistic vision needed to elevate street documentation into high art.\n\nFrom decoding the geometry of towering skyscrapers to mastering low-light candid portraits amid the neon glow, this issue serves as your ultimate masterclass in visual storytelling. Turn the page to discover how to find profound beauty in the overlooked alleys, master dynamic composition on the move, and transform the everyday urban landscape into an arresting canvas of contemporary design.",
       "highlights": [
-        "Track Test: Rimac Nevera R vs Koenigsegg Jesko Attack",
-        "Aerodynamics of Active Ground Effect Spoilers",
-        "The Final V12 Symphony: Pure Combustion Collectibles"
+        "Geometry of the Grid: Finding minimalist elegance in brutalist architecture and urban symmetry",
+        "Chasing the Golden Hour: How to harness dramatic city light for striking street silhouettes",
+        "The Art of the Candid: Capturing authentic human moments without disrupting the rhythm of the street"
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_auto_2",
-      "title": "HORSEPOWER UNLEASHED - Nürburgring Lap Record Titans",
-      "issueNumber": "Track Edition #34",
-      "categoryId": "cat_automotive",
-      "categoryName": "Automotive",
-      "price": 55000,
-      "coverImage": "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Pushing the limits of traction in the Green Hell. Telemetry comparisons, tire degradation metrics, and driver cockpit telemetry.",
-      "highlights": [
-        "Breaking the 6-Minute Barrier at Nordschleife",
-        "Downforce Science: Venturi Tunnels Explained",
-        "Driver Interview: Setting the Ultimate Production Lap"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_auto_3",
-      "title": "APEX TRACKDAY - Porsche 911 GT3 RS Telemetry Special",
-      "issueNumber": "Motorsport Vol. 19",
-      "categoryId": "cat_automotive",
-      "categoryName": "Automotive",
-      "price": 58000,
-      "coverImage": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Dissecting the aero package, active DRS, and double-wishbone front axle of the most track-focused 911 ever created.",
-      "highlights": [
-        "Telemetry Analysis at Spa-Francorchamps",
-        "Suspension Tuning for High-G Cornering",
-        "Carbon Ceramic Braking Performance Under Heat Soak"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_auto_4",
-      "title": "VELOCE ITALIA - Ferrari & Lamborghini V12 Legacy",
-      "issueNumber": "Heritage Series #04",
-      "categoryId": "cat_automotive",
-      "categoryName": "Automotive",
-      "price": 54000,
-      "coverImage": "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "A tribute to naturally aspirated Italian craftsmanship from Maranello and Sant'Agata Bolognese, chronicling sixty years of sonic euphoria.",
-      "highlights": [
-        "The Evolution of the V12 from Miura to Revuelto",
-        "Ferrari Daytona SP3 Driving Impression",
-        "Restoring Classic Italian Grand Tourers"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_auto_5",
-      "title": "TURBO CHARGE - The Future of Electric GT Racing",
-      "issueNumber": "EV Racing Vol. 7",
-      "categoryId": "cat_automotive",
-      "categoryName": "Automotive",
-      "price": 50000,
-      "coverImage": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "High-voltage silicon carbide inverters, torque vectoring across four independent motors, and the thrill of lightning-fast acceleration.",
-      "highlights": [
-        "900V Battery Chemistries for Extreme Discharge",
-        "Torque Vectoring Algorithms Explained",
-        "The New Formula E Championship Contenders"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_design_1",
-      "title": "ARCHITECTURA - Tropical Brutalism",
-      "issueNumber": "Issue #19 • Global Design",
-      "categoryId": "cat_design",
+      "pdfUrl": "https://drive.google.com/file/d/18omIWpF74xk0k6OKrA6PSbzEZDmEemTr/view?usp=drivesdk",
       "categoryName": "Design",
-      "price": 50000,
-      "coverImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Raw exposed concrete seamlessly intertwined with lush rainforest canopies in Bali, São Paulo, and Singapore. An exploration of passive ventilation, natural daylighting, and monolithic structural serenity.",
-      "highlights": [
-        "Villa Monolith: The Cliffside Sanctuary of Uluwatu",
-        "Thermal Mass Cooling Without Air Conditioning",
-        "Material Study: Board-Marked Concrete & Reclaimed Teak"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_design_2",
-      "title": "BRUTALIST SPACES - Concrete Architecture of Eastern Europe",
-      "issueNumber": "Monograph No. 12",
-      "categoryId": "cat_design",
+      "id": "mag_1791203926111_jhyri",
+      "title": "Taylor Swift A Little Golden Book Biography ,Wendy Loggia   07544943.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taylor-Swift-A-Little-Golden-Book-Biography-Wendy-Loggia-07544943.webp",
+      "description": "In this special digital magazine issue, we explore the cultural phenomenon of Taylor Swift through the lens of modern storytelling, iconography, and multi-generational appeal. Examining the profound impact of her biographical adaptations and literary footprint, we dissect how a simple children's format transformed into a sophisticated collectible for millions of devoted fans worldwide. \n\nFrom the meticulous branding strategies of the Eras Tour to the intimate narrative arcs that define her songwriting, this issue serves as a cultural archive of our time. We delve into the broader lifestyle movement surrounding her fandom, analyzing community building, fashion evolution, and the enduring power of lyrical storytelling in contemporary pop culture.",
+      "highlights": [
+        "From Page to Pop Royalty: How the Little Golden Book Phenomenon Captured a Generation",
+        "The Eras Aesthetic: Decoding the Fashion, Culture, and Community of Global Swifties",
+        "Storytelling as Empire: The Cultural Blueprint Behind Modern Musical Iconography"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1PAUAIVv9NePHYQtxmGOl9q4C49fXK_yx/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_dtdcv",
+      "title": "Taylor Swift - Eras Tour Trivia Book, 2024       91863707 .pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taylor-Swift---Eras-Tour-Trivia-Book-2024-91863707.webp",
+      "description": "As the cultural phenomenon of the decade continues to captivate millions worldwide, this special collector's edition plunges deep into the mesmerizing universe of Taylor Swift's historic stadium run. From the intricate set designs and legendary surprise acoustic sets to the dazzling couture and record-breaking global impact, this issue serves as the ultimate companion for fans seeking to test and expand their encyclopedic knowledge. Every page celebrates the communal euphoria and meticulous artistry that has defined a generation of modern pop culture.\n\nBeyond the vibrant setlist statistics and easter-egg breakdowns, this interactive compendium explores the profound social architecture of the Swiftie fandom. We dissect how friendship bracelets became global currency, analyze the economic shockwaves of the tour across major metropolitan hubs, and trace the evolution of storytelling across ten distinct musical eras. It is a stylish, celebratory tribute to an artist who has permanently redefined the contemporary live music experience.",
+      "highlights": [
+        "Decoding the Eras: The ultimate test of lyrical deep cuts and hidden easter eggs",
+        "Stadium Economics: How one phenomenal tour rewrote the global entertainment playbook",
+        "The Friendship Bracelet Phenomenon: Inside the grassroots culture uniting millions worldwide"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1OSeLYOeW9G_mTPfRGQG9RnpT4dNrkP1l/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_v50yv",
+      "title": "Taste the Power of Vegan Flavor - Valentine, Morton   58053484.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-the-Power-of-Vegan-Flavor---Valentine-Morton-58053484.webp",
+      "description": "Welcome to a vibrant culinary exploration where plant-based ingredients transcend traditional boundaries to deliver bold, unforgettable sensations. This issue redefines the boundaries of modern gastronomy, proving that sustainable dining is as indulgent as it is nourishing. Through expert techniques and visionary recipes, readers are invited to discover how conscious eating can elevate everyday dining into an extraordinary sensory experience.\n\nFrom rich, umami-driven centerpieces to delicate, herb-infused creations, our pages celebrate the ingenuity of contemporary vegan cuisine. We delve into the philosophy of mindful sourcing and the kitchen innovations making plant-powered cooking more accessible and exciting than ever before. Prepare to transform your relationship with food and taste the true power of flavor reimagined.",
+      "highlights": [
+        "The Art of Umami: Unlocking deep, savory notes in plant-based cooking",
+        "From Soil to Table: How visionary chefs are redefining modern conscious cuisine",
+        "Sweet Decadence: Indulgent desserts that prove vegan baking requires no compromise"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1yNoQKxSa_MHjtlVji-yNSrTm-BnUMoDn/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_im79j",
+      "title": "Taste of Home – June 2024   61011816.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-of-Home--June-2024-61011816.webp",
+      "description": "As the warmth of early summer ushers in a season of vibrant gatherings and outdoor feasts, the June/July 2024 edition of Taste of Home delivers an irresistible culinary roadmap for home cooks everywhere. This issue captures the essence of communal dining, celebrating everything from backyard barbecues and sun-drenched picnics to refreshing seasonal desserts that highlight the peak of summer produce. With its signature down-to-earth approach, the publication empowers readers to elevate their everyday menus using accessible ingredients and time-tested family recipes.\n\nBeyond the grill and the salad bowl, this number serves as an invaluable guide for effortless hosting during the busiest months of the year. Thoughtfully curated menus, smart kitchen shortcuts, and creative presentation ideas take the stress out of entertaining, allowing hosts to spend less time in the kitchen and more time making memories. It is a joyful, flavor-packed tribute to the simple pleasures of home cooking and the enduring traditions that bring loved ones together around the table.",
+      "highlights": [
+        "Ultimate Backyard Bash: 35 Show-Stopping Recipes for Your Next Cookout",
+        "Sweet on Summer: Dazzling No-Bake Desserts to Beat the Heat",
+        "Garden-Fresh & Gorgeous: Quick Weeknight Dinners Using Peak Season Produce"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1Kv3MQwBPOrFUllcI51nOT_2UH3up7tg3/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_exlmo",
+      "title": "Taste of Home Copycat Recipes 2024_  95699195.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-of-Home-Copycat-Recipes-2024_-95699195.webp",
+      "description": "In this meticulously curated digital edition, we delve into the art of culinary emulation, bringing the beloved, comforting flavors of home-style cooking directly to your modern kitchen. This issue captures the cultural zeitgeist of 2024, where home cooks increasingly seek elevated yet accessible dining experiences that evoke nostalgia and warmth. Through precise ingredient breakdowns and expert techniques, readers are invited to master iconic restaurant-style dishes without ever leaving their dining rooms.\n\nBeyond mere replication, this special compilation serves as a comprehensive guide to modern domestic hospitality, blending time-tested culinary traditions with contemporary efficiency. From secret-recipe sauces to legendary comfort food mains, every page is designed to inspire confidence and creativity in the home culinary space. It is an indispensable manual for anyone looking to enrich their daily routine and delight family and friends with extraordinary flavor.",
+      "highlights": [
+        "The Ultimate Bakery-Style Cinnamon Roll: Recreating the legendary morning treat at home",
+        "Secret-Sauce Showdown: Mastering America's most craveable restaurant dressings",
+        "Weeknight Comfort: Elevating classic diner meatloaf into a gourmet masterpiece"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1579lJ7oVLX1PlkMBYPmYsycsinu76nNs/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_igr9n",
+      "title": "Taste of Home April-May, 2024_96711493.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-of-Home-April-May-2024_96711493.webp",
+      "description": "Welcome to the vibrant April-May 2024 edition of Taste of Home, where the kitchen becomes the ultimate destination for seasonal renewal and gathering. This issue embraces the transition from chilly spring days to sun-drenched late-spring celebrations, offering a curated collection of fresh, comforting recipes crafted and tested by real home cooks across the country. From effortless weeknight dinners utilizing garden-fresh produce to show-stopping brunch spreads designed for Easter, Mother's Day, and spring potlucks, every page celebrates the joy of sharing hearty, accessible meals with family and friends.\n\nBeyond the kitchen, this number delivers brilliant home-hacks, clever pantry reorganizations, and expert tips for hosting memorable seasonal gatherings with minimal stress. Readers will discover inventive twists on classic comfort foods, vibrant spring vegetables spotlighted in creative new ways, and sweet, decadent desserts that capture the very essence of warmer weather. It is an indispensable guide for anyone looking to infuse their daily routine with warmth, creativity, and the undeniable comfort of home-cooked goodness.",
+      "highlights": [
+        "Springtime Sups: 25 Fresh and Fast Weeknight Dinners That Celebrate the Season's Best Produce",
+        "The Ultimate Mother's Day Brunch Guide: Show-Stopping Recipes and Elegant Table Styling Ideas",
+        "Garden to Table: Clever Ways to Transform Spring Greens and Herbs into Unforgettable Family Meals"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1KiTJicl76qP5QQ1uWZ4HQe1YHyvVv6c8/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_tu758",
+      "title": "Time Special Edition - Best Person of the Year 2024  85652888.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Time-Special-Edition---Best-Person-of-the-Year-2024-85652888.webp",
+      "description": "As the cultural and political landscape shifts beneath our feet, the 2024 Person of the Year stands as a defining figure of our turbulent contemporary era. This special commemorative edition explores the profound impact of leadership, resilience, and vision that captured the global imagination over the past twelve months. Through meticulous journalism and striking visual storytelling, we dissect the moments and movements that fundamentally reshaped our collective consciousness.\n\nBeyond the headline-grabbing cover story, this issue curates an intimate look at the quiet revolutionaries, innovators, and cultural icons who defined 2024. From breakthrough cultural shifts to the quiet resilience of ordinary citizens caught in extraordinary circumstances, these pages offer a panoramic view of the human condition today. It is an indispensable keepsake for those seeking to understand not just who led us through the year, but how we lived, dreamed, and persevered.",
+      "highlights": [
+        "The Architect of Influence: How the 2024 Icon Remade the Global Stage",
+        "Beyond the Ballot and the Boardroom: The Cultural Movements That Defined a Year of Upheaval",
+        "Portraits of Resilience: Ordinary Lives Caught in the Whirlwind of History"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1DkVXyaWKDjFRDxeFPAwp7PIqkLF1vNj1/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_m05wn",
+      "title": "TOTAL BMW May 2024_48831682.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067417707_vn8r",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TOTAL-BMW-May-2024_48831682.webp",
+      "description": "Total BMW remains the definitive voice for enthusiasts of the Bavarian marque, capturing the perfect intersection of heritage engineering and modern performance culture. The May 2024 issue delves deep into the evolving landscape of iconic M-power models, meticulously restoring classic chassis while celebrating the cutting-edge innovations shaping the future of driving dynamics.\n\nWithin these pages, readers are treated to an exclusive curation of road tests, meticulous restoration guides, and intimate profiles of custom builds that define contemporary car culture. From rare collector gems tucked away in private European garages to track-ready monsters pushing the limits of modern engineering, this edition offers an uncompromised look at the passion and precision driving the global BMW community.",
+      "highlights": [
+        "M Power Evolution: Tracing the lineage of high-performance engineering from classic naturally aspirated straight-sixes to the latest hybrid monsters",
+        "Restorer's Art: Inside the painstaking, nut-and-bolt revival of an ultra-rare E30 M3 Sport Evolution",
+        "Track Day Titans: Putting modified F80 M3s and G82s through their paces on Europe's most demanding circuits"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1fAVbB7U_I70BLFUXJe3eCsK2-sv3F-k4/view?usp=drivesdk",
+      "categoryName": "Automotive",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_hke88",
+      "title": "TOTAL BMW June .2024_  78766138.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067417707_vn8r",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TOTAL-BMW-June-.2024_-78766138.webp",
+      "description": "The June 2024 edition of Total BMW captures the enduring engineering excellence and pulse-pounding performance that define the Bavarian marque. This issue navigates the delicate balance between heritage restoration and cutting-edge automotive innovation, offering enthusiasts a comprehensive look at the machines shaping modern car culture. From track-focused track day weapons to meticulous classic restorations, every page celebrates the passion of the global BMW community.\n\nDelving beneath the sheet metal, this issue features in-depth technical breakdowns, expert buying guides, and exclusive road tests of some of the most anticipated releases of the year. Whether you are wrenching in the garage or dreaming of your next Autobahn cruiser, Total BMW delivers the ultimate enthusiast perspective with stunning photography and authoritative journalism that honors the Ultimate Driving Machine.",
+      "highlights": [
+        "M Power Evolution: Tracing the lineage of the newest high-performance icons",
+        "Garage Project E30: A masterclass in period-correct restomod restoration",
+        "Track Test: Pushing the limits of BMW's latest turbocharged engineering"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1c9AdPedGu_53c_LA4ckgtRufkWJDcHrg/view?usp=drivesdk",
+      "categoryName": "Automotive",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_gb1q9",
+      "title": "TOTAL BMW April 2024_33299069.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067417707_vn8r",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TOTAL-BMW-April-2024_33299069.webp",
+      "description": "As spring awakens the driving season, the April 2024 edition of Total BMW delivers an exhilarating deep dive into the engineering brilliance and cultural legacy of Munich's finest creations. This issue bridges the gap between heritage restoration and cutting-edge performance, offering enthusiasts a masterclass in what makes the ultimate driving machine an enduring obsession.\n\nFrom rare classic roadsters undergoing meticulous revival to modern track-focused titans pushing the limits of turbocharging and chassis dynamics, the pages pulse with high-octane passion. Expert columnists and dedicated owners share insider garage tips, buying guides, and behind-the-scenes glimpses into the global BMW community, making this a definitive collector's item for aficionados of German automotive excellence.",
+      "highlights": [
+        "The M-Power Evolution: Tracing the lineage of high-performance inline-sixes from track to street",
+        "Resto-Mod Revival: Breathing modern life into a legendary 1980s E30 without losing its soul",
+        "The Ultimate Road Trip: Conquering the Alpine passes in a pristine Z8 roadster"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1TQPFRUuTU33snzw8gH38WOQkP1EQiq1z/view?usp=drivesdk",
+      "categoryName": "Automotive",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_7sgqx",
+      "title": "TIME- The Magic of LEGO, 2024    82364916.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--The-Magic-of-LEGO-2024-82364916.webp",
+      "description": "In this captivating 2024 special edition, TIME explores the enduring cultural phenomenon and architectural brilliance of LEGO, tracing its remarkable evolution from humble wooden toys to a universal language of modern creativity. The issue delves deep into the minds of master builders, designers, and innovators who harness these colorful interlocking bricks to engineer everything from scale replicas of global landmarks to profound works of contemporary art. It is a stunning visual and narrative tribute to imagination, problem-solving, and the timeless joy of building.\n\nBeyond the nostalgia, this collector's edition examines LEGO's profound impact on modern design, industrial engineering, and popular culture through exclusive behind-the-scenes access to Billund headquarters. Readers are treated to thought-provoking explorations of sustainability initiatives, the integration of robotics and digital play, and how a simple plastic brick continues to inspire generations of architects, engineers, and dreamers. It is an essential, beautifully curated keepsake for anyone who has ever looked at a pile of bricks and seen infinite possibility.",
+      "highlights": [
+        "The Architecture of Imagination: How a simple plastic brick revolutionized modern spatial design and structural engineering.",
+        "Inside Billund: A rare, behind-the-scenes look at the secret studios where Master Builders engineer the future of play.",
+        "From Toy to Canvas: How contemporary artists and global creators are transforming LEGO elements into multimillion-dollar masterpieces."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1hnZHRu0U_y8DVes1TRpuhbFv6aRCvtR3/view?usp=drivesdk",
       "categoryName": "Design",
-      "price": 52000,
-      "coverImage": "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Monumental geometric concrete forms, spomeniks, and modernist public structures captured during sunrise and dusk across Belgrade and Tbilisi.",
-      "highlights": [
-        "Photo Retrospective: 50 Monumental Concrete Façades",
-        "The Politics and Geometry of Post-War Modernism",
-        "Preserving Endangered Architectural Icons"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_design_3",
-      "title": "TROPICAL MODERNISM - Bali & Singapore Eco-Villas",
-      "issueNumber": "Architectural Digest #45",
-      "categoryId": "cat_design",
+      "id": "mag_1791203926111_i7w5d",
+      "title": "TIME- Minecraft, 2024     30650998.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--Minecraft-2024-30650998.webp",
+      "description": "As Minecraft marks its remarkable fifteenth anniversary, this special edition from TIME captures the enduring cultural and architectural phenomenon of the world's best-selling video game. From humble digital blocks to a sweeping canvas of human imagination, the issue explores how millions of players, educators, and visionaries continue to reshape virtual landscapes into breathtaking monuments of modern design and collaborative engineering. We examine the profound evolution of sandbox mechanics into a sophisticated medium for digital spatial planning, community building, and boundless artistic expression.\n\nBeyond the screen, the magazine delves into the profound real-world impact of Minecraft, charting its journey from an indie coding project to an indispensable tool in modern classrooms and urban planning initiatives. Through deeply reported features and striking visual spreads, we celebrate the architects of the digital frontier who push the boundaries of what interactive environments can achieve. This collector's edition is a vibrant tribute to a digital ecosystem that has fundamentally altered how a generation thinks, creates, and designs together.",
+      "highlights": [
+        "The Architecture of Imagination: How virtual block-building is inspiring the next generation of real-world urban designers and spatial architects.",
+        "Classrooms Without Walls: Inside the revolutionary integration of Minecraft Education Edition into global curricula to teach coding, history, and sustainability.",
+        "Building a Legacy at 15: The untold story of how an indie passion project evolved into the most influential digital canvas of the twenty-first century."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1AjNsak6O0NEv95_yz1TqKgkFW32_xbyQ/view?usp=drivesdk",
       "categoryName": "Design",
-      "price": 49000,
-      "coverImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Blurring indoor and outdoor living with open-plan layouts, natural bamboo cantilever roofs, and rainwater harvesting pools.",
-      "highlights": [
-        "Passive Solar Shading in Tropical Climates",
-        "Bamboo Joinery: Engineering Sustainable Megastructures",
-        "Infinity Pools Integrated into Jungle Topography"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_design_4",
-      "title": "MONOLITH DESIGN - Sustainable Prefab Masterpieces",
-      "issueNumber": "Modern Living Vol. 28",
-      "categoryId": "cat_design",
-      "categoryName": "Design",
-      "price": 48000,
-      "coverImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "High-precision modular architecture constructed offsite with cross-laminated timber, reducing carbon footprints without sacrificing luxury.",
+      "id": "mag_1791203926111_fzjk2",
+      "title": "TIME- Hello Kitty 50 Years, 2024    94247412.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--Hello-Kitty-50-Years-2024-94247412.webp",
+      "description": "For half a century, Hello Kitty has transcended her origins as a modest vinyl coin purse in Japan to become a towering global icon of modern popular culture, kawaii aesthetics, and emotional connection. This special commemorative edition from TIME captures the extraordinary phenomenon of a character without a mouth who somehow speaks to millions across generations, cultures, and continents. From high-fashion runway collaborations to the bustling streets of Tokyo and Los Angeles, the issue explores how Sanrio's masterwork transformed commercial merchandising into a universal language of friendship and joy.\n\nInside these digital pages, our journalists and cultural critics dissect the enduring business empire and profound sociological impact that has kept the ribbon-adorned feline at the absolute pinnacle of global relevance for fifty years. Through rare archival insights, exclusive interviews, and stunning visual retrospectives, we examine the meticulous curation of cuteness that turned a simple drawing into an indelible lifestyle movement. It is an essential chronicle for longtime collectors and contemporary trendsetters alike, celebrating an anniversary that proves true charm never ages.",
       "highlights": [
-        "Cross-Laminated Timber vs Steel Framed Skyscrapers",
-        "Rapid Onsite Assembly in Alpine Terrains",
-        "Minimalist Interiors and Hidden Storage Architecture"
+        "The Kawaii Empire: How Sanrio Conquered the Global Imagination and Redefined Modern Pop Culture",
+        "Beyond the Bow: The Evolution of Hello Kitty as a High-Fashion Muse and Luxury Collaborator",
+        "Speaking Without Words: The Psychology of Comfort and Connection in an Icon's 50-Year Reign"
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "pdfUrl": "https://drive.google.com/file/d/18jGC28aUr7_leCmMyMQtOTqJXNe2gK8k/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_design_5",
-      "title": "SCANDI MINIMAL - Nordic Interior & Spatial Harmony",
-      "issueNumber": "Nordic Series #08",
-      "categoryId": "cat_design",
-      "categoryName": "Design",
-      "price": 45000,
-      "coverImage": "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Light oak woods, soft muted palettes, and functional minimalism that creates cozy, serene living spaces in Copenhagen and Stockholm.",
+      "id": "mag_1791203926111_tr5mz",
+      "title": "TIME- Grateful Dead, 2024     19322351.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--Grateful-Dead-2024-19322351.webp",
+      "description": "In this special commemorative edition, TIME captures the enduring cultural footprint and kaleidoscopic journey of the Grateful Dead, bridging decades of counterculture history with contemporary resonance. From their revolutionary approach to live music and communal fandom to their lasting imprint on modern art, fashion, and philosophy, the issue explores how a San Francisco psychedelic band evolved into an immortal American institution.\n\nThrough archival journalism, rare photography, and sharp cultural commentary, this digital release invites both lifelong Deadheads and new generations of fans to re-examine the band's utopian ethos. It is a vibrant celebration of freedom, improvisation, and community that continues to inspire how we live, listen, and connect in an increasingly digitized world.",
       "highlights": [
-        "Mastering Hygge: Lighting Design for Winter Nights",
-        "Iconic Mid-Century Scandinavian Furniture",
-        "The Minimalist Wardrobe and Space Planning"
+        "Beyond the Rainbow: How the Grateful Dead Invented Modern Counterculture Lifestyle",
+        "The Endless Tour: The Economics and Community of a Legendary Fanbase",
+        "Dancing Bears and Tie-Dye: The Accidental Fashion Empire of Rock's Ultimate Outliers"
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
+      "pdfUrl": "https://drive.google.com/file/d/1-yxdt33E2_Ir4Ub0OBgoc9jLgMBrWj7X/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_gaming_1",
-      "title": "PIXEL CHRONICLE - The Unreal Engine 6 Era",
-      "issueNumber": "Vol. 63 • Next-Gen Dev",
-      "categoryId": "cat_sports",
-      "categoryName": "Sports",
-      "price": 40000,
-      "coverImage": "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Inside the next generation of photorealistic game worlds: real-time ray-traced audio, procedural narrative generation, and the evolution of open-world worldbuilding.",
+      "id": "mag_1791203926111_gdwb8",
+      "title": "TIME USA - September 30, 2024    30847936.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---September-30-2024-30847936.webp",
+      "description": "The September 30, 2024 issue of TIME delves deep into the intersection of modern innovation, climate imperatives, and the evolving frontier of artificial intelligence. As global challenges accelerate, this edition captures the pivotal scientific breakthroughs and technological shifts reshaping our collective future, offering profound insights from leading thinkers and researchers.\n\nFrom the ethical dilemmas of emerging tech to groundbreaking discoveries in medicine and environmental science, the magazine maintains its hallmark journalistic rigor. It challenges readers to look beyond the immediate headlines and consider the long-term implications of scientific progress on society, policy, and human well-being.",
       "highlights": [
-        "Breaking Down Nanite 2.0 & Lumen Global Illumination",
-        "Interview with Legendary RPG Scenario Designers",
-        "Retro Spotlight: The 30-Year Legacy of Doom & Quake"
+        "The AI Frontier: Navigating the next wave of machine intelligence and human collaboration",
+        "Climate Engineering: The bold scientific experiments attempting to cool a warming planet",
+        "The Longevity Revolution: Breakthroughs in cellular biology redefining the limits of human lifespan"
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_gaming_2",
-      "title": "PIXEL ODYSSEY - Cyberpunk RPG Worldbuilding",
-      "issueNumber": "Game Arts Issue #21",
-      "categoryId": "cat_sports",
-      "categoryName": "Sports",
-      "price": 42000,
-      "coverImage": "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Creating atmospheric megacities in dystopian role-playing games: concept art breakdown, environmental storytelling, and synthwave sound design.",
-      "highlights": [
-        "Concept Art Showcase: Neon Alleys of Neo-Kyoto",
-        "Writing Branching Dialogues for Open-Ended RPGs",
-        "Designing Cybernetic Enhancements and UI Elements"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_gaming_3",
-      "title": "UNREAL ARCHIVES - 30 Years of 3D Graphics Innovation",
-      "issueNumber": "Developer Special #03",
-      "categoryId": "cat_sports",
-      "categoryName": "Sports",
-      "price": 45000,
-      "coverImage": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "From software rasterizers and Voodoo 3dfx cards to hardware ray tracing and path-traced cinematic simulations.",
-      "highlights": [
-        "The Evolution of 3D Acceleration: 1996 to 2026",
-        "Shader Mathematics: Writing Custom Post-Processing Filters",
-        "Interviews with Graphics Pioneers and Engine Architects"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_gaming_4",
-      "title": "ESPORTS ARENA - Global Counter-Strike Major Finals",
-      "issueNumber": "Tournament Review #11",
-      "categoryId": "cat_sports",
-      "categoryName": "Sports",
-      "price": 39000,
-      "coverImage": "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Analyzing clutch plays, tactical map rotations, economy management, and the high-stakes psychology of sold-out stadium finals.",
-      "highlights": [
-        "Tactical Breakdown: Winning Round 30 at Major Grand Finals",
-        "Player Profile: The 19-Year-Old Prodigy Sniper",
-        "The Esports Production Engine Behind Live Stage Broadcasts"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_gaming_5",
-      "title": "INDIE CRAFT - The Golden Age of Solo Game Creators",
-      "issueNumber": "Indie Spotlight #17",
-      "categoryId": "cat_sports",
-      "categoryName": "Sports",
-      "price": 40000,
-      "coverImage": "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Inspiring stories of single developers creating multi-million copy masterpieces using Godot, Blender, and handcrafted pixel art.",
-      "highlights": [
-        "Post-Mortem: From Solo Hobby Project to Steam Top Seller",
-        "Pixel Art Animation: Mastering Sub-Pixel Motion",
-        "Marketing Your Indie Game with Zero Budget"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:41:48.341Z"
-    },
-    {
-      "id": "mag_fashion_6",
-      "title": "RUNWAY ESSENTIALS - Autumn/Winter Milan Review",
-      "issueNumber": "Milan FW 2026",
-      "categoryId": "cat_fashion",
-      "categoryName": "Fashion",
-      "price": 44000,
-      "coverImage": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Backstage insights from Milan fashion week: textile craftsmanship, model styling portfolios, and trends defining the season.",
-      "highlights": [
-        "Front Row Runway Analysis: Milan 2026",
-        "Sustainable Fabric Weaving Showcases",
-        "Designer Q&A: The Future of Ready-to-Wear"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:43:10.398Z"
-    },
-    {
-      "id": "mag_tech_6",
-      "title": "SILICON HORIZON - Post-Moore Microarchitecture",
-      "issueNumber": "Computing Vol. 16",
-      "categoryId": "cat_science",
+      "pdfUrl": "https://drive.google.com/file/d/1At9K_aB8SVu2qbVxJjq-ecUBF6K4itIk/view?usp=drivesdk",
       "categoryName": "Science",
-      "price": 47000,
-      "coverImage": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Next-gen wafer scale engines, optical interconnects, and 3D stacked semiconductor packaging pushing compute past silicon limits.",
-      "highlights": [
-        "Wafer-Scale Engines vs Distributed GPU Clusters",
-        "Optical Interconnects for Terabit Bandwidth",
-        "Thermal Dissipation via Microchannel Liquid Cooling"
-      ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:43:10.399Z"
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_auto_6",
-      "title": "CIRCUIT MASTERS - Le Mans 24h Prototype Dynamics",
-      "issueNumber": "Endurance #06",
-      "categoryId": "cat_automotive",
-      "categoryName": "Automotive",
-      "price": 52000,
-      "coverImage": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Hypercar class prototypes battling through night rain at Circuit de la Sarthe. Complete chassis setups, hybrid boost strategies, and telemetry logs.",
+      "id": "mag_1791203926111_wa58v",
+      "title": "TIME USA - September 16, 2024    46941678.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---September-16-2024-46941678.webp",
+      "description": "The September 16, 2024, issue of TIME captures a pivotal moment in the American socio-economic landscape, dissecting the complex interplay between shifting political currents and the unrelenting evolution of the global market. With a focus on structural change and leadership, this edition interrogates how institutional power is being redefined in an era of unprecedented digital disruption and economic volatility, offering a lens into the forces shaping our collective future.\n\nBeyond the headlines, this issue serves as a masterclass in institutional analysis, balancing hard-hitting investigative journalism with a nuanced look at the figures navigating the complexities of the modern industrial age. It is a vital document for any reader seeking to understand the intersection of policy and profit, providing the intellectual rigor and historical context necessary to navigate the turbulent waters of contemporary enterprise.",
       "highlights": [
-        "LMDh Hybrid Powertrain Energy Regeneration",
-        "Night Rain Strategy & Tire Compounds",
-        "Brembo Carbon Matrix Brake Thermal Profiles"
+        "The New Industrial Vanguard: How the next generation of CEOs is retooling the American economy for a post-globalization world.",
+        "The Algorithmic Ballot: An in-depth investigation into the intersection of big data, corporate influence, and the integrity of the 2024 election cycle.",
+        "The Resilience Dividend: Why the most successful firms are pivoting away from efficiency toward radical adaptability in a fragmented market."
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:43:10.399Z"
+      "pdfUrl": "https://drive.google.com/file/d/1qHF_yT3reWhUje45Ne4WlFzNxOUyjgG7/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_design_6",
-      "title": "KINETIC SPACES - Interactive Urban Pavilions",
-      "issueNumber": "Spatial #10",
-      "categoryId": "cat_design",
-      "categoryName": "Design",
-      "price": 46000,
-      "coverImage": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "Dynamic kinetic façades responding to natural sunlight, wind flows, and public foot traffic in metropolitan plazas.",
+      "id": "mag_1791203926111_cirxi",
+      "title": "TIME USA - October 28, 2024    53055896.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---October-28-2024-53055896.webp",
+      "description": "The October 28, 2024, issue of TIME arrives at a pivotal juncture in the American narrative, dissecting the complex interplay between shifting economic tides and the high-stakes political maneuvers defining the pre-election landscape. Through rigorous investigative journalism and expert analysis, this edition strips away the partisan veneer to examine the foundational forces—from fiscal policy to industrial resilience—that are currently recalibrating the nation’s trajectory on the global stage.\n\nBeyond the headline-grabbing volatility, this issue offers a profound look at the structural changes reshaping the modern workplace and the corporate strategies necessary to navigate an era of unprecedented uncertainty. It serves as an essential briefing for the discerning reader, balancing macro-level economic foresight with the human stories of those laboring to define the next chapter of the American century.",
       "highlights": [
-        "Biomimetic Responsive Building Skins",
-        "Parametric Pavilion Geometry Modeling",
-        "Smart Glazing and Passive Climate Control"
+        "The New Industrial Strategy: How private enterprise is realigning with national security interests in a fragmented global economy.",
+        "The Ballot Box Bottom Line: A deep dive into how institutional investors are hedging against the volatility of a historic election cycle.",
+        "The Remote Work Reckoning: Analyzing the long-term productivity shifts and the urban economic fallout of the hybrid-era corporate landscape."
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:43:10.399Z"
+      "pdfUrl": "https://drive.google.com/file/d/1B0d-tbt9SAQaFr4uNty9c98EYuAjbO1L/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T12:38:46.111Z"
     },
     {
-      "id": "mag_gaming_6",
-      "title": "VIRTUAL REALITY - Spatial Computing & Next-Gen Engines",
-      "issueNumber": "VR Trends #05",
-      "categoryId": "cat_sports",
+      "id": "mag_1791203926111_39tr0",
+      "title": "TIME USA - November 11, 2024  49745641.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---November-11-2024-49745641.webp",
+      "description": "As the nation navigates the immediate aftermath of a historic electoral cycle, this edition of TIME serves as a vital cultural compass, distilling the noise of the 24-hour news cycle into a curated narrative of the American experience. Through incisive reportage and evocative visual storytelling, the issue examines the shifting tectonics of our political discourse, offering a definitive account of the figures and ideologies currently reshaping the societal landscape.\n\nBeyond the headlines, this issue pivots toward the human element, exploring the resilience of communities and the evolving identity of the American citizen in a post-election climate. By balancing high-stakes political analysis with profound cultural critique, this edition captures the definitive zeitgeist of November 2024, providing readers with both the context to understand the present and the clarity to anticipate the future.",
+      "highlights": [
+        "Feature Article 1: The Mandate of a New Era: Dissecting the policy shifts and public sentiment defining the latest political transition.",
+        "Feature Article 2: The Loneliness Epidemic: How modern digital fragmentation is fundamentally altering our social fabric.",
+        "Feature Article 3: Architects of Influence: A profile on the hidden strategists and cultural icons shaping the national conversation."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1lfka7GtJBXoWkDtw3S6GxQWqNECBwP4C/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_pgyaj",
+      "title": "TIME USA - May 27, 2024   22782009.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---May-27-2024-22782009.webp",
+      "description": "The May 27, 2024 issue of TIME delves deep into the shifting paradigms of global finance, corporate strategy, and economic resilience. At a time when markets are navigating turbulent geopolitical currents and rapid technological disruption, this edition offers a rigorous examination of the leaders and institutions shaping tomorrow's economy. Through sharp journalism and incisive analysis, it unpacks the critical intersections of innovation, policy, and market dynamics.\n\nFrom the boardrooms of multinational giants to the frontlines of entrepreneurial disruption, this issue captures the pulse of modern enterprise. Readers are treated to exclusive interviews, forward-thinking essays, and meticulous reporting that illuminate the challenges and opportunities defining the current business landscape. It is an indispensable guide for decision-makers and intellectuals seeking to understand the forces driving contemporary commerce and societal evolution.",
+      "highlights": [
+        "The New Titans of Tech: How emerging markets are challenging Silicon Valley's dominance",
+        "Navigating the Inflation Maze: Central bank strategies and the outlook for global growth",
+        "The Sustainable Enterprise: Balancing ESG mandates with bottom-line realities in a volatile world"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/14S4w-9iB4z04ulgT6ugjJ-_kYi6PWxpV/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926111_98w4k",
+      "title": "TIME USA - February 10, 2025     60638142.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---February-10-2025-60638142.webp",
+      "description": "As artificial intelligence continues to reshape the boundaries of human capability, the February 10, 2025 edition of TIME delves deep into the profound scientific and ethical frontiers of our technological evolution. This issue captures a pivotal moment in history where advanced machine learning intersects with neurology, climate modeling, and space exploration, challenging our fundamental understanding of consciousness and innovation. Through rigorous journalism and compelling visual storytelling, the magazine unpacks the complex realities laboratories and research institutions face in an increasingly automated world.\n\nBeyond the silicon revolution, the edition explores groundbreaking breakthroughs in biotechnology and green energy that promise to redefine the trajectory of global health and environmental sustainability. Readers are invited to look beyond the daily news cycle and examine the long-term implications of scientific stewardship, policy-making, and ethical boundaries. It is an indispensable read for those seeking to understand the forces driving the next century of human progress and discovery.",
+      "highlights": [
+        "The Consciousness Algorithm: Inside the race to decode human thought using advanced neural networks",
+        "Beyond the Horizon: How next-generation space telescopes are rewriting the origins of the universe",
+        "The Crispr Generation: Evaluating the ethical crossroads of modern gene editing in clinical medicine"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1jfS5WAij7T2C4dOlVKkXsALhTx6WcW3J/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926110_ypfp8",
+      "title": "TIME USA - August 5, 2024   40629838.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---August-5-2024-40629838.webp",
+      "description": "The August 5, 2024 issue of TIME delves deep into the cutting-edge intersections of artificial intelligence, climate science, and modern medicine that are actively reshaping our global future. With hallmark journalistic rigor, this edition examines the profound societal shifts driven by rapid technological acceleration and the ethical dilemmas confronting researchers and policymakers alike. Through compelling narrative features and exclusive interviews, TIME captures the urgency of our current epoch, offering readers a clear-eyed perspective on the innovations and challenges defining the twenty-first century.\n\nBeyond the headline-grabbing technological breakthroughs, this issue turns its lens toward the human stories behind the data, exploring how everyday lives are being transformed by shifting environmental landscapes and evolving healthcare paradigms. The sophisticated reporting bridges complex scientific inquiry with accessible, culturally resonant storytelling, making it an essential read for anyone seeking to understand the trajectory of modern civilization. It is a masterclass in contemporary journalism, balancing analytical depth with a forward-looking vision that challenges our assumptions about what comes next.",
+      "highlights": [
+        "The AI Awakening: How next-generation models are rewriting the rules of human creativity and labor",
+        "The Climate Frontier: Inside the high-stakes race to engineer carbon capture at a planetary scale",
+        "The Longevity Revolution: The biological breakthroughs pushing the boundaries of the human healthspan"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1HFzrWsZRHZGmDseA9_7l6v7A3dJ69O_I/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T12:38:46.111Z"
+    },
+    {
+      "id": "mag_1791203926110_h7nv2",
+      "title": "TIME USA - April 14, 2025  101116.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---April-14-2025-101116.webp",
+      "description": "As artificial intelligence accelerates at an unprecedented velocity, the April 14, 2025 issue of TIME investigates the profound intersection of machine intelligence, human cognition, and the future of global infrastructure. This edition delves deep into the ethical dilemmas and scientific breakthroughs defining the next decade, offering readers a rigorous examination of how advanced systems are reshaping medicine, energy grids, and the very nature of human labor.\n\nBeyond the digital frontier, this issue turns its analytical lens toward environmental restoration and space exploration, spotlighting the brilliant minds engineering scalable climate solutions and interplanetary travel. With its signature blend of authoritative journalism and compelling visual storytelling, TIME delivers an indispensable guide to the scientific milestones and policy debates that will determine the trajectory of civilization for generations to come.",
+      "highlights": [
+        "The Silicon Mind: How autonomous neural networks are revolutionizing molecular biology and drug discovery",
+        "Beyond the Horizon: The next-generation propulsion technologies making deep-space colonization a near-future reality",
+        "The Thermal Equilibrium: Engineering planetary-scale geoengineering projects to combat irreversible climate tipping points"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1Q8MT0GR2YqjnwT337pZW1rlov52ApKKW/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_1raja",
+      "title": "TIME Special Edition - Sports Greats, 2024     43826390.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067441402_3cew",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Sports-Greats-2024-43826390.webp",
+      "description": "In this compelling retrospective special edition, TIME captures the defining moments, transcendent talents, and indelible cultural impact that shaped the athletic landscape of 2024. From historic Olympic triumphs and record-breaking individual performances to the quiet, grueling resilience required to reach the pinnacle of human achievement, this issue offers a panoramic view of modern sporting greatness. Through exquisite photojournalism and incisive long-form journalism, we examine not just the medals and trophies, but the human stories behind the athletes who captured the world's imagination this year.\n\nBeyond the scores and statistics, this special publication explores the evolving intersection of sports, society, and legacy. We profile the generational icons who redefined their respective disciplines and the rising stars poised to dominate the next decade, while unpacking the technological and cultural shifts transforming how we play, watch, and experience athletics today. It is a definitive keepsake for enthusiasts and casual observers alike, celebrating the unyielding pursuit of excellence that defines the modern champion.",
+      "highlights": [
+        "The Paris Paradigm: How the 2024 Olympic Games Redefined Global Athletic Supremacy",
+        "Beyond the Stat Sheet: The Psychological Fortitude Required to Build a Dynasty",
+        "Icons of an Era: The Trailblazers and Record-Breakers Who Defined 2024 in Sport"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/17fifQX-ywF1exaZ7a2zA3T3lYGX2ESLc/view?usp=drivesdk",
       "categoryName": "Sports",
-      "price": 43000,
-      "coverImage": "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&w=600&h=800&q=85",
-      "description": "High-density micro-OLED displays, foveated eye-tracking rendering, and neural haptic feedback transforming immersive gaming worlds.",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_1dld6",
+      "title": "TIME Special Edition - Jesus, 2024   58324865.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Jesus-2024-58324865.webp",
+      "description": "In this profound special edition, TIME explores the enduring historical footprint, cultural resonance, and spiritual legacy of Jesus of Nazareth against the backdrop of the modern world. Through rigorous journalistic inquiry and breathtaking visual storytelling, the issue navigates the complex intersections of faith, archaeology, and contemporary human existence, offering readers a contemplative journey into one of history's most pivotal figures.\n\nFrom recent archaeological revelations in the Holy Land to the evolving interpretations of his teachings across global cultures, this collector's volume bridges ancient history with modern philosophical inquiry. It is an intellectually stimulating and visually rich exploration that invites both believers and secular minds to reexamine the man who permanently altered the trajectory of human civilization.",
       "highlights": [
-        "Foveated Rendering with Dynamic Eye-Tracking",
-        "Neural Haptic Glove Feedback Systems",
-        "Developing VR Titles with OpenXR and Vulkan"
+        "Rediscovering Galilee: Recent Archaeological Discoveries Shed New Light on First-Century Life",
+        "The Global Icon: How Different Cultures Re-envision the Image of Christ Through the Ages",
+        "Words That Changed the World: The Timeless Ethical Legacy of the Sermon on the Mount"
       ],
-      "pdfUrl": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
-      "created_at": "2026-10-03T21:43:10.399Z"
+      "pdfUrl": "https://drive.google.com/file/d/1IeYHtMi0vfGlIAXqqyaJxbPZkTtt4iiz/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_vzugw",
+      "title": "TIME Special Edition - Inspiring Women, 2024    73010352.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Inspiring-Women-2024-73010352.webp",
+      "description": "In this special commemorative edition, TIME turns its discerning lens toward the visionary leaders, artists, activists, and icons who are fundamentally reshaping our world in 2024. Through powerful profiles and intimate storytelling, the issue captures the resilience, innovation, and unwavering spirit of women who have broken barriers and redefined success on their own terms. From grassroots change-makers to global superstars, each page serves as a masterclass in modern leadership and personal empowerment.\n\nMore than just a celebration of individual achievement, this curated volume explores the cultural shifts and societal milestones driving contemporary progress. Readers are invited into the deeply personal journeys behind the public triumphs, offering profound insights into how empathy, tenacity, and creativity can ignite lasting global impact. It is an essential, inspiring keepsake for anyone looking to understand the modern cultural zeitgeist through the voices of the women leading it forward.",
+      "highlights": [
+        "Architects of Tomorrow: How visionary female founders are redesigning the global economy and sustainable innovation.",
+        "The Art of Resilience: Inside the creative sanctuaries of trailblazing artists and cultural icons redefining modern expression.",
+        "Voices That Echo: The next generation of activists turning localized movements into unstoppable worldwide change."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1_QE0kD7tNYqNEbcTpDXZulvsNJRUJR3I/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_k43pt",
+      "title": "TIME Special Edition - Cannabis, 2024   84006784.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Cannabis-2024-84006784.webp",
+      "description": "As cultural norms shift and legalization sweeps across continents, cannabis has transitioned from countercultural contraband to a mainstream wellness titan. This special edition from TIME meticulously unpacks the modern green revolution, exploring the complex interplay between evolving legislation, commercial enterprise, and holistic health. From boutique craft strains and cutting-edge extraction methodologies to shifting medical paradigms, the issue serves as an indispensable guide for an era redefining its relationship with the plant.\n\nBeyond the economics and wellness trends, this publication delves into the societal fabric of legalization—examining historical injustices, criminal justice reform, and the cultural normalization of cannabis use. Through rigorous journalism and striking visual storytelling, TIME captures a defining sociological moment, offering readers a panoramic view of an industry poised to shape the future of modern society, agriculture, and personal well-being.",
+      "highlights": [
+        "The Green Rush Evolution: Navigating the multi-billion-dollar corporate landscape of modern cannabis.",
+        "Medicine Meets Botanicals: Unlocking the true therapeutic potential of cannabinoids in contemporary healthcare.",
+        "Redefining the Ritual: How normalization and sophisticated design are elevating the modern consumer experience."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/13h2RJAhu7TqdY9zE2zf2CQ1Fb4LiaHer/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_dxpo6",
+      "title": "TIME Magazine_Feb 26, 2024_76810372.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Magazine_Feb-26-2024_76810372.webp",
+      "description": "The February 26, 2024 issue of TIME Magazine delves into the revolutionary and complex intersection of artificial intelligence, neurological science, and modern medicine. This edition captures the urgent public discourse surrounding breakthrough neural technologies and the profound ethical questions they introduce to contemporary society.\n\nThrough rigorous journalism and compelling visual storytelling, the magazine explores how visionary researchers and technological pioneers are redefining the boundaries of human capability. From the promise of curing debilitating neurological disorders to the broader societal implications of cognitive enhancement, this issue serves as an essential chronicle of our rapidly evolving scientific landscape.",
+      "highlights": [
+        "Mind Control: Inside the pioneering brain-computer interface trials reshaping modern medicine",
+        "The AI Horizon: How generative intelligence is accelerating breakthroughs in biomedical research",
+        "Ethics of Tomorrow: Navigating the profound privacy and philosophical dilemmas of neuro-technology"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1EaNiSb9JKTD1I9XnlD45E5RfPDGSiopf/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_0uhce",
+      "title": "TIME Magazine Maret 25, 2024_96434646.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Magazine-Maret-25-2024_96434646.webp",
+      "description": "The March 25, 2024 issue of TIME delves deeply into the frontiers of modern discovery, examining the intersection of groundbreaking technological innovation and existential human inquiry. As artificial intelligence and advanced scientific methodologies reshape our daily existence, this edition captures the pivotal moments defining our contemporary era, balancing cautious critique with visionary optimism.\n\nFrom the ethical dilemmas of emerging tech landscapes to profound shifts in global scientific paradigms, the magazine offers rigorous journalism and striking visual storytelling. It serves as an indispensable chronicle for thinkers and leaders navigating an accelerating future where science fiction rapidly transforms into undeniable reality.",
+      "highlights": [
+        "The AI Awakening: How Next-Generation Intelligence is Redefining Human Creativity",
+        "Beyond the Horizon: The Race to Unlock the Secrets of Deep Space",
+        "The Biotech Revolution: Engineering Immunity in an Unpredictable World"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1nzeaLnRDZIOJyO49aUUUCCoAaY2wELKr/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_hxd2e",
+      "title": "TIME Magazine Maret 11, 2024_46250261.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Magazine-Maret-11-2024_46250261.webp",
+      "description": "In this landmark issue, TIME magazine delves into the profound ethical, philosophical, and practical frontiers of artificial intelligence, featuring visionary entrepreneur Sam Altman on the cover. As the global conversation shifts from theoretical capability to profound societal disruption, the issue examines how generative AI is reshaping everything from labor markets and healthcare to the very fabric of human creativity and truth.\n\nBeyond the headline-grabbing technological race, the issue explores critical intersections of policy, climate science, and modern leadership in an increasingly automated world. Through incisive journalism and expert analysis, TIME captures a pivotal moment in human history, offering readers an essential roadmap to navigating the opportunities and existential challenges of the digital age.",
+      "highlights": [
+        "The Architect of Tomorrow: Inside Sam Altman’s quest to redefine human intelligence and the future of OpenAI",
+        "The Algorithmic Workforce: How automation is permanently rewriting the rules of the global economy",
+        "The Truth Dilemma: Navigating deepfakes, misinformation, and the erosion of reality in the age of generative models"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1GL12LQjRk_js2Caq7CBxQFoK3eLspurD/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_a5b5a",
+      "title": "TIME - Taylor Swift 2024    85977585.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME---Taylor-Swift-2024-85977585.webp",
+      "description": "In this definitive commemorative digital edition, we chronicle the unprecedented cultural and economic phenomenon of Taylor Swift in 2024. As she continues to rewrite the playbook of modern pop stardom through the historic Eras Tour and her record-breaking creative output, this issue explores the profound ways her artistry, resilience, and business acumen have shaped contemporary global culture. From stadium-packing spectacles to deeply personal lyricism, we examine how one artist captured the collective consciousness of a generation.\n\nBeyond the chart-topping milestones, our writers delve into the thriving subcultures and communal rituals that have blossomed around her fandom. This issue offers an intimate look at the economics of modern joy, the psychology of shared musical experiences, and the meticulous craftsmanship behind an empire built on authenticity. It is a striking portrait of a defining cultural architect at the absolute zenith of her powers.",
+      "highlights": [
+        "The Eras Economy: How one tour redefined global tourism, retail, and the modern entertainment landscape.",
+        "Architect of the Lyric: Deconstructing the literary evolution and cultural resonance of Swift's songwriting.",
+        "The Power of Community: Inside the unprecedented social phenomenon of the global Swiftie sisterhood."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1a5cf-v5mAm_R07tkzQPTAkh3Wu10l8pW/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_g4ykl",
+      "title": "TIME -  Pokemon 2024     70449605.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME---Pokemon-2024-70449605.webp",
+      "description": "In this special collector's edition, TIME explores the enduring cultural phenomenon of Pokémon as it continues to captivate generations across the globe. From its humble beginnings as a handheld Game Boy role-playing game to a multi-billion-dollar empire spanning card games, animated series, and augmented reality, the franchise has fundamentally reshaped modern entertainment and popular culture. This issue offers a deep dive into the creative minds, strategic expansions, and passionate community that keep the Pokémon universe vibrant and evolving in 2024.\n\nBeyond nostalgia, the magazine examines the broader sociological impact of Pokémon, highlighting how cooperative gameplay, digital collecting, and global competitions foster connection in an increasingly digital world. Through stunning imagery, exclusive behind-the-scenes insights, and thoughtful cultural commentary, TIME captures the magic of a franchise that proves play is a universal language. It is an essential keepsake for longtime fans and newcomers alike, celebrating a legacy of adventure, discovery, and endless imagination.",
+      "highlights": [
+        "Catching the Future: How Pokémon Redefined Global Pop Culture and Digital Entertainment",
+        "Inside the Deck: The Billion-Dollar Trading Card Phenomenon That Transformed Collecting",
+        "Gotta Catch 'Em All: The Psychology and Community Driving Generations of Trainers"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1_sBtihBjOsLtQRRm26FyPYB9dgpsOHfX/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_9rsq7",
+      "title": "TIME 100 USA April.29 ,2024_08529526.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-100-USA-April.29-2024_08529526.webp",
+      "description": "The April 29, 2024 issue of TIME encapsulates the definitive cultural zeitgeist of contemporary America through its celebrated TIME100 franchise, chronicling the titans, artists, and visionaries shaping our modern world. This landmark edition cuts through the noise of daily headlines to deliver profound profiles of global influence, examining how pioneering leaders in culture, technology, and activism are redefining what it means to lead in an era of unprecedented transformation. From intimate portraits of boundary-breaking creators to rigorous analyses of systemic change, the issue serves as both an honor roll of excellence and a vital mirror reflecting our collective aspirations.",
+      "highlights": [
+        "The Architecture of Influence: How today's cultural icons are rewriting the rules of modern legacy and leadership.",
+        "Visionaries of Tomorrow: Inside the minds of the breakthrough artists and innovators shaping our cultural horizon.",
+        "Power and Purpose: A critical examination of how contemporary leaders are balancing global impact with personal authenticity."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/16Q6Q-__6Fc6ougVnuF1sAG0BzZzMy9Me/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791203926110_s2tw1",
+      "title": "TIME 100 Must-See U.S._Landmark_  64491518.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067404189_ak90",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-100-Must-See-U.S._Landmark_-64491518.webp",
+      "description": "Welcome to a definitive exploration of America's most captivating cultural and historical touchstones, curated through the discerning lens of TIME's expert journalists. This special edition serves as an essential roadmap for the modern explorer, uncovering the profound stories, architectural marvels, and living monuments that define the United States' rich tapestry. From coastal sentinels to monumental urban plazas, each selected landmark is examined not merely as a physical destination, but as a vibrant chapter in the nation's collective identity.\n\nWithin these pages, we journey far beyond the conventional tourist itinerary to reveal the hidden narratives and preservation efforts safeguarding these national treasures for future generations. Whether you are planning your next great American road trip or seeking a deeper understanding of the cultural landscape, this issue offers breathtaking visual storytelling paired with incisive cultural commentary. Discover the definitive guide to the places where history happened, and find inspiration for your own transformative travels across the continent.",
+      "highlights": [
+        "Monuments of Meaning: How America's Defining Landmarks Shape Our National Conscience",
+        "Off the Beaten Path: 10 Hidden U.S. Treasures Every Curious Traveler Must Experience",
+        "Preserving the Past: The Race to Protect Our Most Endangered Cultural Icons"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1pX87e2PQaHmj6E-qpPj7vIbgBN2A_P9L/view?usp=drivesdk",
+      "categoryName": "Travel",
+      "created_at": "2026-10-05T12:38:46.110Z"
+    },
+    {
+      "id": "mag_1791196003473_v50fn",
+      "title": "T3_UK_May_2024   85054511.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3_UK_May_2024-85054511.webp",
+      "description": "As the quintessential guide to modern innovation, the May 2024 issue of T3 UK arrives packed with the latest technological marvels and lifestyle gear designed to upgrade the discerning reader's daily routine. From groundbreaking smart home ecosystems to the next wave of wearable tech, this edition meticulously curates the gadgets that define contemporary living, blending cutting-edge engineering with sleek, desirable aesthetics.\n\nBeyond pure hardware, this month's pages dive deep into the future of personal mobility, high-end audio, and immersive entertainment. Expert reviews and forward-looking features strip away the marketing hype to deliver authoritative verdicts on what is truly worth investing in, cementing T3's reputation as the ultimate compass for the tech-savvy consumer navigating an increasingly connected world.",
+      "highlights": [
+        "The Ultimate Gear Upgrade: Essential tech releases and smart innovations dominating the market this spring",
+        "Future Mobility Tested: Putting the latest high-performance electric vehicles and commuter tech through their paces",
+        "Smart Living Redefined: How automation and next-gen audio are transforming the modern home experience"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1h8qEASIZruTkZ07-FCS4byT0UVTNyepV/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_tpukv",
+      "title": "T3 UK - September 2024  40043358.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---September-2024-40043358.webp",
+      "description": "As the quintessential guide to modern living and consumer technology, the September 2024 issue of T3 UK arrives just in time for the ultimate seasonal gear refresh. This edition dives deep into the intersection of cutting-edge innovation and everyday lifestyle enhancement, showcasing the gadgets, smart home ecosystems, and portable tech defining the future of how we work, play, and travel. From rigorous hardware stress-tests to curated buying guides, T3 continues to empower discerning readers who demand both high performance and impeccable aesthetic design from their personal electronics.",
+      "highlights": [
+        "The Ultimate Tech Refresh: Essential gadgets and smart upgrades to future-proof your autumn routine",
+        "Next-Gen Productivity: The best laptops and wireless accessories redefining remote work culture",
+        "Audio Perfection: Immersive headphones and portable speakers put to the ultimate acoustic test"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1wbc_VNQVKTT9_8M_pRfK6jBeLYsD7vQn/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_4lrbw",
+      "title": "T3 UK - November 2024   79928751.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---November-2024-79928751.webp",
+      "description": "As the chill of autumn settles in, the November 2024 issue of T3 UK arrives as the ultimate guide to upgrading your daily life through cutting-edge innovation and intelligent design. This edition dives deep into the tech revolution shaping our homes, workspaces, and leisure time, offering discerning readers a meticulously curated look at the gadgets defining modern living. From revolutionary smart-home ecosystems to the pinnacle of personal audio and high-performance computing, every page is designed to elevate the everyday experience.\n\nNavigating the overwhelming landscape of consumer electronics requires an expert eye, and this issue delivers precisely that with rigorous testing, forward-looking trend analysis, and comprehensive buyer's guides. Whether you are looking to optimize your productivity, transform your entertainment setup, or discover the absolute finest gear ahead of the holiday season, T3 provides the clarity and authority you need. It is an indispensable manual for the modern enthusiast who values both aesthetic brilliance and uncompromising performance.",
+      "highlights": [
+        "The Ultimate Holiday Tech Wishlist: 50 game-changing gadgets that deserve a spot in your home right now",
+        "Smart Home Evolution: How the latest automation breakthroughs are transforming domestic life and energy efficiency",
+        "Audio Perfection Tested: Inside the latest noise-canceling headphones redefining personal soundscapes"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1Bulmhw8ypElSjl8COlwmaNglMuYQWLfi/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_vcbek",
+      "title": "T3 UK - January 2025 - English  99767372.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---January-2025---English-99767372.webp",
+      "description": "As the winter chill sets in, the January 2025 issue of T3 UK arrives as the ultimate guide to upgrading your everyday existence through cutting-edge innovation and intelligent design. This edition dives deep into the gadgets, smart-home transformations, and wellness tech defining the modern lifestyle, helping readers kick off the new year with peak efficiency and elevated taste. From revolutionary pocket-sized tech to immersive home entertainment systems, every page is curated to bridge the gap between aspirational luxury and practical, forward-thinking utility.\n\nHighlighting the definitive gear that matters most right now, this issue serves up rigorous expert testing and visionary trend forecasting for the tech-savvy consumer. Whether you are looking to optimize your physical wellbeing, upgrade your workspace for hybrid living, or simply discover the most coveted wishlist items for the months ahead, T3 delivers the authoritative insights you need. It is an indispensable manual for navigating the intersection of technology, style, and contemporary living.",
+      "highlights": [
+        "The 2025 Tech Awards: The ultimate gear and gadgets set to redefine your everyday routine",
+        "Smart Home Revolution: How AI-driven automation is transforming modern interior spaces",
+        "The Ultimate Fitness Tech Guide: Next-gen wearables and home gym gear to crush your New Year resolutions"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1CUNV67-05t-HB5U9ZRL1MqLV-amP5kx4/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_yaqq0",
+      "title": "T3 UK - January 2025   61296787.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---January-2025-61296787.webp",
+      "description": "As the winter chill sets in, the January 2025 issue of T3 UK arrives as the ultimate gadget buyer's manual for the modern tech enthusiast, navigating the post-holiday landscape with sharp clarity. This edition zeroes in on the year's most transformative consumer electronics, offering rigorous reviews and forward-looking previews of the hardware set to define our connected lives. From high-performance personal audio to cutting-edge smart home ecosystems, T3 curates the pinnacle of innovation for the discerning consumer.\n\nBeyond mere specifications, this issue explores how modern technology seamlessly integrates into daily routines, elevating productivity, fitness, and entertainment. Expert analysis dissects the convergence of artificial intelligence and everyday devices, giving readers the competitive edge in understanding what's next. It is an indispensable guide for anyone looking to optimize their digital footprint and upgrade their lifestyle with the very best gear on the market.",
+      "highlights": [
+        "The Ultimate Tech Roadmap 2025: The breakthrough gadgets and innovations guaranteed to dominate the year ahead.",
+        "Smart Home Supremacy: How next-gen automation and AI are transforming modern living spaces into intuitive sanctuaries.",
+        "Audio Perfection Tested: Our definitive verdict on the high-end headphones and spatial sound systems redefining personal listening."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1g8IpUvX34vSK3-oXapLo0rGPBAlohKVt/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_9t6ia",
+      "title": "T3 UK - February 2025   96090320.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---February-2025-96090320.webp",
+      "description": "The February 2025 edition of T3 UK arrives as a definitive guide to the evolving landscape of personal technology, balancing high-octane innovation with the practical demands of modern living. This issue meticulously dissects the latest breakthroughs in consumer electronics, providing readers with the critical analysis required to navigate a market increasingly saturated by AI integration and smart-home connectivity. It is a masterclass in product curation, designed for the discerning individual who demands both aesthetic sophistication and peak performance from their daily toolkit.\n\nBeyond the hardware specs, this month’s editorial lens focuses on the intersection of lifestyle and digital fluency. From the latest in wearable health tech to the next generation of home entertainment systems, T3 continues its legacy of separating genuine innovation from mere trend-chasing. By contextualizing how these gadgets reshape our productivity and leisure, the magazine empowers its audience to build a more seamless, efficient, and technologically elevated existence in an ever-accelerating digital world.",
+      "highlights": [
+        "Feature Article 1: The AI Home Revolution: Why your living room is about to become your smartest assistant.",
+        "Feature Article 2: Wearable Wellness 2.0: We test the latest health-tracking rings and watches to find the ultimate fitness companion.",
+        "Feature Article 3: Future-Proof Your Workspace: The essential hardware upgrades to transform your home office into a high-performance hub."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1nurgOP6vPOeCSpEZwBWhyNa-uz3-U6en/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_1a5xn",
+      "title": "T3 UK - December 2024   23699014.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---December-2024-23699014.webp",
+      "description": "The December 2024 issue of T3 UK serves as the ultimate definitive guide for the modern, tech-forward man navigating the peak of the holiday gift-giving season. With a sharp focus on the intersection of innovation and aspiration, the editorial team curates a high-octane selection of the year’s most transformative consumer electronics, from next-generation home entertainment systems to the latest advancements in wearable health tech. It is a masterclass in discerning quality, designed to help the reader cut through the digital noise and invest in gear that genuinely upgrades their daily lifestyle.\n\nBeyond the hardware, this edition leans into the cultural zeitgeist of the 'smart home' evolution, offering practical advice for those looking to future-proof their living spaces. By blending rigorous lab-tested reviews with aspirational trend forecasting, the issue positions itself as an essential companion for the tech-conscious individual who demands both aesthetic sophistication and uncompromising performance. Whether you are hunting for the ultimate gadget upgrade or seeking inspiration for the perfect holiday indulgence, this issue captures the pulse of the tech landscape with unparalleled clarity.",
+      "highlights": [
+        "The Ultimate Holiday Gift Guide: 100+ gadgets curated for the man who has everything.",
+        "The Future of Sound: A deep dive into the latest spatial audio systems redefining the home cinema experience.",
+        "Wrist-Worn Revolution: Why 2024’s latest smartwatches are finally bridging the gap between high-tech and high-fashion."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1YiTojcHFMY4_PLdWUYZyHV8IT93hTpY0/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_dyizh",
+      "title": "T3 UK - April 2025 105009.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---April-2025-105009.webp",
+      "description": "The April 2025 issue of T3 UK arrives at the intersection of high-concept innovation and the practical demands of the modern home. In this edition, our editorial focus shifts toward the 'ambient intelligence' revolution, stripping away the hype surrounding smart-tech to reveal how the latest wave of connected devices is genuinely augmenting our daily rituals. From the next generation of generative AI-integrated wearables to the sustainable evolution of domestic robotics, we explore how technology is becoming less of a digital intrusion and more of a quiet, essential facilitator of our personal well-being.\n\nBeyond the silicon, this issue interrogates the evolving aesthetics of the modern workspace and the sanctuary of the high-performance home office. We have curated a definitive guide to the hardware that defines the current zeitgeist, balancing raw technical performance with the minimalist design language that readers have come to expect from T3. Whether you are upgrading your ecosystem for maximum efficiency or seeking the definitive word on the year’s most anticipated gadget releases, this issue serves as your essential blueprint for living smarter in an increasingly complex world.",
+      "highlights": [
+        "Feature Article 1: The Invisible Home: How ambient AI is quietly automating your sanctuary",
+        "Feature Article 2: Silicon Style: The 10 design-led gadgets redefining the modern workspace",
+        "Feature Article 3: Next-Gen Mobility: Can these new personal electric vehicles finally replace the commute?"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1fypSpwXusrUNoyq7RvfGtHOxRHSHQ9Ic/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_ibo8j",
+      "title": "T3 Mar 2024_   92612918.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-Mar-2024_-92612918.webp",
+      "description": "As the quintessential guide to modern gadgetry and high-octane living, the March 2024 issue of T3 delivers an electrifying deep dive into the technological marvels shaping our immediate future. This edition unpacks the bleeding edge of personal tech, from next-generation wearables and immersive audio gear to the smart-home innovations redefining domestic luxury. Every page is meticulously curated for the discerning modern man who demands both peak performance and uncompromising aesthetic sophistication from his gear.\n\nBeyond the hardware, this issue explores the intersection of cutting-edge engineering and everyday lifestyle integration, featuring rigorous product testing and visionary commentary on the tools driving modern productivity and recreation. Whether you are looking to upgrade your digital ecosystem, optimize your fitness tracking, or simply marvel at the pinnacle of design engineering, T3's March dispatch serves as an indispensable roadmap to the innovations defining contemporary style and utility.",
+      "highlights": [
+        "The Ultimate Gear Guide: 50 must-have tech innovations engineered to upgrade your daily routine",
+        "Sound and Vision: Inside the revolutionary audio tech transforming home entertainment",
+        "Future Fitness: The advanced wearables and smart-training tools redefining peak performance"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1BxxKIo9k8Ek-6I4macLGnNKeVUyQspp2/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003473_90zub",
+      "title": "T3 April 2024_      97786737.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-April-2024_-97786737.webp",
+      "description": "As spring ushers in a wave of technological innovation, the April 2024 issue of T3 delivers an authoritative guide to the ultimate gear reshaping modern living. From cutting-edge smart home ecosystems to the next generation of portable audio and high-performance fitness tech, this edition cuts through the noise to spotlight the devices truly worth an upgrade. Every page is meticulously curated for the discerning enthusiast who demands both style and substance from their everyday carry and living spaces.\n\nBeyond the gadget roundups, this issue dives deep into the future of personal mobility and immersive entertainment, offering expert reviews and hands-on testing that define the bleeding edge of consumer tech. Whether you are looking to optimize your home office, elevate your outdoor adventures, or simply stay ahead of the digital curve, T3 provides the definitive blueprint. It is an indispensable manual for the modern technophile navigating an increasingly connected world.",
+      "highlights": [
+        "The Ultimate Home Tech Upgrade: The smartest gear to transform your living space this season",
+        "Next-Gen Audio Tested: We review the wireless headphones redefining high-fidelity sound on the move",
+        "Future-Proof Fitness: The advanced wearables and smart equipment taking your workouts to the next level"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1LMlr3DElWj5gwXcBeH0WGEAAQbsBibPo/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.473Z"
+    },
+    {
+      "id": "mag_1791196003472_nl73r",
+      "title": "T3 - October 2024    26614990.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---October-2024-26614990.webp",
+      "description": "As the leaves turn and the tech landscape shifts into high gear, the October 2024 issue of T3 delivers an electrifying roadmap to the season's most coveted gear and gadgets. From next-generation flagship smartphones to immersive home audio systems and cutting-edge fitness wearables, this edition meticulously dissects the innovations redefining our daily routines. It is an indispensable guide for the modern enthusiast seeking to elevate every facet of their digital lifestyle with uncompromising style and precision.\n\nBeyond the hardware, this issue dives deep into the future of personal mobility, smart home integration, and productivity-enhancing tech designed for the hybrid workspace. With expert reviews, exhaustive comparative tests, and visionary features, T3 cuts through the noise to spotlight the products truly worth your investment. Whether you are upgrading your entertainment arsenal or streamlining your workflow, this month's curation is a masterclass in modern consumer technology.",
+      "highlights": [
+        "The Ultimate Smartphone Showdown: Which flagship reigns supreme this autumn?",
+        "Smart Home Revolution: Transform your living space with the latest AI-driven automation hubs",
+        "Next-Gen Audio Mastery: We test the noise-cancelling headphones redefining acoustic immersion"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1WhZw8E5rzwna3REnefFbDzBRizZOMOwH/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_q4j8b",
+      "title": "T3  - June 2024    20413078.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---June-2024-20413078.webp",
+      "description": "As the summer of 2024 approaches, the June edition of T3 arrives as the ultimate handbook for the modern, tech-forward man looking to upgrade his lifestyle. This issue dives deep into the intersection of cutting-edge innovation and everyday gear, showcasing the hardware, wearables, and smart home solutions defining the contemporary aesthetic. From immersive outdoor gadgets designed for the adventurous spirit to sleek productivity powerhouses, every page is curated to help readers navigate and master the rapidly evolving digital landscape.\n\nBeyond the hardware, this number serves up a masterclass in modern living, blending authoritative tech journalism with aspirational lifestyle guides. Readers are treated to comprehensive reviews, expert buying advice, and forward-looking features that anticipate the gadgets we didn't know we needed. Whether you are looking to optimize your fitness routine, elevate your entertainment setup, or invest in the next big thing in personal tech, T3 June 2024 remains the definitive voice for men who demand intelligence and style from their gear.",
+      "highlights": [
+        "The Ultimate Summer Tech Guide: 50 must-have gadgets engineered to elevate your warm-weather adventures and outdoor lifestyle.",
+        "Smart Living Redefined: How next-generation AI and automated home ecosystems are transforming modern domestic spaces.",
+        "The Future on Your Wrist: A definitive showdown of the elite smartwatches redefining health tracking, design, and connectivity."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1evLGrpS5bBPAt65EJJCqq27B92Qe7vlX/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_c3rsn",
+      "title": "T3  - July 2024    84580978.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---July-2024-84580978.webp",
+      "description": "As the quintessential guide to modern tech and gadgetry, the July 2024 issue of T3 arrives as an essential compendium for the discerning consumer navigating an increasingly connected world. This edition meticulously explores the cutting edge of personal innovation, from next-generation wearables and immersive audio gear to the latest breakthroughs in smart-home architecture and high-performance computing.\n\nHighlighting the intersection of sophisticated design and utilitarian power, the magazine delivers sharp critiques and definitive buying guides tailored for the modern man. Whether examining the sleek aesthetics of upcoming luxury EVs or dissecting the heavy-duty specs of outdoor adventure tech, this issue exemplifies T3's signature commitment to elevated living through intelligent technology choices.",
+      "highlights": [
+        "The Ultimate Summer Tech Guide: 50 must-have gadgets engineered to elevate your travel, fitness, and downtime.",
+        "Next-Gen Audio Wars: We test the ultimate noise-canceling headphones redefining acoustic purity on the move.",
+        "Smart Living Redefined: How AI-driven automation is quietly transforming the modern bachelor pad into a sanctuary of efficiency."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1gqJNORzP9aFLbzCCij8N9OwHsmwjP1ha/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_eca5r",
+      "title": "T3  - August 2024   75764141.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---August-2024-75764141.webp",
+      "description": "As the dog days of summer prompt a collective pivot toward smarter, more seamless living, the August 2024 issue of T3 arrives as the definitive guide to upgrading your daily existence. This edition plunges headfirst into the intersection of cutting-edge innovation and effortless style, curating the ultimate wishlist for modern hedonists and tech enthusiasts alike. From next-generation portable audio that soundtrack your summer escapes to high-performance smart home ecosystems that keep you cool when the weather spikes, every page is designed to elevate how you interact with the world around you.\n\nBeyond the hardware, this issue delivers an insightful look at the future of personal mobility, wellness tech, and travel gear engineered for the discerning modern explorer. Editors dissect the year’s most anticipated releases with the razor-sharp critique and sophisticated aesthetic that has made T3 a global authority on consumer culture. Whether you are looking to streamline your workflow with AI-driven productivity tools or simply craving the absolute best gadgets to conquer the remainder of the season, this number serves up an indispensable blueprint for living well through technology.",
+      "highlights": [
+        "The Ultimate Summer Audio Guide: Premium headphones and speakers built for high-fidelity on-the-go listening",
+        "Smart Home Cool: The top climate-control tech and automated systems to master the summer heat",
+        "Future-Proof Your Travel: Essential tech companions and rugged gear designed for the modern jet-setter"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1p60jlSxT2nZaptkdAio4htAeaCqxqQlC/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_dffja",
+      "title": "Recharge_Your_Life_-_7th_Edition_2025  101134.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Recharge_Your_Life_-_7th_Edition_2025-101134.webp",
+      "description": "Welcome to the 7th edition of Recharge Your Life, a definitive guide designed for the modern individual seeking intentionality, holistic wellness, and personal renewal in 2025. This issue cuts through the noise of daily digital saturation, offering deeply researched strategies on mental clarity, sustainable habit-building, and holistic self-care that resonate with today's mindful consumer.\n\nInside these pages, we curate expert insights from leading wellness practitioners, productivity architects, and wellness visionaries who redefine what it means to truly unplug and revitalize. From cutting-edge routines for cognitive longevity to minimalist spatial redesigns that elevate your everyday environment, this edition serves as an indispensable roadmap for anyone ready to reset, refocus, and thrive.",
+      "highlights": [
+        "The 2025 Mental Reset: Science-backed micro-habits to reclaim your daily focus and energy",
+        "Designing Sanctuary: How to curate minimalist, intentional living spaces that reduce stress",
+        "Beyond the Screen: The ultimate guide to digital detoxing without sacrificing your career"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1VQ31vXhWfFSpMr-AwO-V1KIxCps2LhPi/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_qiv7y",
+      "title": "Prevention_USA_-_August_2025  101133.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Prevention_USA_-_August_2025-101133.webp",
+      "description": "As the dog days of summer prompt a collective recalibration of our daily routines, the August 2025 issue of Prevention arrives as an indispensable guide for holistic well-being and mindful longevity. This edition zeroes in on the vital intersection of modern science and everyday habits, offering readers evidence-based strategies to optimize their physical vitality and mental resilience as seasons begin to shift. From cutting-edge nutritional insights to restorative mental health practices, the magazine bridges the gap between clinical research and actionable self-care, empowering its audience to take charge of their long-term health trajectory.\n\nInside this meticulously curated number, the editorial team unpacks the nuances of sustainable wellness, stripping away the noise of fleeting health fads in favor of enduring, science-backed lifestyle changes. Readers are treated to deep-dive investigations into cellular aging, natural immunity boosters, and the psychological benefits of intentional movement, all presented with the publication's signature journalistic rigor and warmth. It is a masterclass in modern preventive care, designed to inspire vitality, balance, and a renewed commitment to personal health in a fast-paced world.",
+      "highlights": [
+        "The Cellular Reset: How to harness intermittent fasting and targeted nutrients to turn back your biological clock.",
+        "Beyond the Burnout: Simple daily micro-habits that rewire your nervous system for lasting calm and resilience.",
+        "The Summer Superfood Audit: Which seasonal ingredients actually deliver on their anti-inflammatory promises."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1pmt9QW7AcoL-s6wyXR-wxITcQ0GYDQ6G/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_msd0h",
+      "title": "Newsweek_International_-_July_4  101132.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Newsweek_International_-_July_4-101132.webp",
+      "description": "As global markets navigate an era of unprecedented volatility, this international edition of Newsweek delivers a rigorous examination of the geopolitical shifts and economic maneuvers reshaping our world. From supply chain vulnerabilities to the high-stakes diplomacy dictating international trade, this issue offers readers an uncompromising look at the forces driving contemporary commerce and policy. Our journalists dissect the boardroom strategies of multinational titans and the regulatory battles defining the future of cross-border enterprise.\n\nBeyond the macroeconomic indicators, this number turns its lens toward the visionary leadership and disruptive innovations transforming traditional industries. We explore how emerging technologies and sustainable practices are no longer peripheral concerns, but central pillars of corporate survival and growth. With razor-sharp analysis and deep reporting from key global capitals, this issue serves as an indispensable guide for leaders, investors, and thinkers who demand clarity in a complex global economy.",
+      "highlights": [
+        "The New Trade Wars: How protectionist policies are redrawing the map of global commerce",
+        "Boardroom Revolution: The CEOs betting their empires on radical sustainability models",
+        "Digital Sovereignty: The regulatory showdown threatening the future of cross-border tech"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1qE9opO2RK8GOsf8jPlMnrYi4SPvb-VSj/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_3498t",
+      "title": "New_York_Magazine_-_Hamptons_June_2025  101131.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067373378_l9tg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/New_York_Magazine_-_Hamptons_June_2025-101131.webp",
+      "description": "As the East End awakens for the summer season, this special edition of New York Magazine captures the definitive pulse of Hamptons culture, society, and high-end coastal living. From newly redesigned modernist retreats nestled behind dune grasses to coveted reservations at the most exclusive farm-to-table dining destinations, the issue explores the intersection of understated luxury and contemporary leisure. It serves as an essential companion for discerning tastemakers navigating the social calendars, cultural happenings, and coastal aesthetic defining the East Coast's premier warm-weather enclave.",
+      "highlights": [
+        "The New Dune Aesthetic: Inside the minimalist beach houses redefining modern coastal architecture",
+        "Beyond the VIP Rope: The secret culinary pop-ups and farm-to-table hotspots shaping the summer dining scene",
+        "Social Tides: Navigating the galas, art openings, and charity circuits of the 2025 Hamptons season"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1xVAVm_8C1fILukn5bJrA-EyfXTugkeTR/view?usp=drivesdk",
+      "categoryName": "Lifestyle",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_0bo1q",
+      "title": "National_Geographic_USA_-_Vol._248  101130.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067410699_d004",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/National_Geographic_USA_-_Vol._248-101130.webp",
+      "description": "Step into a world of profound exploration and visual storytelling with this landmark edition of National Geographic. This issue masterfully bridges rigorous scientific inquiry with breathtaking photography, taking readers on a sweeping journey across ecosystems, ancient histories, and modern ecological frontiers. Every page reflects the publication's enduring commitment to illuminating the wonders and complexities of our natural world.\n\nFrom deep-dive investigations into climate evolution to intimate portraits of endangered wildlife and human resilience, the content challenges our perspectives and deepens our planetary consciousness. It is a masterclass in modern journalism and editorial design, offering both intellectual stimulation and visual splendor for the curious mind.",
+      "highlights": [
+        "The Last Stronghold: Tracking the fragile ecosystems on the edge of extinction",
+        "Deep Earth Secrets: What subterranean fossils reveal about our prehistoric origins",
+        "Mapping Tomorrow: How cutting-edge technology is reshaping global conservation efforts"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1rW52ZBe6EneqQ-csgCDMCdYVPZo1o2w7/view?usp=drivesdk",
+      "categoryName": "Science",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_qpryc",
+      "title": "MIT_Technology_Review_Insights_-_Scaling_integrated_digital_health  101129.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/MIT_Technology_Review_Insights_-_Scaling_integrated_digital_health-101129.webp",
+      "description": "As the healthcare landscape undergoes a seismic shift toward interconnected ecosystems, this special publication from MIT Technology Review Insights examines the technological, logistical, and systemic frontiers of digital health integration. Across critical analyses and expert commentaries, the issue unpacks how hospitals, clinics, and digital therapeutics are moving beyond isolated software silos to create unified, patient-centric networks. It is a compelling exploration of the data architectures and interoperability standards required to truly scale modern medicine.\n\nFrom the promise of predictive artificial intelligence to the rigorous regulatory frameworks guiding secure data exchange, the features within illuminate both the immense potential and the stubborn friction points of digital transformation. Industry leaders and visionary researchers weigh in on the cultural and structural adjustments necessary to bring cohesive digital care to the mainstream. This issue serves as an indispensable playbook for navigating the future of global wellness and clinical efficiency.",
+      "highlights": [
+        "The Interoperability Imperative: Breaking down data silos to build cohesive digital health ecosystems",
+        "AI at the Bedside: How machine learning algorithms are reshaping clinical decision-making and patient outcomes",
+        "Securing the Patient Journey: Overcoming cybersecurity and privacy challenges in scaled telemedicine"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1CKdSx_A-ZFMfcJkZWcU4FuOlL8SHidlL/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_wtdc2",
+      "title": "Inc._Magazine_-_Summer_2025  101128.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067364247_vblg",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Inc._Magazine_-_Summer_2025-101128.webp",
+      "description": "As the entrepreneurial landscape shifts into a high-stakes era of artificial intelligence integration and agile market adaptation, the Summer 2025 issue of Inc. delivers an indispensable playbook for modern founders and visionaries. This edition cuts through the noise of economic uncertainty, offering deep-dive analyses into the strategies scaling the world's most disruptive startups and resilient legacy enterprises alike. From navigating venture capital shifts to harnessing next-generation automation without losing human touch, every page is engineered to inspire decisive leadership and sustainable growth.\n\nBeyond the boardroom tactics, this special issue turns its lens toward the mindset required to sustain high-performance cultures in a decentralized working world. Readers will discover intimate profiles of boundary-pushing entrepreneurs who are redefining what it means to lead with purpose, resilience, and radical innovation. Whether you are plotting your next major pivot or optimizing your current operational ecosystem, Inc.'s Summer dispatch serves as both a compass and a catalyst for the boldest builders of tomorrow.",
+      "highlights": [
+        "The AI Autopilot: How Smart Founders Are Automating Growth Without Losing Their Soul",
+        "Venture Capital 2.0: The New Rules of Fundraising When Money is No Longer Cheap",
+        "The Resilient Enterprise: Building Bulletproof Operations for an Unpredictable Economy"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1RfPd00qrMrOUjh8fe7QkRpHLYAd9S3IT/view?usp=drivesdk",
+      "categoryName": "Business",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_u4ugk",
+      "title": "FourFourTwo_UK_-_July_2025  101127.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067441402_3cew",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/FourFourTwo_UK_-_July_2025-101127.webp",
+      "description": "FourFourTwo stands as the definitive voice of global football culture, combining meticulous tactical analysis, gripping player profiles, and uncompromising journalism. This mid-summer digital edition arrives at the fever pitch of the global transfer window and pre-season preparations, offering fans an intellectual and passionate dive into the beautiful game as clubs retool for glory.\n\nWithin these digital pages, the magazine dissects the shifting paradigms of modern management, unearths forgotten tales from football history, and captures the raw emotion that defines the terraces. It is an essential curation for the discerning supporter who demands depth, authority, and vivid storytelling beyond the standard matchday broadcast.",
+      "highlights": [
+        "The Tacticians of Tomorrow: How the next generation of managers are rewriting the playbook on possession and high-press football.",
+        "Summer of Uncertainty: Inside the high-stakes transfer market battles reshaping the European elite for the upcoming campaign.",
+        "Cult Heroes Revisited: The untold stories of maverick footballers who captured our hearts and defined an era of unpredictable brilliance."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1Uk-xx2IHJ_ufrQkWYRBE7swQXRwJHHNz/view?usp=drivesdk",
+      "categoryName": "Sports",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_5iyg7",
+      "title": "Foreign_Affairs_-_JulyAugust_2025  101126.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067396718_pde1",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Foreign_Affairs_-_JulyAugust_2025-101126.webp",
+      "description": "As global power dynamics shift with unprecedented velocity, the July/August 2025 issue of Foreign Affairs delivers a rigorous examination of modern geopolitics, international security, and strategic statecraft. This edition navigates the complex fault lines of contemporary conflict, probing the intersection of emerging technologies, shifting alliances, and the fragile architecture of global governance. Through the lenses of seasoned diplomats, preeminent historians, and astute policy analysts, the issue offers a clear-eyed assessment of the threats and opportunities defining the current international order.\n\nWithin these pages, contributors dissect the evolving doctrines of deterrence and the high-stakes chess match of economic statecraft in an era of heightened fragmentation. From the contested frontiers of cyberspace to the corridors of traditional military power, the analysis cuts through the noise of daily headlines to provide enduring strategic foresight. It is an indispensable guide for leaders, thinkers, and global citizens grappling with the profound transformations reshaping our world.",
+      "highlights": [
+        "The New Calculus of Deterrence: Navigating strategic instability in a multipolar world",
+        "Silicon Sovereignty: How technology and national security are fusing on the global stage",
+        "The Fragile Peace: Reassessing international alliances amid rising great-power competition"
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/1j_1W9uPSFJQgKF4numWuDr7yLhQcAiKs/view?usp=drivesdk",
+      "categoryName": "Defense",
+      "created_at": "2026-10-05T10:26:43.472Z"
+    },
+    {
+      "id": "mag_1791196003472_zp1ie",
+      "title": "Architectural_Digest_USA_-_June_2025  101125.pdf",
+      "issueNumber": "Vol. 1 • 2026",
+      "categoryId": "cat_1791067380440_n8rb",
+      "price": 13000,
+      "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Architectural_Digest_USA_-_June_2025-101125.webp",
+      "description": "Architectural Digest USA continues to set the global benchmark for luxury interiors, avant-garde architecture, and visionary spatial design. This issue takes readers on an exclusive journey behind the grand doors of the world's most breathtaking private estates, showcasing how contemporary tastemakers and master architects merge environmental consciousness with uncompromising aesthetic grandeur. From minimalist coastal sanctuaries to exuberant urban maximalism, every page serves as a masterclass in texture, light, and materiality.\n\nBeyond stunning visual spreads, this edition delves deep into the cultural zeitgeist of modern living, highlighting the artisans, craftspeople, and innovators who are shaping the future of our built environments. Readers are invited to explore curated spaces that transcend mere decoration, functioning instead as deeply personal reflections of identity and lifestyle. It is an indispensable guide for anyone passionate about the intersection of design heritage and the cutting edge of contemporary luxury.",
+      "highlights": [
+        "Inside the Architectural Marvels of Coastal California: How modern designers are redefining indoor-outdoor living with brutalist concrete and organic glass.",
+        "The New Vanguard of Interior Styling: Master artisans reveal the revival of artisanal craftsmanship, bold color blocking, and tactile luxury.",
+        "Sanctuary in the City: A tour of historic brownstones transformed into ultra-modern, serene botanical havens amidst the urban rush."
+      ],
+      "pdfUrl": "https://drive.google.com/file/d/13uxwc7f8kT88Lh3eDTb6d_9iPlfqCzvd/view?usp=drivesdk",
+      "categoryName": "Design",
+      "created_at": "2026-10-05T10:26:43.472Z"
     }
   ],
   "orders": [],
