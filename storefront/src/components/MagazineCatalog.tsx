@@ -161,9 +161,9 @@ export default function MagazineCatalog({
     }
   }
 
-  // Filter magazines by category and search keywords (using ParadeDB BM25 when available)
+  // Filter magazines by category and search keywords (using ParadeDB BM25 when available with local fallback)
   const filteredMagazines =
-    paradeResults !== null
+    paradeResults !== null && paradeResults.length > 0
       ? paradeResults
       : magazines.filter((mag) => {
           const matchesCategory =

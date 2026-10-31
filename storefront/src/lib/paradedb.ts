@@ -13,7 +13,7 @@ function getPool(): Pool {
   if (!pool) {
     pool = new Pool({
       connectionString,
-      connectionTimeoutMillis: 2000,
+      connectionTimeoutMillis: 1500,
       idleTimeoutMillis: 30000,
       max: 15,
     })
@@ -31,10 +31,8 @@ export async function initParadeDb(): Promise<boolean> {
   try {
     const client = await getPool().connect()
     try {
-      // 1. Enable ParadeDB pg_search extension
       await client.query("CREATE EXTENSION IF NOT EXISTS pg_search;")
 
-      // 2. Create magazine search table if not exists
       await client.query(`
         CREATE TABLE IF NOT EXISTS magazine_search (
           id TEXT PRIMARY KEY,
@@ -52,7 +50,6 @@ export async function initParadeDb(): Promise<boolean> {
         );
       `)
 
-      // 3. Create ParadeDB BM25 index
       await client.query(`
         CREATE INDEX IF NOT EXISTS magazine_search_bm25_idx
         ON magazine_search
@@ -60,7 +57,6 @@ export async function initParadeDb(): Promise<boolean> {
         WITH (key_field = 'id');
       `)
 
-      // 4. Auto-seed if empty
       const checkCount = await client.query("SELECT COUNT(*) FROM magazine_search;")
       const count = parseInt(checkCount.rows[0]?.count || "0", 10)
       if (count === 0) {
@@ -168,10 +164,8 @@ export async function syncMagazinesToParadeDb(magazines: Magazine[]): Promise<nu
 }
 
 /**
- * Builds a robust Tantivy/ParadeDB BM25 search expression with prefix and fuzzy matching.
- * Handles partial queries like 'photo' -> matches 'photography'
- * Handles typos like 'potography' -> matches 'photography'
- * Strips dangerous syntax characters that cause Tantivy parser errors.
+ * Builds field-targeted Tantivy query:
+ * e.g. "photo" -> (title:photo* OR description:photo* OR category_name:photo*)
  */
 export function buildParadeQuery(rawQuery: string): string {
   const words = rawQuery
@@ -182,25 +176,16 @@ export function buildParadeQuery(rawQuery: string): string {
 
   if (words.length === 0) return ""
 
-  return words
-    .map((w) => {
-      // If it's a number (e.g. 2024), exact match or prefix
-      if (/^\d+$/.test(w)) {
-        return `(${w} OR ${w}*)`
-      }
-      // Very short terms (1-2 chars): prefix only
-      if (w.length <= 2) {
-        return `${w}*`
-      }
-      // Medium to long terms: exact OR prefix OR fuzzy (distance 1)
-      return `(${w} OR ${w}* OR ${w}~1)`
-    })
-    .join(" AND ")
+  const clauses = words.map((w) => {
+    // Exact + Prefix match on indexed fields
+    return `(title:${w}* OR description:${w}* OR category_name:${w}*)`
+  })
+
+  return clauses.join(" AND ")
 }
 
 /**
- * Fast BM25 Search without DDL lock overhead.
- * Target execution time: 2ms - 15ms.
+ * Fast ParadeDB BM25 search using official `id @@@ query` syntax.
  */
 export async function searchMagazinesParadeDb(
   query: string,
@@ -224,7 +209,7 @@ export async function searchMagazinesParadeDb(
                  cover_image, thumbnail_url, description, highlights, pdf_url, created_at,
                  paradedb.score(id) AS bm25_score
           FROM magazine_search
-          WHERE magazine_search @@@ $1
+          WHERE id @@@ $1
             AND (category_id = $2 OR LOWER(category_name) = LOWER($2))
           ORDER BY bm25_score DESC
           LIMIT $3;
@@ -236,7 +221,7 @@ export async function searchMagazinesParadeDb(
                  cover_image, thumbnail_url, description, highlights, pdf_url, created_at,
                  paradedb.score(id) AS bm25_score
           FROM magazine_search
-          WHERE magazine_search @@@ $1
+          WHERE id @@@ $1
           ORDER BY bm25_score DESC
           LIMIT $2;
         `
@@ -273,7 +258,6 @@ export async function searchMagazinesParadeDb(
       client.release()
     }
   } catch (err: any) {
-    // If table does not exist yet (code 42P01), initialize once in background
     if (err.code === "42P01" || err.message?.includes("does not exist")) {
       initParadeDb().catch(() => {})
     }
