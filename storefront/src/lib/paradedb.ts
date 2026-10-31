@@ -13,12 +13,12 @@ function getPool(): Pool {
   if (!pool) {
     pool = new Pool({
       connectionString,
-      connectionTimeoutMillis: 3000,
-      idleTimeoutMillis: 10000,
-      max: 10,
+      connectionTimeoutMillis: 2000,
+      idleTimeoutMillis: 30000,
+      max: 15,
     })
     pool.on("error", (err) => {
-      console.warn("[ParadeDB] Pool client error:", err.message)
+      console.warn("[ParadeDB] Pool error:", err.message)
     })
   }
   return pool
@@ -102,7 +102,7 @@ export async function initParadeDb(): Promise<boolean> {
       client.release()
     }
   } catch (err: any) {
-    console.warn("[ParadeDB] Initialization warning (will fallback to in-memory):", err.message)
+    console.warn("[ParadeDB] Initialization warning:", err.message)
     return false
   }
 }
@@ -167,6 +167,41 @@ export async function syncMagazinesToParadeDb(magazines: Magazine[]): Promise<nu
   }
 }
 
+/**
+ * Builds a robust Tantivy/ParadeDB BM25 search expression with prefix and fuzzy matching.
+ * Handles partial queries like 'photo' -> matches 'photography'
+ * Handles typos like 'potography' -> matches 'photography'
+ * Strips dangerous syntax characters that cause Tantivy parser errors.
+ */
+export function buildParadeQuery(rawQuery: string): string {
+  const words = rawQuery
+    .replace(/[^a-zA-Z0-9\s]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+
+  if (words.length === 0) return ""
+
+  return words
+    .map((w) => {
+      // If it's a number (e.g. 2024), exact match or prefix
+      if (/^\d+$/.test(w)) {
+        return `(${w} OR ${w}*)`
+      }
+      // Very short terms (1-2 chars): prefix only
+      if (w.length <= 2) {
+        return `${w}*`
+      }
+      // Medium to long terms: exact OR prefix OR fuzzy (distance 1)
+      return `(${w} OR ${w}* OR ${w}~1)`
+    })
+    .join(" AND ")
+}
+
+/**
+ * Fast BM25 Search without DDL lock overhead.
+ * Target execution time: 2ms - 15ms.
+ */
 export async function searchMagazinesParadeDb(
   query: string,
   category?: string,
@@ -174,16 +209,12 @@ export async function searchMagazinesParadeDb(
 ): Promise<{ magazines: Magazine[]; bm25Scores: Record<string, number> } | null> {
   if (!query || query.trim() === "") return null
 
-  const ready = await initParadeDb()
-  if (!ready) return null
+  const paradeQuery = buildParadeQuery(query)
+  if (!paradeQuery) return null
 
   try {
     const client = await getPool().connect()
     try {
-      // Clean query: strip quotes or special control characters that might break tantivy syntax
-      const cleanTerm = query.trim().replace(/['"\\()]/g, "")
-      if (!cleanTerm) return null
-
       let sql: string
       let params: any[]
 
@@ -198,7 +229,7 @@ export async function searchMagazinesParadeDb(
           ORDER BY bm25_score DESC
           LIMIT $3;
         `
-        params = [cleanTerm, category, limit]
+        params = [paradeQuery, category, limit]
       } else {
         sql = `
           SELECT id, title, issue_number, category_id, category_name, price,
@@ -209,7 +240,7 @@ export async function searchMagazinesParadeDb(
           ORDER BY bm25_score DESC
           LIMIT $2;
         `
-        params = [cleanTerm, limit]
+        params = [paradeQuery, limit]
       }
 
       const res = await client.query(sql, params)
@@ -242,7 +273,11 @@ export async function searchMagazinesParadeDb(
       client.release()
     }
   } catch (err: any) {
-    console.warn("[ParadeDB] Search error (falling back to store.json):", err.message)
+    // If table does not exist yet (code 42P01), initialize once in background
+    if (err.code === "42P01" || err.message?.includes("does not exist")) {
+      initParadeDb().catch(() => {})
+    }
+    console.warn("[ParadeDB] Search error (falling back to local):", err.message)
     return null
   }
 }
