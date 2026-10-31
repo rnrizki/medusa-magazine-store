@@ -295,19 +295,10 @@ export default function MagazineCatalog({
       {/* Category Pills & Search Bar */}
       <div className="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-4">
         {/* Search Input Bar */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-100">
-          <div className="flex items-center space-x-2">
-            <span className="text-xs font-bold text-slate-800 uppercase tracking-wider">
-              Browse by Category:
-            </span>
-            <span className="text-xs text-slate-400 font-medium">
-              ({categories.length} Official Categories)
-            </span>
-          </div>
-
+        <div className="pb-3 border-b border-slate-100">
           <div
             ref={searchContainerRef}
-            className="relative w-full sm:w-88 flex flex-col items-end"
+            className="relative w-full flex flex-col"
           >
             {/* Search Input Form */}
             <form
