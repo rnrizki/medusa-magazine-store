@@ -478,7 +478,7 @@ export default function MagazineCatalog({
               >
                 <span
                   className="w-2 h-2 rounded-full inline-block flex-shrink-0"
-                  style={{ backgroundColor: isAllSelected ? "#FFFFFF" : allTheme.dotColor }}
+                  style={{ backgroundColor: isAllSelected ? ((allTheme.activeStyle.color as string) || "#FFFFFF") : allTheme.dotColor }}
                 />
                 <span>All Magazines ({magazines.length})</span>
               </button>
@@ -508,7 +508,7 @@ export default function MagazineCatalog({
               >
                 <span
                   className="w-2 h-2 rounded-full inline-block flex-shrink-0"
-                  style={{ backgroundColor: isSelected ? "#FFFFFF" : theme.dotColor }}
+                  style={{ backgroundColor: isSelected ? ((theme.activeStyle.color as string) || "#FFFFFF") : theme.dotColor }}
                 />
                 <span>
                   {cat.name} ({count})

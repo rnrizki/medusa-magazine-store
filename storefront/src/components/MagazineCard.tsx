@@ -62,7 +62,7 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
               return (
                 <span
                   style={theme.badgeStyle}
-                  className="backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow"
+                  className="backdrop-blur-md text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow"
                 >
                   {magazine.categoryName}
                 </span>

@@ -13,158 +13,169 @@ export interface CategoryTheme {
   badgeStyle: React.CSSProperties
 }
 
-export const EARTH_TONE_THEMES: Record<string, CategoryTheme> = {
+/**
+ * 16-color modern pastel palette mapped to each category.
+ * Hex codes directly from user palette specification:
+ * #FF81B1, #FAADC2, #AEACFF, #D5CBFA
+ * #2A68B6, #88BBFF, #BFE3F8, #50A679
+ * #A9CDA7, #CEDF97, #FF8A8A, #FFBFA9
+ * #FFAF7D, #FFCE8F, #FFCF0D, #FFEDA5
+ */
+export const CATEGORY_THEMES: Record<string, CategoryTheme> = {
   all: {
     name: "All Magazines",
     slug: "all",
-    primary: "#262320", // Deep Charcoal Peat
-    lightBg: "#EFECE8",
-    textColor: "#2B2724",
-    borderColor: "#D8D3CB",
-    dotColor: "#756D65",
-    activeStyle: { backgroundColor: "#262320", color: "#FFFFFF", borderColor: "#262320" },
-    inactiveStyle: { backgroundColor: "#EFECE8", color: "#2B2724", borderColor: "#D8D3CB" },
-    badgeStyle: { backgroundColor: "rgba(38, 35, 32, 0.88)", color: "#FFFFFF" },
+    primary: "#2A68B6", // Deep Cobalt Blue (#2A68B6)
+    lightBg: "#EBF3FC", // Light Ice Blue tint
+    textColor: "#153C6F",
+    borderColor: "#88BBFF", // #88BBFF
+    dotColor: "#2A68B6",
+    activeStyle: { backgroundColor: "#2A68B6", color: "#FFFFFF", borderColor: "#2A68B6" },
+    inactiveStyle: { backgroundColor: "#EBF3FC", color: "#153C6F", borderColor: "#88BBFF" },
+    badgeStyle: { backgroundColor: "rgba(42, 104, 182, 0.95)", color: "#FFFFFF" },
   },
   business: {
     name: "Business",
     slug: "business",
-    primary: "#3D4654", // Slate Granite Earth
-    lightBg: "#ECEFF2",
-    textColor: "#2A3340",
-    borderColor: "#D1D7DF",
-    dotColor: "#3D4654",
-    activeStyle: { backgroundColor: "#3D4654", color: "#FFFFFF", borderColor: "#3D4654" },
-    inactiveStyle: { backgroundColor: "#ECEFF2", color: "#2A3340", borderColor: "#D1D7DF" },
-    badgeStyle: { backgroundColor: "rgba(61, 70, 84, 0.90)", color: "#FFFFFF" },
+    primary: "#2A68B6", // #2A68B6
+    lightBg: "#DCEFFB", // #BFE3F8 family
+    textColor: "#133E75",
+    borderColor: "#88BBFF", // #88BBFF
+    dotColor: "#2A68B6",
+    activeStyle: { backgroundColor: "#2A68B6", color: "#FFFFFF", borderColor: "#2A68B6" },
+    inactiveStyle: { backgroundColor: "#DCEFFB", color: "#133E75", borderColor: "#88BBFF" },
+    badgeStyle: { backgroundColor: "rgba(42, 104, 182, 0.95)", color: "#FFFFFF" },
   },
   lifestyle: {
     name: "Lifestyle",
     slug: "lifestyle",
-    primary: "#A05035", // Warm Terracotta Clay
-    lightBg: "#F7EDE8",
-    textColor: "#78341E",
-    borderColor: "#E7CEBE",
-    dotColor: "#A05035",
-    activeStyle: { backgroundColor: "#A05035", color: "#FFFFFF", borderColor: "#A05035" },
-    inactiveStyle: { backgroundColor: "#F7EDE8", color: "#78341E", borderColor: "#E7CEBE" },
-    badgeStyle: { backgroundColor: "rgba(160, 80, 53, 0.90)", color: "#FFFFFF" },
+    primary: "#AEACFF", // #AEACFF
+    lightBg: "#F0EEFE", // #D5CBFA family
+    textColor: "#433D9E",
+    borderColor: "#D5CBFA", // #D5CBFA
+    dotColor: "#AEACFF",
+    activeStyle: { backgroundColor: "#AEACFF", color: "#FFFFFF", borderColor: "#AEACFF" },
+    inactiveStyle: { backgroundColor: "#F0EEFE", color: "#433D9E", borderColor: "#D5CBFA" },
+    badgeStyle: { backgroundColor: "rgba(150, 146, 250, 0.95)", color: "#FFFFFF" },
   },
   design: {
     name: "Design",
     slug: "design",
-    primary: "#B5843A", // Warm Ochre Sandstone
-    lightBg: "#FAF1E3",
-    textColor: "#78531C",
-    borderColor: "#EAD5B2",
-    dotColor: "#B5843A",
-    activeStyle: { backgroundColor: "#B5843A", color: "#FFFFFF", borderColor: "#B5843A" },
-    inactiveStyle: { backgroundColor: "#FAF1E3", color: "#78531C", borderColor: "#EAD5B2" },
-    badgeStyle: { backgroundColor: "rgba(181, 132, 58, 0.90)", color: "#FFFFFF" },
+    primary: "#D5CBFA", // #D5CBFA
+    lightBg: "#F5F3FF",
+    textColor: "#3D2B70",
+    borderColor: "#AEACFF", // #AEACFF
+    dotColor: "#AEACFF",
+    activeStyle: { backgroundColor: "#D5CBFA", color: "#2E1C60", borderColor: "#AEACFF" },
+    inactiveStyle: { backgroundColor: "#F5F3FF", color: "#3D2B70", borderColor: "#D5CBFA" },
+    badgeStyle: { backgroundColor: "rgba(195, 184, 250, 0.95)", color: "#2E1C60" },
   },
   fashion: {
     name: "Fashion",
     slug: "fashion",
-    primary: "#8F4E5B", // Dusty Rose Earth
-    lightBg: "#F8EAEE",
-    textColor: "#662E3A",
-    borderColor: "#E8C8D2",
-    dotColor: "#8F4E5B",
-    activeStyle: { backgroundColor: "#8F4E5B", color: "#FFFFFF", borderColor: "#8F4E5B" },
-    inactiveStyle: { backgroundColor: "#F8EAEE", color: "#662E3A", borderColor: "#E8C8D2" },
-    badgeStyle: { backgroundColor: "rgba(143, 78, 91, 0.90)", color: "#FFFFFF" },
+    primary: "#FF81B1", // #FF81B1
+    lightBg: "#FFF0F5",
+    textColor: "#8A1440",
+    borderColor: "#FAADC2", // #FAADC2
+    dotColor: "#FF81B1",
+    activeStyle: { backgroundColor: "#FF81B1", color: "#FFFFFF", borderColor: "#FF81B1" },
+    inactiveStyle: { backgroundColor: "#FFF0F5", color: "#8A1440", borderColor: "#FAADC2" },
+    badgeStyle: { backgroundColor: "rgba(255, 129, 177, 0.95)", color: "#FFFFFF" },
   },
   defense: {
     name: "Defense",
     slug: "defense",
-    primary: "#525936", // Olive Drab Army Earth
-    lightBg: "#EDF0E3",
-    textColor: "#3A4020",
-    borderColor: "#D2D8BD",
-    dotColor: "#525936",
-    activeStyle: { backgroundColor: "#525936", color: "#FFFFFF", borderColor: "#525936" },
-    inactiveStyle: { backgroundColor: "#EDF0E3", color: "#3A4020", borderColor: "#D2D8BD" },
-    badgeStyle: { backgroundColor: "rgba(82, 89, 54, 0.90)", color: "#FFFFFF" },
+    primary: "#50A679", // #50A679
+    lightBg: "#EFF7F2",
+    textColor: "#174D2E",
+    borderColor: "#A9CDA7", // #A9CDA7
+    dotColor: "#50A679",
+    activeStyle: { backgroundColor: "#50A679", color: "#FFFFFF", borderColor: "#50A679" },
+    inactiveStyle: { backgroundColor: "#EFF7F2", color: "#174D2E", borderColor: "#A9CDA7" },
+    badgeStyle: { backgroundColor: "rgba(80, 166, 121, 0.95)", color: "#FFFFFF" },
   },
   travel: {
     name: "Travel",
     slug: "travel",
-    primary: "#BE5C28", // Burnt Raw Sienna
-    lightBg: "#FBEDE4",
-    textColor: "#80350D",
-    borderColor: "#F0CBB6",
-    dotColor: "#BE5C28",
-    activeStyle: { backgroundColor: "#BE5C28", color: "#FFFFFF", borderColor: "#BE5C28" },
-    inactiveStyle: { backgroundColor: "#FBEDE4", color: "#80350D", borderColor: "#F0CBB6" },
-    badgeStyle: { backgroundColor: "rgba(190, 92, 40, 0.90)", color: "#FFFFFF" },
+    primary: "#88BBFF", // #88BBFF
+    lightBg: "#F0F7FF",
+    textColor: "#154687",
+    borderColor: "#BFE3F8", // #BFE3F8
+    dotColor: "#88BBFF",
+    activeStyle: { backgroundColor: "#88BBFF", color: "#FFFFFF", borderColor: "#88BBFF" },
+    inactiveStyle: { backgroundColor: "#F0F7FF", color: "#154687", borderColor: "#BFE3F8" },
+    badgeStyle: { backgroundColor: "rgba(110, 170, 252, 0.95)", color: "#FFFFFF" },
   },
   science: {
     name: "Science",
     slug: "science",
-    primary: "#3D6648", // Forest Sage Green
-    lightBg: "#EBF1ED",
-    textColor: "#25482E",
-    borderColor: "#C5D8C9",
-    dotColor: "#3D6648",
-    activeStyle: { backgroundColor: "#3D6648", color: "#FFFFFF", borderColor: "#3D6648" },
-    inactiveStyle: { backgroundColor: "#EBF1ED", color: "#25482E", borderColor: "#C5D8C9" },
-    badgeStyle: { backgroundColor: "rgba(61, 102, 72, 0.90)", color: "#FFFFFF" },
+    primary: "#CEDF97", // #CEDF97
+    lightBg: "#F7FAEC",
+    textColor: "#3F520B",
+    borderColor: "#CEDF97",
+    dotColor: "#8FA83E",
+    activeStyle: { backgroundColor: "#CEDF97", color: "#2B3A04", borderColor: "#B8CB7C" },
+    inactiveStyle: { backgroundColor: "#F7FAEC", color: "#3F520B", borderColor: "#CEDF97" },
+    badgeStyle: { backgroundColor: "rgba(195, 212, 135, 0.95)", color: "#2B3A04" },
   },
   automotive: {
     name: "Automotive",
     slug: "automotive",
-    primary: "#644636", // Burnt Umber Leather
-    lightBg: "#EDE5E0",
-    textColor: "#452C20",
-    borderColor: "#D4C5BD",
-    dotColor: "#644636",
-    activeStyle: { backgroundColor: "#644636", color: "#FFFFFF", borderColor: "#644636" },
-    inactiveStyle: { backgroundColor: "#EDE5E0", color: "#452C20", borderColor: "#D4C5BD" },
-    badgeStyle: { backgroundColor: "rgba(100, 70, 54, 0.90)", color: "#FFFFFF" },
+    primary: "#FFAF7D", // #FFAF7D
+    lightBg: "#FFF5EF",
+    textColor: "#8A3B08",
+    borderColor: "#FFCE8F", // #FFCE8F
+    dotColor: "#FFAF7D",
+    activeStyle: { backgroundColor: "#FFAF7D", color: "#FFFFFF", borderColor: "#FFAF7D" },
+    inactiveStyle: { backgroundColor: "#FFF5EF", color: "#8A3B08", borderColor: "#FFCE8F" },
+    badgeStyle: { backgroundColor: "rgba(255, 175, 125, 0.95)", color: "#FFFFFF" },
   },
   "for-men": {
     name: "For Men",
     slug: "for-men",
-    primary: "#3E332B", // Dark Walnut Earth
-    lightBg: "#ECE6E1",
-    textColor: "#28201A",
-    borderColor: "#D3C8BF",
-    dotColor: "#3E332B",
-    activeStyle: { backgroundColor: "#3E332B", color: "#FFFFFF", borderColor: "#3E332B" },
-    inactiveStyle: { backgroundColor: "#ECE6E1", color: "#28201A", borderColor: "#D3C8BF" },
-    badgeStyle: { backgroundColor: "rgba(62, 51, 43, 0.90)", color: "#FFFFFF" },
+    primary: "#A9CDA7", // #A9CDA7
+    lightBg: "#F1F7F1",
+    textColor: "#274F29",
+    borderColor: "#A9CDA7",
+    dotColor: "#50A679",
+    activeStyle: { backgroundColor: "#A9CDA7", color: "#1B3B1D", borderColor: "#8EBC8C" },
+    inactiveStyle: { backgroundColor: "#F1F7F1", color: "#274F29", borderColor: "#A9CDA7" },
+    badgeStyle: { backgroundColor: "rgba(155, 195, 153, 0.95)", color: "#1B3B1D" },
   },
   sports: {
     name: "Sports",
     slug: "sports",
-    primary: "#C37A20", // Warm Amber Earth
-    lightBg: "#FAF0E0",
-    textColor: "#78470B",
-    borderColor: "#EDD4AF",
-    dotColor: "#C37A20",
-    activeStyle: { backgroundColor: "#C37A20", color: "#FFFFFF", borderColor: "#C37A20" },
-    inactiveStyle: { backgroundColor: "#FAF0E0", color: "#78470B", borderColor: "#EDD4AF" },
-    badgeStyle: { backgroundColor: "rgba(195, 122, 32, 0.90)", color: "#FFFFFF" },
+    primary: "#FFCF0D", // #FFCF0D
+    lightBg: "#FFFDEB",
+    textColor: "#785800",
+    borderColor: "#FFEDA5", // #FFEDA5
+    dotColor: "#FFCF0D",
+    activeStyle: { backgroundColor: "#FFCF0D", color: "#3B2C00", borderColor: "#FFCF0D" },
+    inactiveStyle: { backgroundColor: "#FFFDEB", color: "#785800", borderColor: "#FFEDA5" },
+    badgeStyle: { backgroundColor: "rgba(255, 207, 13, 0.95)", color: "#3B2C00" },
   },
   comic: {
     name: "Comic",
     slug: "comic",
-    primary: "#B54433", // Vintage Comic Brick Rust
-    lightBg: "#FAECE9",
-    textColor: "#7E2719",
-    borderColor: "#ECC8C2",
-    dotColor: "#B54433",
-    activeStyle: { backgroundColor: "#B54433", color: "#FFFFFF", borderColor: "#B54433" },
-    inactiveStyle: { backgroundColor: "#FAECE9", color: "#7E2719", borderColor: "#ECC8C2" },
-    badgeStyle: { backgroundColor: "rgba(181, 68, 51, 0.90)", color: "#FFFFFF" },
+    primary: "#FF8A8A", // #FF8A8A
+    lightBg: "#FFF2F2",
+    textColor: "#992121",
+    borderColor: "#FFBFA9", // #FFBFA9
+    dotColor: "#FF8A8A",
+    activeStyle: { backgroundColor: "#FF8A8A", color: "#FFFFFF", borderColor: "#FF8A8A" },
+    inactiveStyle: { backgroundColor: "#FFF2F2", color: "#992121", borderColor: "#FFBFA9" },
+    badgeStyle: { backgroundColor: "rgba(255, 138, 138, 0.95)", color: "#FFFFFF" },
   },
 }
 
+// Backwards-compatibility alias
+export const EARTH_TONE_THEMES = CATEGORY_THEMES
+
 /**
- * Normalizes input name/slug and returns the corresponding Earth Tone theme
+ * Normalizes input name/slug and returns the corresponding CategoryTheme from the palette
  */
 export function getCategoryTheme(slugOrName?: string): CategoryTheme {
-  if (!slugOrName) return EARTH_TONE_THEMES.all
+  if (!slugOrName) return CATEGORY_THEMES.all
 
   const key = slugOrName
     .toLowerCase()
@@ -172,34 +183,23 @@ export function getCategoryTheme(slugOrName?: string): CategoryTheme {
     .replace(/^cat_/, "")
     .replace(/\s+/g, "-")
 
-  if (EARTH_TONE_THEMES[key]) {
-    return EARTH_TONE_THEMES[key]
+  if (CATEGORY_THEMES[key]) {
+    return CATEGORY_THEMES[key]
   }
 
   // Alias checks
-  if (key === "formen") return EARTH_TONE_THEMES["for-men"]
-  if (key.includes("comic")) return EARTH_TONE_THEMES.comic
-  if (key.includes("sport")) return EARTH_TONE_THEMES.sports
-  if (key.includes("auto")) return EARTH_TONE_THEMES.automotive
-  if (key.includes("scien")) return EARTH_TONE_THEMES.science
-  if (key.includes("travel")) return EARTH_TONE_THEMES.travel
-  if (key.includes("defen")) return EARTH_TONE_THEMES.defense
-  if (key.includes("fash")) return EARTH_TONE_THEMES.fashion
-  if (key.includes("design")) return EARTH_TONE_THEMES.design
-  if (key.includes("life")) return EARTH_TONE_THEMES.lifestyle
-  if (key.includes("busin")) return EARTH_TONE_THEMES.business
+  if (key === "formen") return CATEGORY_THEMES["for-men"]
+  if (key.includes("comic")) return CATEGORY_THEMES.comic
+  if (key.includes("sport")) return CATEGORY_THEMES.sports
+  if (key.includes("auto")) return CATEGORY_THEMES.automotive
+  if (key.includes("scien")) return CATEGORY_THEMES.science
+  if (key.includes("travel")) return CATEGORY_THEMES.travel
+  if (key.includes("defen")) return CATEGORY_THEMES.defense
+  if (key.includes("fash")) return CATEGORY_THEMES.fashion
+  if (key.includes("design")) return CATEGORY_THEMES.design
+  if (key.includes("life")) return CATEGORY_THEMES.lifestyle
+  if (key.includes("busin")) return CATEGORY_THEMES.business
 
-  // Default fallback earth tone
-  return {
-    name: slugOrName,
-    slug: key,
-    primary: "#5A4E45",
-    lightBg: "#EFECE8",
-    textColor: "#3A312B",
-    borderColor: "#DCD5CD",
-    dotColor: "#5A4E45",
-    activeStyle: { backgroundColor: "#5A4E45", color: "#FFFFFF", borderColor: "#5A4E45" },
-    inactiveStyle: { backgroundColor: "#EFECE8", color: "#3A312B", borderColor: "#DCD5CD" },
-    badgeStyle: { backgroundColor: "rgba(90, 78, 69, 0.90)", color: "#FFFFFF" },
-  }
+  // Fallback
+  return CATEGORY_THEMES.all
 }
