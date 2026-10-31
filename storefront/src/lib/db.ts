@@ -1077,3 +1077,39 @@ export function markChatAsRead(customerEmail: string, reader: "customer" | "admi
   return true
 }
 
+export function syncThumbnailsAndReconnect(): { updated: number; total: number } {
+  const data = loadData()
+  let updatedCount = 0
+
+  data.magazines = data.magazines.map((mag) => {
+    let changed = false
+    let cover = mag.coverImage || ""
+
+    // 1. Reconnect old Chevereto domain to S3 if still lingering
+    if (cover.includes("image.skyconnection.id/images/")) {
+      cover = cover.replace("https://image.skyconnection.id/images/", "https://s3api2.skyconnection.id/image/")
+      cover = cover.replace("http://image.skyconnection.id/images/", "https://s3api2.skyconnection.id/image/")
+      mag.coverImage = cover
+      changed = true
+    }
+
+    // 2. Generate / connect low-res thumbnail URL pointing to thumbnail/ folder
+    if (cover.includes("s3api2.skyconnection.id/image/")) {
+      const expectedThumb = cover.replace("s3api2.skyconnection.id/image/", "s3api2.skyconnection.id/image/thumbnail/")
+      if (mag.thumbnailUrl !== expectedThumb) {
+        mag.thumbnailUrl = expectedThumb
+        changed = true
+      }
+    }
+
+    if (changed) {
+      updatedCount++
+    }
+    return mag
+  })
+
+  saveData(data)
+  return { updated: updatedCount, total: data.magazines.length }
+}
+
+

@@ -16,6 +16,7 @@ import {
   FileText,
   AlertCircle,
   Eye,
+  RefreshCw,
 } from "lucide-react"
 
 interface ManageMagazinesTabProps {
@@ -40,6 +41,29 @@ export default function ManageMagazinesTab({
   const [saveSuccessMessage, setSaveSuccessMessage] = useState<string | null>(null)
   const [isAiLoading, setIsAiLoading] = useState(false)
   const [uploadingField, setUploadingField] = useState<"coverImage" | "pdfUrl" | null>(null)
+  const [isSyncing, setIsSyncing] = useState(false)
+
+  // Reconnect and sync thumbnails
+  const handleSyncThumbnails = async () => {
+    setIsSyncing(true)
+    try {
+      const res = await fetch("/api/magazines/sync-thumbnails", {
+        method: "POST",
+      })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setSaveSuccessMessage(data.message || `Successfully synced ${data.count} thumbnails!`)
+        setTimeout(() => setSaveSuccessMessage(null), 5000)
+        onRefresh()
+      } else {
+        alert("Sync failed: " + (data.error || "Unknown error"))
+      }
+    } catch (e: any) {
+      alert("Sync error: " + e.message)
+    } finally {
+      setIsSyncing(false)
+    }
+  }
 
   // Filter magazines
   const filtered = magazines.filter((mag) => {
@@ -219,13 +243,25 @@ export default function ManageMagazinesTab({
           </p>
         </div>
 
-        <button
-          onClick={onSwitchToUpload}
-          className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition shadow"
-        >
-          <Plus className="w-4 h-4" />
-          <span>Upload New Issue</span>
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={handleSyncThumbnails}
+            disabled={isSyncing}
+            className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 text-indigo-700 text-xs font-bold transition shadow-sm disabled:opacity-50"
+            title="Sinkronkan thumbnail dan reconnect seluruh gambar yang sudah diupload ke RustFS S3"
+          >
+            <RefreshCw className={`w-3.5 h-3.5 ${isSyncing ? "animate-spin" : ""}`} />
+            <span>{isSyncing ? "Menghubungkan..." : "Sync & Reconnect Thumbnails"}</span>
+          </button>
+
+          <button
+            onClick={onSwitchToUpload}
+            className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold transition shadow"
+          >
+            <Plus className="w-4 h-4" />
+            <span>Upload New Issue</span>
+          </button>
+        </div>
       </div>
 
       {/* Search & Category Filter */}
