@@ -91,6 +91,13 @@ const DEFAULT_CATEGORIES: Category[] = [
     description: "Championship athletics, elite competitive leagues, esports tournaments, and sporting icons.",
     created_at: new Date().toISOString(),
   },
+  {
+    id: "cat_comic",
+    name: "Comic",
+    slug: "comic",
+    description: "Graphic novels, vintage comic books, manga series, superhero archives, and illustrated lore.",
+    created_at: new Date().toISOString(),
+  },
 ]
 
 const DEFAULT_MAGAZINES: Magazine[] = [

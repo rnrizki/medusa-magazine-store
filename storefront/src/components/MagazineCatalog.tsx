@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef, useMemo } from "react"
 import Link from "next/link"
 import { Category, Magazine } from "../lib/types"
+import { getCategoryTheme } from "../lib/category-colors"
 import MagazineCard from "./MagazineCard"
 import {
   BookOpen,
@@ -464,18 +465,25 @@ export default function MagazineCatalog({
           </div>
         )}
 
-        {/* 2-Row Visible Category Badges (No Slider / No Horizontal Scrollbar) */}
+        {/* Category Badges with Unique Earth Tone Color Palette */}
         <div className="flex flex-wrap items-center gap-2">
-          <button
-            onClick={() => handleCategorySelect("all")}
-            className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all shadow-xs ${
-              selectedCategory === "all"
-                ? "bg-slate-900 text-white shadow"
-                : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-            }`}
-          >
-            All Magazines ({magazines.length})
-          </button>
+          {(() => {
+            const allTheme = getCategoryTheme("all")
+            const isAllSelected = selectedCategory === "all"
+            return (
+              <button
+                onClick={() => handleCategorySelect("all")}
+                style={isAllSelected ? allTheme.activeStyle : allTheme.inactiveStyle}
+                className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all shadow-xs border inline-flex items-center space-x-1.5"
+              >
+                <span
+                  className="w-2 h-2 rounded-full inline-block flex-shrink-0"
+                  style={{ backgroundColor: isAllSelected ? "#FFFFFF" : allTheme.dotColor }}
+                />
+                <span>All Magazines ({magazines.length})</span>
+              </button>
+            )
+          })()}
 
           {categories.map((cat) => {
             const count = magazines.filter(
@@ -489,17 +497,22 @@ export default function MagazineCatalog({
               selectedCategory === cat.id ||
               selectedCategory.toLowerCase() === cat.name.toLowerCase()
 
+            const theme = getCategoryTheme(cat.slug || cat.name)
+
             return (
               <button
                 key={cat.id}
                 onClick={() => handleCategorySelect(cat.id)}
-                className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all shadow-xs ${
-                  isSelected
-                    ? "bg-indigo-600 text-white shadow"
-                    : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-                }`}
+                style={isSelected ? theme.activeStyle : theme.inactiveStyle}
+                className="px-3.5 py-2 rounded-xl text-xs font-bold transition-all shadow-xs border inline-flex items-center space-x-1.5"
               >
-                {cat.name} ({count})
+                <span
+                  className="w-2 h-2 rounded-full inline-block flex-shrink-0"
+                  style={{ backgroundColor: isSelected ? "#FFFFFF" : theme.dotColor }}
+                />
+                <span>
+                  {cat.name} ({count})
+                </span>
               </button>
             )
           })}

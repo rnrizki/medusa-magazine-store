@@ -69,6 +69,13 @@
       "slug": "sports",
       "description": "Championship athletics, elite competitive leagues, esports tournaments, and sporting icons.",
       "created_at": "2026-10-03T22:43:36.891Z"
+    },
+    {
+      "id": "cat_comic",
+      "name": "Comic",
+      "slug": "comic",
+      "description": "Graphic novels, vintage comic books, manga series, superhero archives, and illustrated lore.",
+      "created_at": "2026-11-01T04:10:00.000Z"
     }
   ],
   "magazines": [

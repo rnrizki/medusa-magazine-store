@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Magazine } from "../../../lib/types"
 import { formatRupiah } from "../../../lib/format"
 import { useCart } from "../../../lib/cart-context"
+import { getCategoryTheme } from "../../../lib/category-colors"
 import {
   ShoppingBag,
   Check,
@@ -48,9 +49,17 @@ export default function MagazineDetailClient({
 
           {/* Badge */}
           <div className="absolute top-4 left-4">
-            <span className="bg-black/80 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-              {magazine.categoryName}
-            </span>
+            {magazine.categoryName && (() => {
+              const theme = getCategoryTheme(magazine.categoryName)
+              return (
+                <span
+                  style={theme.badgeStyle}
+                  className="backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow"
+                >
+                  {magazine.categoryName}
+                </span>
+              )
+            })()}
           </div>
 
           <div className="absolute top-4 right-4">

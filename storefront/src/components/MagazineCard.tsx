@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Magazine } from "../lib/types"
 import { formatRupiah } from "../lib/format"
 import { useCart } from "../lib/cart-context"
+import { getCategoryTheme } from "../lib/category-colors"
 import { ShoppingBag, Check, BookOpen, Sparkles } from "lucide-react"
 
 interface MagazineCardProps {
@@ -56,11 +57,17 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
 
           {/* Top Badges */}
           <div className="absolute top-3 inset-x-3 flex items-start justify-between gap-2 pointer-events-none">
-            {magazine.categoryName && (
-              <span className="bg-black/70 backdrop-blur-md text-white text-[11px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider shadow">
-                {magazine.categoryName}
-              </span>
-            )}
+            {magazine.categoryName && (() => {
+              const theme = getCategoryTheme(magazine.categoryName)
+              return (
+                <span
+                  style={theme.badgeStyle}
+                  className="backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow"
+                >
+                  {magazine.categoryName}
+                </span>
+              )
+            })()}
 
             <span className="bg-emerald-500/95 backdrop-blur-md text-white text-[11px] font-bold px-2 py-0.5 rounded-full shadow">
               Digital PDF
