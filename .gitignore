@@ -27,6 +27,9 @@ yarn-error.log*
 # OS & IDE
 .DS_Store
 *.pem
+*.key
+*service-account*.json
+credentials*.json
 .idea/
 .vscode/
 *.swp

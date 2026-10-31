@@ -176,6 +176,12 @@ services:
       MEILISEARCH_HOST: http://meilisearch:7700
       MEILISEARCH_API_KEY: majalahpdf_meilisearch_master_key_2026_ultra_secure
       IMAGE_OPTIMIZER_URL: http://image-optimizer:3001
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-465}
+      SMTP_SECURE: ${SMTP_SECURE:-true}
+      SMTP_USER: ${SMTP_USER:-notreseller.magazine@gmail.com}
+      SMTP_PASS: ${SMTP_PASS:-}
+      GDRIVE_CREDENTIALS_JSON: ${GDRIVE_CREDENTIALS_JSON:-}
     depends_on:
       - backend
       - meilisearch

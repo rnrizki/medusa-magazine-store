@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/nodemailer": "^8.0.2",
     "@types/pg": "^8.23.1",
     "clsx": "^2.1.1",
+    "googleapis": "^189.0.0",
     "lucide-react": "^0.428.0",
     "meilisearch": "^0.62.0",
     "next": "^14.2.5",
+    "nodemailer": "^10.3.1",
     "pg": "^8.23.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

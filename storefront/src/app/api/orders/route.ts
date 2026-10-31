@@ -7,6 +7,8 @@ import {
   attachPaymentProof,
   updateOrderStatus,
 } from "../../../lib/db"
+import { shareOrderItemsWithBuyer } from "../../../lib/gdrive"
+import { sendOrderConfirmationEmail } from "../../../lib/mailer"
 
 export const dynamic = "force-dynamic"
 
@@ -75,7 +77,28 @@ export async function PATCH(req: NextRequest) {
     if (status) {
       const updated = updateOrderStatus(orderId, status, adminNotes)
       if (!updated) return NextResponse.json({ error: "Order not found" }, { status: 404 })
-      return NextResponse.json(updated)
+
+      // Auto-fulfill when order is verified: share files in Google Drive & send email!
+      let driveResults: any[] = []
+      let emailResult: any = null
+
+      if (status === "verified") {
+        try {
+          console.log(`[Order ${orderId}] Auto-sharing files with buyer ${updated.customerEmail}...`)
+          driveResults = await shareOrderItemsWithBuyer(updated.items, updated.customerEmail)
+          
+          console.log(`[Order ${orderId}] Sending confirmation email to ${updated.customerEmail}...`)
+          emailResult = await sendOrderConfirmationEmail(updated, driveResults)
+        } catch (fulfillmentErr: any) {
+          console.error(`[Order ${orderId}] Fulfillment error:`, fulfillmentErr)
+        }
+      }
+
+      return NextResponse.json({
+        ...updated,
+        driveResults,
+        emailResult,
+      })
     }
 
     return NextResponse.json({ error: "No valid update operation provided" }, { status: 400 })

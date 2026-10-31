@@ -206,15 +206,20 @@ export default function CustomerLibraryPage() {
                 {/* Footer Action */}
                 <div className="p-3 bg-slate-50 border-t border-slate-100">
                   {item.orderStatus === "verified" ? (
-                    <a
-                      href={item.pdfUrl || "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="w-full py-2 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs flex items-center justify-center space-x-1.5 transition shadow"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Download Digital PDF</span>
-                    </a>
+                    <div className="space-y-1.5">
+                      <a
+                        href={item.pdfUrl || "#"}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full py-2 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs flex items-center justify-center space-x-1.5 transition shadow"
+                      >
+                        <ExternalLink className="w-3.5 h-3.5" />
+                        <span>Buka di Google Drive</span>
+                      </a>
+                      <p className="text-[10px] text-center text-slate-500 font-medium">
+                        ✓ Dibagikan ke Google Drive: {user.email}
+                      </p>
+                    </div>
                   ) : (
                     <div className="text-center text-[11px] text-slate-500 py-1 flex items-center justify-center space-x-1">
                       <Clock className="w-3.5 h-3.5 text-amber-500" />
