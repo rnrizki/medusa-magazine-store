@@ -28,10 +28,11 @@ services:
     volumes:
       - redis_data:/data
     healthcheck:
-      test: ["CMD-SHELL", "valkey-cli ping || redis-cli ping"]
+      test: ["CMD", "valkey-cli", "ping"]
       interval: 5s
-      timeout: 3s
-      retries: 5
+      timeout: 5s
+      retries: 10
+      start_period: 10s
     networks:
       - medusa-network
 
@@ -52,6 +53,7 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+      start_period: 10s
     networks:
       - medusa-network
 
