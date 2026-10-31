@@ -154,6 +154,11 @@ export default function MagazineCatalog({
       if (p > 1) {
         setCurrentPage(p)
       }
+      const s = params.get("search")
+      if (s && s.trim()) {
+        setSearchQuery(s.trim())
+        setAppliedQuery(s.trim())
+      }
     }
 
     const handleResetHome = () => {
@@ -179,6 +184,9 @@ export default function MagazineCatalog({
         const params = new URLSearchParams(window.location.search)
         const p = parseInt(params.get("page") || "1", 10)
         setCurrentPage(p >= 1 ? p : 1)
+        const s = params.get("search") || ""
+        setSearchQuery(s)
+        setAppliedQuery(s)
       }
     }
 
@@ -221,7 +229,8 @@ export default function MagazineCatalog({
     setShowSuggestions(false)
     setCurrentPage(1)
     if (typeof window !== "undefined") {
-      window.history.pushState(null, "", "/")
+      const url = q ? `/?search=${encodeURIComponent(q)}` : "/"
+      window.history.pushState(null, "", url)
     }
   }
 
@@ -232,6 +241,9 @@ export default function MagazineCatalog({
     setSearchResults(null)
     setShowSuggestions(false)
     setCurrentPage(1)
+    if (typeof window !== "undefined") {
+      window.history.pushState(null, "", "/")
+    }
   }
 
   // Filter magazines for the main grid based on appliedQuery + selectedCategory
