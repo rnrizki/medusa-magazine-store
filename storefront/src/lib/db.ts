@@ -632,6 +632,14 @@ function loadData(): StoreData {
     if (!parsed.conversations) {
       parsed.conversations = []
     }
+    if (parsed.magazines && Array.isArray(parsed.magazines)) {
+      parsed.magazines = parsed.magazines.map((m: Magazine) => {
+        if (!m.thumbnailUrl && m.coverImage && m.coverImage.includes("/image/")) {
+          m.thumbnailUrl = m.coverImage.replace("/image/", "/image/thumbnail/")
+        }
+        return m
+      })
+    }
     return parsed
   } catch (error) {
     console.error("Error reading store.json, returning fallback", error)

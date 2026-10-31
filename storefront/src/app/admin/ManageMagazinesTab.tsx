@@ -283,7 +283,7 @@ export default function ManageMagazinesTab({
                     <td className="py-3 px-4">
                       <div className="w-12 h-16 rounded-lg overflow-hidden border border-slate-200 bg-slate-100 flex-shrink-0">
                         <img
-                          src={mag.coverImage}
+                          src={mag.thumbnailUrl || (mag.coverImage?.includes('/image/') ? mag.coverImage.replace('/image/', '/image/thumbnail/') : mag.coverImage)}
                           alt={mag.title}
                           className="w-full h-full object-cover"
                         />

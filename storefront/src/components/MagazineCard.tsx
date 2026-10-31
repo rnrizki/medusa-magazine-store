@@ -32,9 +32,9 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
       {/* 3:4 Magazine Cover Portrait Container */}
       <Link href={`/magazine/${magazine.id}`} className="block relative">
         <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
-          {magazine.coverImage ? (
+          {magazine.coverImage || magazine.thumbnailUrl ? (
             <img
-              src={magazine.coverImage}
+              src={magazine.thumbnailUrl || (magazine.coverImage?.includes('/image/') ? magazine.coverImage.replace('/image/', '/image/thumbnail/') : magazine.coverImage)}
               alt={magazine.title}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
               loading="lazy"

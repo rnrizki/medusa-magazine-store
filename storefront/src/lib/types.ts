@@ -14,6 +14,7 @@ export interface Magazine {
   categoryName?: string
   price: number // in IDR (e.g., 45000)
   coverImage: string // 3:4 ratio cover image
+  thumbnailUrl?: string // Low-resolution thumbnail for grids
   description: string
   highlights?: string[]
   pdfUrl?: string // digital file link

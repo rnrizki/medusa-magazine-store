@@ -75,7 +75,7 @@
     {
       "id": "mag_1791203926111_lkrq7",
       "title": "The Cook_s Illustrated Cookbook- 2,000 Recipes from 20 Years of America_s Most Trusted Cooking Magazine.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Cook_s-Illustrated-Cookbook--2000-Recipes-from-20-Years-of-America_s-Most-Trusted-Cooking-Magazine.webp",
@@ -87,12 +87,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1dkkuRUUjOdZ58kqgL662VaMKubU2yEDb/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Cook_s-Illustrated-Cookbook--2000-Recipes-from-20-Years-of-America_s-Most-Trusted-Cooking-Magazine.webp"
     },
     {
       "id": "mag_1791203926111_952k9",
       "title": "The Complete Raspberry Pi Coding Manual March_2024     02261368.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Raspberry-Pi-Coding-Manual-March_2024-02261368.webp",
@@ -104,12 +105,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1upKjdf3_V6sUOJ67ntFDRMfh53DD4V7y/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Complete-Raspberry-Pi-Coding-Manual-March_2024-02261368.webp"
     },
     {
       "id": "mag_1791203926111_mo528",
       "title": "The Complete Python Coding Manual_Ed21_2024  83146641.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Python-Coding-Manual_Ed21_2024-83146641.webp",
@@ -121,12 +123,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1355rREJWUbf69H1zKeEn7zb_3DrEoVxD/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Complete-Python-Coding-Manual_Ed21_2024-83146641.webp"
     },
     {
       "id": "mag_1791203926111_ou3k1",
       "title": "The Complete Guide to Digital Photography - December 2024.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Guide-To-Your-Horoscope-42364621.webp",
@@ -138,12 +141,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1zeDVi3nTO0jTymitRKbDQizrhAnzsa6j/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Complete-Guide-To-Your-Horoscope-42364621.webp"
     },
     {
       "id": "mag_1791203926111_acrqw",
       "title": "The Complete Guide To Your Horoscope   42364621.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Guide-to-Digital-Photography---December-2024.webp",
@@ -155,16 +159,17 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1Mi3vYXLFwsXC6ym-nwrxs-hNdHv6JBEj/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Complete-Guide-to-Digital-Photography---December-2024.webp"
     },
     {
       "id": "mag_1791203926111_fs462",
       "title": "The Complete Black White Photography Manual 21th Edition 2024  13783942.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Complete-Black-White-Photography-Manual-21th-Edition-2024-13783942.webp",
-      "description": "In an era saturated by the ephemeral glow of high-definition color, the 21st edition of The Complete Black & White Photography Manual arrives as a meditative masterclass in form, shadow, and texture. This year’s volume strips away the digital noise to return to the foundational principles of monochromatic composition, offering both seasoned professionals and dedicated hobbyists a rigorous exploration of tonal range and the psychological weight of light. It is an essential guide for those looking to master the stark, evocative power of the silver-screen aesthetic in a modern context.\n\nBeyond the technical schematics of exposure and post-processing, this edition serves as a curated gallery of visual philosophy. By dissecting the intersection of high-contrast minimalism and architectural geometry, the manual bridges the gap between traditional darkroom sensibilities and contemporary digital workflows. It stands as an authoritative manifesto for the visual storyteller, proving that by removing the distraction of color, we arrive at a more profound, timeless clarity.",
+      "description": "In an era saturated by the ephemeral glow of high-definition color, the 21st edition of The Complete Black & White Photography Manual arrives as a meditative masterclass in form, shadow, and texture. This year\u2019s volume strips away the digital noise to return to the foundational principles of monochromatic composition, offering both seasoned professionals and dedicated hobbyists a rigorous exploration of tonal range and the psychological weight of light. It is an essential guide for those looking to master the stark, evocative power of the silver-screen aesthetic in a modern context.\n\nBeyond the technical schematics of exposure and post-processing, this edition serves as a curated gallery of visual philosophy. By dissecting the intersection of high-contrast minimalism and architectural geometry, the manual bridges the gap between traditional darkroom sensibilities and contemporary digital workflows. It stands as an authoritative manifesto for the visual storyteller, proving that by removing the distraction of color, we arrive at a more profound, timeless clarity.",
       "highlights": [
         "Feature Article 1: The Architecture of Silence: Mastering High-Contrast Urban Landscapes",
         "Feature Article 2: Tonal Alchemy: Advanced Digital Post-Processing for the Monochrome Purist",
@@ -172,12 +177,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1ESX9Ndp2zcICXkxkzh2GUBQfDX3ynSVO/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Complete-Black-White-Photography-Manual-21th-Edition-2024-13783942.webp"
     },
     {
       "id": "mag_1791203926111_5mdqf",
       "title": "The Classic MotorCycle Apr 2024_58687358.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067417707_vn8r",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Classic-MotorCycle-Apr-2024_58687358.webp",
@@ -189,12 +195,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1-pTusfBzUoRsUmseNQQMbENiZR910D_I/view?usp=drivesdk",
       "categoryName": "Automotive",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Classic-MotorCycle-Apr-2024_58687358.webp"
     },
     {
       "id": "mag_1791203926111_e3560",
       "title": "The Big Issue - May 20 ,2024    57868368.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Big-Issue---May-20-2024-57868368.webp",
@@ -206,12 +213,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1RKYqrrw5Zkz6QSh6uagnoq6nbIZYt51y/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Big-Issue---May-20-2024-57868368.webp"
     },
     {
       "id": "mag_1791203926111_b1bzo",
       "title": "The Big Issue - May 6 .2024_  51702718.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Big-Issue---May-6-.2024_-51702718.webp",
@@ -223,12 +231,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1j_I3ZqQ8_-losO-pcs2nX67ifWM9dzpz/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Big-Issue---May-6-.2024_-51702718.webp"
     },
     {
       "id": "mag_1791203926111_q2l14",
       "title": "The Aviation May -June 2024_  72862773.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067396718_pde1",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Aviation-May--June-2024_-72862773.webp",
@@ -240,12 +249,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1Uo8pE_8x-mochaM9J3lpD-26MgQ2x2An/view?usp=drivesdk",
       "categoryName": "Defense",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Aviation-May--June-2024_-72862773.webp"
     },
     {
       "id": "mag_1791203926111_i6cge",
-      "title": "The Artist – October 2024   99995654.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "title": "The Artist \u2013 October 2024   99995654.pdf",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist--October-2024-99995654.webp",
@@ -257,12 +267,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1ulNR4OatM_c6zA7st_bAoGUhINZdUTYD/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Artist--October-2024-99995654.webp"
     },
     {
       "id": "mag_1791203926111_yv37n",
       "title": "The Artist - July 2024   66713398.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---July-2024-66713398.webp",
@@ -274,12 +285,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1GUuSNZZTxdY-gkZyLmWL_JM2HBGube_m/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Artist---July-2024-66713398.webp"
     },
     {
       "id": "mag_1791203926111_uugkd",
       "title": "The Artist - December 2024   91614066.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---December-2024-91614066.webp",
@@ -291,12 +303,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1kQVEtLmT_vE6zg-TSSjSGY1vHxaviw3W/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Artist---December-2024-91614066.webp"
     },
     {
       "id": "mag_1791203926111_dzls7",
       "title": "The Artist - August 2024   55397171.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---August-2024-55397171.webp",
@@ -308,12 +321,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/11J4GwXXRzucmv_vqkC0e-qZhFeEQL7zO/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Artist---August-2024-55397171.webp"
     },
     {
       "id": "mag_1791203926111_e5s27",
       "title": "The Artist - April 2025    29728957.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Artist---April-2025-29728957.webp",
@@ -325,12 +339,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1463rjf23UUT6ABPdxlZTYe73lkL3lW9n/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Artist---April-2025-29728957.webp"
     },
     {
       "id": "mag_1791203926111_brnpn",
       "title": "The Art of Gaming - 5th Edition 2024   81600090.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Art-of-Gaming---5th-Edition-2024-81600090.webp",
@@ -342,12 +357,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1dhB2YYwr13b_iV-3gtn5qFIif-HeHOOQ/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Art-of-Gaming---5th-Edition-2024-81600090.webp"
     },
     {
       "id": "mag_1791203926111_g0awl",
       "title": "The Art of Dragon Age Inquisition   66969948.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Art-of-Dragon-Age-Inquisition-66969948.webp",
@@ -359,12 +375,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/17DlQcRAyFEF8S5vt4MYdXE7hq5U5EMN9/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Art-of-Dragon-Age-Inquisition-66969948.webp"
     },
     {
       "id": "mag_1791203926111_z0k75",
       "title": "The Art of Design - September-October 2024      87262311.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Art-of-Design---September-October-2024-87262311.webp",
@@ -376,12 +393,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1fJpuOKZBdGPnJesfnAN0MXLpvoPz8wWs/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Art-of-Design---September-October-2024-87262311.webp"
     },
     {
       "id": "mag_1791203926111_jkw4l",
       "title": "The Adventure Zone volume 6 -- The Suffering Game.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/The-Adventure-Zone-volume-6----The-Suffering-Game.webp",
@@ -393,12 +411,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1uaWwMlxkV4enBo3U3zpw_lrz4EOGkM75/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/The-Adventure-Zone-volume-6----The-Suffering-Game.webp"
     },
     {
       "id": "mag_1791203926111_ngqul",
       "title": "Teenage Mutant Ninja Turtles The Last Ronin - Lost Years  - Kevin Eastman  10143635.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teenage-Mutant-Ninja-Turtles-The-Last-Ronin---Lost-Years---Kevin-Eastman-10143635.webp",
@@ -410,12 +429,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1HedcbXvxn8MVggr6wI_-0TLhL0MPn7Vh/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Teenage-Mutant-Ninja-Turtles-The-Last-Ronin---Lost-Years---Kevin-Eastman-10143635.webp"
     },
     {
       "id": "mag_1791203926111_1nrsd",
       "title": "Teenage Mutant Ninja Turtles The Last Ronin - Kevin Eastman   74791936.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teenage-Mutant-Ninja-Turtles-The-Last-Ronin---Kevin-Eastman-74791936.webp",
@@ -427,12 +447,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1nOOPyJ0gNVFMBOZ10-b8-4mjfC3UjXdM/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Teenage-Mutant-Ninja-Turtles-The-Last-Ronin---Kevin-Eastman-74791936.webp"
     },
     {
       "id": "mag_1791203926111_batbk",
       "title": "Teenage Mutant Ninja Turtles - The Last Ronin - The Covers - Kevin Eastman  96891363.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teenage-Mutant-Ninja-Turtles---The-Last-Ronin---The-Covers---Kevin-Eastman-96891363.webp",
@@ -444,12 +465,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1FjWQ5mEHd970pqKLpHFcrn6jRtvMx_ux/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Teenage-Mutant-Ninja-Turtles---The-Last-Ronin---The-Covers---Kevin-Eastman-96891363.webp"
     },
     {
       "id": "mag_1791203926111_aopcf",
       "title": "Technology Magazine - August 2024     68434444.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Technology-Magazine---August-2024-68434444.webp",
@@ -461,12 +483,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1V1ciCrb1cPhoyUKPvHDuVQe9iicFnZks/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Technology-Magazine---August-2024-68434444.webp"
     },
     {
       "id": "mag_1791203926111_l27fg",
       "title": "Tech_Advisor_-_January_2025,_2024  34423590.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech_Advisor_-_January_2025_2024-34423590.webp",
@@ -478,12 +501,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1z_j4ynP0z4iTiIbvoy6-vSmqPjng9n3b/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Tech_Advisor_-_January_2025_2024-34423590.webp"
     },
     {
       "id": "mag_1791203926111_mxlh3",
       "title": "Tech_Advisor_-_February_2025  58671140.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech_Advisor_-_February_2025-58671140.webp",
@@ -495,12 +519,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/12tZvAOS9QymQ1QASHcc7XZ-dl6razg-h/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Tech_Advisor_-_February_2025-58671140.webp"
     },
     {
       "id": "mag_1791203926111_xgg8n",
       "title": "Tech Advisor June 2024_  38499189.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech-Advisor-June-2024_-38499189.webp",
@@ -512,12 +537,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1hVd7k4gdFnl4Nd8PoENpmedBnKcjyea_/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Tech-Advisor-June-2024_-38499189.webp"
     },
     {
       "id": "mag_1791203926111_s1f5j",
       "title": "Tech Advisor - May 2025 108006.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Tech-Advisor---May-2025-108006.webp",
@@ -529,12 +555,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1JdbOv4XibAZ1IpDmgp7CDMHR3Q9TkftU/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Tech-Advisor---May-2025-108006.webp"
     },
     {
       "id": "mag_1791203926111_g33uf",
       "title": "Teach Yourself Urban Photography -2024_  43964766.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Teach-Yourself-Urban-Photography--2024_-43964766.webp",
@@ -546,12 +573,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/18omIWpF74xk0k6OKrA6PSbzEZDmEemTr/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Teach-Yourself-Urban-Photography--2024_-43964766.webp"
     },
     {
       "id": "mag_1791203926111_jhyri",
       "title": "Taylor Swift A Little Golden Book Biography ,Wendy Loggia   07544943.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taylor-Swift-A-Little-Golden-Book-Biography-Wendy-Loggia-07544943.webp",
@@ -563,12 +591,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1PAUAIVv9NePHYQtxmGOl9q4C49fXK_yx/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Taylor-Swift-A-Little-Golden-Book-Biography-Wendy-Loggia-07544943.webp"
     },
     {
       "id": "mag_1791203926111_dtdcv",
       "title": "Taylor Swift - Eras Tour Trivia Book, 2024       91863707 .pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taylor-Swift---Eras-Tour-Trivia-Book-2024-91863707.webp",
@@ -580,12 +609,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1OSeLYOeW9G_mTPfRGQG9RnpT4dNrkP1l/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Taylor-Swift---Eras-Tour-Trivia-Book-2024-91863707.webp"
     },
     {
       "id": "mag_1791203926111_v50yv",
       "title": "Taste the Power of Vegan Flavor - Valentine, Morton   58053484.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-the-Power-of-Vegan-Flavor---Valentine-Morton-58053484.webp",
@@ -597,12 +627,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1yNoQKxSa_MHjtlVji-yNSrTm-BnUMoDn/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Taste-the-Power-of-Vegan-Flavor---Valentine-Morton-58053484.webp"
     },
     {
       "id": "mag_1791203926111_im79j",
-      "title": "Taste of Home – June 2024   61011816.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "title": "Taste of Home \u2013 June 2024   61011816.pdf",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-of-Home--June-2024-61011816.webp",
@@ -614,12 +645,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1Kv3MQwBPOrFUllcI51nOT_2UH3up7tg3/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Taste-of-Home--June-2024-61011816.webp"
     },
     {
       "id": "mag_1791203926111_exlmo",
       "title": "Taste of Home Copycat Recipes 2024_  95699195.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-of-Home-Copycat-Recipes-2024_-95699195.webp",
@@ -631,12 +663,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1579lJ7oVLX1PlkMBYPmYsycsinu76nNs/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Taste-of-Home-Copycat-Recipes-2024_-95699195.webp"
     },
     {
       "id": "mag_1791203926111_igr9n",
       "title": "Taste of Home April-May, 2024_96711493.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Taste-of-Home-April-May-2024_96711493.webp",
@@ -648,12 +681,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1KiTJicl76qP5QQ1uWZ4HQe1YHyvVv6c8/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Taste-of-Home-April-May-2024_96711493.webp"
     },
     {
       "id": "mag_1791203926111_tu758",
       "title": "Time Special Edition - Best Person of the Year 2024  85652888.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Time-Special-Edition---Best-Person-of-the-Year-2024-85652888.webp",
@@ -665,12 +699,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1DkVXyaWKDjFRDxeFPAwp7PIqkLF1vNj1/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Time-Special-Edition---Best-Person-of-the-Year-2024-85652888.webp"
     },
     {
       "id": "mag_1791203926111_m05wn",
       "title": "TOTAL BMW May 2024_48831682.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067417707_vn8r",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TOTAL-BMW-May-2024_48831682.webp",
@@ -682,12 +717,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1fAVbB7U_I70BLFUXJe3eCsK2-sv3F-k4/view?usp=drivesdk",
       "categoryName": "Automotive",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TOTAL-BMW-May-2024_48831682.webp"
     },
     {
       "id": "mag_1791203926111_hke88",
       "title": "TOTAL BMW June .2024_  78766138.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067417707_vn8r",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TOTAL-BMW-June-.2024_-78766138.webp",
@@ -699,12 +735,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1c9AdPedGu_53c_LA4ckgtRufkWJDcHrg/view?usp=drivesdk",
       "categoryName": "Automotive",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TOTAL-BMW-June-.2024_-78766138.webp"
     },
     {
       "id": "mag_1791203926111_gb1q9",
       "title": "TOTAL BMW April 2024_33299069.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067417707_vn8r",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TOTAL-BMW-April-2024_33299069.webp",
@@ -716,12 +753,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1TQPFRUuTU33snzw8gH38WOQkP1EQiq1z/view?usp=drivesdk",
       "categoryName": "Automotive",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TOTAL-BMW-April-2024_33299069.webp"
     },
     {
       "id": "mag_1791203926111_7sgqx",
       "title": "TIME- The Magic of LEGO, 2024    82364916.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--The-Magic-of-LEGO-2024-82364916.webp",
@@ -733,12 +771,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1hnZHRu0U_y8DVes1TRpuhbFv6aRCvtR3/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME--The-Magic-of-LEGO-2024-82364916.webp"
     },
     {
       "id": "mag_1791203926111_i7w5d",
       "title": "TIME- Minecraft, 2024     30650998.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--Minecraft-2024-30650998.webp",
@@ -750,12 +789,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1AjNsak6O0NEv95_yz1TqKgkFW32_xbyQ/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME--Minecraft-2024-30650998.webp"
     },
     {
       "id": "mag_1791203926111_fzjk2",
       "title": "TIME- Hello Kitty 50 Years, 2024    94247412.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--Hello-Kitty-50-Years-2024-94247412.webp",
@@ -767,12 +807,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/18jGC28aUr7_leCmMyMQtOTqJXNe2gK8k/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME--Hello-Kitty-50-Years-2024-94247412.webp"
     },
     {
       "id": "mag_1791203926111_tr5mz",
       "title": "TIME- Grateful Dead, 2024     19322351.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME--Grateful-Dead-2024-19322351.webp",
@@ -784,12 +825,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1-yxdt33E2_Ir4Ub0OBgoc9jLgMBrWj7X/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME--Grateful-Dead-2024-19322351.webp"
     },
     {
       "id": "mag_1791203926111_gdwb8",
       "title": "TIME USA - September 30, 2024    30847936.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---September-30-2024-30847936.webp",
@@ -801,12 +843,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1At9K_aB8SVu2qbVxJjq-ecUBF6K4itIk/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---September-30-2024-30847936.webp"
     },
     {
       "id": "mag_1791203926111_wa58v",
       "title": "TIME USA - September 16, 2024    46941678.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---September-16-2024-46941678.webp",
@@ -818,16 +861,17 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1qHF_yT3reWhUje45Ne4WlFzNxOUyjgG7/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---September-16-2024-46941678.webp"
     },
     {
       "id": "mag_1791203926111_cirxi",
       "title": "TIME USA - October 28, 2024    53055896.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---October-28-2024-53055896.webp",
-      "description": "The October 28, 2024, issue of TIME arrives at a pivotal juncture in the American narrative, dissecting the complex interplay between shifting economic tides and the high-stakes political maneuvers defining the pre-election landscape. Through rigorous investigative journalism and expert analysis, this edition strips away the partisan veneer to examine the foundational forces—from fiscal policy to industrial resilience—that are currently recalibrating the nation’s trajectory on the global stage.\n\nBeyond the headline-grabbing volatility, this issue offers a profound look at the structural changes reshaping the modern workplace and the corporate strategies necessary to navigate an era of unprecedented uncertainty. It serves as an essential briefing for the discerning reader, balancing macro-level economic foresight with the human stories of those laboring to define the next chapter of the American century.",
+      "description": "The October 28, 2024, issue of TIME arrives at a pivotal juncture in the American narrative, dissecting the complex interplay between shifting economic tides and the high-stakes political maneuvers defining the pre-election landscape. Through rigorous investigative journalism and expert analysis, this edition strips away the partisan veneer to examine the foundational forces\u2014from fiscal policy to industrial resilience\u2014that are currently recalibrating the nation\u2019s trajectory on the global stage.\n\nBeyond the headline-grabbing volatility, this issue offers a profound look at the structural changes reshaping the modern workplace and the corporate strategies necessary to navigate an era of unprecedented uncertainty. It serves as an essential briefing for the discerning reader, balancing macro-level economic foresight with the human stories of those laboring to define the next chapter of the American century.",
       "highlights": [
         "The New Industrial Strategy: How private enterprise is realigning with national security interests in a fragmented global economy.",
         "The Ballot Box Bottom Line: A deep dive into how institutional investors are hedging against the volatility of a historic election cycle.",
@@ -835,12 +879,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1B0d-tbt9SAQaFr4uNty9c98EYuAjbO1L/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---October-28-2024-53055896.webp"
     },
     {
       "id": "mag_1791203926111_39tr0",
       "title": "TIME USA - November 11, 2024  49745641.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---November-11-2024-49745641.webp",
@@ -852,12 +897,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1lfka7GtJBXoWkDtw3S6GxQWqNECBwP4C/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---November-11-2024-49745641.webp"
     },
     {
       "id": "mag_1791203926111_pgyaj",
       "title": "TIME USA - May 27, 2024   22782009.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---May-27-2024-22782009.webp",
@@ -869,12 +915,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/14S4w-9iB4z04ulgT6ugjJ-_kYi6PWxpV/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---May-27-2024-22782009.webp"
     },
     {
       "id": "mag_1791203926111_98w4k",
       "title": "TIME USA - February 10, 2025     60638142.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---February-10-2025-60638142.webp",
@@ -886,12 +933,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1jfS5WAij7T2C4dOlVKkXsALhTx6WcW3J/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---February-10-2025-60638142.webp"
     },
     {
       "id": "mag_1791203926110_ypfp8",
       "title": "TIME USA - August 5, 2024   40629838.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---August-5-2024-40629838.webp",
@@ -903,12 +951,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1HFzrWsZRHZGmDseA9_7l6v7A3dJ69O_I/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.111Z"
+      "created_at": "2026-10-05T12:38:46.111Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---August-5-2024-40629838.webp"
     },
     {
       "id": "mag_1791203926110_h7nv2",
       "title": "TIME USA - April 14, 2025  101116.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-USA---April-14-2025-101116.webp",
@@ -920,12 +969,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1Q8MT0GR2YqjnwT337pZW1rlov52ApKKW/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-USA---April-14-2025-101116.webp"
     },
     {
       "id": "mag_1791203926110_1raja",
       "title": "TIME Special Edition - Sports Greats, 2024     43826390.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067441402_3cew",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Sports-Greats-2024-43826390.webp",
@@ -937,12 +987,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/17fifQX-ywF1exaZ7a2zA3T3lYGX2ESLc/view?usp=drivesdk",
       "categoryName": "Sports",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Special-Edition---Sports-Greats-2024-43826390.webp"
     },
     {
       "id": "mag_1791203926110_1dld6",
       "title": "TIME Special Edition - Jesus, 2024   58324865.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Jesus-2024-58324865.webp",
@@ -954,12 +1005,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1IeYHtMi0vfGlIAXqqyaJxbPZkTtt4iiz/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Special-Edition---Jesus-2024-58324865.webp"
     },
     {
       "id": "mag_1791203926110_vzugw",
       "title": "TIME Special Edition - Inspiring Women, 2024    73010352.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Inspiring-Women-2024-73010352.webp",
@@ -971,16 +1023,17 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1_QE0kD7tNYqNEbcTpDXZulvsNJRUJR3I/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Special-Edition---Inspiring-Women-2024-73010352.webp"
     },
     {
       "id": "mag_1791203926110_k43pt",
       "title": "TIME Special Edition - Cannabis, 2024   84006784.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Special-Edition---Cannabis-2024-84006784.webp",
-      "description": "As cultural norms shift and legalization sweeps across continents, cannabis has transitioned from countercultural contraband to a mainstream wellness titan. This special edition from TIME meticulously unpacks the modern green revolution, exploring the complex interplay between evolving legislation, commercial enterprise, and holistic health. From boutique craft strains and cutting-edge extraction methodologies to shifting medical paradigms, the issue serves as an indispensable guide for an era redefining its relationship with the plant.\n\nBeyond the economics and wellness trends, this publication delves into the societal fabric of legalization—examining historical injustices, criminal justice reform, and the cultural normalization of cannabis use. Through rigorous journalism and striking visual storytelling, TIME captures a defining sociological moment, offering readers a panoramic view of an industry poised to shape the future of modern society, agriculture, and personal well-being.",
+      "description": "As cultural norms shift and legalization sweeps across continents, cannabis has transitioned from countercultural contraband to a mainstream wellness titan. This special edition from TIME meticulously unpacks the modern green revolution, exploring the complex interplay between evolving legislation, commercial enterprise, and holistic health. From boutique craft strains and cutting-edge extraction methodologies to shifting medical paradigms, the issue serves as an indispensable guide for an era redefining its relationship with the plant.\n\nBeyond the economics and wellness trends, this publication delves into the societal fabric of legalization\u2014examining historical injustices, criminal justice reform, and the cultural normalization of cannabis use. Through rigorous journalism and striking visual storytelling, TIME captures a defining sociological moment, offering readers a panoramic view of an industry poised to shape the future of modern society, agriculture, and personal well-being.",
       "highlights": [
         "The Green Rush Evolution: Navigating the multi-billion-dollar corporate landscape of modern cannabis.",
         "Medicine Meets Botanicals: Unlocking the true therapeutic potential of cannabinoids in contemporary healthcare.",
@@ -988,12 +1041,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/13h2RJAhu7TqdY9zE2zf2CQ1Fb4LiaHer/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Special-Edition---Cannabis-2024-84006784.webp"
     },
     {
       "id": "mag_1791203926110_dxpo6",
       "title": "TIME Magazine_Feb 26, 2024_76810372.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Magazine_Feb-26-2024_76810372.webp",
@@ -1005,12 +1059,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1EaNiSb9JKTD1I9XnlD45E5RfPDGSiopf/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Magazine_Feb-26-2024_76810372.webp"
     },
     {
       "id": "mag_1791203926110_0uhce",
       "title": "TIME Magazine Maret 25, 2024_96434646.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Magazine-Maret-25-2024_96434646.webp",
@@ -1022,29 +1077,31 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1nzeaLnRDZIOJyO49aUUUCCoAaY2wELKr/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Magazine-Maret-25-2024_96434646.webp"
     },
     {
       "id": "mag_1791203926110_hxd2e",
       "title": "TIME Magazine Maret 11, 2024_46250261.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-Magazine-Maret-11-2024_46250261.webp",
       "description": "In this landmark issue, TIME magazine delves into the profound ethical, philosophical, and practical frontiers of artificial intelligence, featuring visionary entrepreneur Sam Altman on the cover. As the global conversation shifts from theoretical capability to profound societal disruption, the issue examines how generative AI is reshaping everything from labor markets and healthcare to the very fabric of human creativity and truth.\n\nBeyond the headline-grabbing technological race, the issue explores critical intersections of policy, climate science, and modern leadership in an increasingly automated world. Through incisive journalism and expert analysis, TIME captures a pivotal moment in human history, offering readers an essential roadmap to navigating the opportunities and existential challenges of the digital age.",
       "highlights": [
-        "The Architect of Tomorrow: Inside Sam Altman’s quest to redefine human intelligence and the future of OpenAI",
+        "The Architect of Tomorrow: Inside Sam Altman\u2019s quest to redefine human intelligence and the future of OpenAI",
         "The Algorithmic Workforce: How automation is permanently rewriting the rules of the global economy",
         "The Truth Dilemma: Navigating deepfakes, misinformation, and the erosion of reality in the age of generative models"
       ],
       "pdfUrl": "https://drive.google.com/file/d/1GL12LQjRk_js2Caq7CBxQFoK3eLspurD/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-Magazine-Maret-11-2024_46250261.webp"
     },
     {
       "id": "mag_1791203926110_a5b5a",
       "title": "TIME - Taylor Swift 2024    85977585.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME---Taylor-Swift-2024-85977585.webp",
@@ -1056,29 +1113,31 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1a5cf-v5mAm_R07tkzQPTAkh3Wu10l8pW/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME---Taylor-Swift-2024-85977585.webp"
     },
     {
       "id": "mag_1791203926110_g4ykl",
       "title": "TIME -  Pokemon 2024     70449605.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME---Pokemon-2024-70449605.webp",
-      "description": "In this special collector's edition, TIME explores the enduring cultural phenomenon of Pokémon as it continues to captivate generations across the globe. From its humble beginnings as a handheld Game Boy role-playing game to a multi-billion-dollar empire spanning card games, animated series, and augmented reality, the franchise has fundamentally reshaped modern entertainment and popular culture. This issue offers a deep dive into the creative minds, strategic expansions, and passionate community that keep the Pokémon universe vibrant and evolving in 2024.\n\nBeyond nostalgia, the magazine examines the broader sociological impact of Pokémon, highlighting how cooperative gameplay, digital collecting, and global competitions foster connection in an increasingly digital world. Through stunning imagery, exclusive behind-the-scenes insights, and thoughtful cultural commentary, TIME captures the magic of a franchise that proves play is a universal language. It is an essential keepsake for longtime fans and newcomers alike, celebrating a legacy of adventure, discovery, and endless imagination.",
+      "description": "In this special collector's edition, TIME explores the enduring cultural phenomenon of Pok\u00e9mon as it continues to captivate generations across the globe. From its humble beginnings as a handheld Game Boy role-playing game to a multi-billion-dollar empire spanning card games, animated series, and augmented reality, the franchise has fundamentally reshaped modern entertainment and popular culture. This issue offers a deep dive into the creative minds, strategic expansions, and passionate community that keep the Pok\u00e9mon universe vibrant and evolving in 2024.\n\nBeyond nostalgia, the magazine examines the broader sociological impact of Pok\u00e9mon, highlighting how cooperative gameplay, digital collecting, and global competitions foster connection in an increasingly digital world. Through stunning imagery, exclusive behind-the-scenes insights, and thoughtful cultural commentary, TIME captures the magic of a franchise that proves play is a universal language. It is an essential keepsake for longtime fans and newcomers alike, celebrating a legacy of adventure, discovery, and endless imagination.",
       "highlights": [
-        "Catching the Future: How Pokémon Redefined Global Pop Culture and Digital Entertainment",
+        "Catching the Future: How Pok\u00e9mon Redefined Global Pop Culture and Digital Entertainment",
         "Inside the Deck: The Billion-Dollar Trading Card Phenomenon That Transformed Collecting",
         "Gotta Catch 'Em All: The Psychology and Community Driving Generations of Trainers"
       ],
       "pdfUrl": "https://drive.google.com/file/d/1_sBtihBjOsLtQRRm26FyPYB9dgpsOHfX/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME---Pokemon-2024-70449605.webp"
     },
     {
       "id": "mag_1791203926110_9rsq7",
       "title": "TIME 100 USA April.29 ,2024_08529526.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-100-USA-April.29-2024_08529526.webp",
@@ -1090,12 +1149,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/16Q6Q-__6Fc6ougVnuF1sAG0BzZzMy9Me/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-100-USA-April.29-2024_08529526.webp"
     },
     {
       "id": "mag_1791203926110_s2tw1",
       "title": "TIME 100 Must-See U.S._Landmark_  64491518.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067404189_ak90",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/TIME-100-Must-See-U.S._Landmark_-64491518.webp",
@@ -1107,12 +1167,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1pX87e2PQaHmj6E-qpPj7vIbgBN2A_P9L/view?usp=drivesdk",
       "categoryName": "Travel",
-      "created_at": "2026-10-05T12:38:46.110Z"
+      "created_at": "2026-10-05T12:38:46.110Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/TIME-100-Must-See-U.S._Landmark_-64491518.webp"
     },
     {
       "id": "mag_1791196003473_v50fn",
       "title": "T3_UK_May_2024   85054511.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3_UK_May_2024-85054511.webp",
@@ -1124,12 +1185,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1h8qEASIZruTkZ07-FCS4byT0UVTNyepV/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3_UK_May_2024-85054511.webp"
     },
     {
       "id": "mag_1791196003473_tpukv",
       "title": "T3 UK - September 2024  40043358.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---September-2024-40043358.webp",
@@ -1141,12 +1203,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1wbc_VNQVKTT9_8M_pRfK6jBeLYsD7vQn/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---September-2024-40043358.webp"
     },
     {
       "id": "mag_1791196003473_4lrbw",
       "title": "T3 UK - November 2024   79928751.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---November-2024-79928751.webp",
@@ -1158,12 +1221,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1Bulmhw8ypElSjl8COlwmaNglMuYQWLfi/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---November-2024-79928751.webp"
     },
     {
       "id": "mag_1791196003473_vcbek",
       "title": "T3 UK - January 2025 - English  99767372.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---January-2025---English-99767372.webp",
@@ -1175,12 +1239,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1CUNV67-05t-HB5U9ZRL1MqLV-amP5kx4/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---January-2025---English-99767372.webp"
     },
     {
       "id": "mag_1791196003473_yaqq0",
       "title": "T3 UK - January 2025   61296787.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---January-2025-61296787.webp",
@@ -1192,16 +1257,17 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1g8IpUvX34vSK3-oXapLo0rGPBAlohKVt/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---January-2025-61296787.webp"
     },
     {
       "id": "mag_1791196003473_9t6ia",
       "title": "T3 UK - February 2025   96090320.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---February-2025-96090320.webp",
-      "description": "The February 2025 edition of T3 UK arrives as a definitive guide to the evolving landscape of personal technology, balancing high-octane innovation with the practical demands of modern living. This issue meticulously dissects the latest breakthroughs in consumer electronics, providing readers with the critical analysis required to navigate a market increasingly saturated by AI integration and smart-home connectivity. It is a masterclass in product curation, designed for the discerning individual who demands both aesthetic sophistication and peak performance from their daily toolkit.\n\nBeyond the hardware specs, this month’s editorial lens focuses on the intersection of lifestyle and digital fluency. From the latest in wearable health tech to the next generation of home entertainment systems, T3 continues its legacy of separating genuine innovation from mere trend-chasing. By contextualizing how these gadgets reshape our productivity and leisure, the magazine empowers its audience to build a more seamless, efficient, and technologically elevated existence in an ever-accelerating digital world.",
+      "description": "The February 2025 edition of T3 UK arrives as a definitive guide to the evolving landscape of personal technology, balancing high-octane innovation with the practical demands of modern living. This issue meticulously dissects the latest breakthroughs in consumer electronics, providing readers with the critical analysis required to navigate a market increasingly saturated by AI integration and smart-home connectivity. It is a masterclass in product curation, designed for the discerning individual who demands both aesthetic sophistication and peak performance from their daily toolkit.\n\nBeyond the hardware specs, this month\u2019s editorial lens focuses on the intersection of lifestyle and digital fluency. From the latest in wearable health tech to the next generation of home entertainment systems, T3 continues its legacy of separating genuine innovation from mere trend-chasing. By contextualizing how these gadgets reshape our productivity and leisure, the magazine empowers its audience to build a more seamless, efficient, and technologically elevated existence in an ever-accelerating digital world.",
       "highlights": [
         "Feature Article 1: The AI Home Revolution: Why your living room is about to become your smartest assistant.",
         "Feature Article 2: Wearable Wellness 2.0: We test the latest health-tracking rings and watches to find the ultimate fitness companion.",
@@ -1209,33 +1275,35 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1nurgOP6vPOeCSpEZwBWhyNa-uz3-U6en/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---February-2025-96090320.webp"
     },
     {
       "id": "mag_1791196003473_1a5xn",
       "title": "T3 UK - December 2024   23699014.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---December-2024-23699014.webp",
-      "description": "The December 2024 issue of T3 UK serves as the ultimate definitive guide for the modern, tech-forward man navigating the peak of the holiday gift-giving season. With a sharp focus on the intersection of innovation and aspiration, the editorial team curates a high-octane selection of the year’s most transformative consumer electronics, from next-generation home entertainment systems to the latest advancements in wearable health tech. It is a masterclass in discerning quality, designed to help the reader cut through the digital noise and invest in gear that genuinely upgrades their daily lifestyle.\n\nBeyond the hardware, this edition leans into the cultural zeitgeist of the 'smart home' evolution, offering practical advice for those looking to future-proof their living spaces. By blending rigorous lab-tested reviews with aspirational trend forecasting, the issue positions itself as an essential companion for the tech-conscious individual who demands both aesthetic sophistication and uncompromising performance. Whether you are hunting for the ultimate gadget upgrade or seeking inspiration for the perfect holiday indulgence, this issue captures the pulse of the tech landscape with unparalleled clarity.",
+      "description": "The December 2024 issue of T3 UK serves as the ultimate definitive guide for the modern, tech-forward man navigating the peak of the holiday gift-giving season. With a sharp focus on the intersection of innovation and aspiration, the editorial team curates a high-octane selection of the year\u2019s most transformative consumer electronics, from next-generation home entertainment systems to the latest advancements in wearable health tech. It is a masterclass in discerning quality, designed to help the reader cut through the digital noise and invest in gear that genuinely upgrades their daily lifestyle.\n\nBeyond the hardware, this edition leans into the cultural zeitgeist of the 'smart home' evolution, offering practical advice for those looking to future-proof their living spaces. By blending rigorous lab-tested reviews with aspirational trend forecasting, the issue positions itself as an essential companion for the tech-conscious individual who demands both aesthetic sophistication and uncompromising performance. Whether you are hunting for the ultimate gadget upgrade or seeking inspiration for the perfect holiday indulgence, this issue captures the pulse of the tech landscape with unparalleled clarity.",
       "highlights": [
         "The Ultimate Holiday Gift Guide: 100+ gadgets curated for the man who has everything.",
         "The Future of Sound: A deep dive into the latest spatial audio systems redefining the home cinema experience.",
-        "Wrist-Worn Revolution: Why 2024’s latest smartwatches are finally bridging the gap between high-tech and high-fashion."
+        "Wrist-Worn Revolution: Why 2024\u2019s latest smartwatches are finally bridging the gap between high-tech and high-fashion."
       ],
       "pdfUrl": "https://drive.google.com/file/d/1YiTojcHFMY4_PLdWUYZyHV8IT93hTpY0/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---December-2024-23699014.webp"
     },
     {
       "id": "mag_1791196003473_dyizh",
       "title": "T3 UK - April 2025 105009.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-UK---April-2025-105009.webp",
-      "description": "The April 2025 issue of T3 UK arrives at the intersection of high-concept innovation and the practical demands of the modern home. In this edition, our editorial focus shifts toward the 'ambient intelligence' revolution, stripping away the hype surrounding smart-tech to reveal how the latest wave of connected devices is genuinely augmenting our daily rituals. From the next generation of generative AI-integrated wearables to the sustainable evolution of domestic robotics, we explore how technology is becoming less of a digital intrusion and more of a quiet, essential facilitator of our personal well-being.\n\nBeyond the silicon, this issue interrogates the evolving aesthetics of the modern workspace and the sanctuary of the high-performance home office. We have curated a definitive guide to the hardware that defines the current zeitgeist, balancing raw technical performance with the minimalist design language that readers have come to expect from T3. Whether you are upgrading your ecosystem for maximum efficiency or seeking the definitive word on the year’s most anticipated gadget releases, this issue serves as your essential blueprint for living smarter in an increasingly complex world.",
+      "description": "The April 2025 issue of T3 UK arrives at the intersection of high-concept innovation and the practical demands of the modern home. In this edition, our editorial focus shifts toward the 'ambient intelligence' revolution, stripping away the hype surrounding smart-tech to reveal how the latest wave of connected devices is genuinely augmenting our daily rituals. From the next generation of generative AI-integrated wearables to the sustainable evolution of domestic robotics, we explore how technology is becoming less of a digital intrusion and more of a quiet, essential facilitator of our personal well-being.\n\nBeyond the silicon, this issue interrogates the evolving aesthetics of the modern workspace and the sanctuary of the high-performance home office. We have curated a definitive guide to the hardware that defines the current zeitgeist, balancing raw technical performance with the minimalist design language that readers have come to expect from T3. Whether you are upgrading your ecosystem for maximum efficiency or seeking the definitive word on the year\u2019s most anticipated gadget releases, this issue serves as your essential blueprint for living smarter in an increasingly complex world.",
       "highlights": [
         "Feature Article 1: The Invisible Home: How ambient AI is quietly automating your sanctuary",
         "Feature Article 2: Silicon Style: The 10 design-led gadgets redefining the modern workspace",
@@ -1243,12 +1311,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1fypSpwXusrUNoyq7RvfGtHOxRHSHQ9Ic/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-UK---April-2025-105009.webp"
     },
     {
       "id": "mag_1791196003473_ibo8j",
       "title": "T3 Mar 2024_   92612918.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-Mar-2024_-92612918.webp",
@@ -1260,12 +1329,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1BxxKIo9k8Ek-6I4macLGnNKeVUyQspp2/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-Mar-2024_-92612918.webp"
     },
     {
       "id": "mag_1791196003473_90zub",
       "title": "T3 April 2024_      97786737.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3-April-2024_-97786737.webp",
@@ -1277,12 +1347,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1LMlr3DElWj5gwXcBeH0WGEAAQbsBibPo/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.473Z"
+      "created_at": "2026-10-05T10:26:43.473Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3-April-2024_-97786737.webp"
     },
     {
       "id": "mag_1791196003472_nl73r",
       "title": "T3 - October 2024    26614990.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---October-2024-26614990.webp",
@@ -1294,12 +1365,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1WhZw8E5rzwna3REnefFbDzBRizZOMOwH/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3---October-2024-26614990.webp"
     },
     {
       "id": "mag_1791196003472_q4j8b",
       "title": "T3  - June 2024    20413078.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---June-2024-20413078.webp",
@@ -1311,12 +1383,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1evLGrpS5bBPAt65EJJCqq27B92Qe7vlX/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3---June-2024-20413078.webp"
     },
     {
       "id": "mag_1791196003472_c3rsn",
       "title": "T3  - July 2024    84580978.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---July-2024-84580978.webp",
@@ -1328,16 +1401,17 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1gqJNORzP9aFLbzCCij8N9OwHsmwjP1ha/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3---July-2024-84580978.webp"
     },
     {
       "id": "mag_1791196003472_eca5r",
       "title": "T3  - August 2024   75764141.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/T3---August-2024-75764141.webp",
-      "description": "As the dog days of summer prompt a collective pivot toward smarter, more seamless living, the August 2024 issue of T3 arrives as the definitive guide to upgrading your daily existence. This edition plunges headfirst into the intersection of cutting-edge innovation and effortless style, curating the ultimate wishlist for modern hedonists and tech enthusiasts alike. From next-generation portable audio that soundtrack your summer escapes to high-performance smart home ecosystems that keep you cool when the weather spikes, every page is designed to elevate how you interact with the world around you.\n\nBeyond the hardware, this issue delivers an insightful look at the future of personal mobility, wellness tech, and travel gear engineered for the discerning modern explorer. Editors dissect the year’s most anticipated releases with the razor-sharp critique and sophisticated aesthetic that has made T3 a global authority on consumer culture. Whether you are looking to streamline your workflow with AI-driven productivity tools or simply craving the absolute best gadgets to conquer the remainder of the season, this number serves up an indispensable blueprint for living well through technology.",
+      "description": "As the dog days of summer prompt a collective pivot toward smarter, more seamless living, the August 2024 issue of T3 arrives as the definitive guide to upgrading your daily existence. This edition plunges headfirst into the intersection of cutting-edge innovation and effortless style, curating the ultimate wishlist for modern hedonists and tech enthusiasts alike. From next-generation portable audio that soundtrack your summer escapes to high-performance smart home ecosystems that keep you cool when the weather spikes, every page is designed to elevate how you interact with the world around you.\n\nBeyond the hardware, this issue delivers an insightful look at the future of personal mobility, wellness tech, and travel gear engineered for the discerning modern explorer. Editors dissect the year\u2019s most anticipated releases with the razor-sharp critique and sophisticated aesthetic that has made T3 a global authority on consumer culture. Whether you are looking to streamline your workflow with AI-driven productivity tools or simply craving the absolute best gadgets to conquer the remainder of the season, this number serves up an indispensable blueprint for living well through technology.",
       "highlights": [
         "The Ultimate Summer Audio Guide: Premium headphones and speakers built for high-fidelity on-the-go listening",
         "Smart Home Cool: The top climate-control tech and automated systems to master the summer heat",
@@ -1345,12 +1419,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1p60jlSxT2nZaptkdAio4htAeaCqxqQlC/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/T3---August-2024-75764141.webp"
     },
     {
       "id": "mag_1791196003472_dffja",
       "title": "Recharge_Your_Life_-_7th_Edition_2025  101134.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Recharge_Your_Life_-_7th_Edition_2025-101134.webp",
@@ -1362,12 +1437,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1VQ31vXhWfFSpMr-AwO-V1KIxCps2LhPi/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Recharge_Your_Life_-_7th_Edition_2025-101134.webp"
     },
     {
       "id": "mag_1791196003472_qiv7y",
       "title": "Prevention_USA_-_August_2025  101133.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Prevention_USA_-_August_2025-101133.webp",
@@ -1379,12 +1455,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1pmt9QW7AcoL-s6wyXR-wxITcQ0GYDQ6G/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Prevention_USA_-_August_2025-101133.webp"
     },
     {
       "id": "mag_1791196003472_msd0h",
       "title": "Newsweek_International_-_July_4  101132.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Newsweek_International_-_July_4-101132.webp",
@@ -1396,12 +1473,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1qE9opO2RK8GOsf8jPlMnrYi4SPvb-VSj/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Newsweek_International_-_July_4-101132.webp"
     },
     {
       "id": "mag_1791196003472_3498t",
       "title": "New_York_Magazine_-_Hamptons_June_2025  101131.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067373378_l9tg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/New_York_Magazine_-_Hamptons_June_2025-101131.webp",
@@ -1413,12 +1491,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1xVAVm_8C1fILukn5bJrA-EyfXTugkeTR/view?usp=drivesdk",
       "categoryName": "Lifestyle",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/New_York_Magazine_-_Hamptons_June_2025-101131.webp"
     },
     {
       "id": "mag_1791196003472_0bo1q",
       "title": "National_Geographic_USA_-_Vol._248  101130.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067410699_d004",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/National_Geographic_USA_-_Vol._248-101130.webp",
@@ -1430,12 +1509,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1rW52ZBe6EneqQ-csgCDMCdYVPZo1o2w7/view?usp=drivesdk",
       "categoryName": "Science",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/National_Geographic_USA_-_Vol._248-101130.webp"
     },
     {
       "id": "mag_1791196003472_qpryc",
       "title": "MIT_Technology_Review_Insights_-_Scaling_integrated_digital_health  101129.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/MIT_Technology_Review_Insights_-_Scaling_integrated_digital_health-101129.webp",
@@ -1447,12 +1527,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1CKdSx_A-ZFMfcJkZWcU4FuOlL8SHidlL/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/MIT_Technology_Review_Insights_-_Scaling_integrated_digital_health-101129.webp"
     },
     {
       "id": "mag_1791196003472_wtdc2",
       "title": "Inc._Magazine_-_Summer_2025  101128.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067364247_vblg",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Inc._Magazine_-_Summer_2025-101128.webp",
@@ -1464,12 +1545,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1RfPd00qrMrOUjh8fe7QkRpHLYAd9S3IT/view?usp=drivesdk",
       "categoryName": "Business",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Inc._Magazine_-_Summer_2025-101128.webp"
     },
     {
       "id": "mag_1791196003472_u4ugk",
       "title": "FourFourTwo_UK_-_July_2025  101127.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067441402_3cew",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/FourFourTwo_UK_-_July_2025-101127.webp",
@@ -1481,12 +1563,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1Uk-xx2IHJ_ufrQkWYRBE7swQXRwJHHNz/view?usp=drivesdk",
       "categoryName": "Sports",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/FourFourTwo_UK_-_July_2025-101127.webp"
     },
     {
       "id": "mag_1791196003472_5iyg7",
       "title": "Foreign_Affairs_-_JulyAugust_2025  101126.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067396718_pde1",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Foreign_Affairs_-_JulyAugust_2025-101126.webp",
@@ -1498,12 +1581,13 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/1j_1W9uPSFJQgKF4numWuDr7yLhQcAiKs/view?usp=drivesdk",
       "categoryName": "Defense",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Foreign_Affairs_-_JulyAugust_2025-101126.webp"
     },
     {
       "id": "mag_1791196003472_zp1ie",
       "title": "Architectural_Digest_USA_-_June_2025  101125.pdf",
-      "issueNumber": "Vol. 1 • 2026",
+      "issueNumber": "Vol. 1 \u2022 2026",
       "categoryId": "cat_1791067380440_n8rb",
       "price": 13000,
       "coverImage": "https://s3api2.skyconnection.id/image/2026/10/05/Architectural_Digest_USA_-_June_2025-101125.webp",
@@ -1515,7 +1599,8 @@
       ],
       "pdfUrl": "https://drive.google.com/file/d/13uxwc7f8kT88Lh3eDTb6d_9iPlfqCzvd/view?usp=drivesdk",
       "categoryName": "Design",
-      "created_at": "2026-10-05T10:26:43.472Z"
+      "created_at": "2026-10-05T10:26:43.472Z",
+      "thumbnailUrl": "https://s3api2.skyconnection.id/image/thumbnail/2026/10/05/Architectural_Digest_USA_-_June_2025-101125.webp"
     }
   ],
   "orders": [],
