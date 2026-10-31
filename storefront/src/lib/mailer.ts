@@ -83,8 +83,11 @@ export async function sendOrderConfirmationEmail(
     <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; margin: 0; padding: 24px; color: #334155;">
       <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
         
-        <!-- Header -->
-        <div style="background-color: #0f172a; padding: 24px; text-align: center;">
+        <!-- Header with Picture Logo -->
+        <div style="background-color: #0f172a; padding: 28px 24px; text-align: center;">
+          <a href="${siteUrl}" target="_blank" style="text-decoration: none; display: inline-block;">
+            <img src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg" alt="DIGITALPITSTOP Logo" style="height: 56px; max-width: 220px; object-fit: contain; border-radius: 8px; margin-bottom: 12px; display: block; margin-left: auto; margin-right: auto;" />
+          </a>
           <h1 style="color: #ffffff; margin: 0; font-size: 20px; font-weight: 800; letter-spacing: -0.5px;">
             DIGITALPITSTOP <span style="color: #818cf8; font-weight: 400;">MAGAZINES</span>
           </h1>
@@ -125,19 +128,47 @@ export async function sendOrderConfirmationEmail(
           </div>
 
           <!-- Library Link -->
-          <div style="text-align: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid #f1f5f9;">
+          <div style="text-align: center; margin-top: 28px; padding-top: 20px; border-top: 1px solid #f1f5f9;">
             <a href="${siteUrl}/library" target="_blank" style="display: inline-block; background-color: #0f172a; color: #ffffff; text-decoration: none; padding: 12px 24px; border-radius: 10px; font-size: 13px; font-weight: 700;">
               Buka Koleksi di My Library Web →
             </a>
           </div>
+
+          <!-- WhatsApp Contact Support Card -->
+          <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 14px 18px; margin: 24px 0;">
+            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tr>
+                <td style="width: 32px; vertical-align: top; font-size: 20px;">💬</td>
+                <td>
+                  <p style="margin: 0; font-size: 13px; font-weight: 700; color: #166534;">
+                    Layanan Bantuan Pelanggan (WhatsApp):
+                  </p>
+                  <p style="margin: 3px 0 0 0; font-size: 12px; color: #15803d;">
+                    Ada kendala akses file atau pertanyaan? Hubungi kami via WhatsApp:
+                    <a href="https://wa.me/6282240404612" target="_blank" style="color: #15803d; font-weight: 800; text-decoration: underline;">
+                      082240404612 (Chat Only)
+                    </a>
+                  </p>
+                </td>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <!-- Footer -->
-        <div style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
+        <div style="background-color: #f8fafc; padding: 24px; text-align: center; border-top: 1px solid #e2e8f0;">
+          <p style="margin: 0 0 6px 0; font-size: 12px; font-weight: 700; color: #334155;">
+            Layanan Bantuan & Dukungan:
+          </p>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748b;">
+            💬 WhatsApp: <a href="https://wa.me/6282240404612" target="_blank" style="color: #16a34a; font-weight: 700; text-decoration: none;">082240404612 (Chat Only)</a> &bull; 
+            ✉️ Email: <a href="mailto:notreseller.magazine@gmail.com" style="color: #6366f1; text-decoration: none;">notreseller.magazine@gmail.com</a>
+          </p>
           <p style="margin: 0; font-size: 11px; color: #94a3b8;">
             © ${new Date().getFullYear()} DIGITALPITSTOP MAGAZINES. All rights reserved.<br>
-            Bantuan & Pertanyaan: <a href="mailto:notreseller.magazine@gmail.com" style="color: #6366f1;">notreseller.magazine@gmail.com</a>
+            <a href="${siteUrl}" target="_blank" style="color: #94a3b8; text-decoration: underline;">majalahpdf.my.id</a>
           </p>
+        </div>
         </div>
 
       </div>

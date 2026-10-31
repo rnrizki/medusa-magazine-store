@@ -57,15 +57,29 @@ export default function Footer() {
               <p className="text-slate-400 text-[11px] leading-relaxed">
                 Have questions or need assistance with your digital magazine purchase?
               </p>
-              <a
-                href="mailto:notreseller.magazine@gmail.com"
-                className="inline-flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition group font-medium"
-              >
-                <Mail className="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition flex-shrink-0" />
-                <span className="break-all underline underline-offset-4 decoration-indigo-500/50">
-                  notreseller.magazine@gmail.com
-                </span>
-              </a>
+              <div className="space-y-1.5">
+                <a
+                  href="https://wa.me/6282240404612"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center space-x-2 text-emerald-400 hover:text-emerald-300 transition group font-medium"
+                >
+                  <span className="text-sm">💬</span>
+                  <span className="underline underline-offset-4 decoration-emerald-500/50">
+                    082240404612 (Chat Only)
+                  </span>
+                </a>
+                <br />
+                <a
+                  href="mailto:notreseller.magazine@gmail.com"
+                  className="inline-flex items-center space-x-2 text-indigo-400 hover:text-indigo-300 transition group font-medium"
+                >
+                  <Mail className="w-3.5 h-3.5 text-indigo-400 group-hover:scale-110 transition flex-shrink-0" />
+                  <span className="break-all underline underline-offset-4 decoration-indigo-500/50">
+                    notreseller.magazine@gmail.com
+                  </span>
+                </a>
+              </div>
             </div>
           </div>
 
@@ -93,13 +107,24 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3">
           <p>© {new Date().getFullYear()} DIGITALPITSTOP - SOFTWARE. All rights reserved.</p>
-          <a
-            href="mailto:notreseller.magazine@gmail.com"
-            className="text-slate-400 hover:text-white transition flex items-center space-x-1.5"
-          >
-            <Mail className="w-3.5 h-3.5 text-indigo-400" />
-            <span>notreseller.magazine@gmail.com</span>
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://wa.me/6282240404612"
+              target="_blank"
+              rel="noreferrer"
+              className="text-emerald-400 hover:text-emerald-300 transition flex items-center space-x-1"
+            >
+              <span>WA: 082240404612 (Chat Only)</span>
+            </a>
+            <span>&bull;</span>
+            <a
+              href="mailto:notreseller.magazine@gmail.com"
+              className="text-slate-400 hover:text-white transition flex items-center space-x-1.5"
+            >
+              <Mail className="w-3.5 h-3.5 text-indigo-400" />
+              <span>notreseller.magazine@gmail.com</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>
