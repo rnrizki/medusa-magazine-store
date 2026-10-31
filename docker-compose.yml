@@ -26,7 +26,7 @@ services:
     image: valkey/valkey:8-alpine
     restart: unless-stopped
     volumes:
-      - redis_data:/data
+      - valkey_data:/data
     healthcheck:
       test: ["CMD", "valkey-cli", "ping"]
       interval: 5s
@@ -163,6 +163,8 @@ services:
 
 volumes:
   postgres_data:
+    driver: local
+  valkey_data:
     driver: local
   redis_data:
     driver: local
