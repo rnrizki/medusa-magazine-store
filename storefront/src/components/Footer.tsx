@@ -5,7 +5,7 @@ import { QrCode, Zap, ShieldCheck, Mail } from "lucide-react"
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-800 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div className="space-y-3">

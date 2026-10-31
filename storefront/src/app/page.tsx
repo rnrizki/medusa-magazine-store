@@ -11,7 +11,7 @@ export default function HomePage() {
   return (
     <div className="py-8 sm:py-10 pb-20">
       {/* Main Magazine Catalog */}
-      <section id="magazine-catalog-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="magazine-catalog-section" className="max-w-[1920px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16">
         <div className="mb-6">
           <h2 className="text-2xl font-black text-slate-900 tracking-tight">
             Featured Issues & Publications

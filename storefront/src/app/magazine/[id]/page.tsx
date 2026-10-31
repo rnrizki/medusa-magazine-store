@@ -27,7 +27,7 @@ export default function MagazineDetailPage({ params }: Props) {
   const relatedItems = getRelatedMagazines(magazine, allMagazines)
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+    <div className="max-w-[1920px] w-full mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 2xl:px-16 py-8 space-y-6">
       {/* Top Header Bar: Back to all magazines & Search Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
         <Link
