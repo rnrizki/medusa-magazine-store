@@ -29,6 +29,7 @@ interface ManageMagazinesTabProps {
   categories: Category[]
   onRefresh: () => void
   onSwitchToUpload: () => void
+  loading?: boolean
 }
 
 export default function ManageMagazinesTab({
@@ -36,6 +37,7 @@ export default function ManageMagazinesTab({
   categories,
   onRefresh,
   onSwitchToUpload,
+  loading = false,
 }: ManageMagazinesTabProps) {
   const [search, setSearch] = useState("")
   const [categoryFilter, setCategoryFilter] = useState("all")
@@ -333,7 +335,12 @@ export default function ManageMagazinesTab({
       </div>
 
       {/* Magazines Table / List */}
-      {filtered.length === 0 ? (
+      {loading ? (
+        <div className="bg-white rounded-2xl border border-slate-200 p-16 text-center text-xs text-slate-500 flex flex-col items-center justify-center space-y-3 shadow-sm">
+          <RefreshCw className="w-6 h-6 text-indigo-600 animate-spin" />
+          <span className="font-semibold text-slate-700">Memuat data majalah...</span>
+        </div>
+      ) : filtered.length === 0 ? (
         <div className="bg-white rounded-2xl border border-slate-200 p-12 text-center text-xs text-slate-400">
           No magazines match your current search or category filter.
         </div>

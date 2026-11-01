@@ -688,7 +688,7 @@ export default function AdminStudioPage() {
           }`}
         >
           <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
-          <span>Manage & Edit Magazines ({magazines.length})</span>
+          <span>Manage & Edit Magazines {loading ? "(...)" : `(${magazines.length})`}</span>
         </button>
 
         <button
@@ -984,6 +984,7 @@ export default function AdminStudioPage() {
           categories={categories}
           onRefresh={fetchData}
           onSwitchToUpload={() => setActiveTab("upload")}
+          loading={loading}
         />
       )}
 
