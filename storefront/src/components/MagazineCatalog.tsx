@@ -6,6 +6,7 @@ import { Category, Magazine } from "../lib/types"
 import { getCategoryTheme } from "../lib/category-colors"
 import { getPaginationItems, formatPageNumber } from "../lib/pagination"
 import { getMagazineThumbnail } from "../lib/thumbnails"
+import { sortMagazinesLatestFirst } from "../lib/magazineSort"
 import MagazineCard from "./MagazineCard"
 import {
   BookOpen,
@@ -71,8 +72,8 @@ export default function MagazineCatalog({
     }
 
     // Instant local top 5 while waiting for network response
-    const localTop5 = magazines
-      .filter((m) => {
+    const localTop5 = sortMagazinesLatestFirst(
+      magazines.filter((m) => {
         const matchCat =
           selectedCategory === "all" ||
           m.categoryId === selectedCategory ||
@@ -83,7 +84,7 @@ export default function MagazineCatalog({
           (m.description && m.description.toLowerCase().includes(q.toLowerCase()))
         return matchCat && matchText
       })
-      .slice(0, 5)
+    ).slice(0, 5)
 
     setSuggestionHits(localTop5)
     setIsSearching(true)
@@ -249,36 +250,38 @@ export default function MagazineCatalog({
     }
   }
 
-  // Filter magazines for the main grid based on appliedQuery + selectedCategory
+  // Filter and sort magazines strictly from latest upload to oldest
   const filteredMagazines = useMemo(() => {
+    let list: Magazine[] = []
     if (appliedQuery.trim() !== "") {
       if (searchResults !== null) {
-        return searchResults
+        list = [...searchResults]
+      } else {
+        const q = appliedQuery.toLowerCase()
+        list = magazines.filter((mag) => {
+          const matchesCategory =
+            selectedCategory === "all" ||
+            mag.categoryId === selectedCategory ||
+            (mag.categoryName &&
+              mag.categoryName.toLowerCase() === selectedCategory.toLowerCase())
+          const matchesText =
+            mag.title.toLowerCase().includes(q) ||
+            (mag.description && mag.description.toLowerCase().includes(q))
+          return matchesCategory && matchesText
+        })
       }
-      const q = appliedQuery.toLowerCase()
-      return magazines.filter((mag) => {
-        const matchesCategory =
-          selectedCategory === "all" ||
-          mag.categoryId === selectedCategory ||
-          (mag.categoryName &&
-            mag.categoryName.toLowerCase() === selectedCategory.toLowerCase())
-        const matchesText =
-          mag.title.toLowerCase().includes(q) ||
-          (mag.description && mag.description.toLowerCase().includes(q))
-        return matchesCategory && matchesText
-      })
+    } else if (selectedCategory === "all") {
+      list = [...magazines]
+    } else {
+      list = magazines.filter(
+        (m) =>
+          m.categoryId === selectedCategory ||
+          (m.categoryName &&
+            m.categoryName.toLowerCase() === selectedCategory.toLowerCase())
+      )
     }
 
-    if (selectedCategory === "all") {
-      return magazines
-    }
-
-    return magazines.filter(
-      (m) =>
-        m.categoryId === selectedCategory ||
-        (m.categoryName &&
-          m.categoryName.toLowerCase() === selectedCategory.toLowerCase())
-    )
+    return sortMagazinesLatestFirst(list)
   }, [appliedQuery, searchResults, magazines, selectedCategory])
 
   // Pagination calculation (strictly 20 magazines per page)

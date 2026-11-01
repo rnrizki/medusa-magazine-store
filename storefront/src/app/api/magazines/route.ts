@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getMagazines, addMagazines, updateMagazine, deleteMagazine } from "@/lib/db"
 import { searchMagazinesMeili, syncMagazinesToMeili, getMeiliClient, INDEX_NAME } from "@/lib/meilisearch"
+import { sortMagazinesLatestFirst } from "@/lib/magazineSort"
 
 export const dynamic = "force-dynamic"
 
@@ -39,7 +40,7 @@ export async function GET(req: NextRequest) {
     )
     return NextResponse.json(
       {
-        magazines: filtered,
+        magazines: sortMagazinesLatestFirst(filtered),
         source: "fallback",
       },
       {
@@ -48,7 +49,7 @@ export async function GET(req: NextRequest) {
     )
   }
 
-  const magazines = getMagazines(category)
+  const magazines = sortMagazinesLatestFirst(getMagazines(category))
   return NextResponse.json(magazines, {
     headers: {
       "Cache-Control": "no-store, no-cache, must-revalidate",

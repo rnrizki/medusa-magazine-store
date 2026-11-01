@@ -2,6 +2,7 @@ import { Meilisearch } from "meilisearch"
 import { Magazine } from "./types"
 import { getMagazines } from "./db"
 import { getMagazineThumbnail } from "./thumbnails"
+import { getMagazineSortTimestamp, sortMagazinesLatestFirst } from "./magazineSort"
 
 const MEILI_HOST =
   process.env.MEILISEARCH_HOST || "http://meilisearch:7700"
@@ -59,13 +60,13 @@ export async function initMeiliSearch(): Promise<boolean> {
         "issueNumber",
       ],
       filterableAttributes: ["categoryId", "categoryName"],
-      sortableAttributes: ["price", "created_at"],
+      sortableAttributes: ["sort_date", "created_at", "price"],
       rankingRules: [
         "words",
         "typo",
+        "sort",
         "proximity",
         "attribute",
-        "sort",
         "exactness",
       ],
       typoTolerance: {
@@ -120,6 +121,7 @@ export async function syncMagazinesToMeili(magazines: Magazine[]): Promise<numbe
       highlights: Array.isArray(m.highlights) ? m.highlights : [],
       pdfUrl: m.pdfUrl || null,
       created_at: m.created_at || new Date().toISOString(),
+      sort_date: getMagazineSortTimestamp(m),
     }))
 
     const task = await index.addDocuments(docs, { primaryKey: "id" })
@@ -139,7 +141,7 @@ export async function syncMagazinesToMeili(magazines: Magazine[]): Promise<numbe
 export async function searchMagazinesMeili(
   query: string,
   category?: string,
-  limit: number = 40
+  limit: number = 100
 ): Promise<{ magazines: Magazine[]; totalHits: number } | null> {
   if (!query || query.trim() === "") return null
 
@@ -156,10 +158,11 @@ export async function searchMagazinesMeili(
     const searchResponse = await index.search(query.trim(), {
       limit,
       filter,
+      sort: ["sort_date:desc"],
       attributesToHighlight: ["title"],
     })
 
-    const magazines: Magazine[] = searchResponse.hits.map((hit: any) => ({
+    const rawMagazines: Magazine[] = searchResponse.hits.map((hit: any) => ({
       id: hit.id,
       title: hit.title,
       issueNumber: hit.issueNumber,
@@ -173,6 +176,8 @@ export async function searchMagazinesMeili(
       pdfUrl: hit.pdfUrl,
       created_at: hit.created_at,
     }))
+
+    const magazines = sortMagazinesLatestFirst(rawMagazines)
 
     return {
       magazines,

@@ -1,5 +1,6 @@
 import fs from "fs"
 import path from "path"
+import { sortMagazinesLatestFirst } from "./magazineSort"
 import {
   Category,
   Magazine,
@@ -739,10 +740,12 @@ export function getMagazines(categoryId?: string): Magazine[] {
     }
   })
 
-  if (categoryId && categoryId !== "all") {
-    return syncedMagazines.filter((m) => m.categoryId === categoryId)
-  }
-  return syncedMagazines
+  const filtered =
+    categoryId && categoryId !== "all"
+      ? syncedMagazines.filter((m) => m.categoryId === categoryId)
+      : syncedMagazines
+
+  return sortMagazinesLatestFirst(filtered)
 }
 
 export function getMagazineById(id: string): Magazine | null {

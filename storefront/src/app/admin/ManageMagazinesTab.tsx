@@ -1,10 +1,11 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useMemo } from "react"
 import { Magazine, Category } from "../../lib/types"
 import { formatRupiah } from "../../lib/format"
 import { getPaginationItems, formatPageNumber } from "../../lib/pagination"
 import { getMagazineThumbnail } from "../../lib/thumbnails"
+import { sortMagazinesLatestFirst } from "../../lib/magazineSort"
 import {
   Search,
   Plus,
@@ -69,14 +70,20 @@ export default function ManageMagazinesTab({
     }
   }
 
-  // Filter magazines
-  const filtered = magazines.filter((mag) => {
-    const matchesSearch =
-      mag.title.toLowerCase().includes(search.toLowerCase()) ||
-      (mag.issueNumber && mag.issueNumber.toLowerCase().includes(search.toLowerCase()))
-    const matchesCat = categoryFilter === "all" || mag.categoryId === categoryFilter
-    return matchesSearch && matchesCat
-  })
+  // Filter and sort magazines strictly from latest upload to oldest
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase().trim()
+    const matches = magazines.filter((mag) => {
+      const matchesSearch =
+        !q ||
+        mag.title.toLowerCase().includes(q) ||
+        (mag.issueNumber && mag.issueNumber.toLowerCase().includes(q)) ||
+        (mag.description && mag.description.toLowerCase().includes(q))
+      const matchesCat = categoryFilter === "all" || mag.categoryId === categoryFilter
+      return matchesSearch && matchesCat
+    })
+    return sortMagazinesLatestFirst(matches)
+  }, [magazines, search, categoryFilter])
 
   // Pagination (Strictly 10 items per page as requested)
   const [currentPage, setCurrentPage] = useState(1)
