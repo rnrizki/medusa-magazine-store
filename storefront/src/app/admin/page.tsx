@@ -225,6 +225,12 @@ export default function AdminStudioPage() {
     }
   }
 
+  const handleUpdateMagazine = (id: string, updates: Partial<Magazine>) => {
+    setMagazines((prev) =>
+      prev.map((m) => (m.id === id ? { ...m, ...updates } : m))
+    )
+  }
+
   useEffect(() => {
     const saved = localStorage.getItem("medusa_admin_session")
     if (saved === "true") {
@@ -994,6 +1000,7 @@ export default function AdminStudioPage() {
           magazines={magazines}
           categories={categories}
           onRefresh={fetchData}
+          onUpdateMagazine={handleUpdateMagazine}
           onSwitchToUpload={() => setActiveTab("upload")}
           loading={loading}
         />

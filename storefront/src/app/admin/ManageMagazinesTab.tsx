@@ -22,6 +22,7 @@ import {
   RefreshCw,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Tag,
 } from "lucide-react"
 
@@ -29,19 +30,167 @@ interface ManageMagazinesTabProps {
   magazines: Magazine[]
   categories: Category[]
   onRefresh: () => void
+  onUpdateMagazine?: (id: string, updates: Partial<Magazine>) => void
   onSwitchToUpload: () => void
   loading?: boolean
+}
+
+function InlinePriceInput({
+  initialPrice,
+  onSave,
+  status,
+}: {
+  initialPrice: number
+  onSave: (newPrice: number) => void
+  status?: "saving" | "saved" | "error"
+}) {
+  const [val, setVal] = useState<string>(String(initialPrice || 0))
+  const [isFocused, setIsFocused] = useState(false)
+
+  useEffect(() => {
+    if (!isFocused) {
+      setVal(String(initialPrice || 0))
+    }
+  }, [initialPrice, isFocused])
+
+  const commit = () => {
+    const cleanNum = parseInt(val.replace(/[^0-9]/g, ""), 10)
+    if (!isNaN(cleanNum) && cleanNum > 0) {
+      if (cleanNum !== initialPrice) {
+        onSave(cleanNum)
+      }
+    } else {
+      setVal(String(initialPrice || 0))
+    }
+  }
+
+  return (
+    <div className="relative inline-flex items-center">
+      <span className="absolute left-2.5 text-xs font-bold text-slate-400 select-none pointer-events-none">
+        Rp
+      </span>
+      <input
+        type="number"
+        step="1000"
+        min="0"
+        value={val}
+        onFocus={() => setIsFocused(true)}
+        onChange={(e) => setVal(e.target.value)}
+        onBlur={() => {
+          setIsFocused(false)
+          commit()
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            e.currentTarget.blur()
+          }
+        }}
+        className={`w-28 pl-8 pr-2 py-1.5 rounded-lg border text-xs font-bold text-slate-900 bg-white focus:outline-none transition shadow-sm ${
+          status === "saved"
+            ? "border-emerald-500 ring-2 ring-emerald-200 bg-emerald-50/20"
+            : status === "saving"
+            ? "border-amber-400 ring-2 ring-amber-100"
+            : status === "error"
+            ? "border-rose-400 ring-2 ring-rose-100"
+            : "border-slate-200 hover:border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
+        }`}
+        title="Ketik harga baru lalu tekan Enter atau klik di luar untuk simpan otomatis"
+      />
+      {status === "saving" && (
+        <RefreshCw className="w-3.5 h-3.5 text-amber-500 animate-spin absolute -right-5" />
+      )}
+      {status === "saved" && (
+        <Check className="w-3.5 h-3.5 text-emerald-600 font-bold absolute -right-5 animate-in fade-in" />
+      )}
+    </div>
+  )
 }
 
 export default function ManageMagazinesTab({
   magazines,
   categories,
   onRefresh,
+  onUpdateMagazine,
   onSwitchToUpload,
   loading = false,
 }: ManageMagazinesTabProps) {
   const [search, setSearch] = useState("")
   const [categoryFilter, setCategoryFilter] = useState("all")
+
+  // Inline Quick Editing State (auto update without entering edit menu)
+  const [inlineStatus, setInlineStatus] = useState<Record<string, "saving" | "saved" | "error">>({})
+
+  const handleInlineCategoryChange = async (magId: string, newCategoryId: string) => {
+    const targetCat = categories.find((c) => c.id === newCategoryId)
+    const categoryName = targetCat ? targetCat.name : "General"
+
+    // Optimistic update in parent state
+    onUpdateMagazine?.(magId, { categoryId: newCategoryId, categoryName })
+    setInlineStatus((prev) => ({ ...prev, [`${magId}_cat`]: "saving" }))
+
+    try {
+      const res = await fetch("/api/magazines", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: magId,
+          categoryId: newCategoryId,
+          categoryName,
+        }),
+      })
+
+      if (res.ok) {
+        setInlineStatus((prev) => ({ ...prev, [`${magId}_cat`]: "saved" }))
+        setTimeout(() => {
+          setInlineStatus((prev) => {
+            const next = { ...prev }
+            delete next[`${magId}_cat`]
+            return next
+          })
+        }, 2000)
+      } else {
+        setInlineStatus((prev) => ({ ...prev, [`${magId}_cat`]: "error" }))
+        alert("Gagal update kategori.")
+      }
+    } catch (e: any) {
+      setInlineStatus((prev) => ({ ...prev, [`${magId}_cat`]: "error" }))
+      alert("Error update kategori: " + e.message)
+    }
+  }
+
+  const handleInlinePriceChange = async (magId: string, newPrice: number) => {
+    // Optimistic update in parent state
+    onUpdateMagazine?.(magId, { price: newPrice })
+    setInlineStatus((prev) => ({ ...prev, [`${magId}_price`]: "saving" }))
+
+    try {
+      const res = await fetch("/api/magazines", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          id: magId,
+          price: newPrice,
+        }),
+      })
+
+      if (res.ok) {
+        setInlineStatus((prev) => ({ ...prev, [`${magId}_price`]: "saved" }))
+        setTimeout(() => {
+          setInlineStatus((prev) => {
+            const next = { ...prev }
+            delete next[`${magId}_price`]
+            return next
+          })
+        }, 2000)
+      } else {
+        setInlineStatus((prev) => ({ ...prev, [`${magId}_price`]: "error" }))
+        alert("Gagal update harga.")
+      }
+    } catch (e: any) {
+      setInlineStatus((prev) => ({ ...prev, [`${magId}_price`]: "error" }))
+      alert("Error update harga: " + e.message)
+    }
+  }
 
   // Edit Modal State
   const [editingMag, setEditingMag] = useState<Magazine | null>(null)
@@ -425,7 +574,7 @@ export default function ManageMagazinesTab({
                       <div className="text-[11px] text-slate-500">{mag.issueNumber || "Standard Edition"}</div>
                     </td>
 
-                    {/* Category */}
+                    {/* Category Dropdown (Auto update) */}
                     <td className="py-3 px-4">
                       {(() => {
                         const matched = categories.find(
@@ -434,18 +583,50 @@ export default function ManageMagazinesTab({
                             c.name.toLowerCase() === (mag.categoryName || "").toLowerCase() ||
                             c.slug.toLowerCase() === (mag.categoryId || "").toLowerCase()
                         )
-                        const catLabel = matched?.name || mag.categoryName || "General"
+                        const currentCatId = matched?.id || mag.categoryId || categories[0]?.id || ""
+                        const isCatSaving = inlineStatus[`${mag.id}_cat`] === "saving"
+                        const isCatSaved = inlineStatus[`${mag.id}_cat`] === "saved"
+
                         return (
-                          <span className="inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-100">
-                            {catLabel}
-                          </span>
+                          <div className="relative inline-flex items-center">
+                            <select
+                              value={currentCatId}
+                              disabled={isCatSaving}
+                              onChange={(e) => handleInlineCategoryChange(mag.id, e.target.value)}
+                              className={`appearance-none pr-7 pl-2.5 py-1.5 rounded-lg text-xs font-bold border transition cursor-pointer shadow-sm focus:outline-none ${
+                                isCatSaved
+                                  ? "bg-emerald-50 text-emerald-800 border-emerald-300 ring-2 ring-emerald-200"
+                                  : isCatSaving
+                                  ? "bg-amber-50 text-amber-800 border-amber-300 opacity-70"
+                                  : "bg-white hover:bg-slate-50 text-slate-800 border-slate-200 focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                              }`}
+                              title="Pilih kategori untuk langsung update otomatis tanpa menu edit"
+                            >
+                              {categories.map((c) => (
+                                <option key={c.id} value={c.id}>
+                                  {c.name}
+                                </option>
+                              ))}
+                            </select>
+                            {isCatSaving ? (
+                              <RefreshCw className="w-3.5 h-3.5 text-amber-600 animate-spin absolute right-2 pointer-events-none" />
+                            ) : isCatSaved ? (
+                              <Check className="w-3.5 h-3.5 text-emerald-600 font-bold absolute right-2 pointer-events-none" />
+                            ) : (
+                              <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2 pointer-events-none" />
+                            )}
+                          </div>
                         )
                       })()}
                     </td>
 
-                    {/* Price */}
-                    <td className="py-3 px-4 font-bold text-slate-900">
-                      {formatRupiah(mag.price)}
+                    {/* Price Input (Auto update) */}
+                    <td className="py-3 px-4">
+                      <InlinePriceInput
+                        initialPrice={mag.price}
+                        onSave={(newPrice) => handleInlinePriceChange(mag.id, newPrice)}
+                        status={inlineStatus[`${mag.id}_price`]}
+                      />
                     </td>
 
                     {/* Size */}
