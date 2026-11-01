@@ -227,15 +227,25 @@ async fn status_handler(
     }
 }
 
-fn generate_random_suffix(len: usize) -> String {
-    const CHARSET: &[u8] = b"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+fn generate_random_suffix(num_digits: usize, num_letters: usize) -> String {
+    const DIGITS: &[u8] = b"0123456789";
+    const LETTERS: &[u8] = b"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let mut rng = rand::thread_rng();
-    (0..len)
-        .map(|_| {
-            let idx = rng.gen_range(0..CHARSET.len());
-            CHARSET[idx] as char
-        })
-        .collect()
+    let mut suffix = String::with_capacity(num_digits + num_letters);
+
+    // 3 digit angka pertama
+    for _ in 0..num_digits {
+        let idx = rng.gen_range(0..DIGITS.len());
+        suffix.push(DIGITS[idx] as char);
+    }
+
+    // Diikuti huruf acak
+    for _ in 0..num_letters {
+        let idx = rng.gen_range(0..LETTERS.len());
+        suffix.push(LETTERS[idx] as char);
+    }
+
+    suffix
 }
 
 fn slugify_title(title: &str) -> String {
@@ -327,7 +337,7 @@ async fn upload_handler(
 
     loop {
         attempts += 1;
-        let suffix = generate_random_suffix(6);
+        let suffix = generate_random_suffix(3, 3);
         let candidate_title = format!("{} {}", base_title, suffix);
         let candidate_pdf_name = format!("{}.pdf", candidate_title);
 
