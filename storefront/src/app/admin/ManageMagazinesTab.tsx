@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Magazine, Category } from "../../lib/types"
 import { formatRupiah } from "../../lib/format"
+import { getPaginationItems, formatPageNumber } from "../../lib/pagination"
 import {
   Search,
   Plus,
@@ -17,6 +18,8 @@ import {
   AlertCircle,
   Eye,
   RefreshCw,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react"
 
 interface ManageMagazinesTabProps {
@@ -73,6 +76,31 @@ export default function ManageMagazinesTab({
     const matchesCat = categoryFilter === "all" || mag.categoryId === categoryFilter
     return matchesSearch && matchesCat
   })
+
+  // Pagination (Strictly 10 items per page as requested)
+  const [currentPage, setCurrentPage] = useState(1)
+  const ITEMS_PER_PAGE = 10
+
+  // Reset to page 1 on filter/search change
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [search, categoryFilter])
+
+  const totalItems = filtered.length
+  const totalPages = Math.max(1, Math.ceil(totalItems / ITEMS_PER_PAGE))
+  const validCurrentPage = Math.min(Math.max(1, currentPage), totalPages)
+  const startIndex = (validCurrentPage - 1) * ITEMS_PER_PAGE
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalItems)
+  const paginatedMagazines = filtered.slice(startIndex, endIndex)
+
+  const goToPage = (pageNumber: number) => {
+    if (pageNumber < 1 || pageNumber > totalPages) return
+    setCurrentPage(pageNumber)
+    const element = document.getElementById("manage-magazines-table")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+    }
+  }
 
   // Open Edit Modal
   const handleOpenEdit = (mag: Magazine) => {
@@ -302,7 +330,7 @@ export default function ManageMagazinesTab({
           No magazines match your current search or category filter.
         </div>
       ) : (
-        <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div id="manage-magazines-table" className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden scroll-mt-6">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead className="bg-slate-50 border-b border-slate-200 text-slate-500 uppercase tracking-wider font-semibold">
@@ -317,7 +345,7 @@ export default function ManageMagazinesTab({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {filtered.map((mag) => (
+                {paginatedMagazines.map((mag) => (
                   <tr key={mag.id} className="hover:bg-slate-50/50">
                     {/* Cover Thumbnail */}
                     <td className="py-3 px-4">
@@ -411,6 +439,73 @@ export default function ManageMagazinesTab({
               </tbody>
             </table>
           </div>
+
+          {/* Pagination Controls (Strictly 10 items per page) */}
+          {totalPages > 1 && (
+            <div className="p-4 border-t border-slate-200 bg-slate-50/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <p className="text-xs text-slate-500 font-medium">
+                Showing <span className="font-bold text-slate-800">{totalItems === 0 ? 0 : startIndex + 1}</span>–
+                <span className="font-bold text-slate-800">{endIndex}</span> of{" "}
+                <span className="font-bold text-slate-800">{totalItems}</span> magazines • Page{" "}
+                <span className="font-bold text-slate-800">{validCurrentPage}</span> of{" "}
+                <span className="font-bold text-slate-800">{totalPages}</span>
+              </p>
+
+              <div className="flex items-center space-x-1.5 flex-wrap justify-center">
+                {/* Previous Page Button */}
+                <button
+                  type="button"
+                  onClick={() => goToPage(validCurrentPage - 1)}
+                  disabled={validCurrentPage === 1}
+                  className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-bold transition border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-xs"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5" />
+                  <span>Previous</span>
+                </button>
+
+                {/* Page Number Buttons (Windowed: 3 before & 3 after) */}
+                {getPaginationItems(validCurrentPage, totalPages).map((item, idx) => {
+                  if (item === "...") {
+                    return (
+                      <span
+                        key={`dots-${idx}`}
+                        className="w-7 h-8 flex items-center justify-center text-xs font-bold text-slate-400 select-none"
+                      >
+                        ...
+                      </span>
+                    )
+                  }
+                  const pageNum = item as number
+                  const isCurrent = validCurrentPage === pageNum
+                  return (
+                    <button
+                      key={pageNum}
+                      type="button"
+                      onClick={() => goToPage(pageNum)}
+                      className={`min-w-[32px] h-8 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center ${
+                        isCurrent
+                          ? "bg-slate-900 text-white shadow"
+                          : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 shadow-xs"
+                      }`}
+                    >
+                      {formatPageNumber(pageNum, totalPages)}
+                    </button>
+                  )
+                })}
+
+                {/* Next Page Button */}
+                <button
+                  type="button"
+                  onClick={() => goToPage(validCurrentPage + 1)}
+                  disabled={validCurrentPage === totalPages}
+                  className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-xl text-xs font-bold transition border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 disabled:opacity-40 disabled:cursor-not-allowed shadow-xs"
+                >
+                  <span>Next</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

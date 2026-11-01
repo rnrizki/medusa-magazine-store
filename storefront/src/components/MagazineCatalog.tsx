@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef, useMemo } from "react"
 import Link from "next/link"
 import { Category, Magazine } from "../lib/types"
 import { getCategoryTheme } from "../lib/category-colors"
+import { getPaginationItems, formatPageNumber } from "../lib/pagination"
 import MagazineCard from "./MagazineCard"
 import {
   BookOpen,
@@ -551,7 +552,7 @@ export default function MagazineCatalog({
                 <span className="font-bold text-slate-800">{totalPages}</span>
               </p>
 
-              <div className="flex items-center space-x-1.5">
+              <div className="flex items-center space-x-1.5 flex-wrap justify-center">
                 {/* Previous Page Button */}
                 <button
                   type="button"
@@ -563,21 +564,35 @@ export default function MagazineCatalog({
                   <span>Previous</span>
                 </button>
 
-                {/* Page Number Buttons */}
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((pageNum) => (
-                  <button
-                    key={pageNum}
-                    type="button"
-                    onClick={() => goToPage(pageNum)}
-                    className={`w-9 h-9 rounded-xl text-xs font-bold transition flex items-center justify-center ${
-                      currentPage === pageNum
-                        ? "bg-slate-900 text-white shadow"
-                        : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 shadow-xs"
-                    }`}
-                  >
-                    {pageNum}
-                  </button>
-                ))}
+                {/* Page Number Buttons (Windowed: 3 before & 3 after) */}
+                {getPaginationItems(currentPage, totalPages).map((item, idx) => {
+                  if (item === "...") {
+                    return (
+                      <span
+                        key={`dots-${idx}`}
+                        className="w-7 h-9 flex items-center justify-center text-xs font-bold text-slate-400 select-none"
+                      >
+                        ...
+                      </span>
+                    )
+                  }
+                  const pageNum = item as number
+                  const isCurrent = currentPage === pageNum
+                  return (
+                    <button
+                      key={pageNum}
+                      type="button"
+                      onClick={() => goToPage(pageNum)}
+                      className={`min-w-[36px] h-9 px-2 rounded-xl text-xs font-bold transition flex items-center justify-center ${
+                        isCurrent
+                          ? "bg-slate-900 text-white shadow"
+                          : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 shadow-xs"
+                      }`}
+                    >
+                      {formatPageNumber(pageNum, totalPages)}
+                    </button>
+                  )
+                })}
 
                 {/* Next Page Button */}
                 <button
