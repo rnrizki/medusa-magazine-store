@@ -4,6 +4,7 @@ import React, { useRef, useState, useEffect } from "react"
 import Link from "next/link"
 import { RelatedMagazineItem } from "../lib/recommendations"
 import { formatRupiah } from "../lib/format"
+import { getMagazineThumbnail } from "../lib/thumbnails"
 import { useCart } from "../lib/cart-context"
 import {
   ChevronLeft,
@@ -135,9 +136,9 @@ export default function RelatedMagazinesCarousel({
               <Link href={`/magazine/${magazine.id}`} className="block relative">
                 {/* 3:4 Magazine Cover Portrait */}
                 <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
-                  {magazine.coverImage ? (
+                  {magazine.coverImage || magazine.thumbnailUrl ? (
                     <img
-                      src={magazine.coverImage}
+                      src={getMagazineThumbnail(magazine)}
                       alt={magazine.title}
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                       loading="lazy"

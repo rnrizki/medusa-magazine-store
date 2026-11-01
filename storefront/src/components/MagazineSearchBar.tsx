@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { Search, Loader2, X, Zap, ArrowRight } from "lucide-react"
 import { Magazine } from "../lib/types"
+import { getMagazineThumbnail } from "../lib/thumbnails"
 
 interface MagazineSearchBarProps {
   placeholder?: string
@@ -172,7 +173,7 @@ export default function MagazineSearchBar({
                 >
                   <div className="w-9 h-12 flex-shrink-0 bg-slate-900 rounded-md overflow-hidden relative border border-slate-200">
                     <img
-                      src={item.thumbnailUrl || item.coverImage}
+                      src={getMagazineThumbnail(item)}
                       alt={item.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                       loading="lazy"

@@ -6,6 +6,7 @@ import { Magazine } from "../lib/types"
 import { formatRupiah } from "../lib/format"
 import { useCart } from "../lib/cart-context"
 import { getCategoryTheme } from "../lib/category-colors"
+import { getMagazineThumbnail } from "../lib/thumbnails"
 import { ShoppingCart, Check, BookOpen, Sparkles } from "lucide-react"
 
 interface MagazineCardProps {
@@ -35,12 +36,7 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
         <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
           {magazine.coverImage || magazine.thumbnailUrl ? (
             <img
-              src={
-                magazine.thumbnailUrl ||
-                (magazine.coverImage?.includes('/image/')
-                  ? magazine.coverImage.replace('/image/', '/image/thumbnail/')
-                  : `/fit?url=${encodeURIComponent(magazine.coverImage)}&w=300&h=400&format=webp`)
-              }
+              src={getMagazineThumbnail(magazine)}
               alt={magazine.title}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
               loading="lazy"

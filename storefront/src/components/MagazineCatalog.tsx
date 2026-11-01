@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Category, Magazine } from "../lib/types"
 import { getCategoryTheme } from "../lib/category-colors"
 import { getPaginationItems, formatPageNumber } from "../lib/pagination"
+import { getMagazineThumbnail } from "../lib/thumbnails"
 import MagazineCard from "./MagazineCard"
 import {
   BookOpen,
@@ -397,7 +398,7 @@ export default function MagazineCatalog({
                       >
                         <div className="w-9 h-12 flex-shrink-0 bg-slate-900 rounded-md overflow-hidden relative border border-slate-200">
                           <img
-                            src={item.thumbnailUrl || item.coverImage}
+                            src={getMagazineThumbnail(item)}
                             alt={item.title}
                             className="w-full h-full object-cover group-hover:scale-105 transition-transform"
                             loading="lazy"

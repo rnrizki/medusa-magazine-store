@@ -641,7 +641,9 @@ function loadData(): StoreData {
     }
     if (parsed.magazines && Array.isArray(parsed.magazines)) {
       parsed.magazines = parsed.magazines.map((m: Magazine) => {
-        if (!m.thumbnailUrl && m.coverImage && m.coverImage.includes("/image/")) {
+        if (m.thumbnailUrl && m.thumbnailUrl.includes("/image/") && !m.thumbnailUrl.includes("/image/thumbnail/")) {
+          m.thumbnailUrl = m.thumbnailUrl.replace("/image/", "/image/thumbnail/")
+        } else if (!m.thumbnailUrl && m.coverImage && m.coverImage.includes("/image/")) {
           m.thumbnailUrl = m.coverImage.replace("/image/", "/image/thumbnail/")
         }
         if (!m.fileSize) {
@@ -723,8 +725,14 @@ export function getMagazines(categoryId?: string): Magazine[] {
         c.name.toLowerCase() === (m.categoryName || "").toLowerCase() ||
         c.slug.toLowerCase() === (m.categoryId || "").toLowerCase()
     )
+    const rawThumb = m.thumbnailUrl || m.coverImage || ""
+    const normalizedThumb = rawThumb && rawThumb.includes("/image/") && !rawThumb.includes("/image/thumbnail/")
+      ? rawThumb.replace("/image/", "/image/thumbnail/")
+      : rawThumb
+
     return {
       ...m,
+      thumbnailUrl: normalizedThumb,
       fileSize: m.fileSize || 50,
       categoryId: matched ? matched.id : m.categoryId,
       categoryName: matched ? matched.name : (m.categoryName || "General"),
@@ -758,8 +766,15 @@ export function addMagazines(magazinesList: Omit<Magazine, "id" | "created_at">[
         c.name.toLowerCase() === (item.categoryName || "").toLowerCase() ||
         c.slug.toLowerCase() === (item.categoryId || "").toLowerCase()
     )
+    const rawCover = item.coverImage || ""
+    const thumb = item.thumbnailUrl || (rawCover.includes("/image/") ? rawCover.replace("/image/", "/image/thumbnail/") : rawCover)
+    const normalizedThumb = thumb && thumb.includes("/image/") && !thumb.includes("/image/thumbnail/")
+      ? thumb.replace("/image/", "/image/thumbnail/")
+      : thumb
+
     const newMag: Magazine = {
       ...item,
+      thumbnailUrl: normalizedThumb,
       id: `mag_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       categoryId: matched ? matched.id : item.categoryId,
       categoryName: matched ? matched.name : item.categoryName || "General",
@@ -1093,8 +1108,10 @@ export function syncThumbnailsAndReconnect(): { updated: number; total: number }
     }
 
     // 2. Generate / connect low-res thumbnail URL pointing to thumbnail/ folder
-    if (cover.includes("s3api2.skyconnection.id/image/")) {
-      const expectedThumb = cover.replace("s3api2.skyconnection.id/image/", "s3api2.skyconnection.id/image/thumbnail/")
+    if (cover.includes("/image/")) {
+      const expectedThumb = cover.includes("/image/thumbnail/")
+        ? cover
+        : cover.replace("/image/", "/image/thumbnail/")
       if (mag.thumbnailUrl !== expectedThumb) {
         mag.thumbnailUrl = expectedThumb
         changed = true

@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react"
 import { Magazine, Category } from "../../lib/types"
 import { formatRupiah } from "../../lib/format"
 import { getPaginationItems, formatPageNumber } from "../../lib/pagination"
+import { getMagazineThumbnail } from "../../lib/thumbnails"
 import {
   Search,
   Plus,
@@ -351,7 +352,7 @@ export default function ManageMagazinesTab({
                     <td className="py-3 px-4">
                       <div className="w-12 h-16 rounded-lg overflow-hidden border border-slate-200 bg-slate-100 flex-shrink-0">
                         <img
-                          src={mag.thumbnailUrl || (mag.coverImage?.includes('/image/') ? mag.coverImage.replace('/image/', '/image/thumbnail/') : mag.coverImage)}
+                          src={getMagazineThumbnail(mag)}
                           alt={mag.title}
                           className="w-full h-full object-cover"
                         />

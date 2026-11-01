@@ -1,6 +1,7 @@
 import { Meilisearch } from "meilisearch"
 import { Magazine } from "./types"
 import { getMagazines } from "./db"
+import { getMagazineThumbnail } from "./thumbnails"
 
 const MEILI_HOST =
   process.env.MEILISEARCH_HOST || "http://meilisearch:7700"
@@ -114,7 +115,7 @@ export async function syncMagazinesToMeili(magazines: Magazine[]): Promise<numbe
       categoryName: m.categoryName || null,
       price: m.price || 0,
       coverImage: m.coverImage,
-      thumbnailUrl: m.thumbnailUrl || m.coverImage,
+      thumbnailUrl: getMagazineThumbnail(m) || m.coverImage,
       description: m.description || "",
       highlights: Array.isArray(m.highlights) ? m.highlights : [],
       pdfUrl: m.pdfUrl || null,
@@ -166,7 +167,7 @@ export async function searchMagazinesMeili(
       categoryName: hit.categoryName,
       price: Number(hit.price),
       coverImage: hit.coverImage,
-      thumbnailUrl: hit.thumbnailUrl,
+      thumbnailUrl: getMagazineThumbnail(hit),
       description: hit.description,
       highlights: hit.highlights || [],
       pdfUrl: hit.pdfUrl,
