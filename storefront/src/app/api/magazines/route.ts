@@ -49,7 +49,7 @@ export async function GET(req: NextRequest) {
     )
   }
 
-  const magazines = sortMagazinesLatestFirst(getMagazines(category))
+  const magazines = getMagazines(category)
   return NextResponse.json(magazines, {
     headers: {
       "Cache-Control": "no-store, no-cache, must-revalidate",
