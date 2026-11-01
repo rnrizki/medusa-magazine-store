@@ -22,6 +22,7 @@ import {
   RefreshCw,
   ChevronLeft,
   ChevronRight,
+  Tag,
 } from "lucide-react"
 
 interface ManageMagazinesTabProps {
@@ -49,6 +50,41 @@ export default function ManageMagazinesTab({
   const [isAiLoading, setIsAiLoading] = useState(false)
   const [uploadingField, setUploadingField] = useState<"coverImage" | "pdfUrl" | null>(null)
   const [isSyncing, setIsSyncing] = useState(false)
+  const [isRepricing, setIsRepricing] = useState(false)
+
+  // Re-calculate and update all magazine prices
+  const handleRepriceAll = async () => {
+    if (
+      !confirm(
+        "Perbarui harga seluruh majalah otomatis sesuai aturan:\n" +
+          "1. Tahun 2024 (dan <=2024): Rp 12.000\n" +
+          "2. Tahun 2025: Rp 13.000\n" +
+          "3. Tahun 2026 (dan >=2026): Rp 15.000\n" +
+          "4. Majalah tanpa tahun: Rp 14.000\n" +
+          "5. The Economist (all): Rp 18.000\n" +
+          "6. Harvard Business Review (all): Rp 21.000\n\n" +
+          "Lanjutkan proses update harga dan sinkronisasi Meilisearch?"
+      )
+    ) {
+      return
+    }
+    setIsRepricing(true)
+    try {
+      const res = await fetch("/api/magazines/reprice", { method: "POST" })
+      const data = await res.json()
+      if (res.ok && data.success) {
+        setSaveSuccessMessage(data.message || `Berhasil memperbarui harga seluruh majalah!`)
+        setTimeout(() => setSaveSuccessMessage(null), 6000)
+        onRefresh()
+      } else {
+        alert("Gagal update harga: " + (data.error || "Unknown error"))
+      }
+    } catch (e: any) {
+      alert("Error update harga: " + e.message)
+    } finally {
+      setIsRepricing(false)
+    }
+  }
 
   // Reconnect and sync thumbnails
   const handleSyncThumbnails = async () => {
@@ -285,6 +321,16 @@ export default function ManageMagazinesTab({
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={handleRepriceAll}
+            disabled={isRepricing}
+            className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-amber-50 border border-amber-200 hover:bg-amber-100 text-amber-800 text-xs font-bold transition shadow-sm disabled:opacity-50"
+            title="Perbarui harga seluruh majalah otomatis sesuai aturan tahun & judul"
+          >
+            <Tag className={`w-3.5 h-3.5 ${isRepricing ? "animate-spin" : ""}`} />
+            <span>{isRepricing ? "Memperbarui..." : "Update Harga Majalah"}</span>
+          </button>
+
           <button
             onClick={handleSyncThumbnails}
             disabled={isSyncing}

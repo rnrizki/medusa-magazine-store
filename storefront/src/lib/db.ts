@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import { sortMagazinesLatestFirst } from "./magazineSort"
+import { calculateMagazinePrice } from "./pricing"
 import {
   Category,
   Magazine,
@@ -1129,6 +1130,42 @@ export function syncThumbnailsAndReconnect(): { updated: number; total: number }
 
   saveData(data)
   return { updated: updatedCount, total: data.magazines.length }
+}
+
+export function repriceAllMagazines(): {
+  updated: number
+  total: number
+  breakdown: Record<string, number>
+} {
+  const data = loadData()
+  let updatedCount = 0
+  const breakdown: Record<string, number> = {
+    "12000": 0,
+    "13000": 0,
+    "14000": 0,
+    "15000": 0,
+    "18000": 0,
+    "21000": 0,
+    other: 0,
+  }
+
+  data.magazines = data.magazines.map((mag) => {
+    const newPrice = calculateMagazinePrice(mag.title)
+    if (mag.price !== newPrice) {
+      mag.price = newPrice
+      updatedCount++
+    }
+    const key = String(newPrice)
+    if (breakdown[key] !== undefined) {
+      breakdown[key]++
+    } else {
+      breakdown.other++
+    }
+    return mag
+  })
+
+  saveData(data)
+  return { updated: updatedCount, total: data.magazines.length, breakdown }
 }
 
 

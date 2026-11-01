@@ -83,15 +83,20 @@
         </div>
 
         <!-- Default Price & Stats Card -->
-        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex-shrink-0 space-y-3 w-full md:w-64">
-          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
-            Default Price (IDR Rp)
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex-shrink-0 space-y-2.5 w-full md:w-72">
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider flex items-center justify-between">
+            <span>Aturan Harga Majalah</span>
+            <span class="text-[10px] text-amber-400 bg-amber-950/60 border border-amber-800/60 px-2 py-0.5 rounded-full font-bold">Auto Pricing</span>
           </label>
-          <div class="relative">
-            <span class="absolute left-3 top-2.5 text-xs font-bold text-slate-500">Rp</span>
-            <input type="number" id="defaultPrice" value="15000" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs font-bold text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
+          <div class="space-y-1 text-[11px] text-slate-400 font-mono bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+            <div class="flex justify-between"><span>Edisi 2024:</span> <span class="text-amber-400 font-bold">Rp 12.000</span></div>
+            <div class="flex justify-between"><span>Edisi 2025:</span> <span class="text-amber-400 font-bold">Rp 13.000</span></div>
+            <div class="flex justify-between"><span>Edisi 2026:</span> <span class="text-amber-400 font-bold">Rp 15.000</span></div>
+            <div class="flex justify-between"><span>Tanpa Tahun:</span> <span class="text-amber-400 font-bold">Rp 14.000</span></div>
+            <div class="flex justify-between"><span>The Economist:</span> <span class="text-amber-400 font-bold">Rp 18.000</span></div>
+            <div class="flex justify-between"><span>Harvard Bus. Rev:</span> <span class="text-amber-400 font-bold">Rp 21.000</span></div>
           </div>
-          <p class="text-[11px] text-slate-500">Akan dicantumkan pada kolom harga di CSV.</p>
+          <input type="hidden" id="defaultPrice" value="auto">
         </div>
       </div>
     </div>
@@ -226,6 +231,7 @@
               <th class="py-3 px-3">#</th>
               <th class="py-3 px-3">Cover</th>
               <th class="py-3 px-3">Renamed Title</th>
+              <th class="py-3 px-3">Price</th>
               <th class="py-3 px-3">Size</th>
               <th class="py-3 px-3">Google Drive Link</th>
               <th class="py-3 px-3">S3 Image Cover</th>
@@ -455,6 +461,21 @@
       updateQueueUI();
     }
 
+    function calculateMagazinePrice(title) {
+      if (!title) return 14000;
+      const clean = title.replace(/[_]/g, " ").toLowerCase();
+      if (clean.includes("harvard business review") || /\bhbr\b/.test(clean)) return 21000;
+      if (clean.includes("economist")) return 18000;
+      const yearMatches = clean.match(/(?<!\d)(19[5-9]\d|20[0-3]\d)(?!\d)/g);
+      if (yearMatches && yearMatches.length > 0) {
+        const yr = parseInt(yearMatches[0], 10);
+        if (yr <= 2024) return 12000;
+        if (yr === 2025) return 13000;
+        if (yr >= 2026) return 15000;
+      }
+      return 14000;
+    }
+
     // Sequential Queue Engine
     async function startQueue() {
       if (isUploading) return;
@@ -478,10 +499,15 @@
         updateProgress(i + 1, total, item.name, "1/4 Ekstraksi Cover & Thumbnail WebP...");
 
         try {
-          const defaultPrice = document.getElementById("defaultPrice").value || "15000";
+          const autoPrice = calculateMagazinePrice(item.name);
+          const defaultPriceInput = (document.getElementById("defaultPrice")?.value || "").trim();
+          const priceToSend = defaultPriceInput && defaultPriceInput !== "auto" && !isNaN(parseInt(defaultPriceInput, 10))
+            ? defaultPriceInput
+            : String(autoPrice);
+
           const formData = new FormData();
           formData.append("file", item.file);
-          formData.append("price", defaultPrice);
+          formData.append("price", priceToSend);
 
           updateProgress(i + 1, total, item.name, "2/4 Mengunggah Cover ke S3 & Memeriksa Duplikasi...");
           
@@ -550,6 +576,7 @@
           </a>
         </td>
         <td class="py-3 px-3 font-bold text-white max-w-xs truncate" title="${item.title}">${item.title}</td>
+        <td class="py-3 px-3 font-bold text-amber-400 whitespace-nowrap">Rp ${(item.price || calculateMagazinePrice(item.title)).toLocaleString('id-ID')}</td>
         <td class="py-3 px-3 text-slate-300 font-semibold">${item.fileSize} MB</td>
         <td class="py-3 px-3">
           <a href="${item.pdfUrl}" target="_blank" class="text-amber-400 hover:text-amber-300 underline font-medium flex items-center space-x-1">
@@ -604,7 +631,7 @@
           titleSafe,
           item.issueNumber || "",
           item.category || "",
-          item.price || "15000",
+          item.price || calculateMagazinePrice(item.title),
           item.fileSize || "50",
           item.coverImage,
           item.pdfUrl,

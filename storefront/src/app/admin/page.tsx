@@ -39,6 +39,7 @@ import {
 import AdminChatTab from "./AdminChatTab"
 import ManageMagazinesTab from "./ManageMagazinesTab"
 import { ALLOWED_CATEGORIES, normalizeToAllowedCategory } from "../../lib/categories"
+import { calculateMagazinePrice } from "../../lib/pricing"
 
 function parseCSV(text: string): Record<string, string>[] {
   const lines: string[] = []
@@ -348,7 +349,15 @@ export default function AdminStudioPage() {
 
   const updateBulkField = (id: string, field: keyof BulkItem, value: any) => {
     setBulkItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, [field]: value } : item))
+      prev.map((item) => {
+        if (item.id !== id) return item
+        const updated = { ...item, [field]: value }
+        if (field === "title" && typeof value === "string") {
+          // Dynamically compute price from magazine title rules
+          updated.price = calculateMagazinePrice(value)
+        }
+        return updated
+      })
     )
   }
 
@@ -489,7 +498,9 @@ export default function AdminStudioPage() {
         )
         const categoryId = matchedCat ? matchedCat.id : `cat_${finalCategory.toLowerCase().replace(/[^a-z0-9]+/g, "")}`
 
-        const priceNum = parseInt(rec.price?.replace(/[^0-9]/g, "") || "45000", 10) || 45000
+        const calculatedPrice = calculateMagazinePrice(rawTitle)
+        const parsedCsvPrice = rec.price ? parseInt(rec.price.replace(/[^0-9]/g, ""), 10) : 0
+        const priceNum = parsedCsvPrice && parsedCsvPrice !== 45000 ? parsedCsvPrice : calculatedPrice
         const defaultCover = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&h=800&q=85"
         const rawSize = rec.filesize || rec.size || rec.sizemb || rec.ukuran || ""
         const parsedSize = parseInt(String(rawSize).replace(/[^0-9]/g, ""), 10)

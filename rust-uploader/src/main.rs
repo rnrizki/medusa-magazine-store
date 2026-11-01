@@ -260,6 +260,58 @@ fn slugify_title(title: &str) -> String {
     slug
 }
 
+pub fn calculate_magazine_price(title: &str) -> u64 {
+    let clean = title.replace('_', " ").to_lowercase();
+
+    // 6. Harvard Business Review (all) -> 21000
+    if clean.contains("harvard business review")
+        || clean.split(|c: char| !c.is_alphanumeric()).any(|w| w == "hbr")
+    {
+        return 21000;
+    }
+
+    // 5. The Economist (all) -> 18000
+    if clean.contains("economist") {
+        return 18000;
+    }
+
+    // Find 4-digit years between 1950 and 2035 not surrounded by other digits
+    let chars: Vec<char> = clean.chars().collect();
+    let mut detected_year: Option<u32> = None;
+
+    for i in 0..chars.len() {
+        if i + 4 <= chars.len() {
+            let slice = &chars[i..i + 4];
+            if slice.iter().all(|c| c.is_ascii_digit()) {
+                let prev_is_digit = i > 0 && chars[i - 1].is_ascii_digit();
+                let next_is_digit = i + 4 < chars.len() && chars[i + 4].is_ascii_digit();
+                if !prev_is_digit && !next_is_digit {
+                    let s: String = slice.iter().collect();
+                    if let Ok(y) = s.parse::<u32>() {
+                        if (1950..=2035).contains(&y) {
+                            detected_year = Some(y);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    if let Some(y) = detected_year {
+        if y <= 2024 {
+            return 12000;
+        } else if y == 2025 {
+            return 13000;
+        } else if y >= 2026 {
+            return 15000;
+        }
+    }
+
+    // 4. Majalah tanpa tahun -> 14000
+    14000
+}
+
 #[derive(Serialize)]
 struct UploadSuccessResponse {
     success: bool,
@@ -293,7 +345,7 @@ async fn upload_handler(
 
     let mut original_filename = String::new();
     let mut pdf_bytes = Vec::new();
-    let mut price: u64 = 15000;
+    let mut custom_price: Option<u64> = None;
 
     while let Ok(Some(field)) = multipart.next_field().await {
         let name = field.name().unwrap_or("").to_string();
@@ -306,8 +358,13 @@ async fn upload_handler(
             }
         } else if name == "price" {
             if let Ok(text) = field.text().await {
-                if let Ok(p) = text.trim().parse::<u64>() {
-                    price = p;
+                let trimmed = text.trim();
+                if !trimmed.is_empty() && trimmed != "auto" {
+                    if let Ok(p) = trimmed.parse::<u64>() {
+                        if p > 0 {
+                            custom_price = Some(p);
+                        }
+                    }
                 }
             }
         }
@@ -367,7 +424,12 @@ async fn upload_handler(
         }
     }
 
-    info!("Processing magazine: title='{}', size={}MB", renamed_title, size_mb);
+    let price = custom_price.unwrap_or_else(|| calculate_magazine_price(&renamed_title));
+
+    info!(
+        "Processing magazine: title='{}', price=Rp {}, size={}MB",
+        renamed_title, price, size_mb
+    );
 
     // 4. Write PDF to temporary file for pdftoppm extraction
     let mut temp_pdf = match tempfile::Builder::new().suffix(".pdf").tempfile() {
