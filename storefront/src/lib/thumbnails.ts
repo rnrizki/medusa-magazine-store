@@ -1,7 +1,7 @@
 /**
  * Resolves the optimal low-resolution thumbnail URL for grids, search results, and cards.
- * If the URL originates from RustFS / SkyImage S3 (/image/), it ensures the path points
- * to /image/thumbnail/ (14 KB) rather than the high-resolution original image (800+ KB).
+ * Routes images through Cloudflare Edge Cache (/cdn-thumb/...) which fetches the 14 KB
+ * thumbnail from RustFS S3 on cache miss and serves it from Cloudflare Edge worldwide.
  */
 export function getMagazineThumbnail(magazine?: {
   coverImage?: string
@@ -12,14 +12,21 @@ export function getMagazineThumbnail(magazine?: {
   const raw = magazine.thumbnailUrl || magazine.coverImage || ""
   if (!raw) return ""
 
-  // If already explicitly a thumbnail
-  if (raw.includes("/image/thumbnail/")) {
+  // Already a CDN thumbnail path
+  if (raw.startsWith("/cdn-thumb/")) {
     return raw
   }
 
-  // If it's a SkyImage / RustFS S3 image path without /thumbnail/
+  // If pointing to S3 thumbnail
+  if (raw.includes("/image/thumbnail/")) {
+    const subpath = raw.split("/image/thumbnail/")[1]
+    if (subpath) return `/cdn-thumb/${subpath}`
+  }
+
+  // If pointing to S3 image without thumbnail folder
   if (raw.includes("/image/")) {
-    return raw.replace("/image/", "/image/thumbnail/")
+    const subpath = raw.split("/image/")[1]
+    if (subpath) return `/cdn-thumb/${subpath}`
   }
 
   // Fallback for third-party images via image proxy /fit
