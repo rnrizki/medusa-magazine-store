@@ -5,7 +5,7 @@ mod s3;
 
 use auth::{is_authenticated, login_handler, logout_handler};
 use axum::{
-    extract::{DefaultBodyLimit, Multipart, State},
+    extract::{DefaultBodyLimit, Multipart, Query, State},
     http::{header, HeaderMap, HeaderValue, StatusCode},
     response::{Html, IntoResponse, Redirect, Response},
     routing::{get, post},
@@ -15,7 +15,7 @@ use chrono::Utc;
 use gdrive::GDriveClient;
 use rand::Rng;
 use s3::S3Config;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 use std::io::Write;
 use std::sync::Arc;
 use std::time::Duration;
@@ -70,6 +70,8 @@ async fn main() {
         .route("/api/logout", post(logout_handler))
         .route("/api/status", get(status_handler))
         .route("/api/upload", post(upload_handler))
+        .route("/api/auth/gdrive/login", get(gdrive_login_handler))
+        .route("/api/auth/gdrive/callback", get(gdrive_callback_handler))
         .layer(DefaultBodyLimit::max(500 * 1024 * 1024)) // 500 MB max per PDF
         .layer(CorsLayer::permissive())
         .with_state(state);
@@ -108,6 +110,77 @@ struct StatusResponse {
     authenticated: bool,
     active_folder: Option<gdrive::ActiveFolderInfo>,
     user: String,
+    oauth_connected: bool,
+    connected_email: Option<String>,
+    oauth_configured: bool,
+}
+
+#[derive(Deserialize)]
+struct CallbackQuery {
+    code: Option<String>,
+    error: Option<String>,
+}
+
+async fn gdrive_login_handler(
+    headers: HeaderMap,
+    State(state): State<AppState>,
+) -> Response {
+    if !is_authenticated(&headers) {
+        return Redirect::to("/login").into_response();
+    }
+
+    if gdrive::GDriveClient::get_google_client_secret().is_none() {
+        return (
+            StatusCode::BAD_REQUEST,
+            Html(r#"
+            <div style="font-family: sans-serif; max-width: 600px; margin: 40px auto; padding: 24px; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff;">
+              <h2 style="color: #d97706;">GOOGLE_CLIENT_SECRET Belum Diatur</h2>
+              <p>Untuk mengaktifkan login Google Drive dengan <b>notreseller.magazine@gmail.com</b>, masukkan environment variable <code>GOOGLE_CLIENT_SECRET</code> di Dokploy.</p>
+              <a href="/" style="display: inline-block; margin-top: 16px; padding: 10px 18px; background: #0f172a; color: #fff; text-decoration: none; border-radius: 8px;">&larr; Kembali ke Uploader</a>
+            </div>
+            "#),
+        )
+            .into_response();
+    }
+
+    match state.gdrive.get_oauth_auth_url() {
+        Ok(url) => Redirect::to(&url).into_response(),
+        Err(e) => (StatusCode::INTERNAL_SERVER_ERROR, format!("Error: {}", e)).into_response(),
+    }
+}
+
+async fn gdrive_callback_handler(
+    State(state): State<AppState>,
+    Query(query): Query<CallbackQuery>,
+) -> Response {
+    if let Some(err) = query.error {
+        error!("Google OAuth error in callback: {}", err);
+        return (
+            StatusCode::BAD_REQUEST,
+            format!("Google OAuth authorization failed: {}", err),
+        )
+            .into_response();
+    }
+
+    let code = match query.code {
+        Some(c) => c,
+        None => return (StatusCode::BAD_REQUEST, "Missing code in callback").into_response(),
+    };
+
+    match state.gdrive.handle_oauth_callback(&state.http_client, &code).await {
+        Ok(tokens) => {
+            info!("Google Drive OAuth completed successfully: {:?}", tokens.email);
+            Redirect::to("/?gdrive_connected=true").into_response()
+        }
+        Err(e) => {
+            error!("Failed to complete Google Drive OAuth exchange: {}", e);
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                format!("Failed to connect Google Drive: {}", e),
+            )
+                .into_response()
+        }
+    }
 }
 
 async fn status_handler(
@@ -125,24 +198,31 @@ async fn status_handler(
             .into_response();
     }
 
+    let oauth_connected = state.gdrive.is_oauth_connected().await;
+    let connected_email = state.gdrive.get_connected_email().await;
+    let oauth_configured = gdrive::GDriveClient::get_google_client_secret().is_some();
+
     match state.gdrive.get_active_folder(&state.http_client).await {
         Ok(folder) => Json(StatusResponse {
             authenticated: true,
             active_folder: Some(folder),
             user: auth::get_auth_user(),
+            oauth_connected,
+            connected_email,
+            oauth_configured,
         })
         .into_response(),
         Err(e) => {
             error!("Failed to fetch active Google Drive folder: {}", e);
-            (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                Json(serde_json::json!({
-                    "authenticated": true,
-                    "error": format!("Drive folder error: {}", e),
-                    "active_folder": null
-                })),
-            )
-                .into_response()
+            Json(StatusResponse {
+                authenticated: true,
+                active_folder: None,
+                user: auth::get_auth_user(),
+                oauth_connected,
+                connected_email,
+                oauth_configured,
+            })
+            .into_response()
         }
     }
 }

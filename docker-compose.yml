@@ -110,8 +110,13 @@ services:
       GDRIVE_ROOT_FOLDER_NAME: "PDF ALL"
       GDRIVE_CREDENTIALS_JSON: ${GDRIVE_CREDENTIALS_JSON:-}
       GDRIVE_CREDENTIALS_FILE: /app/service-account.json
+      GDRIVE_OAUTH_FILE: /app/data/gdrive_oauth.json
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-573754266292-b02va05mmls6idmu8om3gflvvio6f7t1.apps.googleusercontent.com}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET:-}
+      GOOGLE_REDIRECT_URI: https://rustupload.majalahpdf.my.id/api/auth/gdrive/callback
     volumes:
       - ./storefront/service-account.json:/app/service-account.json:ro
+      - rust_uploader_data:/app/data
     healthcheck:
       test: ["CMD-SHELL", "curl -fsS http://localhost:3002/health || exit 1"]
       interval: 5s
@@ -242,6 +247,8 @@ services:
       - "traefik.http.services.storefront.loadbalancer.server.port=8000"
 
 volumes:
+  rust_uploader_data:
+    driver: local
   postgres_data:
     driver: local
   valkey_data:
