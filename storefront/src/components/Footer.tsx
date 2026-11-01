@@ -44,7 +44,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/cart" className="hover:text-white transition">
-                  Shopping Bag & Checkout
+                  Shopping Cart & Checkout
                 </Link>
               </li>
             </ul>

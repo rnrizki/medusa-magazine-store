@@ -6,7 +6,7 @@ import { formatRupiah } from "../../../lib/format"
 import { useCart } from "../../../lib/cart-context"
 import { getCategoryTheme } from "../../../lib/category-colors"
 import {
-  ShoppingBag,
+  ShoppingCart,
   Check,
   Sparkles,
   ShieldCheck,
@@ -118,7 +118,7 @@ export default function MagazineDetailClient({
                 className="w-full py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm flex items-center justify-center space-x-2 transition shadow-lg shadow-emerald-600/20"
               >
                 <Check className="w-5 h-5" />
-                <span>Added to Bag • Proceed to Checkout</span>
+                <span>Added to Cart • Proceed to Checkout</span>
               </Link>
             </div>
           ) : (
@@ -126,8 +126,8 @@ export default function MagazineDetailClient({
               onClick={handleAdd}
               className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white font-bold text-sm flex items-center justify-center space-x-2 transition shadow-lg active:scale-[0.99]"
             >
-              <ShoppingBag className="w-5 h-5" />
-              <span>Add Digital Issue to Bag</span>
+              <ShoppingCart className="w-5 h-5" />
+              <span>Add Digital Issue to Cart</span>
             </button>
           )}
         </div>

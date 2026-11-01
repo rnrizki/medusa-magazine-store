@@ -6,7 +6,7 @@ import { Magazine } from "../lib/types"
 import { formatRupiah } from "../lib/format"
 import { useCart } from "../lib/cart-context"
 import { getCategoryTheme } from "../lib/category-colors"
-import { ShoppingBag, Check, BookOpen, Sparkles } from "lucide-react"
+import { ShoppingCart, Check, BookOpen, Sparkles } from "lucide-react"
 
 interface MagazineCardProps {
   magazine: Magazine
@@ -114,12 +114,12 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
           {inCart || justAdded ? (
             <>
               <Check className="w-4 h-4 text-white" />
-              <span>In Your Bag</span>
+              <span>In Cart</span>
             </>
           ) : (
             <>
-              <ShoppingBag className="w-3.5 h-3.5" />
-              <span>Add to Bag</span>
+              <ShoppingCart className="w-3.5 h-3.5" />
+              <span>Add to Cart</span>
             </>
           )}
         </button>

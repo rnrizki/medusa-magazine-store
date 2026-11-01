@@ -8,7 +8,7 @@ import { useCart } from "../lib/cart-context"
 import {
   ChevronLeft,
   ChevronRight,
-  ShoppingBag,
+  ShoppingCart,
   Check,
   Sparkles,
   Layers,
@@ -202,12 +202,12 @@ export default function RelatedMagazinesCarousel({
                   {inCart || justAdded ? (
                     <>
                       <Check className="w-3.5 h-3.5" />
-                      <span>Added to Bag</span>
+                      <span>Added to Cart</span>
                     </>
                   ) : (
                     <>
-                      <ShoppingBag className="w-3.5 h-3.5" />
-                      <span>Add to Bag</span>
+                      <ShoppingCart className="w-3.5 h-3.5" />
+                      <span>Add to Cart</span>
                     </>
                   )}
                 </button>

@@ -11,7 +11,7 @@ import {
   X,
   Send,
   Image as ImageIcon,
-  ShoppingBag,
+  ShoppingCart,
   Zap,
   Mail,
   Check,

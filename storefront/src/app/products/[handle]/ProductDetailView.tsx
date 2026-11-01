@@ -5,7 +5,7 @@ import Link from "next/link"
 import { Product, ProductVariant } from "../../../lib/types"
 import { formatPrice } from "../../../lib/medusa"
 import { useCart } from "../../../lib/cart-context"
-import { ArrowLeft, ShoppingBag, Check, ShieldCheck, Truck, RotateCcw } from "lucide-react"
+import { ArrowLeft, ShoppingCart, Check, ShieldCheck, Truck, RotateCcw } from "lucide-react"
 
 export default function ProductDetailView({ product }: { product: Product }) {
   const { addItem } = useCart()
@@ -147,7 +147,7 @@ export default function ProductDetailView({ product }: { product: Product }) {
                   </>
                 ) : (
                   <>
-                    <ShoppingBag className="w-4 h-4" />
+                    <ShoppingCart className="w-4 h-4" />
                     <span>Add to Cart</span>
                   </>
                 )}

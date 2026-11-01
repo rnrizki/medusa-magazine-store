@@ -7,7 +7,7 @@ import {
   MessageSquare,
   Send,
   Image as ImageIcon,
-  ShoppingBag,
+  ShoppingCart,
   User,
   Clock,
   CheckCheck,
@@ -295,7 +295,7 @@ export default function AdminChatTab({ magazines }: { magazines: Magazine[] }) {
                   className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold shadow-sm transition"
                   title="Embed a magazine issue with CTA into this chat"
                 >
-                  <ShoppingBag className="w-3.5 h-3.5" />
+                  <ShoppingCart className="w-3.5 h-3.5" />
                   <span>Embed Magazine (CTA)</span>
                 </button>
               </div>
@@ -428,7 +428,7 @@ export default function AdminChatTab({ magazines }: { magazines: Magazine[] }) {
                   className="p-2 text-indigo-600 hover:text-indigo-800 hover:bg-indigo-50 rounded-xl transition"
                   title="Embed Magazine with CTA"
                 >
-                  <ShoppingBag className="w-5 h-5" />
+                  <ShoppingCart className="w-5 h-5" />
                 </button>
 
                 {/* Text Input */}

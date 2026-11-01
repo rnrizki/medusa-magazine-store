@@ -6,7 +6,7 @@ import { useCart } from "../lib/cart-context"
 import { useAuth } from "../lib/auth-context"
 import LoginForm from "./LoginForm"
 import {
-  ShoppingBag,
+  ShoppingCart,
   BookOpen,
   User as UserIcon,
   LogOut,
@@ -113,13 +113,13 @@ export default function Navbar() {
                 </button>
               )}
 
-              {/* Shopping Bag */}
+              {/* Shopping Cart */}
               <Link
                 href="/cart"
                 className="relative p-2 text-slate-700 hover:text-slate-900 rounded-full hover:bg-slate-100 transition"
-                aria-label="View shopping bag"
+                aria-label="View shopping cart"
               >
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingCart className="w-5 h-5" />
                 {totalCount > 0 && (
                   <span className="absolute -top-0.5 -right-0.5 bg-indigo-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center shadow">
                     {totalCount}

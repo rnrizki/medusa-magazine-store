@@ -6,7 +6,7 @@ import { useCart } from "../../lib/cart-context"
 import { useAuth } from "../../lib/auth-context"
 import { formatRupiah } from "../../lib/format"
 import {
-  ShoppingBag,
+  ShoppingCart,
   Trash2,
   ArrowRight,
   ShieldCheck,
@@ -25,7 +25,7 @@ export default function CartAndCheckoutPage() {
   const { user, loginWithGmail } = useAuth()
 
   // Checkout State
-  const [step, setStep] = useState<"bag" | "qris">("bag")
+  const [step, setStep] = useState<"cart" | "qris">("cart")
   const [name, setName] = useState(user?.name || "")
   const [email, setEmail] = useState(user?.email || "")
   const [emailError, setEmailError] = useState("")
@@ -213,15 +213,15 @@ export default function CartAndCheckoutPage() {
     )
   }
 
-  // Empty Bag
+  // Empty Cart
   if (items.length === 0) {
     return (
       <div className="max-w-xl mx-auto px-4 py-24 text-center space-y-4">
         <div className="w-16 h-16 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto">
-          <ShoppingBag className="w-8 h-8" />
+          <ShoppingCart className="w-8 h-8" />
         </div>
         <h2 className="text-2xl font-bold text-slate-900">
-          Your digital bag is empty
+          Your cart is empty
         </h2>
         <p className="text-xs text-slate-500 max-w-sm mx-auto">
           Explore our collection of digital magazine editions and add your favorite issue.
@@ -243,10 +243,10 @@ export default function CartAndCheckoutPage() {
       <div className="pb-6 mb-8 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl sm:text-3xl font-black text-slate-900">
-            {step === "bag" ? "Digital Magazine Bag" : "Scan QRIS & Upload Receipt"}
+            {step === "cart" ? "Digital Magazine Cart" : "Scan QRIS & Upload Receipt"}
           </h1>
           <p className="text-xs text-slate-500 mt-1">
-            {step === "bag"
+            {step === "cart"
               ? `Review your digital magazine selection (${totalCount} issue${totalCount > 1 ? "s" : ""})`
               : "Complete payment via QRIS, then upload your screengrab receipt."}
           </p>
@@ -256,12 +256,12 @@ export default function CartAndCheckoutPage() {
         <div className="flex items-center space-x-2 text-xs font-semibold">
           <span
             className={`px-3 py-1 rounded-full ${
-              step === "bag"
+              step === "cart"
                 ? "bg-slate-900 text-white"
                 : "bg-emerald-100 text-emerald-800"
             }`}
           >
-            1. Your Bag & Gmail
+            1. Your Cart & Gmail
           </span>
           <span className="text-slate-300">→</span>
           <span
@@ -276,8 +276,8 @@ export default function CartAndCheckoutPage() {
         </div>
       </div>
 
-      {/* STEP 1: Bag & Minimalist Gmail Info */}
-      {step === "bag" && (
+      {/* STEP 1: Cart & Minimalist Gmail Info */}
+      {step === "cart" && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Magazine List (3:4 Covers) */}
           <div className="lg:col-span-7 space-y-4">
@@ -548,11 +548,11 @@ export default function CartAndCheckoutPage() {
               </button>
 
               <button
-                onClick={() => setStep("bag")}
+                onClick={() => setStep("cart")}
                 disabled={isSubmitting}
                 className="w-full py-2 text-xs font-medium text-slate-500 hover:text-slate-800 transition"
               >
-                ← Back to bag
+                ← Back to cart
               </button>
             </div>
           </div>
