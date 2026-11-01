@@ -1,0 +1,26 @@
+[package]
+name = "rust-uploader"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+axum = { version = "0.7", features = ["multipart"] }
+tokio = { version = "1.38", features = ["full", "process"] }
+tower = { version = "0.4" }
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "stream", "multipart"] }
+image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp"] }
+chrono = { version = "0.4", features = ["serde"] }
+rand = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+sha2 = "0.10"
+hmac = "0.12"
+hex = "0.4"
+jsonwebtoken = "9.3"
+tempfile = "3.10"
+regex = "1.10"
+axum-extra = { version = "0.9", features = ["cookie"] }
+bytes = "1.6"

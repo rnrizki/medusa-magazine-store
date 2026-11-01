@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital PitStop • Rust Bulk PDF Uploader</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .gold-gradient { background: linear-gradient(135deg, #D97706 0%, #B45309 100%); }
+    .drop-active { border-color: #D97706 !important; background-color: rgba(217, 119, 6, 0.05) !important; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
+
+  <!-- NAVBAR -->
+  <header class="bg-slate-950/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg" alt="Logo" class="h-9 w-auto rounded-lg shadow">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="font-extrabold text-sm sm:text-base tracking-tight text-white">Digital PitStop</span>
+            <span class="bg-[#D97706] text-white text-[10px] font-black px-2 py-0.5 rounded-full uppercase tracking-wider">Rust Uploader</span>
+          </div>
+          <p class="text-[11px] text-slate-400 font-medium">Auto-Extract Cover • S3 • Google Drive Continuous Folder • CSV</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <!-- Current Drive Folder Badge -->
+        <div id="folderBadge" class="hidden sm:flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span class="text-slate-400 font-medium">Drive Folder:</span>
+          <span id="activeFolderName" class="font-bold text-amber-400">Loading...</span>
+          <button onclick="fetchFolderStatus()" title="Refresh Folder Status" class="text-slate-400 hover:text-white transition">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+          </button>
+        </div>
+
+        <button onclick="logout()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold transition border border-slate-700 flex items-center space-x-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+    <!-- HERO SECTION / INSTRUCTIONS -->
+    <div class="bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <div class="inline-flex items-center space-x-2 text-xs font-bold text-amber-400 uppercase tracking-widest">
+            <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+            <span>Sequential Queue Engine</span>
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Bulk PDF Magazine Publisher
+          </h1>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Upload puluhan PDF majalah sekaligus. Antrean sekuensial memproses satu per satu PDF secara hemat RAM: ekstrak cover halaman 1 ke WebP (resolusi asli + thumbnail), upload ke S3, kirim ke Google Drive folder aktif (<span class="text-amber-400 font-bold" id="inlineFolderName">A23</span>), rename suffix 6-karakter acak unik, dan buat file CSV siap pakai.
+          </p>
+        </div>
+
+        <!-- Default Price & Stats Card -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 sm:p-5 flex-shrink-0 space-y-3 w-full md:w-64">
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+            Default Price (IDR Rp)
+          </label>
+          <div class="relative">
+            <span class="absolute left-3 top-2.5 text-xs font-bold text-slate-500">Rp</span>
+            <input type="number" id="defaultPrice" value="15000" step="1000" class="w-full bg-slate-950 border border-slate-700 rounded-xl pl-9 pr-3 py-2 text-xs font-bold text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
+          </div>
+          <p class="text-[11px] text-slate-500">Akan dicantumkan pada kolom harga di CSV.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DROPZONE / FILE SELECTOR -->
+    <div 
+      id="dropZone"
+      ondragover="handleDragOver(event)"
+      ondragleave="handleDragLeave(event)"
+      ondrop="handleDrop(event)"
+      onclick="document.getElementById('fileInput').click()"
+      class="border-2 border-dashed border-slate-700 hover:border-amber-500/80 bg-slate-950/60 rounded-3xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-300 group shadow-lg"
+    >
+      <input type="file" id="fileInput" multiple accept="application/pdf,.pdf" class="hidden" onchange="handleFileSelect(event)">
+      
+      <div class="max-w-md mx-auto space-y-4 pointer-events-none">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-500/10 text-amber-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border border-amber-500/20">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+        </div>
+
+        <div>
+          <h3 class="text-base sm:text-lg font-bold text-white group-hover:text-amber-400 transition-colors">
+            Pilih atau Tarik File PDF ke Sini
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">
+            Mendukung banyak file PDF sekaligus (1, 10, 50+ file). File akan otomatis antre diproses satu per satu.
+          </p>
+        </div>
+
+        <div class="inline-flex items-center space-x-2 text-[11px] font-semibold text-slate-400 bg-slate-900 border border-slate-800 px-3.5 py-1.5 rounded-full">
+          <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span>Auto WebP Cover + Thumbnail • Auto-Rename 6-Char • Drive Sync</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUEUE CONTROLS & BATCH PROGRESS -->
+    <div id="queueSection" class="hidden bg-slate-950 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-5">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h2 class="text-lg font-extrabold text-white">Antrean File PDF</h2>
+            <span id="queueBadge" class="bg-slate-800 text-amber-400 text-xs font-bold px-2.5 py-0.5 rounded-full border border-slate-700">0 file</span>
+          </div>
+          <p id="queueSubtitle" class="text-xs text-slate-400 mt-0.5">Siap untuk diproses secara sekuensial.</p>
+        </div>
+
+        <div class="flex items-center space-x-3">
+          <button 
+            id="startBtn"
+            onclick="startQueue()" 
+            class="px-5 py-2.5 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white text-xs font-bold shadow-lg shadow-amber-600/25 active:scale-95 transition flex items-center space-x-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <span>Mulai Proses Upload Antrean</span>
+          </button>
+
+          <button 
+            id="clearBtn"
+            onclick="clearQueue()" 
+            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition border border-slate-700"
+          >
+            Hapus Antrean
+          </button>
+        </div>
+      </div>
+
+      <!-- PROGRESS BARS -->
+      <div id="progressContainer" class="hidden space-y-4 pt-2">
+        <!-- Overall Batch Progress -->
+        <div class="space-y-1.5">
+          <div class="flex justify-between text-xs font-semibold">
+            <span class="text-slate-300">Total Progres Batch</span>
+            <span id="batchPercentText" class="text-amber-400 font-bold">0%</span>
+          </div>
+          <div class="w-full h-3 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+            <div id="batchProgressBar" class="h-full bg-gradient-to-r from-[#D97706] to-amber-500 transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+
+        <!-- Current File Step Status -->
+        <div class="bg-slate-900/90 border border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div id="activeSpinner" class="w-5 h-5 border-2 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+            <div>
+              <p id="currentFileTitle" class="text-xs font-bold text-white truncate max-w-md">Menyiapkan antrean...</p>
+              <p id="currentFileStep" class="text-[11px] text-amber-400 mt-0.5 font-medium">Step: Waiting</p>
+            </div>
+          </div>
+          <span id="batchCountBadge" class="text-xs font-extrabold text-slate-400">0 / 0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPLETED MAGS / CSV EXPORT SECTION -->
+    <div id="resultsSection" class="hidden bg-slate-950 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+        <div>
+          <div class="flex items-center space-x-2">
+            <h2 class="text-lg font-extrabold text-white">Hasil Upload & CSV Export</h2>
+            <span id="doneBadge" class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold px-2.5 py-0.5 rounded-full">0 Majalah Selesai</span>
+          </div>
+          <p class="text-xs text-slate-400 mt-0.5">Semua data berhasil diekstrak dan tersimpan di S3 serta Google Drive.</p>
+        </div>
+
+        <!-- DOWNLOAD CSV BUTTONS -->
+        <div class="flex items-center space-x-3">
+          <button 
+            onclick="downloadCSV()" 
+            class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold shadow-lg shadow-emerald-600/25 active:scale-95 transition flex items-center space-x-2"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span id="csvBtnText">Download CSV (a23.csv)</span>
+          </button>
+
+          <button 
+            onclick="copyCSV()" 
+            class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-bold transition border border-slate-700 flex items-center space-x-1.5"
+            title="Salin CSV ke Clipboard"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+            <span>Copy CSV</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- RESULTS TABLE -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead>
+            <tr class="text-[11px] font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800">
+              <th class="py-3 px-3">#</th>
+              <th class="py-3 px-3">Cover</th>
+              <th class="py-3 px-3">Renamed Title</th>
+              <th class="py-3 px-3">Size</th>
+              <th class="py-3 px-3">Google Drive Link</th>
+              <th class="py-3 px-3">S3 Image Cover</th>
+              <th class="py-3 px-3 text-right">Status</th>
+            </tr>
+          </thead>
+          <tbody id="resultsTableBody" class="divide-y divide-slate-800/60 font-medium">
+            <!-- Dynamic rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- LOGIN MODAL (OVERLAY IF NOT LOGGED IN) -->
+  <div id="loginModal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-sm w-full shadow-2xl space-y-6">
+      <div class="text-center space-y-2">
+        <img src="https://s3api2.skyconnection.id/image/2026/10/31/logo-edit-remene-to-dps4.jpeg" alt="Logo" class="h-12 w-auto mx-auto rounded-xl shadow">
+        <h2 class="text-xl font-extrabold text-white">Digital PitStop Login</h2>
+        <p class="text-xs text-slate-400">Silakan login untuk mengakses uploader PDF majalah.</p>
+      </div>
+
+      <form onsubmit="handleLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Username</label>
+          <input type="text" id="loginUsername" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-medium text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1.5">Password</label>
+          <input type="password" id="loginPassword" required class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3.5 py-2.5 text-xs font-medium text-white focus:ring-2 focus:ring-amber-500 focus:outline-none">
+        </div>
+
+        <div id="loginError" class="hidden text-xs text-rose-400 font-semibold bg-rose-500/10 border border-rose-500/20 p-2.5 rounded-xl text-center"></div>
+
+        <button type="submit" id="loginBtn" class="w-full py-3 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-xs shadow-lg shadow-amber-600/25 transition active:scale-[0.98]">
+          Masuk ke Uploader
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="border-t border-slate-800 bg-slate-950 py-4 text-center text-xs text-slate-500">
+    Digital PitStop &copy; 2026 • Powered by Rust Axum Engine
+  </footer>
+
+  <script>
+    // State
+    let queue = [];
+    let isUploading = false;
+    let completedItems = [];
+    let activeFolder = { folder_name: "A23", file_count: 0, max_capacity: 100 };
+
+    // Init
+    window.addEventListener("DOMContentLoaded", () => {
+      checkAuthAndInit();
+    });
+
+    async function checkAuthAndInit() {
+      try {
+        const res = await fetch("/api/status");
+        if (res.status === 401) {
+          showLoginModal(true);
+        } else {
+          showLoginModal(false);
+          const data = await res.json();
+          if (data.active_folder) {
+            updateFolderUI(data.active_folder);
+          }
+        }
+      } catch (e) {
+        showLoginModal(true);
+      }
+    }
+
+    function showLoginModal(show) {
+      const modal = document.getElementById("loginModal");
+      if (show) modal.classList.remove("hidden");
+      else modal.classList.add("hidden");
+    }
+
+    async function handleLogin(e) {
+      e.preventDefault();
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+      const errorDiv = document.getElementById("loginError");
+      const btn = document.getElementById("loginBtn");
+
+      errorDiv.classList.add("hidden");
+      btn.disabled = true;
+      btn.innerText = "Memverifikasi...";
+
+      try {
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showLoginModal(false);
+          fetchFolderStatus();
+        } else {
+          errorDiv.innerText = data.message || "Username atau password salah.";
+          errorDiv.classList.remove("hidden");
+        }
+      } catch (err) {
+        errorDiv.innerText = "Gagal menghubungi server.";
+        errorDiv.classList.remove("hidden");
+      } finally {
+        btn.disabled = false;
+        btn.innerText = "Masuk ke Uploader";
+      }
+    }
+
+    async function logout() {
+      await fetch("/api/logout", { method: "POST" });
+      showLoginModal(true);
+    }
+
+    async function fetchFolderStatus() {
+      try {
+        const res = await fetch("/api/status");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.active_folder) {
+            updateFolderUI(data.active_folder);
+          }
+        }
+      } catch (e) {
+        console.error("Error fetching folder status:", e);
+      }
+    }
+
+    function updateFolderUI(folder) {
+      activeFolder = folder;
+      const badge = document.getElementById("activeFolderName");
+      const inline = document.getElementById("inlineFolderName");
+      const csvBtnText = document.getElementById("csvBtnText");
+
+      const label = `${folder.folder_name} (${folder.file_count}/${folder.max_capacity})`;
+      if (badge) badge.innerText = label;
+      if (inline) inline.innerText = folder.folder_name;
+      if (csvBtnText) csvBtnText.innerText = `Download CSV (${folder.folder_name.toLowerCase()}.csv)`;
+    }
+
+    // Drag and Drop
+    function handleDragOver(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById("dropZone").classList.add("drop-active");
+    }
+
+    function handleDragLeave(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById("dropZone").classList.remove("drop-active");
+    }
+
+    function handleDrop(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      document.getElementById("dropZone").classList.remove("drop-active");
+
+      const files = Array.from(e.dataTransfer.files).filter(f => f.name.toLowerCase().endsWith(".pdf"));
+      if (files.length > 0) {
+        addFilesToQueue(files);
+      }
+    }
+
+    function handleFileSelect(e) {
+      const files = Array.from(e.target.files).filter(f => f.name.toLowerCase().endsWith(".pdf"));
+      if (files.length > 0) {
+        addFilesToQueue(files);
+      }
+      e.target.value = "";
+    }
+
+    function addFilesToQueue(files) {
+      for (const file of files) {
+        queue.push({
+          id: Math.random().toString(36).substring(2, 9),
+          file: file,
+          name: file.name,
+          sizeMb: (file.size / (1024 * 1024)).toFixed(1),
+          status: "pending",
+          error: null
+        });
+      }
+      updateQueueUI();
+    }
+
+    function updateQueueUI() {
+      const section = document.getElementById("queueSection");
+      const badge = document.getElementById("queueBadge");
+      const startBtn = document.getElementById("startBtn");
+
+      if (queue.length > 0) {
+        section.classList.remove("hidden");
+        const pendingCount = queue.filter(q => q.status === "pending").length;
+        badge.innerText = `${queue.length} file (${pendingCount} antre)`;
+        startBtn.disabled = isUploading || pendingCount === 0;
+      } else {
+        if (!isUploading) section.classList.add("hidden");
+      }
+    }
+
+    function clearQueue() {
+      if (isUploading) return;
+      queue = [];
+      updateQueueUI();
+    }
+
+    // Sequential Queue Engine
+    async function startQueue() {
+      if (isUploading) return;
+      isUploading = true;
+
+      const progressContainer = document.getElementById("progressContainer");
+      const startBtn = document.getElementById("startBtn");
+      const clearBtn = document.getElementById("clearBtn");
+
+      progressContainer.classList.remove("hidden");
+      startBtn.disabled = true;
+      clearBtn.disabled = true;
+
+      const total = queue.length;
+
+      for (let i = 0; i < queue.length; i++) {
+        const item = queue[i];
+        if (item.status === "done") continue;
+
+        item.status = "processing";
+        updateProgress(i + 1, total, item.name, "1/4 Ekstraksi Cover & Thumbnail WebP...");
+
+        try {
+          const defaultPrice = document.getElementById("defaultPrice").value || "15000";
+          const formData = new FormData();
+          formData.append("file", item.file);
+          formData.append("price", defaultPrice);
+
+          updateProgress(i + 1, total, item.name, "2/4 Mengunggah Cover ke S3 & Memeriksa Duplikasi...");
+          
+          const res = await fetch("/api/upload", {
+            method: "POST",
+            body: formData
+          });
+
+          if (!res.ok) {
+            const errText = await res.text();
+            throw new Error(errText || "Gagal mengunggah file");
+          }
+
+          const data = await res.json();
+          item.status = "done";
+          item.result = data;
+          completedItems.push(data);
+
+          // Update active folder info if returned
+          if (data.folder_info) {
+            updateFolderUI(data.folder_info);
+          }
+
+          addTableRow(completedItems.length, data);
+          document.getElementById("resultsSection").classList.remove("hidden");
+          document.getElementById("doneBadge").innerText = `${completedItems.length} Majalah Selesai`;
+
+        } catch (err) {
+          item.status = "error";
+          item.error = err.message;
+          console.error("Upload error for", item.name, err);
+          addErrorRow(completedItems.length + 1, item.name, err.message);
+        }
+
+        updateQueueUI();
+      }
+
+      isUploading = false;
+      startBtn.disabled = false;
+      clearBtn.disabled = false;
+
+      updateProgress(total, total, "Semua file dalam antrean selesai diproses!", "Selesai 100%");
+      setTimeout(() => {
+        progressContainer.classList.add("hidden");
+      }, 3000);
+    }
+
+    function updateProgress(current, total, filename, stepText) {
+      const percent = Math.round((current / total) * 100);
+      document.getElementById("batchPercentText").innerText = `${percent}%`;
+      document.getElementById("batchProgressBar").style.width = `${percent}%`;
+      document.getElementById("currentFileTitle").innerText = filename;
+      document.getElementById("currentFileStep").innerText = stepText;
+      document.getElementById("batchCountBadge").innerText = `${current} / ${total}`;
+    }
+
+    function addTableRow(idx, item) {
+      const tbody = document.getElementById("resultsTableBody");
+      const tr = document.createElement("tr");
+      tr.className = "hover:bg-slate-900/60 transition";
+      tr.innerHTML = `
+        <td class="py-3 px-3 text-slate-500 font-bold">${String(idx).padStart(2, '0')}</td>
+        <td class="py-3 px-3">
+          <a href="${item.coverImage}" target="_blank" class="block w-10 aspect-[3/4] bg-slate-800 rounded overflow-hidden shadow border border-slate-700 hover:scale-105 transition">
+            <img src="${item.thumbnailUrl || item.coverImage}" alt="Cover" class="w-full h-full object-cover">
+          </a>
+        </td>
+        <td class="py-3 px-3 font-bold text-white max-w-xs truncate" title="${item.title}">${item.title}</td>
+        <td class="py-3 px-3 text-slate-300 font-semibold">${item.fileSize} MB</td>
+        <td class="py-3 px-3">
+          <a href="${item.pdfUrl}" target="_blank" class="text-amber-400 hover:text-amber-300 underline font-medium flex items-center space-x-1">
+            <span>${item.folderName || 'Drive'}</span>
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </a>
+        </td>
+        <td class="py-3 px-3">
+          <a href="${item.coverImage}" target="_blank" class="text-indigo-400 hover:text-indigo-300 underline font-medium truncate max-w-[180px] block">
+            ${item.coverImage.split('/').pop()}
+          </a>
+        </td>
+        <td class="py-3 px-3 text-right">
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+            Done
+          </span>
+        </td>
+      `;
+      tbody.prepend(tr);
+    }
+
+    function addErrorRow(idx, filename, errorMsg) {
+      const tbody = document.getElementById("resultsTableBody");
+      const tr = document.createElement("tr");
+      tr.className = "bg-rose-500/5";
+      tr.innerHTML = `
+        <td class="py-3 px-3 text-slate-500">${String(idx).padStart(2, '0')}</td>
+        <td class="py-3 px-3 text-slate-600">-</td>
+        <td class="py-3 px-3 font-bold text-slate-300">${filename}</td>
+        <td class="py-3 px-3 text-slate-500">-</td>
+        <td class="py-3 px-3 text-rose-400 font-medium" colspan="2">${errorMsg}</td>
+        <td class="py-3 px-3 text-right">
+          <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-rose-500/10 text-rose-400 border border-rose-500/20">
+            Failed
+          </span>
+        </td>
+      `;
+      tbody.prepend(tr);
+    }
+
+    // CSV Generation (Format a22)
+    function generateCSVString() {
+      const headers = ["title", "issueNumber", "category", "price", "fileSize", "coverImage", "pdfUrl", "description", "highlights"];
+      const lines = [headers.join(",")];
+
+      for (const item of completedItems) {
+        const titleSafe = item.title.includes(",") || item.title.includes('"') 
+          ? `"${item.title.replace(/"/g, '""')}"` 
+          : item.title;
+
+        const row = [
+          titleSafe,
+          item.issueNumber || "",
+          item.category || "",
+          item.price || "15000",
+          item.fileSize || "50",
+          item.coverImage,
+          item.pdfUrl,
+          item.description || "",
+          item.highlights || ""
+        ];
+        lines.push(row.join(","));
+      }
+
+      return lines.join("\n");
+    }
+
+    function downloadCSV() {
+      if (completedItems.length === 0) {
+        alert("Belum ada majalah yang selesai diproses.");
+        return;
+      }
+
+      const csvContent = generateCSVString();
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      const fileName = `${(activeFolder.folder_name || 'a23').toLowerCase()}.csv`;
+      
+      link.setAttribute("href", url);
+      link.setAttribute("download", fileName);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function copyCSV() {
+      if (completedItems.length === 0) {
+        alert("Belum ada data CSV.");
+        return;
+      }
+      const csv = generateCSVString();
+      navigator.clipboard.writeText(csv).then(() => {
+        alert("CSV berhasil disalin ke clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>
