@@ -104,7 +104,7 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
           className={`w-full py-2.5 px-3 rounded-xl text-xs font-bold flex items-center justify-center space-x-1.5 transition-all shadow-sm ${
             inCart || justAdded
               ? "bg-emerald-600 text-white hover:bg-emerald-700"
-              : "bg-slate-900 text-white hover:bg-indigo-600 active:scale-[0.98]"
+              : "bg-[#D97706] text-white hover:bg-[#B45309] shadow-amber-600/20 active:scale-[0.98]"
           }`}
         >
           {inCart || justAdded ? (

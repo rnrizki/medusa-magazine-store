@@ -124,7 +124,7 @@ export default function MagazineDetailClient({
           ) : (
             <button
               onClick={handleAdd}
-              className="w-full py-3.5 px-6 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white font-bold text-sm flex items-center justify-center space-x-2 transition shadow-lg active:scale-[0.99]"
+              className="w-full py-3.5 px-6 rounded-xl bg-[#D97706] hover:bg-[#B45309] text-white font-bold text-sm flex items-center justify-center space-x-2 transition shadow-lg shadow-amber-600/25 active:scale-[0.99]"
             >
               <ShoppingCart className="w-5 h-5" />
               <span>Add Digital Issue to Cart</span>

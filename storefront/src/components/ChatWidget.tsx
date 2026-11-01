@@ -203,7 +203,7 @@ export default function ChatWidget() {
       <div className="fixed bottom-6 right-6 z-50">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative p-4 rounded-full bg-slate-900 hover:bg-indigo-600 text-white shadow-2xl transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center border-2 border-white/20"
+          className="relative p-4 rounded-full bg-[#D97706] hover:bg-[#B45309] text-white shadow-2xl shadow-amber-600/35 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center border-2 border-white/30"
           aria-label="Open Customer Chat"
         >
           {isOpen ? (
@@ -228,7 +228,7 @@ export default function ChatWidget() {
           <div className="bg-slate-950 text-white p-4 flex items-center justify-between border-b border-slate-800">
             <div className="flex items-center space-x-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-full bg-indigo-600 text-white font-black text-sm flex items-center justify-center shadow">
+                <div className="w-10 h-10 rounded-full bg-[#D97706] text-white font-black text-sm flex items-center justify-center shadow">
                   DP
                 </div>
                 <span className="absolute bottom-0 right-0 w-3 h-3 bg-emerald-500 border-2 border-slate-950 rounded-full" />
@@ -447,13 +447,13 @@ export default function ChatWidget() {
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   disabled={uploadingImage}
-                  className="flex-1 px-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                  className="flex-1 px-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500 focus:outline-none"
                 />
 
                 <button
                   type="submit"
                   disabled={!text.trim() || uploadingImage}
-                  className="p-2 rounded-xl bg-slate-900 hover:bg-indigo-600 disabled:bg-slate-300 text-white transition shadow"
+                  className="p-2 rounded-xl bg-[#D97706] hover:bg-[#B45309] disabled:bg-slate-300 text-white transition shadow shadow-amber-600/20"
                 >
                   <Send className="w-4 h-4" />
                 </button>

@@ -137,7 +137,7 @@ export default function ProductDetailView({ product }: { product: Product }) {
                 className={`flex-1 py-3 px-6 rounded-lg text-sm font-bold flex items-center justify-center space-x-2 transition shadow-md ${
                   added
                     ? "bg-emerald-600 text-white"
-                    : "bg-slate-900 hover:bg-indigo-600 text-white"
+                    : "bg-[#D97706] hover:bg-[#B45309] text-white shadow-amber-600/20"
                 }`}
               >
                 {added ? (
