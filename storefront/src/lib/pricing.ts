@@ -12,8 +12,8 @@
 export function calculateMagazinePrice(title: string): number {
   if (!title) return 14000
 
-  // Replace underscores and clean text for regex matching
-  const clean = title.replace(/[_]/g, " ").toLowerCase()
+  // Replace underscores, dots, and clean text for regex matching
+  const clean = title.replace(/[_\.]/g, " ").toLowerCase()
 
   // 6. Harvard Business Review (all) -> Rp 21.000
   if (clean.includes("harvard business review") || /\bhbr\b/.test(clean)) {

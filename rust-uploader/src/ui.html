@@ -463,7 +463,7 @@
 
     function calculateMagazinePrice(title) {
       if (!title) return 14000;
-      const clean = title.replace(/[_]/g, " ").toLowerCase();
+      const clean = title.replace(/[_\.]/g, " ").toLowerCase();
       if (clean.includes("harvard business review") || /\bhbr\b/.test(clean)) return 21000;
       if (clean.includes("economist")) return 18000;
       const yearMatches = clean.match(/(?<!\d)(19[5-9]\d|20[0-3]\d)(?!\d)/g);

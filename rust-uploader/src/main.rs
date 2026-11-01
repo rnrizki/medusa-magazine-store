@@ -261,7 +261,7 @@ fn slugify_title(title: &str) -> String {
 }
 
 pub fn calculate_magazine_price(title: &str) -> u64 {
-    let clean = title.replace('_', " ").to_lowercase();
+    let clean = title.replace('_', " ").replace('.', " ").to_lowercase();
 
     // 6. Harvard Business Review (all) -> 21000
     if clean.contains("harvard business review")
