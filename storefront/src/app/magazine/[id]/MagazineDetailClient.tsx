@@ -63,8 +63,8 @@ export default function MagazineDetailClient({
           </div>
 
           <div className="absolute top-4 right-4">
-            <span className="bg-emerald-500/90 text-white text-xs font-bold px-2.5 py-0.5 rounded-full shadow">
-              Digital License
+            <span className="bg-emerald-600/95 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+              Size: {magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}
             </span>
           </div>
         </div>
@@ -83,9 +83,12 @@ export default function MagazineDetailClient({
             {magazine.title}
           </h1>
 
-          <div className="mt-4 flex items-baseline space-x-3">
+          <div className="mt-4 flex flex-wrap items-center gap-3">
             <span className="text-3xl font-black text-slate-900">
               {formatRupiah(magazine.price)}
+            </span>
+            <span className="text-xs font-bold text-slate-700 bg-slate-100 px-3 py-1 rounded-full border border-slate-200">
+              Size: {magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}
             </span>
             <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
               Instant Delivery to Gmail

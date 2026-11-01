@@ -60,7 +60,7 @@ export async function sendOrderConfirmationEmail(
             ${item.title}
           </h3>
           <div style="font-size: 13px; font-weight: 600; color: #059669; margin-bottom: 14px;">
-            ${formatRupiah(item.price)}
+            ${formatRupiah(item.price)} &bull; <span style="font-size: 12px; color: #64748b; font-weight: 700;">Size: ${item.fileSize || 50} MB</span>
           </div>
           <div style="margin-top: 10px;">
             <a href="${driveLink}" target="_blank" style="display: inline-block; background-color: #4f46e5; color: #ffffff; text-decoration: none; padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 700;">

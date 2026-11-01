@@ -69,8 +69,11 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
               )
             })()}
 
-            <span className="bg-emerald-500/95 backdrop-blur-md text-white text-[11px] font-bold px-2 py-0.5 rounded-full shadow">
-              Digital PDF
+            <span
+              title={`File Size: ${magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}`}
+              className="bg-emerald-600/95 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow"
+            >
+              {magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}
             </span>
           </div>
 

@@ -177,9 +177,13 @@ export default function CustomerLibraryPage() {
                     <h3 className="font-bold text-slate-900 text-sm line-clamp-2">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] text-slate-400">
-                      Order: {item.orderCode}
-                    </p>
+                    <div className="flex items-center space-x-2 text-[11px] text-slate-500">
+                      <span>Order: {item.orderCode}</span>
+                      <span>•</span>
+                      <span className="font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded text-[10px] border border-emerald-100">
+                        Size: {item.fileSize ? `${item.fileSize} MB` : "50 MB"}
+                      </span>
+                    </div>
 
                     {/* Status Badge */}
                     <div className="pt-1">

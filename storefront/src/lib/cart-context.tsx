@@ -60,6 +60,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       coverImage: magazine.coverImage,
       categoryName: magazine.categoryName,
       price: magazine.price,
+      fileSize: magazine.fileSize || 50,
       quantity: 1, // Digital license is strictly 1
     }
 

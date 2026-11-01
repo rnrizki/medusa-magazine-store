@@ -146,6 +146,7 @@ export default function AdminStudioPage() {
     description: string
     highlights: string[]
     pdfUrl: string
+    fileSize?: number
     isAiLoading?: boolean
   }
 
@@ -156,6 +157,7 @@ export default function AdminStudioPage() {
       issueNumber: "Vol. 1 • 2026",
       categoryId: "",
       price: 45000,
+      fileSize: 50,
       coverImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&h=800&q=85",
       description: "",
       highlights: [],
@@ -330,6 +332,7 @@ export default function AdminStudioPage() {
         issueNumber: "Vol. 1 • 2026",
         categoryId: categories[0]?.id || "",
         price: 45000,
+        fileSize: 50,
         coverImage: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&h=800&q=85",
         description: "",
         highlights: [],
@@ -393,14 +396,14 @@ export default function AdminStudioPage() {
 
   // CSV Template Downloader
   const downloadCsvTemplate = () => {
-    const headers = "title,issueNumber,category,price,coverImage,pdfUrl,description,highlights"
+    const headers = "title,issueNumber,category,price,fileSize,coverImage,pdfUrl,description,highlights"
     const sampleRows = [
-      `"VOGUE NOIR - Tokyo Streetwear Revolution","Issue #14 • Street Culture","Fashion",45000,"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85","https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf","","The Monochrome Aesthetic; Tokyo Underground Atelier; Streetwear High Fashion"`,
-      `"QUANTUM FRONTIERS - Autonomous Neural Agents","Vol. 12 • 2026","Science",49000,"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85","","","Agentic Coding Systems; Neural Memory; Ethical AI Guardrails"`,
-      `"GLOBAL DEFENSE REVIEW - 6th Gen Stealth Dynamics","Briefing 2026","Defense",52000,"https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&h=800&q=85","","","Stealth Airframes; Hypersonic Interceptors; Naval Drone Fleets"`,
-      `"APEX TRACKDAY - Porsche 911 GT3 RS Special","Motorsport Vol. 19","Automotive",55000,"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85","","","Spa-Francorchamps Telemetry; High-G Suspension; Carbon Ceramic Brakes"`,
-      `"FORBES VENTURE - The Billion Dollar Seed Stage","Q4 2026 Edition","Business",48000,"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=800&q=85","","","Seed Stage Valuations; AI Startup Scaling; Founder Perspectives"`,
-      `"WANDERLUST BALI - Secret Island Sanctuaries","Travel Issue #08","Travel",45000,"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&h=800&q=85","","","Uluwatu Cliffside Eco-Villas; Rainforest Retreats; Coastal Expeditions"`,
+      `"VOGUE NOIR - Tokyo Streetwear Revolution","Issue #14 • Street Culture","Fashion",45000,48,"https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=600&h=800&q=85","https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf","","The Monochrome Aesthetic; Tokyo Underground Atelier; Streetwear High Fashion"`,
+      `"QUANTUM FRONTIERS - Autonomous Neural Agents","Vol. 12 • 2026","Science",49000,65,"https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=600&h=800&q=85","","","Agentic Coding Systems; Neural Memory; Ethical AI Guardrails"`,
+      `"GLOBAL DEFENSE REVIEW - 6th Gen Stealth Dynamics","Briefing 2026","Defense",52000,85,"https://images.unsplash.com/photo-1508614589041-895b88991e3e?auto=format&fit=crop&w=600&h=800&q=85","","","Stealth Airframes; Hypersonic Interceptors; Naval Drone Fleets"`,
+      `"APEX TRACKDAY - Porsche 911 GT3 RS Special","Motorsport Vol. 19","Automotive",55000,110,"https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&h=800&q=85","","","Spa-Francorchamps Telemetry; High-G Suspension; Carbon Ceramic Brakes"`,
+      `"FORBES VENTURE - The Billion Dollar Seed Stage","Q4 2026 Edition","Business",48000,38,"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&h=800&q=85","","","Seed Stage Valuations; AI Startup Scaling; Founder Perspectives"`,
+      `"WANDERLUST BALI - Secret Island Sanctuaries","Travel Issue #08","Travel",45000,52,"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&h=800&q=85","","","Uluwatu Cliffside Eco-Villas; Rainforest Retreats; Coastal Expeditions"`,
     ]
     const csvContent = "data:text/csv;charset=utf-8," + encodeURIComponent([headers, ...sampleRows].join("\n"))
     const downloadAnchor = document.createElement("a")
@@ -488,6 +491,9 @@ export default function AdminStudioPage() {
 
         const priceNum = parseInt(rec.price?.replace(/[^0-9]/g, "") || "45000", 10) || 45000
         const defaultCover = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&h=800&q=85"
+        const rawSize = rec.filesize || rec.size || rec.sizemb || rec.ukuran || ""
+        const parsedSize = parseInt(String(rawSize).replace(/[^0-9]/g, ""), 10)
+        const fileSize = !isNaN(parsedSize) && parsedSize > 0 ? parsedSize : 50
 
         newItems.push({
           id: `csv_${Date.now()}_${i}`,
@@ -495,6 +501,7 @@ export default function AdminStudioPage() {
           issueNumber: rec.issuenumber || rec["issue"] || "Vol. 1 • 2026",
           categoryId,
           price: priceNum,
+          fileSize,
           coverImage: rec.coverimage || rec["cover"] || defaultCover,
           description,
           highlights,
@@ -1216,7 +1223,7 @@ export default function AdminStudioPage() {
                     </select>
                   </div>
 
-                  {/* Price & Cover (3:4 ratio) */}
+                  {/* Price & Size */}
                   <div className="md:col-span-3 space-y-1">
                     <label className="block text-xs font-bold text-slate-700">
                       Price (IDR Rp) *
@@ -1227,6 +1234,25 @@ export default function AdminStudioPage() {
                       onChange={(e) => updateBulkField(item.id, "price", Number(e.target.value))}
                       className="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                     />
+                  </div>
+
+                  <div className="md:col-span-3 space-y-1">
+                    <label className="block text-xs font-bold text-slate-700">
+                      Size (MB)
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="number"
+                        min="1"
+                        placeholder="50"
+                        value={item.fileSize || 50}
+                        onChange={(e) => updateBulkField(item.id, "fileSize", Number(e.target.value) || 50)}
+                        className="w-full px-3.5 py-2 pr-10 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                      />
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
+                        MB
+                      </span>
+                    </div>
                   </div>
 
                   <div className="md:col-span-6 space-y-1">
@@ -1262,7 +1288,7 @@ export default function AdminStudioPage() {
                     />
                   </div>
 
-                  <div className="md:col-span-3 space-y-1">
+                  <div className="md:col-span-6 space-y-1">
                     <div className="flex items-center justify-between">
                       <label className="block text-xs font-bold text-slate-700">
                         Digital PDF File

@@ -311,6 +311,7 @@ export default function ManageMagazinesTab({
                   <th className="py-3.5 px-4">Title & Edition</th>
                   <th className="py-3.5 px-4">Category</th>
                   <th className="py-3.5 px-4">Price</th>
+                  <th className="py-3.5 px-4">Size</th>
                   <th className="py-3.5 px-4">PDF Asset</th>
                   <th className="py-3.5 px-4 text-right">Actions</th>
                 </tr>
@@ -356,6 +357,13 @@ export default function ManageMagazinesTab({
                     {/* Price */}
                     <td className="py-3 px-4 font-bold text-slate-900">
                       {formatRupiah(mag.price)}
+                    </td>
+
+                    {/* Size */}
+                    <td className="py-3 px-4">
+                      <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200">
+                        {mag.fileSize ? `${mag.fileSize} MB` : "50 MB"}
+                      </span>
                     </td>
 
                     {/* PDF Asset Status */}
@@ -485,7 +493,7 @@ export default function ManageMagazinesTab({
                 </div>
 
                 {/* Price */}
-                <div className="md:col-span-6 space-y-1">
+                <div className="md:col-span-3 space-y-1">
                   <label className="block font-bold text-slate-700">Price (IDR Rp) *</label>
                   <input
                     type="number"
@@ -494,6 +502,24 @@ export default function ManageMagazinesTab({
                     onChange={(e) => updateEditField("price", Number(e.target.value))}
                     className="w-full px-3.5 py-2 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
                   />
+                </div>
+
+                {/* Size (MB) */}
+                <div className="md:col-span-3 space-y-1">
+                  <label className="block font-bold text-slate-700">Size (MB)</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      min="1"
+                      placeholder="50"
+                      value={editingMag.fileSize || 50}
+                      onChange={(e) => updateEditField("fileSize", Number(e.target.value) || 50)}
+                      className="w-full px-3.5 py-2 pr-10 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+                    />
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400">
+                      MB
+                    </span>
+                  </div>
                 </div>
 
                 {/* Cover Image */}

@@ -110,6 +110,7 @@ export default function CartAndCheckoutPage() {
             issueNumber: i.issueNumber,
             coverImage: i.coverImage,
             price: i.price,
+            fileSize: i.fileSize || 50,
           })),
           paymentProofUrl: finalProofUrl,
         }),
@@ -304,8 +305,8 @@ export default function CartAndCheckoutPage() {
                     {item.title}
                   </h3>
                   <div className="flex items-center space-x-2 mt-1">
-                    <span className="text-[11px] text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded font-medium">
-                      Digital PDF
+                    <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-100">
+                      {item.fileSize ? `${item.fileSize} MB` : "50 MB"}
                     </span>
                     <span className="text-xs font-bold text-slate-900">
                       {formatRupiah(item.price)}

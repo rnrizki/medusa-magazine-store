@@ -18,6 +18,7 @@ export interface Magazine {
   description: string
   highlights?: string[]
   pdfUrl?: string // digital file link
+  fileSize?: number | string // in MB (e.g. 50)
   created_at: string
 }
 
@@ -29,6 +30,7 @@ export interface CartItem {
   coverImage: string
   categoryName?: string
   price: number
+  fileSize?: number | string // in MB
   // Notice: Digital product has fixed quantity 1
   quantity: 1
 }
@@ -45,6 +47,7 @@ export interface Order {
     coverImage: string
     price: number
     pdfUrl?: string
+    fileSize?: number | string
   }[]
   totalAmount: number
   status: "pending_verification" | "verified" | "rejected"

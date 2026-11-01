@@ -644,6 +644,9 @@ function loadData(): StoreData {
         if (!m.thumbnailUrl && m.coverImage && m.coverImage.includes("/image/")) {
           m.thumbnailUrl = m.coverImage.replace("/image/", "/image/thumbnail/")
         }
+        if (!m.fileSize) {
+          m.fileSize = 50
+        }
         return m
       })
     }
@@ -720,14 +723,12 @@ export function getMagazines(categoryId?: string): Magazine[] {
         c.name.toLowerCase() === (m.categoryName || "").toLowerCase() ||
         c.slug.toLowerCase() === (m.categoryId || "").toLowerCase()
     )
-    if (matched) {
-      return {
-        ...m,
-        categoryId: matched.id,
-        categoryName: matched.name,
-      }
+    return {
+      ...m,
+      fileSize: m.fileSize || 50,
+      categoryId: matched ? matched.id : m.categoryId,
+      categoryName: matched ? matched.name : (m.categoryName || "General"),
     }
-    return m
   })
 
   if (categoryId && categoryId !== "all") {
@@ -740,20 +741,10 @@ export function getMagazineById(id: string): Magazine | null {
   const data = loadData()
   const m = (data.magazines || []).find((item) => item.id === id)
   if (!m) return null
-  const matched = data.categories.find(
-    (c) =>
-      c.id === m.categoryId ||
-      c.name.toLowerCase() === (m.categoryName || "").toLowerCase() ||
-      c.slug.toLowerCase() === (m.categoryId || "").toLowerCase()
-  )
-  if (matched) {
-    return {
-      ...m,
-      categoryId: matched.id,
-      categoryName: matched.name,
-    }
+  return {
+    ...m,
+    fileSize: m.fileSize || 50,
   }
-  return m
 }
 
 export function addMagazines(magazinesList: Omit<Magazine, "id" | "created_at">[]): Magazine[] {
@@ -921,6 +912,7 @@ export function createOrder(
         coverImage: m.coverImage || magFromDb?.coverImage || "",
         price: m.price || magFromDb?.price || 0,
         pdfUrl: (m as any).pdfUrl || magFromDb?.pdfUrl || "",
+        fileSize: (m as any).fileSize || magFromDb?.fileSize || 50,
       }
     }),
     totalAmount,
