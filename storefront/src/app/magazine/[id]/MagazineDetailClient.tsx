@@ -54,7 +54,7 @@ export default function MagazineDetailClient({
               return (
                 <span
                   style={theme.badgeStyle}
-                  className="backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow"
+                  className="text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md"
                 >
                   {magazine.categoryName}
                 </span>

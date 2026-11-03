@@ -156,12 +156,12 @@ export default function RelatedMagazinesCarousel({
                   {/* Match Reason Badge */}
                   <div className="absolute top-3 left-3 pointer-events-none">
                     {matchReason === "similar_title" ? (
-                      <span className="bg-indigo-600/95 backdrop-blur-md text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow flex items-center space-x-1">
+                      <span className="bg-indigo-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow flex items-center space-x-1">
                         <Sparkles className="w-3 h-3" />
                         <span>Similar Title</span>
                       </span>
                     ) : (
-                      <span className="bg-emerald-600/95 backdrop-blur-md text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow flex items-center space-x-1">
+                      <span className="bg-emerald-600 text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full shadow flex items-center space-x-1">
                         <Layers className="w-3 h-3" />
                         <span>Same Category</span>
                       </span>
@@ -169,7 +169,7 @@ export default function RelatedMagazinesCarousel({
                   </div>
 
                   {/* Price Tag Overlay */}
-                  <div className="absolute bottom-3 right-3 bg-slate-950/85 backdrop-blur-md border border-white/20 text-white font-extrabold text-xs px-2.5 py-1 rounded-lg shadow-lg">
+                  <div className="absolute bottom-3 right-3 bg-slate-950/90 border border-white/20 text-white font-extrabold text-xs px-2.5 py-1 rounded-lg shadow-lg">
                     {formatRupiah(magazine.price)}
                   </div>
                 </div>

@@ -30,7 +30,7 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
   }
 
   return (
-    <div className="group relative bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+    <div className="group relative bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between [contain:paint]">
       {/* 3:4 Magazine Cover Portrait Container */}
       <Link href={`/magazine/${magazine.id}`} className="block relative">
         <div className="relative aspect-[3/4] w-full bg-slate-900 overflow-hidden">
@@ -40,6 +40,7 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
               alt={magazine.title}
               className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
               loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className="w-full h-full flex flex-col items-center justify-center text-slate-500 p-4 text-center">
@@ -51,31 +52,35 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
           {/* Gradient Shadow Overlay for Magazine Spine Effect */}
           <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 to-transparent pointer-events-none" />
 
-          {/* Top Badges */}
-          <div className="absolute top-3 inset-x-3 flex items-start justify-between gap-2 pointer-events-none">
-            {magazine.categoryName && (() => {
-              const theme = getCategoryTheme(magazine.categoryName)
-              return (
-                <span
-                  style={theme.badgeStyle}
-                  className="backdrop-blur-md text-[11px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider shadow"
-                >
-                  {magazine.categoryName}
-                </span>
-              )
-            })()}
-
+          {/* Top-Right File Size Badge (discreet, leaving masthead/logo clear) */}
+          <div className="absolute top-2.5 right-2.5 pointer-events-none">
             <span
               title={`File Size: ${magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}`}
-              className="bg-emerald-600/95 backdrop-blur-md text-white text-[11px] font-bold px-2.5 py-0.5 rounded-full shadow"
+              className="bg-emerald-700/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm"
             >
               {magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}
             </span>
           </div>
 
-          {/* Bottom Price Tag on Cover */}
-          <div className="absolute bottom-3 right-3 bg-slate-950/85 backdrop-blur-md border border-white/20 text-white font-extrabold text-xs px-2.5 py-1 rounded-lg shadow-lg">
-            {formatRupiah(magazine.price)}
+          {/* Bottom Cover Bar: Category (Left) and Price (Right) */}
+          <div className="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between gap-1.5 pointer-events-none">
+            {/* Category Pill (Bottom Left) */}
+            {magazine.categoryName ? (() => {
+              const theme = getCategoryTheme(magazine.categoryName)
+              return (
+                <span
+                  style={theme.badgeStyle}
+                  className="text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-md truncate max-w-[55%]"
+                >
+                  {magazine.categoryName}
+                </span>
+              )
+            })() : <div />}
+
+            {/* Price Tag (Bottom Right) */}
+            <div className="ml-auto bg-slate-950/90 border border-white/20 text-white font-black text-xs px-2 py-0.5 rounded-md shadow-md whitespace-nowrap flex-shrink-0">
+              {formatRupiah(magazine.price)}
+            </div>
           </div>
         </div>
 

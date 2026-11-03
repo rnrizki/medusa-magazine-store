@@ -56,7 +56,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               No Image
             </div>
           )}
-          <div className="absolute top-2.5 right-2.5 bg-black/60 backdrop-blur-md text-white text-[11px] font-semibold px-2 py-0.5 rounded-full">
+          <div className="absolute top-2.5 right-2.5 bg-black/80 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
             {formatPrice(priceAmount, currencyCode)}
           </div>
         </div>
