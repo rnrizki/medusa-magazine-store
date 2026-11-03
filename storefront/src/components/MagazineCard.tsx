@@ -52,30 +52,17 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
           {/* Gradient Shadow Overlay for Magazine Spine Effect */}
           <div className="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 to-transparent pointer-events-none" />
 
-          {/* Top-Right File Size Badge (discreet, leaving masthead/logo clear) */}
-          <div className="absolute top-2.5 right-2.5 pointer-events-none">
-            <span
-              title={`File Size: ${magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}`}
-              className="bg-emerald-700/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm"
-            >
-              {magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}
-            </span>
-          </div>
-
-          {/* Bottom Cover Bar: Category (Left) and Price (Right) */}
+          {/* Bottom Cover Bar: File Size (Left) and Price (Right) */}
           <div className="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between gap-1.5 pointer-events-none">
-            {/* Category Pill (Bottom Left) */}
-            {magazine.categoryName ? (() => {
-              const theme = getCategoryTheme(magazine.categoryName)
-              return (
-                <span
-                  style={theme.badgeStyle}
-                  className="text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-md truncate max-w-[55%]"
-                >
-                  {magazine.categoryName}
-                </span>
-              )
-            })() : <div />}
+            {/* File Size Badge (Bottom Left, replacing category) */}
+            <div className="flex items-center">
+              <span
+                title={`File Size: ${magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}`}
+                className="bg-emerald-700/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-md whitespace-nowrap"
+              >
+                {magazine.fileSize ? `${magazine.fileSize} MB` : "50 MB"}
+              </span>
+            </div>
 
             {/* Price Tag (Bottom Right) */}
             <div className="ml-auto bg-slate-950/90 border border-white/20 text-white font-black text-xs px-2 py-0.5 rounded-md shadow-md whitespace-nowrap flex-shrink-0">
@@ -86,11 +73,20 @@ export default function MagazineCard({ magazine }: MagazineCardProps) {
 
         {/* Magazine Metadata */}
         <div className="p-4 space-y-1.5">
-          {magazine.issueNumber && (
-            <p className="text-[11px] font-medium text-indigo-600 uppercase tracking-wider">
-              {magazine.issueNumber}
-            </p>
-          )}
+          {/* Category Label replacing VOL. 1 • 2026 / Issue Number */}
+          {magazine.categoryName && (() => {
+            const theme = getCategoryTheme(magazine.categoryName)
+            return (
+              <div className="flex items-center">
+                <span
+                  style={theme.badgeStyle}
+                  className="text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-2xs inline-block truncate max-w-full"
+                >
+                  {magazine.categoryName}
+                </span>
+              </div>
+            )
+          })()}
 
           <h3 className="font-bold text-slate-900 text-sm group-hover:text-indigo-600 transition-colors line-clamp-2 leading-snug">
             {magazine.title}

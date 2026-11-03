@@ -5,6 +5,7 @@ import Link from "next/link"
 import { RelatedMagazineItem } from "../lib/recommendations"
 import { formatRupiah } from "../lib/format"
 import { getMagazineThumbnail } from "../lib/thumbnails"
+import { getCategoryTheme } from "../lib/category-colors"
 import { useCart } from "../lib/cart-context"
 import {
   ChevronLeft,
@@ -176,11 +177,19 @@ export default function RelatedMagazinesCarousel({
 
                 {/* Details */}
                 <div className="p-4 space-y-1">
-                  {magazine.issueNumber && (
-                    <p className="text-[10px] font-bold text-indigo-600 uppercase tracking-wider">
-                      {magazine.issueNumber}
-                    </p>
-                  )}
+                  {magazine.categoryName && (() => {
+                    const theme = getCategoryTheme(magazine.categoryName)
+                    return (
+                      <div className="flex items-center">
+                        <span
+                          style={theme.badgeStyle}
+                          className="text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider shadow-2xs inline-block truncate max-w-full"
+                        >
+                          {magazine.categoryName}
+                        </span>
+                      </div>
+                    )
+                  })()}
                   <h3 className="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-indigo-600 transition-colors line-clamp-2 leading-snug">
                     {magazine.title}
                   </h3>
